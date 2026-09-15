@@ -31,14 +31,8 @@ COPY requirements.txt .
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
-# Copy application source code and configurations
-COPY config/ config/
-COPY src/ src/
-COPY artifacts/ artifacts/
-COPY app.py .
-COPY run_all.py .
-COPY framingham.csv .
-COPY cardio_train_fixed\ \(1\).csv .
+# Copy application source code, models, datasets, and configurations
+COPY . .
 
 # Create directory structure for runtime uploads and jobs
 RUN mkdir -p artifacts/uploads artifacts/training_jobs artifacts/models
