@@ -198,7 +198,7 @@
                   <div class="form-group">
                     <label for="age"><span data-i18n="labelAge">Age</span></label>
                     <div class="input-num-wrap">
-                      <input type="number" id="age" min="18" max="100" value="54" step="1" oninput="updateDossierAge(this.value); queueLiveInference();">
+                      <input type="number" id="age" min="18" max="100" value="54" step="1" oninput="updateDossierAge(this.value);">
                       <span class="input-num-unit" data-i18n="unitYrs">yrs</span>
                       <div class="input-num-steppers">
                         <button type="button" class="stepper-btn" onclick="stepVal('age', 1)" title="Increase Age">▲</button>
@@ -208,7 +208,7 @@
                   </div>
                   <div class="form-group">
                     <label for="gender" data-i18n="labelGender">Biological Sex</label>
-                    <select id="gender" onchange="updateDossierGender(this.value); queueLiveInference();">
+                    <select id="gender" onchange="updateDossierGender(this.value);">
                       <option value="1" data-i18n="optFemale">Female</option>
                       <option value="2" selected data-i18n="optMale">Male</option>
                     </select>
@@ -219,7 +219,7 @@
                   <div class="form-group">
                     <label for="height"><span data-i18n="labelHeight">Height</span></label>
                     <div class="input-num-wrap">
-                      <input type="number" id="height" min="100" max="230" value="168" step="1" oninput="calcBmi(); queueLiveInference();">
+                      <input type="number" id="height" min="100" max="230" value="168" step="1" oninput="calcBmi();">
                       <span class="input-num-unit" data-i18n="unitCm">cm</span>
                       <div class="input-num-steppers">
                         <button type="button" class="stepper-btn" onclick="stepVal('height', 1)" title="Increase Height">▲</button>
@@ -230,7 +230,7 @@
                   <div class="form-group">
                     <label for="weight"><span data-i18n="labelWeight">Weight</span></label>
                     <div class="input-num-wrap">
-                      <input type="number" id="weight" min="30" max="200" value="74" step="1" oninput="calcBmi(); queueLiveInference();">
+                      <input type="number" id="weight" min="30" max="200" value="74" step="1" oninput="calcBmi();">
                       <span class="input-num-unit" data-i18n="unitKg">kg</span>
                       <div class="input-num-steppers">
                         <button type="button" class="stepper-btn" onclick="stepVal('weight', 1)" title="Increase Weight">▲</button>
@@ -244,7 +244,7 @@
                   <div class="form-group">
                     <label for="ap_hi"><span data-i18n="labelBpSys">Systolic BP</span></label>
                     <div class="input-num-wrap">
-                      <input type="number" id="ap_hi" min="70" max="240" value="135" step="1" oninput="queueLiveInference();">
+                      <input type="number" id="ap_hi" min="70" max="240" value="135" step="1">
                       <span class="input-num-unit" data-i18n="unitMmHg">mmHg</span>
                       <div class="input-num-steppers">
                         <button type="button" class="stepper-btn" onclick="stepVal('ap_hi', 2)" title="Increase Systolic BP">▲</button>
@@ -255,7 +255,7 @@
                   <div class="form-group">
                     <label for="ap_lo"><span data-i18n="labelBpDia">Diastolic BP</span></label>
                     <div class="input-num-wrap">
-                      <input type="number" id="ap_lo" min="40" max="150" value="88" step="1" oninput="queueLiveInference();">
+                      <input type="number" id="ap_lo" min="40" max="150" value="88" step="1">
                       <span class="input-num-unit" data-i18n="unitMmHg">mmHg</span>
                       <div class="input-num-steppers">
                         <button type="button" class="stepper-btn" onclick="stepVal('ap_lo', 2)" title="Increase Diastolic BP">▲</button>
@@ -268,7 +268,7 @@
                 <div class="grid-2">
                   <div class="form-group">
                     <label for="cholesterol" data-i18n="labelCholesterol">Serum Cholesterol</label>
-                    <select id="cholesterol" onchange="queueLiveInference();">
+                    <select id="cholesterol">
                       <option value="1" data-i18n="optCholNormal">Normal (&lt;200 mg/dL)</option>
                       <option value="2" selected data-i18n="optCholAbove">Above Normal (200-239)</option>
                       <option value="3" data-i18n="optCholHigh">High (&ge;240 mg/dL)</option>
@@ -276,7 +276,7 @@
                   </div>
                   <div class="form-group">
                     <label for="gluc" data-i18n="labelGlucose">Fasting Glucose</label>
-                    <select id="gluc" onchange="queueLiveInference();">
+                    <select id="gluc">
                       <option value="1" selected data-i18n="optGlucNormal">Normal (&lt;100 mg/dL)</option>
                       <option value="2" data-i18n="optGlucAbove">Above Normal (100-125)</option>
                       <option value="3" data-i18n="optGlucHigh">High (&ge;126 mg/dL)</option>
@@ -287,21 +287,21 @@
                 <div class="grid-3">
                   <div class="form-group">
                     <label for="smoke" data-i18n="labelSmoke">Smoker</label>
-                    <select id="smoke" onchange="queueLiveInference();">
+                    <select id="smoke">
                       <option value="0" data-i18n="optNo">No</option>
                       <option value="1" selected data-i18n="optYes">Yes</option>
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="alco" data-i18n="labelAlcohol">Alcohol</label>
-                    <select id="alco" onchange="queueLiveInference();">
+                    <select id="alco">
                       <option value="0" selected data-i18n="optNo">No</option>
                       <option value="1" data-i18n="optYes">Yes</option>
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="active" data-i18n="labelActive">Active</label>
-                    <select id="active" onchange="queueLiveInference();">
+                    <select id="active">
                       <option value="0" data-i18n="optInactive">No</option>
                       <option value="1" selected data-i18n="optActive">Yes</option>
                     </select>
@@ -313,6 +313,7 @@
                 <button class="btn-pill-blue" id="btn-assess" onclick="runInference()" style="margin-top:10px; width:100%;">
                   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> <span id="assess-btn-text" data-i18n="assessBtn">Assess Cardiovascular Risk</span>
                 </button>
+                <div id="patient-validation-banner" style="display:none; margin-top:10px; padding:10px 14px; border-radius:8px; background:#fef2f2; border:1px solid #fecaca; color:#991b1b; font-size:12px; line-height:1.5;"></div>
               </div>
             </div>
 
@@ -337,18 +338,18 @@
                     </div>
                   </div>
                   <div style="text-align:right;">
-                    <span class="risk-score-huge" id="risk-display" style="font-size:38px; font-weight:800; color:var(--blue-primary); letter-spacing:-1px;">51.5%</span>
+                    <span class="risk-score-huge" id="risk-display" style="font-size:38px; font-weight:800; color:var(--text-muted); letter-spacing:-1px;">--</span>
                     <div style="margin-top:4px;">
-                      <span class="risk-tier-pill tier-high" id="tier-display" style="font-size:11px; font-weight:700;" data-i18n="tierHighInitial">High Risk (&gt;50%)</span>
+                      <span class="risk-tier-pill" id="tier-display" style="font-size:11px; font-weight:700; background:#f1f5f9; color:#64748b; border:1px solid #cbd5e1;">Awaiting Assessment</span>
                     </div>
                   </div>
                 </div>
 
                 <!-- Clean Clinical Status Banner (Zero Math Jargon) -->
-                <div class="clinical-status-banner status-urgent" id="decision-screen-banner">
+                <div class="clinical-status-banner status-pending" id="decision-screen-banner" style="background:#f8fafc; border:1px solid #e2e8f0; color:#475569;">
                   <div class="status-banner-title">
-                    <span class="status-dot-pulse"></span>
-                    <span id="decision-screen-badge" data-i18n="decisionPositive">Positive Screening &middot; Clinical Follow-up Advised</span>
+                    <span class="status-dot-pulse" style="background:#94a3b8; box-shadow:none;"></span>
+                    <span id="decision-screen-badge">Ready &middot; Click "Assess Cardiovascular Risk"</span>
                   </div>
                   <div class="status-banner-threshold" id="threshold-benchmark-text">
                     <span data-i18n="threshPrefix">Validated Threshold:</span> <strong>48%</strong> &middot; <span data-i18n="threshSuffix">ICMR Protocol</span>
@@ -365,111 +366,40 @@
                     <svg viewBox="0 0 540 90" style="width:100%; height:100%;">
                       <defs>
                         <linearGradient id="curveGradBlue" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stop-color="#0066ff" stop-opacity="0.25"/>
+                          <stop offset="0%" stop-color="#0066ff" stop-opacity="0.15"/>
                           <stop offset="100%" stop-color="#0066ff" stop-opacity="0.0"/>
                         </linearGradient>
                       </defs>
-                      <path d="M 30 75 Q 160 70, 290 55 T 510 18 L 510 88 L 30 88 Z" fill="url(#curveGradBlue)"/>
-                      <path d="M 30 75 Q 160 70, 290 55 T 510 18" fill="none" stroke="#0066ff" stroke-width="2.2"/>
-                      <circle cx="30" cy="75" r="3.5" fill="#ffffff" stroke="#0066ff" stroke-width="2"/>
-                      <circle cx="150" cy="70" r="3.5" fill="#ffffff" stroke="#0066ff" stroke-width="2"/>
-                      <circle cx="270" cy="55" r="3.5" fill="#ffffff" stroke="#0066ff" stroke-width="2"/>
-                      <circle cx="390" cy="38" r="3.5" fill="#ffffff" stroke="#0066ff" stroke-width="2"/>
-                      <circle cx="510" cy="18" r="3.5" fill="#ffffff" stroke="#0066ff" stroke-width="2"/>
-                      <text x="30" y="88" font-size="9.5" fill="#64748b" text-anchor="middle" id="year-label-1">Year 1</text>
-                      <text x="150" y="88" font-size="9.5" fill="#64748b" text-anchor="middle" id="year-label-2">Year 2</text>
-                      <text x="270" y="88" font-size="9.5" fill="#64748b" text-anchor="middle" id="year-label-3">Year 3</text>
-                      <text x="390" y="88" font-size="9.5" fill="#64748b" text-anchor="middle" id="year-label-4">Year 4</text>
-                      <text x="510" y="88" font-size="9.5" fill="#64748b" text-anchor="middle" id="year-label-5">Year 5</text>
+                      <line x1="30" y1="50" x2="510" y2="50" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4 4"/>
+                      <text x="270" y="54" font-size="11" fill="#94a3b8" text-anchor="middle">Projected risk trajectory renders upon assessment</text>
                     </svg>
                   </div>
                 </div>
 
                 <!-- Lower Bento Section: Drivers & Care Plan -->
-                <div style="display:grid; grid-template-columns: 1.15fr 1fr; gap:16px; margin-top:10px; padding-top:12px; border-top:1px solid var(--card-border);">
-                  
-                  <!-- Left: Key Contributing Factors -->
-                  <div>
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                      <div>
-                        <span style="font-size:12px; font-weight:800; color:var(--text-display); text-transform:uppercase;" data-i18n="factorsTitle">Key Risk Factors</span>
-                        <div style="font-size:10.5px; color:var(--text-muted);" data-i18n="factorsSub">Impact on cardiovascular risk score</div>
-                      </div>
-                      <span class="badge-blue-pill" style="font-size:10px;" data-i18n="badgeAttribution">Attribution</span>
-                    </div>
-
-                    <div id="shap-waterfall-list" style="display:flex; flex-direction:column; gap:6px;">
-                      <div class="shap-bar-item">
-                        <div class="shap-bar-header">
-                          <span class="shap-bar-label">Systolic BP (135 mmHg)</span>
-                          <span class="shap-bar-val shap-val-pos">+12.5%</span>
-                        </div>
-                        <div class="shap-bar-track">
-                          <div class="shap-bar-fill shap-fill-pos" style="width: 40%;"></div>
-                        </div>
-                      </div>
-                      <div class="shap-bar-item">
-                        <div class="shap-bar-header">
-                          <span class="shap-bar-label">Serum Cholesterol (Above Normal)</span>
-                          <span class="shap-bar-val shap-val-pos">+8.5%</span>
-                        </div>
-                        <div class="shap-bar-track">
-                          <div class="shap-bar-fill shap-fill-pos" style="width: 28%;"></div>
-                        </div>
-                      </div>
-                      <div class="shap-bar-item">
-                        <div class="shap-bar-header">
-                          <span class="shap-bar-label">Age (54 yrs)</span>
-                          <span class="shap-bar-val shap-val-pos">+11.8%</span>
-                        </div>
-                        <div class="shap-bar-track">
-                          <div class="shap-bar-fill shap-fill-pos" style="width: 38%;"></div>
-                        </div>
-                      </div>
-                      <div class="shap-bar-item">
-                        <div class="shap-bar-header">
-                          <span class="shap-bar-label">Physical Activity (Active)</span>
-                          <span class="shap-bar-val shap-val-neg">-8.5%</span>
-                        </div>
-                        <div class="shap-bar-track">
-                          <div class="shap-bar-fill shap-fill-neg" style="width: 28%;"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Right: Care Protocol & Next Steps -->
-                  <div style="border-left:1px solid var(--card-border); padding-left:16px; display:flex; flex-direction:column; justify-content:space-between;">
+                <!-- Lower Bento Section: Key Risk Factors & Action Strip -->
+                <div style="margin-top:10px; padding-top:12px; border-top:1px solid var(--card-border);">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:8px;">
                     <div>
-                      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                        <div>
-                          <span style="font-size:12px; font-weight:800; color:var(--text-display); text-transform:uppercase;" data-i18n="protocolTitle">Care Protocol</span>
-                          <div style="font-size:10.5px; color:var(--text-muted);" data-i18n="protocolSub">ICMR NP-NCD &amp; ACC/AHA 2018</div>
-                        </div>
-                        <span class="badge-status-moderate" id="icmr-triage-badge" style="font-size:10px; font-weight:700;" data-i18n="triageRoutine">ROUTINE MONITOR</span>
-                      </div>
-
-                      <div id="icmr-care-plan-box" style="background:var(--blue-light); border:1px solid var(--blue-border); border-radius:var(--radius-md); padding:8px 10px; font-size:11.5px;">
-                        <div style="margin-bottom:4px;">
-                          <strong style="color:var(--blue-primary);" data-i18n="urgencyLabel">Urgency:</strong> <span id="icmr-urgency-val" style="color:var(--text-display); font-weight:600;">Ayushman Arogya Mandir</span>
-                        </div>
-                        <div id="icmr-action-items" style="color:var(--text-secondary); line-height:1.45; font-size:11px;">
-                          Stage 1 Hypertension. Re-measure ambulatory blood pressure in 2 weeks. Borderline hypercholesterolemia. Advise dietary lipid reduction and monitor in 6 months.
-                        </div>
-                      </div>
+                      <span style="font-size:12px; font-weight:800; color:var(--text-display); text-transform:uppercase;" data-i18n="factorsTitle">Key Risk Factors</span>
+                      <div style="font-size:10.5px; color:var(--text-muted);" data-i18n="factorsSub">Impact on cardiovascular risk score</div>
                     </div>
-
-                    <!-- Action buttons: FHIR R4 Bundle & PDF Export -->
-                    <div style="display:flex; gap:8px; margin-top:10px;">
-                      <button id="btn-export-fhir" class="btn-pill-white" style="flex:1; padding:7px 10px; font-size:11px; justify-content:center;" onclick="downloadFhirBundle()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> <span data-i18n="btnFhirExport">HL7 FHIR R4</span>
+                    <div style="display:flex; align-items:center; gap:8px;">
+                      <span class="badge-blue-pill" style="font-size:10px;" data-i18n="badgeAttribution">Attribution</span>
+                      <button id="btn-export-fhir" class="btn-pill-white" style="padding:4px 10px; font-size:11px; display:inline-flex; align-items:center; gap:5px;" onclick="downloadFhirBundle()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> <span data-i18n="btnFhirExport">HL7 FHIR R4</span>
                       </button>
-                      <button id="btn-export-pdf" class="btn-pill-white" style="flex:1; padding:7px 10px; font-size:11px; justify-content:center;" onclick="exportPdfSummary()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> <span data-i18n="btnClinicalPdf">Clinical PDF</span>
+                      <button id="btn-export-pdf" class="btn-pill-white" style="padding:4px 10px; font-size:11px; display:inline-flex; align-items:center; gap:5px;" onclick="exportPdfSummary()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> <span data-i18n="btnClinicalPdf">Clinical PDF</span>
                       </button>
                     </div>
                   </div>
 
+                  <div id="shap-waterfall-list" style="display:flex; flex-direction:column; gap:6px;">
+                    <div style="font-size:11.5px; color:var(--text-muted); padding:16px 8px; text-align:center; background:var(--bg-surface); border:1px dashed var(--card-border); border-radius:var(--radius-md);">
+                      Click "Assess Cardiovascular Risk" to compute physiological feature attribution.
+                    </div>
+                  </div>
                 </div>
 
                 <!-- Minimalist Dual Engine Verification Strip -->

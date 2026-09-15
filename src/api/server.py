@@ -362,6 +362,7 @@ HTML_DASHBOARD = """<!DOCTYPE html>
                 <button class="btn-pill-blue" id="btn-assess" onclick="runInference()" style="margin-top:10px; width:100%;">
                   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> <span id="assess-btn-text" data-i18n="assessBtn">Assess Cardiovascular Risk</span>
                 </button>
+                <div id="patient-validation-banner" style="display:none; margin-top:10px; padding:10px 14px; border-radius:8px; background:#fef2f2; border:1px solid #fecaca; color:#991b1b; font-size:12px; line-height:1.5;"></div>
               </div>
             </div>
 
@@ -452,97 +453,35 @@ HTML_DASHBOARD = """<!DOCTYPE html>
                 </div>
               </div>
 
-              <!-- CARD 2: EXPLAINABLE AI (TreeSHAP) & EVIDENCE-BASED CARE GUIDANCE -->
+              <!-- CARD 2: EXPLAINABLE AI (TreeSHAP) & EXPORT -->
               <div class="card" style="margin-bottom:0;">
-                <div style="display:grid; grid-template-columns: 1.15fr 1fr; gap:16px;">
-                  
-                  <!-- LEFT HALF: TreeSHAP Physiological Waterfall -->
-                  <div>
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                      <div>
-                        <span style="font-size:12px; font-weight:800; color:var(--text-display); text-transform:uppercase;">Physiological SHAP Drivers</span>
-                        <div style="font-size:10.5px; color:var(--text-muted);">Feature impact on log-odds risk</div>
-                      </div>
-                      <span class="badge-blue-pill" style="font-size:10px;">TreeSHAP XAI</span>
-                    </div>
-
-                    <!-- Real SHAP waterfall bars container -->
-                    <div id="shap-waterfall-list" style="display:flex; flex-direction:column; gap:6px;">
-                      <div class="shap-bar-item">
-                        <div class="shap-bar-header">
-                          <span class="shap-bar-label">Systolic BP (135 mmHg)</span>
-                          <span class="shap-bar-val shap-val-pos">+14.2%</span>
-                        </div>
-                        <div class="shap-bar-track">
-                          <div class="shap-bar-fill shap-fill-pos" style="width: 45%;"></div>
-                        </div>
-                      </div>
-                      <div class="shap-bar-item">
-                        <div class="shap-bar-header">
-                          <span class="shap-bar-label">Serum Cholesterol (Above Normal)</span>
-                          <span class="shap-bar-val shap-val-pos">+8.5%</span>
-                        </div>
-                        <div class="shap-bar-track">
-                          <div class="shap-bar-fill shap-fill-pos" style="width: 28%;"></div>
-                        </div>
-                      </div>
-                      <div class="shap-bar-item">
-                        <div class="shap-bar-header">
-                          <span class="shap-bar-label">Tobacco Smoking (Yes)</span>
-                          <span class="shap-bar-val shap-val-pos">+6.1%</span>
-                        </div>
-                        <div class="shap-bar-track">
-                          <div class="shap-bar-fill shap-fill-pos" style="width: 20%;"></div>
-                        </div>
-                      </div>
-                      <div class="shap-bar-item">
-                        <div class="shap-bar-header">
-                          <span class="shap-bar-label">Physical Activity (Active)</span>
-                          <span class="shap-bar-val shap-val-neg">-5.2%</span>
-                        </div>
-                        <div class="shap-bar-track">
-                          <div class="shap-bar-fill shap-fill-neg" style="width: 18%;"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- RIGHT HALF: ICMR NP-NCD & ACC/AHA Clinical Protocol -->
-                  <div style="border-left:1px solid var(--card-border); padding-left:16px; display:flex; flex-direction:column; justify-content:space-between;">
+                <div>
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:8px;">
                     <div>
-                      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                        <div>
-                          <span style="font-size:12px; font-weight:800; color:var(--text-display); text-transform:uppercase;">Clinical Care Protocol</span>
-                          <div style="font-size:10.5px; color:var(--text-muted);">ICMR NP-NCD & ACC/AHA 2018</div>
-                        </div>
-                        <span class="badge-status-yellow" id="icmr-triage-badge" style="font-size:10px; font-weight:700;">ROUTINE</span>
-                      </div>
-
-                      <div id="icmr-care-plan-box" style="background:var(--blue-light); border:1px solid var(--blue-border); border-radius:var(--radius-md); padding:8px 10px; font-size:11.5px;">
-                        <div style="margin-bottom:4px;">
-                          <strong style="color:var(--blue-primary);">Urgency:</strong> <span id="icmr-urgency-val" style="color:var(--text-display); font-weight:600;">Routine Monitoring</span>
-                        </div>
-                        <div id="icmr-action-items" style="color:var(--text-secondary); line-height:1.45; font-size:11px;">
-                          Initiate salt-reduction protocol (&lt;5g/day), evaluate for first-line antihypertensive therapy, and repeat fasting lipid panel in 12 weeks.
-                        </div>
-                      </div>
+                      <span style="font-size:12px; font-weight:800; color:var(--text-display); text-transform:uppercase;">Physiological SHAP Drivers</span>
+                      <div style="font-size:10.5px; color:var(--text-muted);">Feature impact on log-odds risk</div>
                     </div>
-
-                    <!-- Action buttons: FHIR R4 Bundle & PDF Export -->
-                    <div style="display:flex; gap:8px; margin-top:10px;">
-                      <button id="btn-export-fhir" class="btn-pill-white" style="flex:1; padding:7px 10px; font-size:11px; justify-content:center;" onclick="downloadFhirBundle()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> <span>HL7 FHIR R4</span>
+                    <div style="display:flex; align-items:center; gap:8px;">
+                      <span class="badge-blue-pill" style="font-size:10px;">TreeSHAP XAI</span>
+                      <button id="btn-export-fhir" class="btn-pill-white" style="padding:4px 10px; font-size:11px; display:inline-flex; align-items:center; gap:5px;" onclick="downloadFhirBundle()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> <span>HL7 FHIR</span>
                       </button>
-                      <button id="btn-export-pdf" class="btn-pill-white" style="flex:1; padding:7px 10px; font-size:11px; justify-content:center;" onclick="exportPdfSummary()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> <span>Clinical PDF</span>
+                      <button id="btn-export-pdf" class="btn-pill-white" style="padding:4px 10px; font-size:11px; display:inline-flex; align-items:center; gap:5px;" onclick="exportPdfSummary()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> <span>Clinical PDF</span>
                       </button>
                     </div>
                   </div>
 
+                  <!-- Real SHAP waterfall bars container -->
+                  <div id="shap-waterfall-list" style="display:flex; flex-direction:column; gap:6px;">
+                    <div style="font-size:11.5px; color:var(--text-muted); padding:16px 8px; text-align:center; background:var(--bg-surface); border:1px dashed var(--card-border); border-radius:var(--radius-md);">
+                      Click "Assess Cardiovascular Risk" to compute physiological feature attribution.
+                    </div>
+                  </div>
                 </div>
               </div>
-
             </div>
+
           </div>
         </div>
 

@@ -797,10 +797,39 @@ function updateVal(id) {
 
 let liveInferenceTimer = null;
 function queueLiveInference() {
-  if (liveInferenceTimer) clearTimeout(liveInferenceTimer);
-  liveInferenceTimer = setTimeout(() => {
-    runInference();
-  }, 250);
+  // Live auto-inference disabled per user request to prevent unwanted validation popups.
+  // Predictions run exclusively when clicking "Assess Cardiovascular Risk".
+}
+
+function showValidationNotice(message) {
+  let box = document.getElementById('patient-validation-banner');
+  if (!box) {
+    box = document.createElement('div');
+    box.id = 'patient-validation-banner';
+    box.style.cssText = 'margin-top:10px; padding:10px 14px; border-radius:8px; background:#fef2f2; border:1px solid #fecaca; color:#991b1b; font-size:12px; line-height:1.5;';
+    const assessBtn = document.getElementById('btn-assess');
+    if (assessBtn && assessBtn.parentNode) {
+      assessBtn.parentNode.insertBefore(box, assessBtn.nextSibling);
+    }
+  }
+  const isHi = (currentLang === 'hi');
+  const title = isHi ? 'इनपुट सत्यापन सूचना' : 'Input Validation Notice';
+  box.innerHTML = `
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:4px; font-weight:700;">
+      <span style="display:flex; align-items:center; gap:6px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        ${title}
+      </span>
+      <button type="button" onclick="document.getElementById('patient-validation-banner').style.display='none'" style="background:none; border:none; color:#991b1b; font-size:16px; line-height:1; cursor:pointer; padding:0 4px;">&times;</button>
+    </div>
+    <div style="white-space:pre-line; color:#991b1b; padding-left:20px;">${message}</div>
+  `;
+  box.style.display = 'block';
+}
+
+function clearValidationNotice() {
+  const box = document.getElementById('patient-validation-banner');
+  if (box) box.style.display = 'none';
 }
 
 function stepVal(id, delta) {
@@ -813,7 +842,7 @@ function stepVal(id, delta) {
   elem.value = next;
   if (id === 'age') updateDossierAge(next);
   if (id === 'height' || id === 'weight') calcBmi();
-  queueLiveInference();
+  clearValidationNotice();
 }
 
 function updateDossierName(name) {
@@ -1019,7 +1048,7 @@ function applyPatientPreset(key) {
   const activeBtn = document.getElementById('preset-chip-' + key);
   if (activeBtn) activeBtn.classList.add('active');
 
-  runInference();
+  clearValidationNotice();
 }
 
 function onHeaderPatientSelect(key) {
@@ -1195,7 +1224,16 @@ async function runInference() {
     patient: patient
   };
 
+  clearValidationNotice();
+
+  const assessBtn = document.getElementById('btn-assess');
+  const assessTextElem = document.getElementById('assess-btn-text');
+  const origBtnText = assessTextElem ? assessTextElem.innerText : 'Assess Cardiovascular Risk';
+
   try {
+    if (assessBtn) assessBtn.disabled = true;
+    if (assessTextElem) assessTextElem.innerText = (currentLang === 'hi') ? 'जोखिम का विश्लेषण हो रहा है...' : 'Calculating Clinical Risk...';
+
     const resp = await fetch('/api/predict', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -1204,10 +1242,11 @@ async function runInference() {
     const res = await resp.json();
     if (!resp.ok) {
       const detailStr = res.details ? res.details.join('\n• ') : (res.message || res.error || 'Server error');
-      alert('Validation Alert (HTTP ' + resp.status + '):\n• ' + detailStr);
+      showValidationNotice('• ' + detailStr);
       return;
     }
 
+    clearValidationNotice();
     lastRiskResult = res;
     lastPatientPayload = patient;
     lastScreeningId = res.screening_id || "scr_live";
@@ -1215,6 +1254,10 @@ async function runInference() {
     updateInferenceUI(res, patient);
   } catch (err) {
     console.error('Inference error:', err);
+    showValidationNotice('Unable to communicate with clinical prediction service. Check network/server.');
+  } finally {
+    if (assessBtn) assessBtn.disabled = false;
+    if (assessTextElem) assessTextElem.innerText = origBtnText;
   }
 }
 
@@ -1385,53 +1428,6 @@ function updateInferenceUI(res, patient) {
       `;
       shapContainer.appendChild(item);
     });
-  }
-
-  // 6. Update ICMR / ACC-AHA Care Protocol Guidance
-  const triageBadge = document.getElementById('icmr-triage-badge');
-  const urgencyVal = document.getElementById('icmr-urgency-val');
-  const actionItems = document.getElementById('icmr-action-items');
-
-  const isUrgent = isPositive || prob > 0.50;
-  const isModerate = !isUrgent && prob >= 0.20;
-
-  if (triageBadge) {
-    if (isUrgent) {
-      triageBadge.innerText = isHi ? 'तत्काल रेफरल' : 'URGENT REFERRAL';
-      triageBadge.className = 'badge-status-urgent';
-    } else if (isModerate) {
-      triageBadge.innerText = isHi ? 'मध्यम प्राथमिकता' : 'MODERATE PRIORITY';
-      triageBadge.className = 'badge-status-moderate';
-    } else {
-      triageBadge.innerText = isHi ? 'नियमित निगरानी' : 'ROUTINE MONITOR';
-      triageBadge.className = 'badge-status-routine';
-    }
-  }
-
-  if (urgencyVal) {
-    if (isUrgent) {
-      urgencyVal.innerText = isHi ? 'जिला अस्पताल कार्डियोलॉजी विभाग' : 'District Hospital Cardiology Dept';
-    } else if (isModerate) {
-      urgencyVal.innerText = isHi ? 'आयुष्मान आरोग्य मंदिर (प्राथमिक केंद्र)' : 'Ayushman Arogya Mandir (PHC)';
-    } else {
-      urgencyVal.innerText = isHi ? 'उप-केंद्र / आशा गृह भ्रमण' : 'Sub-Centre / ASHA Field Protocol';
-    }
-  }
-
-  if (actionItems) {
-    if (isUrgent) {
-      actionItems.innerText = isHi 
-        ? 'उच्च हृदय जोखिम पाया गया। तत्काल ईसीजी एवं लिपिड प्रोफाइल कराएं। कार्डियोलॉजिस्ट परामर्श एवं दवा चिकित्सा प्रारंभ करने हेतु जिला अस्पताल रेफर करें।'
-        : 'High cardiovascular risk detected. Urgent cardiology referral advised. Perform 12-lead ECG and lipid panel. Initiate guideline-directed medical therapy.';
-    } else if (isModerate) {
-      actionItems.innerText = isHi 
-        ? 'स्टेज 1 उच्च रक्तचाप / सीमांत कोलेस्ट्रॉल वृद्धि। 2 सप्ताह में रक्तचाप की पुनः जांच कराएं। आहार में नमक व वसा नियंत्रण की सलाह दें तथा 3 माह में फॉलो-अप करें।'
-        : 'Stage 1 Hypertension / Borderline Hypercholesterolemia. Re-measure ambulatory blood pressure in 2 weeks. Advise dietary lipid reduction and monitor in 3 months.';
-    } else {
-      actionItems.innerText = isHi 
-        ? 'हृदय स्वास्थ्य सामान्य सीमा में है। वार्षिक नियमित जांच जारी रखें, संतुलित पौष्टिक आहार लें एवं 30 मिनट दैनिक शारीरिक व्यायाम करें।'
-        : 'Optimal cardiovascular risk profile. Maintain routine annual cardiovascular screening, balanced diet, and regular physical activity.';
-    }
   }
 
   const fhirBtn = document.getElementById('btn-export-fhir');
@@ -2165,7 +2161,6 @@ async function loadCircuitDiagram() {
 
 document.addEventListener('DOMContentLoaded', () => {
   initSidebarState();
-  runInference();
   calcBmi();
   onThresholdSliderInput(0.4836);
   loadLiveBenchmarks();
