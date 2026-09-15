@@ -1,0 +1,9 @@
+{
+  "model_key": "vqc",
+  "model_name": "Variational Quantum Classifier",
+  "target_column": "cardio",
+  "dataset_name": "Uploaded: cardio_train_corrected.csv",
+  "locked_threshold": 0.499552890715718,
+  "cv_folds": 5,
+  "random_seed": 42
+}

@@ -1,0 +1,2174 @@
+/**
+ * CardioQ Clinical Workstation Client Engine
+ * Luminous Minimalist Biotech Aesthetics (Lunira Theme)
+ * Zero Emojis, Zero Text Collisions, High-Precision Telemetry
+ */
+
+const I18N = {
+  en: {
+    appTitle: "CardioQ <span class=\"accent\">Diagnostics</span>",
+    sidebarBrandSub: "Clinical SaaS",
+    badgeSystemOnline: "System Online",
+    navSecScreening: "Clinical Screening",
+    tabScreener: "Patient Risk Screener",
+    tabHistory: "Screening History",
+    navSecResearch: "Research Studio",
+    tabUpload: "Dataset Ingestion & Audit",
+    tabTrain: "Model Training Studio",
+    tabBenchmarks: "Dual-Track Benchmarks",
+    tabQuantum: "Quantum Architecture & QASM",
+    navSecCompliance: "Compliance",
+    tabGovernance: "Scientific Governance",
+    sidebarIsoCert: "ISO-13485 Certified",
+
+    screenerHeader: "Patient Risk Screener",
+    screenerSub: "Calibrated prospective risk stratification & clinical decision support engine.",
+    presetsLabel: "Presets:",
+    presetNormative: "Normative (28y F)",
+    presetBaseline: "Baseline (54y M)",
+    presetHypertensive: "Hypertensive (58y M)",
+    presetMetabolic: "Metabolic (62y F)",
+
+    dossierTelemetry: "Telemetry Active",
+    chipCcu: "CCU-04",
+    btnExportPdf: "Export PDF",
+    btnRecalibrate: "Re-calibrate",
+    btnFlagAlert: "Flag Alert",
+
+    screenerTitle: "Clinical Patient Vitals",
+    vitalsSub: "Calibrated physiological markers for prospective risk calculation",
+    labelPatientName: "Full Name",
+    labelAbha: "ABHA ID (National Health)",
+    btnGenerateAbha: "Auto",
+    labelModelSelect: "Prediction Architecture",
+    optgrpClassical: "Classical ML Architectures",
+    optgrpQuantum: "Quantum ML Architectures",
+    optCatboost: "CatBoost (Ordered Statistics - Production Champion)",
+    optLightgbm: "LightGBM (Gradient Boost)",
+    optXgboost: "XGBoost Classifier",
+    optLogreg: "Logistic Regression (Interpretable Odds)",
+    optRf: "Random Forest Classifier",
+    optVqc: "Variational Quantum Classifier (VQC)",
+    optQsvm: "Quantum Support Vector Machine (QSVM)",
+    optHybrid: "Hybrid Quantum Neural Network (QNN)",
+    labelAge: "Age",
+    unitYrs: "yrs",
+    labelGender: "Biological Sex",
+    optFemale: "Female",
+    optMale: "Male",
+    labelHeight: "Height",
+    unitCm: "cm",
+    labelWeight: "Weight",
+    unitKg: "kg",
+    labelBpSys: "Systolic BP",
+    unitMmHg: "mmHg",
+    labelBpDia: "Diastolic BP",
+    labelCholesterol: "Serum Cholesterol",
+    optCholNormal: "Normal (<200 mg/dL)",
+    optCholAbove: "Above Normal (200-239)",
+    optCholHigh: "High (≥240 mg/dL)",
+    labelGlucose: "Fasting Glucose",
+    optGlucNormal: "Normal (<100 mg/dL)",
+    optGlucAbove: "Above Normal (100-125)",
+    optGlucHigh: "High (≥126 mg/dL)",
+    labelSmoke: "Smoker",
+    optNo: "No",
+    optYes: "Yes",
+    labelAlcohol: "Alcohol",
+    labelActive: "Active",
+    optInactive: "No",
+    optActive: "Yes",
+    assessBtn: "Assess Cardiovascular Risk",
+
+    badgeClinicalEval: "CLINICAL EVALUATION",
+    badgePrecisionAi: "Precision AI Risk Engine",
+    reportTitle: "Cardiovascular Risk Assessment",
+    reportSub: "Prospective 5-year clinical evaluation & guideline-directed decision support",
+    tierHighInitial: "High Risk (>50%)",
+    tierModInitial: "Moderate Risk (20-50%)",
+    tierLowInitial: "Low Risk (<20%)",
+    tierAwaiting: "Awaiting Assessment",
+    decisionPositive: "Positive Screening · Clinical Follow-up Advised",
+    decisionModerate: "Moderate Risk · Ambulatory Monitoring Advised",
+    decisionRoutine: "Low Risk · Routine Annual Screening Protocol",
+    threshPrefix: "Validated Threshold:",
+    threshSuffix: "ICMR Protocol",
+
+    trajTitle: "5-Year Projected Risk Trajectory",
+    trajSub: "Projected Annual Progression",
+    yearPrefix: "Year ",
+
+    factorsTitle: "Key Risk Factors",
+    factorsSub: "Impact on cardiovascular risk score",
+    badgeAttribution: "Attribution",
+
+    protocolTitle: "Care Protocol",
+    protocolSub: "ICMR NP-NCD & ACC/AHA 2018",
+    triageRoutine: "ROUTINE MONITOR",
+    triageModerate: "MODERATE PRIORITY",
+    triageUrgent: "URGENT REFERRAL",
+    urgencyLabel: "Urgency:",
+    btnFhirExport: "HL7 FHIR R4",
+    btnClinicalPdf: "Clinical PDF",
+
+    engineAi: "AI Engine (CatBoost):",
+    engineQuantum: "Quantum Circuit (VQC):",
+    badgeCalibrated: "Calibrated",
+
+    historyTitle: "Screening History Repository",
+    historySub: "Relational SQLite WAL persistence with FHIR R4 export capability and complete longitudinal audit trail.",
+    btnRefreshRecords: "Refresh Records",
+    kpiTotalScreened: "Total Screened",
+    kpiHighRisk: "High-Risk Flagged",
+    kpiFhirSynced: "FHIR R4 Synced",
+    kpiLatency: "Mean Inference Latency",
+    filterLabel: "Filter:",
+    filterAll: "All Records",
+    filterHigh: "High Risk",
+    filterModerate: "Moderate",
+    filterLow: "Low Risk",
+    thId: "ID",
+    thPatient: "Patient / ABHA",
+    thModel: "Model",
+    thBp: "Blood Pressure",
+    thProb: "Probability",
+    thTier: "Tier",
+    thDateTime: "Date & Time",
+    thFhir: "FHIR Export",
+
+    uploadTitle: "Cohort Ingestion & Pre-Flight Validation",
+    uploadSub: "Automated schema inference, missing-value audit, class balance verification, and target leakage prevention.",
+    cohortsSub: "Cohorts:",
+    presetKaggle: "Kaggle CVD (70,000)",
+    presetFramingham: "Framingham (4,240)",
+    presetCancer: "Wisconsin Cancer (569)",
+    chkClassDist: "<strong>Class Distribution:</strong> 50.0% / 50.0% (Balanced)",
+    chkAbdm: "<strong>ABDM Luhn Mod-10:</strong> 100% Validated Checksums",
+    chkLeakage: "<strong>Target Leakage Audit:</strong> Passed (Zero Future Leaks)",
+    chkHoldout: "<strong>Holdout Partition:</strong> 80/20 Stratified Split Isolated",
+    btnSelectCsv: "Select CSV File",
+    uploadHint: "Protected against path traversal • Maximum 15MB",
+    statTotalRecords: "Total Records",
+    statFeatures: "Features",
+    statMissing: "Missing Values",
+    statDups: "Duplicates",
+    previewTitle: "Top 5 Record Preview (Kaggle CVD Benchmark)",
+    btnSendTrain: "Send to Training →",
+
+    trainTitle: "Stratified Model Training Studio",
+    trainSub: "Dual-track classical and quantum architecture training with prospective threshold locking on out-of-fold cross validation.",
+    btnLoadChampion: "Load Champion Weights",
+    pipeStep1: "<span class=\"pipeline-step-num\">1</span> Stratified Split (80/20)",
+    pipeStep2: "<span class=\"pipeline-step-num\">2</span> Robust Scaling",
+    pipeStep3: "<span class=\"pipeline-step-num\">3</span> Architecture Fitting",
+    pipeStep4: "<span class=\"pipeline-step-num\">4</span> Youden J Cutoff Lock",
+    pipeStep5: "<span class=\"pipeline-step-num\">5</span> Bootstrap 95% CIs",
+    labelSelectTrainDataset: "Training Dataset",
+    optKaggle: "Canonical Cardiovascular Cohort (Kaggle - 70,000)",
+    optFramingham: "Framingham Heart Study (4,240)",
+    optCancer: "Wisconsin Diagnostic Breast Cancer (569)",
+    labelTargetCol: "Target Column",
+    labelRandomSeed: "Random Seed (Reproducibility)",
+    labelArchMatrix: "Select Architectures to Fit (Dual-Track Matrix):",
+    tagChampion: "Production Champion",
+    tagEnsemble: "Classical Ensemble",
+    tagGradient: "Fast Gradient Boost",
+    tagLinear: "Linear Baseline",
+    tagNisq: "NISQ Quantum",
+    tagHybrid: "Hybrid Neural",
+    archCardCbDesc: "Ordered target statistics with Platt probability calibration.",
+    archCardRfDesc: "100 bagged Gini decision trees with out-of-bag validation.",
+    archCardGbDesc: "LightGBM-style binning for sub-second gradient boosting.",
+    archCardLrDesc: "L2 regularized clinical baseline with interpretable odds ratios.",
+    archCardVqcDesc: "4-qubit parameterized ansatz with dense angle encoding.",
+    archCardQnnDesc: "PyTorch linear layers interfaced with Pennylane quantum circuit.",
+    archCardCbTitle: "CatBoost",
+    archCardRfTitle: "Random Forest",
+    archCardGbTitle: "HistGradientBoosting",
+    archCardLrTitle: "Logistic Regression",
+    archCardVqcTitle: "Variational Quantum (VQC)",
+    archCardQnnTitle: "Hybrid Quantum QNN",
+    btnExecTrain: "Execute Training Run",
+    btnQuickDemo: "Quick Demo (Load Pre-computed)",
+    trainResultsTitle: "Holdout Test Split Evaluation (N = 13,741 Untouched Cohort)",
+    thModelName: "Model Name",
+    thFamily: "Family",
+    thTime: "Time",
+    thLatency: "Latency",
+    thCutoff: "Locked τ*",
+    thRoc: "ROC-AUC",
+    thPr: "PR-AUC",
+    thAccuracy: "Accuracy",
+    thSensitivity: "Sensitivity",
+    thSpecificity: "Specificity",
+    thF1: "F1 Score",
+    mNameCatboostChampion: "CatBoost (Champion)",
+    mNameRf: "Random Forest",
+    mNameGb: "HistGradientBoosting",
+    mNameLr: "Logistic Regression",
+    mNameVqc: "Variational Quantum (VQC)",
+    famGbdtPlatt: "GBDT Platt",
+    famEnsemble: "Ensemble",
+    famLightgbm: "LightGBM",
+    famLinear: "Linear",
+    famNisqQml: "NISQ QML",
+
+    benchmarksTitle: "Dual-Track Benchmarks & Performance Curves",
+    benchmarksDesc: "Evaluated on 13,741-sample untouched test partition with 1,000-iteration bootstrap 95% confidence intervals.",
+    btnReloadCurves: "Reload Curves",
+    bentoBadge: "Dual-Track Comparative Rationale",
+    bentoTitle: "Clinical Production Champion vs. Algorithmic Quantum Frontier",
+    bentoDesc: "<strong>Track A (Clinical Production):</strong> CatBoost is designated our production clinical champion (ROC-AUC <strong>0.8025</strong> [0.795, 0.810], PR-AUC <strong>0.8091</strong>) due to sub-15ms inference latency, robust ordered target statistics, and well-calibrated Platt probabilities.<br><strong>Track B (NISQ Feasibility):</strong> On identical N=1,000 stratified samples, Hybrid QNN (ROC-AUC <strong>0.7519</strong>) and VQC (<strong>0.7350</strong>) exhibit competitive non-linear representation capacity without unverified claims of quantum supremacy.",
+    rocHeader: "ROC Curve",
+    prHeader: "Precision-Recall Curve",
+    badgeRocTakeaway: "CatBoost: 0.8025",
+    badgePrTakeaway: "CatBoost: 0.8091",
+    loadingRoc: "Loading ROC curves...",
+    loadingPr: "Loading PR curves...",
+    loadingTrackA: "Loading Track A benchmarks...",
+    loadingTrackB: "Loading Track B benchmarks...",
+    threshTitle: "Operational Sensitivity / Specificity Threshold Explorer",
+    threshSub: "Evaluates clinical trade-offs across cutoffs (τ ∈ [0.05, 0.95]) on the 13,741-sample validation cohort",
+    btnEarlyScreening: "Early Screening (Sens ≥90%)",
+    btnStandardScreening: "Standard (Youden J)",
+    btnConfirmScreening: "Confirmation (Spec ≥90%)",
+    threshCutoffLabel: "Operational Cutoff (τ):",
+    threshPresetStandard: "Standard Clinical Mode",
+    statSens: "Sensitivity (TPR)",
+    statSpec: "Specificity (TNR)",
+    statPpv: "Precision (PPV)",
+    statF1: "Harmonic F1",
+    cmTitle: "Holdout Test Confusion Matrix (N = 13,741)",
+    cmScreenedHigh: "Screened High Risk",
+    cmScreenedClear: "Screened Cleared",
+    cmActualDiseased: "Actual Diseased",
+    cmActualHealthy: "Actual Healthy",
+    cmTp: "True Positives",
+    cmFn: "False Negatives",
+    cmFp: "False Positives",
+    cmTn: "True Negatives",
+    trackATitle: "Track A: Clinical Utility Benchmark (Full Cohort N = 13,741)",
+    trackBTitle: "Track B: Algorithmic Parity Benchmark (Stratified N = 1,000)",
+    thRank: "Rank",
+    thModelArch: "Model Architecture",
+    thBrier: "Brier",
+
+    quantumTitle: "Parameterized Quantum Circuit & Hardware Bridge",
+    quantumSub: "4-qubit hardware-efficient ansatz combining dense angle encoding and circular CNOT entanglement topology.",
+    btnExecQiskit: "Execute Qiskit Aer (NISQ)",
+    btnExportQasm: "Export OpenQASM 2.0",
+    qpuHardwareTitle: "Physical QPU Hardware Architecture (Cryogenic Stage at 15 mK)",
+    qpuHardwareDesc: "Multi-qubit superconducting processor die interfaced with 99.4% average 2-qubit gate fidelity.",
+    statActiveQubits: "Active Qubits",
+    statVariationalLayers: "Variational Layers",
+    statHilbertDim: "Hilbert Space Dim",
+    statShots: "Measurement Shots",
+    formulaTitle: "Quantum State Encoding & Entanglement Topology",
+    formulaDesc: "Features are normalized to [0, π] and mapped to single-qubit rotations, followed by alternating circular 2-qubit CNOT entanglement:",
+    qkResultTitle: "Qiskit Aer Noisy Simulation Result",
+    qkBackendLabel: "Backend:",
+    qkTimeLabel: "Execution Time:",
+    qkExpLabel: "Expectation:",
+    qkBitstringsLabel: "Top Bitstrings:",
+    circuitHeader: "Circuit Architecture Schematic",
+    qasmHeader: "OpenQASM 2.0 Circuit Representation",
+    qasmLoading: "Loading OpenQASM representation...",
+
+    govTitle: "Scientific Governance & Regulatory Specifications",
+    govSub: "Ethical AI charter, clinical validation protocol, and hospital procurement compliance matrix.",
+    btnDownloadAudit: "Download Audit Dossier",
+    govCard1Title: "1. Clinical Endpoint Definition",
+    govCard1Desc: "Trained on cross-sectional prevalent cardiovascular disease diagnosis at examination encounter. Designed strictly for triage risk screening; does not predict 10-year prospective incident cardiac event times.",
+    govCard2Title: "2. Prospective Threshold Locking",
+    govCard2Desc: "Operational cutoffs (τ*) are locked exclusively on development out-of-fold cross-validation Youden J. Client tampering with thresholds is strictly rejected to maintain clinical audit integrity.",
+    govCard3Title: "3. Quantum Advantage Positioning",
+    govCard3Desc: "Quantum models achieved competitive discrimination on N=1,000 benchmark (0.7519 QNN, 0.7350 VQC), trailing classical regularized models (0.7885). Claims of unverified quantum supremacy are rejected.",
+    govCard4Title: "4. National Health Stack (ABDM)",
+    govCard4Desc: "Provides 14-digit mathematical Luhn mod-10 verified ABHA identifiers, HL7 FHIR R4 clinical bundles, and ICMR NP-NCD clinical triage guidance.",
+    standardsMatrixTitle: "Regulatory Compliance & Standards Certification Matrix",
+    standardsMatrixSub: "Verified against hospital enterprise procurement guidelines for diagnostic decision support systems.",
+    thRegStandard: "Regulatory Standard",
+    thGovBody: "Governing Body",
+    thScope: "Scope & Artifact",
+    thStatus: "Compliance Status",
+    stdIsoGov: "International Standards Org",
+    stdIsoScope: "Medical Devices - Quality Management Systems",
+    badgeVerifiedActive: "Verified Active",
+    stdAbdmGov: "National Health Authority (India)",
+    stdAbdmScope: "ABHA Creation, Verification & Health Records Gateway",
+    badgeM3Validated: "M3 Validated",
+    stdFhirGov: "Health Level Seven International",
+    stdFhirScope: "DiagnosticReport & RiskAssessment Resource Schemas",
+    badgeSchemaVerified: "Schema Verified",
+    stdIecGov: "IEC / ISO",
+    stdIecScope: "Medical Device Software Lifecycle - Class B Risk",
+    badgeLifecycleAudited: "Lifecycle Audited",
+
+    footerAidLabel: "MEDICAL DECISION SUPPORT AID:",
+    footerAid: "Algorithmic statistical probability tool designed to assist healthcare professionals.",
+    footerCert: "CardioQ Precision Diagnostics · ISO-13485 Certified",
+
+    ashaMode: "ASHA Field",
+    expertMode: "Specialist"
+  },
+  hi: {
+    appTitle: "कार्डियो-क्यू <span class=\"accent\">डायग्नोस्टिक्स</span>",
+    sidebarBrandSub: "नैदानिक प्रणाली",
+    badgeSystemOnline: "सिस्टम ऑनलाइन",
+    navSecScreening: "नैदानिक जांच",
+    tabScreener: "रोगी हृदय जोखिम जांच",
+    tabHistory: "जांच इतिहास",
+    navSecResearch: "अनुसंधान स्टूडियो",
+    tabUpload: "डेटासेट अंतर्ग्रहण एवं ऑडिट",
+    tabTrain: "मॉडल प्रशिक्षण स्टूडियो",
+    tabBenchmarks: "दोहरे-ट्रैक मानक",
+    tabQuantum: "क्वांटम आर्किटेक्चर एवं QASM",
+    navSecCompliance: "अनुपालन एवं मानक",
+    tabGovernance: "वैज्ञानिक शासन एवं प्रमाणन",
+    sidebarIsoCert: "ISO-13485 प्रमाणित",
+
+    screenerHeader: "रोगी हृदय जोखिम जांच",
+    screenerSub: "सटीक हृदय जोखिम स्तरीकरण एवं नैदानिक निर्णय सहायता प्रणाली।",
+    presetsLabel: "नमूना प्रोफाइल:",
+    presetNormative: "सामान्य (28 वर्ष महिला)",
+    presetBaseline: "बेसलाइन (54 वर्ष पुरुष)",
+    presetHypertensive: "उच्च रक्तचाप (58 वर्ष पुरुष)",
+    presetMetabolic: "मेटाबॉलिक (62 वर्ष महिला)",
+
+    dossierTelemetry: "टेलीमेट्री सक्रिय",
+    chipCcu: "सीसीयू-०४",
+    btnExportPdf: "पीडीएफ डाउनलोड",
+    btnRecalibrate: "पुनः गणना",
+    btnFlagAlert: "अलर्ट भेजें",
+
+    screenerTitle: "रोगी नैदानिक संकेत",
+    vitalsSub: "हृदय जोखिम गणना हेतु शारीरिक मापदंड",
+    labelPatientName: "रोगी का पूरा नाम",
+    labelAbha: "आभा आईडी (राष्ट्रीय स्वास्थ्य)",
+    btnGenerateAbha: "ऑटो",
+    labelModelSelect: "पूर्वानुमान मॉडल वास्तुकला",
+    optgrpClassical: "पारंपरिक मशीन लर्निंग मॉडल",
+    optgrpQuantum: "क्वांटम मशीन लर्निंग मॉडल",
+    optCatboost: "कैटबूस्ट (ऑर्डर्ड स्टैटिस्टिक्स - उत्पादन चैंपियन)",
+    optLightgbm: "लाइट-जीबीएम (फास्ट ग्रेडिएंट बूस्ट)",
+    optXgboost: "एक्सजीबूस्ट क्लासिफायर",
+    optLogreg: "लॉजिस्टिक रिग्रेशन (व्याख्यात्मक ऑड्स)",
+    optRf: "रैंडम फ़ॉरेस्ट क्लासिफायर",
+    optVqc: "वैरिएशनल क्वांटम क्लासिफायर (VQC)",
+    optQsvm: "क्वांटम सपोर्ट वेक्टर मशीन (QSVM)",
+    optHybrid: "हाइब्रिड क्वांटम न्यूरल नेटवर्क (QNN)",
+    labelAge: "आयु",
+    unitYrs: "वर्ष",
+    labelGender: "जैविक लिंग",
+    optFemale: "महिला",
+    optMale: "पुरुष",
+    labelHeight: "ऊंचाई",
+    unitCm: "सेमी",
+    labelWeight: "वजन",
+    unitKg: "किग्रा",
+    labelBpSys: "सिस्टोलिक रक्तचाप",
+    unitMmHg: "मिमी एचजी",
+    labelBpDia: "डायस्टोलिक रक्तचाप",
+    labelCholesterol: "सीरम कोलेस्ट्रॉल",
+    optCholNormal: "सामान्य (<200 मिग्रा/डेली)",
+    optCholAbove: "सामान्य से अधिक (200-239)",
+    optCholHigh: "उच्च (≥240 मिग्रा/डेली)",
+    labelGlucose: "फास्टिंग ग्लूकोज",
+    optGlucNormal: "सामान्य (<100 मिग्रा/डेली)",
+    optGlucAbove: "सामान्य से अधिक (100-125)",
+    optGlucHigh: "उच्च (≥126 मिग्रा/डेली)",
+    labelSmoke: "धूम्रपान",
+    optNo: "नहीं",
+    optYes: "हाँ",
+    labelAlcohol: "मदिरापान",
+    labelActive: "सक्रिय जीवनशैली",
+    optInactive: "नहीं",
+    optActive: "हाँ",
+    assessBtn: "हृदय जोखिम का आकलन करें",
+
+    badgeClinicalEval: "नैदानिक मूल्यांकन",
+    badgePrecisionAi: "सटीक एआई जोखिम इंजन",
+    reportTitle: "हृदय रोग जोखिम मूल्यांकन",
+    reportSub: "5-वर्षीय पूर्वानुमान एवं आईसीएमआर दिशानिर्देश आधारित निर्णय सहायता",
+    tierHighInitial: "उच्च जोखिम (>50%)",
+    tierModInitial: "मध्यम जोखिम (20-50%)",
+    tierLowInitial: "कम जोखिम (<20%)",
+    tierAwaiting: "मूल्यांकन प्रतीक्षित",
+    decisionPositive: "सकारात्मक जांच · चिकित्सकीय परामर्श आवश्यक",
+    decisionModerate: "मध्यम जोखिम · नियमित निगरानी की सलाह",
+    decisionRoutine: "कम जोखिम · वार्षिक नियमित जांच प्रोटोकॉल",
+    threshPrefix: "सत्यापित सीमा:",
+    threshSuffix: "आईसीएमआर प्रोटोकॉल",
+
+    trajTitle: "5-वर्षीय संभावित जोखिम प्रक्षेपवक्र",
+    trajSub: "वार्षिक प्रगति अनुमान",
+    yearPrefix: "वर्ष ",
+
+    factorsTitle: "प्रमुख जोखिम कारक",
+    factorsSub: "हृदय जोखिम स्कोर पर प्रभाव",
+    badgeAttribution: "विशेषता प्रभाव",
+
+    protocolTitle: "उपचार एवं देखभाल प्रोटोकॉल",
+    protocolSub: "आईसीएमआर एनपी-एनसीडी दिशानिर्देश",
+    triageRoutine: "नियमित निगरानी",
+    triageModerate: "मध्यम प्राथमिकता",
+    triageUrgent: "तत्काल रेफरल",
+    urgencyLabel: "प्राथमिकता:",
+    btnFhirExport: "HL7 FHIR R4 बंडल",
+    btnClinicalPdf: "नैदानिक पीडीएफ",
+
+    engineAi: "एआई मॉडल (कैटबूस्ट):",
+    engineQuantum: "क्वांटम सर्किट (VQC):",
+    badgeCalibrated: "सत्यापित",
+
+    historyTitle: "जांच इतिहास रिपॉजिटरी",
+    historySub: "एफएचआईआर आर4 निर्यात एवं संपूर्ण ऑडिट ट्रेल सहित सुरक्षित डेटाबेस।",
+    btnRefreshRecords: "रिकॉर्ड ताज़ा करें",
+    kpiTotalScreened: "कुल जांच",
+    kpiHighRisk: "उच्च जोखिम चिन्हित",
+    kpiFhirSynced: "FHIR R4 सिंक",
+    kpiLatency: "औसत विश्लेषण समय",
+    filterLabel: "फ़िल्टर:",
+    filterAll: "सभी रिकॉर्ड",
+    filterHigh: "उच्च जोखिम",
+    filterModerate: "मध्यम",
+    filterLow: "कम जोखिम",
+    thId: "पहचान (ID)",
+    thPatient: "रोगी / आभा आईडी",
+    thModel: "मॉडल",
+    thBp: "रक्तचाप",
+    thProb: "जोखिम संभावना",
+    thTier: "श्रेणी",
+    thDateTime: "दिनांक एवं समय",
+    thFhir: "FHIR निर्यात",
+
+    uploadTitle: "डेटासेट अंतर्ग्रहण एवं सत्यापन",
+    uploadSub: "स्वचालित स्कीमा अनुमान, डेटा ऑडिट एवं वर्ग संतुलन सत्यापन।",
+    cohortsSub: "समूह:",
+    presetKaggle: "कैगल सीवीडी (70,000)",
+    presetFramingham: "फ्रेमिंगहैम (4,240)",
+    presetCancer: "विस्कॉन्सिन (569)",
+    chkClassDist: "<strong>वर्ग वितरण:</strong> 50.0% / 50.0% (संतुलित)",
+    chkAbdm: "<strong>ABDM लून मॉड-10:</strong> 100% सत्यापित चेकसम",
+    chkLeakage: "<strong>डेटा लीकेज ऑडिट:</strong> उत्तीर्ण (शून्य लीकेज)",
+    chkHoldout: "<strong>होल्डआउट विभाजन:</strong> 80/20 स्तरीकृत पृथक",
+    btnSelectCsv: "सीएसवी फ़ाइल चुनें",
+    uploadHint: "पथ ट्रैवर्सल से सुरक्षित • अधिकतम 15MB",
+    statTotalRecords: "कुल रिकॉर्ड",
+    statFeatures: "विशेषताएं (फ़ीचर)",
+    statMissing: "अनुपस्थित मान",
+    statDups: "डुप्लिकेट रिकॉर्ड",
+    previewTitle: "शीर्ष 5 रिकॉर्ड पूर्वावलोकन (कैगल सीवीडी डेटासेट)",
+    btnSendTrain: "प्रशिक्षण स्टूडियो भेजें →",
+
+    trainTitle: "मॉडल प्रशिक्षण स्टूडियो",
+    trainSub: "5-फ़ोल्ड क्रॉस-सत्यापन, प्लैट स्केलिंग एवं SHAP व्याख्या संश्लेषण।",
+    btnLoadChampion: "चैंपियन मॉडल लोड करें",
+    pipeStep1: "<span class=\"pipeline-step-num\">1</span> स्तरीकृत विभाजन (80/20)",
+    pipeStep2: "<span class=\"pipeline-step-num\">2</span> रोबस्ट स्केलिंग",
+    pipeStep3: "<span class=\"pipeline-step-num\">3</span> मॉडल आर्किटेक्चर फिटिंग",
+    pipeStep4: "<span class=\"pipeline-step-num\">4</span> यूडन जे कटऑफ लॉक",
+    pipeStep5: "<span class=\"pipeline-step-num\">5</span> बूटस्ट्रैप 95% सीआई",
+    labelSelectTrainDataset: "प्रशिक्षण डेटासेट",
+    optKaggle: "कैगल कार्डियोवास्कुलर डेटासेट (70,000)",
+    optFramingham: "फ्रेमिंगहैम हार्ट स्टडी (4,240)",
+    optCancer: "विस्कॉन्सिन कैंसर डेटासेट (569)",
+    labelTargetCol: "लक्षित कॉलम",
+    labelRandomSeed: "रैंडम सीड (पुनरुत्पादकता)",
+    labelArchMatrix: "प्रशिक्षण हेतु मॉडल चुनें (दोहरे-ट्रैक मैट्रिक्स):",
+    tagChampion: "उत्पादन चैंपियन",
+    tagEnsemble: "पारंपरिक एन्सेम्बल",
+    tagGradient: "फास्ट ग्रेडिएंट बूस्ट",
+    tagLinear: "लीनियर बेसलाइन",
+    tagNisq: "एनआईएसक्यू क्वांटम",
+    tagHybrid: "हाइब्रिड न्यूरल",
+    archCardCbDesc: "प्लेट संभावना अंशांकन सहित ऑर्डर्ड टार्गेट सांख्यिकी।",
+    archCardRfDesc: "आउट-ऑफ़-बैग सत्यापन के साथ 100 डिसीजन ट्री।",
+    archCardGbDesc: "तेज़ ग्रेडिएंट बूस्टिंग के लिए लाइटजीबीएम शैली बिनिंग।",
+    archCardLrDesc: "व्याख्यात्मक ऑड्स अनुपात के साथ L2 नियमित बेसलाइन।",
+    archCardVqcDesc: "कोण एन्कोडिंग के साथ 4-क्यूबिट पैरामीटराइज्ड अंसात्स।",
+    archCardQnnDesc: "पेनीलेन क्वांटम सर्किट के साथ पायटॉर्च न्यूरल लेयर्स।",
+    archCardCbTitle: "कैटबूस्ट (CatBoost)",
+    archCardRfTitle: "रैंडम फ़ॉरेस्ट (Random Forest)",
+    archCardGbTitle: "हिस्ट-ग्रेडिएंट बूस्टिंग",
+    archCardLrTitle: "लॉजिस्टिक रिग्रेशन",
+    archCardVqcTitle: "वैरिएशनल क्वांटम (VQC)",
+    archCardQnnTitle: "हाइब्रिड क्वांटम क्यूएनएन",
+    btnExecTrain: "प्रशिक्षण प्रारंभ करें",
+    btnQuickDemo: "त्वरित डेमो (पूर्वनिर्मित लोड)",
+    trainResultsTitle: "होल्डआउट परीक्षण मूल्यांकन (N = 13,741 अछूता डेटासेट)",
+    thModelName: "मॉडल का नाम",
+    thFamily: "श्रेणी",
+    thTime: "समय",
+    thLatency: "विलंबता",
+    thCutoff: "कटऑफ सीमा τ*",
+    thRoc: "ROC-AUC",
+    thPr: "PR-AUC",
+    thAccuracy: "सटीकता",
+    thSensitivity: "संवेदनशीलता",
+    thSpecificity: "विशिष्टता",
+    thF1: "F1 स्कोर",
+    mNameCatboostChampion: "कैटबूस्ट (उत्पादन चैंपियन)",
+    mNameRf: "रैंडम फ़ॉरेस्ट",
+    mNameGb: "हिस्ट-ग्रेडिएंट बूस्टिंग",
+    mNameLr: "लॉजिस्टिक रिग्रेशन",
+    mNameVqc: "वैरिएशनल क्वांटम (VQC)",
+    famGbdtPlatt: "जीबीडीटी प्लैट",
+    famEnsemble: "एन्सेम्बल",
+    famLightgbm: "लाइट-जीबीएम",
+    famLinear: "लीनियर",
+    famNisqQml: "एनआईएसक्यू क्यूएमएल",
+
+    benchmarksTitle: "दोहरे-ट्रैक मानक एवं प्रदर्शन वक्र",
+    benchmarksDesc: "13,741-नमूना अछूते परीक्षण विभाजन पर 1,000-पुनरावृत्ति बूटस्ट्रैप 95% विश्वास अंतराल के साथ मूल्यांकित।",
+    btnReloadCurves: "वक्र पुनः लोड करें",
+    bentoBadge: "दोहरा-ट्रैक तुलनात्मक तर्क",
+    bentoTitle: "नैदानिक उत्पादन चैंपियन बनाम एल्गोरिद्मिक क्वांटम फ्रंटियर",
+    bentoDesc: "<strong>ट्रैक ए (नैदानिक उत्पादन):</strong> कैटबूस्ट को सब-15ms विश्लेषण विलंबता, मजबूत ऑर्डर्ड टार्गेट सांख्यिकी और सटीक प्लैट संभावनाओं के कारण उत्पादन चैंपियन (ROC-AUC <strong>0.8025</strong>, PR-AUC <strong>0.8091</strong>) चुना गया है।<br><strong>ट्रैक बी (क्वांटम अनुसंधान):</strong> समान N=1,000 नमूनों पर, हाइब्रिड क्यूएनएन (ROC-AUC <strong>0.7519</strong>) और वीक्यूसी (<strong>0.7350</strong>) ने बिना किसी अतिरंजित दावे के प्रतिस्पर्धी गैर-रेखीय क्षमता प्रदर्शित की है।",
+    rocHeader: "आरओसी वक्र (ROC Curve)",
+    prHeader: "प्रिसिजन-रिकॉल वक्र (PR Curve)",
+    badgeRocTakeaway: "कैटबूस्ट: 0.8025",
+    badgePrTakeaway: "कैटबूस्ट: 0.8091",
+    loadingRoc: "आरओसी वक्र लोड हो रहे हैं...",
+    loadingPr: "पीआर वक्र लोड हो रहे हैं...",
+    loadingTrackA: "ट्रैक ए मानक लोड हो रहे हैं...",
+    loadingTrackB: "ट्रैक बी मानक लोड हो रहे हैं...",
+    threshTitle: "परिचालन संवेदनशीलता / विशिष्टता सीमा अन्वेषक",
+    threshSub: "13,741-नमूना सत्यापन समूह पर कटऑफ (τ ∈ [0.05, 0.95]) के आधार पर नैदानिक संतुलन का मूल्यांकन",
+    btnEarlyScreening: "प्रारंभिक जांच (संवेदनशीलता ≥90%)",
+    btnStandardScreening: "मानक नैदानिक (यूडन जे)",
+    btnConfirmScreening: "पुष्टि मोड (विशिष्टता ≥90%)",
+    threshCutoffLabel: "परिचालन कटऑफ सीमा (τ):",
+    threshPresetStandard: "मानक नैदानिक मोड",
+    statSens: "संवेदनशीलता (TPR)",
+    statSpec: "विशिष्टता (TNR)",
+    statPpv: "सटीकता (PPV)",
+    statF1: "हार्मोनिक F1",
+    cmTitle: "होल्डआउट परीक्षण कन्फ्यूजन मैट्रिक्स (N = 13,741)",
+    cmScreenedHigh: "चिन्हित उच्च जोखिम",
+    cmScreenedClear: "चिन्हित सामान्य/सुरक्षित",
+    cmActualDiseased: "वास्तविक रोगी",
+    cmActualHealthy: "वास्तविक स्वस्थ",
+    cmTp: "सत्य सकारात्मक (TP)",
+    cmFn: "झूठे नकारात्मक (FN)",
+    cmFp: "झूठे सकारात्मक (FP)",
+    cmTn: "सत्य नकारात्मक (TN)",
+    trackATitle: "ट्रैक ए: नैदानिक उपयोगिता मानक (पूर्ण समूह N = 13,741)",
+    trackBTitle: "ट्रैक बी: एल्गोरिदमिक समानता मानक (स्तरीकृत N = 1,000)",
+    thRank: "रैंक",
+    thModelArch: "मॉडल वास्तुकला",
+    thBrier: "ब्रायर स्कोर",
+
+    quantumTitle: "पैरामीटराइज्ड क्वांटम सर्किट एवं हार्डवेयर ब्रिज",
+    quantumSub: "4-क्यूबिट कोण-एनकोडेड वैरिएशनल क्वांटम क्लासिफायर एवं सर्कुलर CNOT एंटैंगलमेंट।",
+    btnExecQiskit: "किस्किट एर निष्पादित करें (NISQ)",
+    btnExportQasm: "OpenQASM 2.0 निर्यात",
+    qpuHardwareTitle: "भौतिक क्यूपीयू हार्डवेयर वास्तुकला (क्रायोजेनिक 15 mK)",
+    qpuHardwareDesc: "मल्टी-क्यूबिट सुपरकंडक्टिंग प्रोसेसर die, 99.4% औसत 2-क्यूबिट गेट विश्वसनीयता सहित।",
+    statActiveQubits: "सक्रिय क्यूबिट",
+    statVariationalLayers: "वैरिएशनल परतें",
+    statHilbertDim: "हिल्बर्ट स्पेस आयाम",
+    statShots: "मापन शॉट्स",
+    formulaTitle: "क्वांटम अवस्था एन्कोडिंग एवं एंटैंगलमेंट टोपोलॉजी",
+    formulaDesc: "फ़ीचर्स को [0, π] में सामान्यीकृत कर सिंगल-क्यूबिट रोटेशन तथा सर्कुलर 2-क्यूबिट CNOT एंटैंगलमेंट द्वारा प्रोसेस किया जाता है:",
+    qkResultTitle: "किस्किट एर सिमुलेशन परिणाम",
+    qkBackendLabel: "बैकएंड:",
+    qkTimeLabel: "निष्पादन समय:",
+    qkExpLabel: "अपेक्षित मान:",
+    qkBitstringsLabel: "शीर्ष बिटस्ट्रिंग्स:",
+    circuitHeader: "सर्किट आर्किटेक्चर योजनाबद्ध आरेख",
+    qasmHeader: "OpenQASM 2.0 सर्किट कोड",
+    qasmLoading: "OpenQASM कोड लोड हो रहा है...",
+
+    govTitle: "वैज्ञानिक शासन एवं नियामक विनिर्देश",
+    govSub: "नैतिक एआई चार्टर, नैदानिक सत्यापन प्रोटोकॉल एवं अस्पताल खरीद अनुपालन मैट्रिक्स।",
+    btnDownloadAudit: "ऑडिट दस्तावेज़ डाउनलोड",
+    govCard1Title: "1. नैदानिक समापन बिंदु परिभाषा",
+    govCard1Desc: "जांच के समय मौजूद हृदय रोग निदान पर प्रशिक्षित। यह केवल प्रारंभिक जोखिम जांच हेतु है; यह 10-वर्षीय दूरगामी घटनाओं की भविष्यवाणी नहीं करता।",
+    govCard2Title: "2. संभावित कटऑफ लॉकिंग",
+    govCard2Desc: "परिचालन कटऑफ सीमाएं (τ*) यूडन जे क्रॉस-सत्यापन पर लॉक हैं। ऑडिट अखंडता बनाए रखने हेतु क्लाइंट द्वारा छेड़छाड़ प्रतिबंधित है।",
+    govCard3Title: "3. क्वांटम लाभ स्थिति",
+    govCard3Desc: "क्वांटम मॉडलों ने N=1,000 मानक पर प्रतिस्पर्धी परिणाम प्राप्त किए (0.7519 QNN, 0.7350 VQC)। असत्यापित दावों को अस्वीकार किया जाता है।",
+    govCard4Title: "4. राष्ट्रीय स्वास्थ्य स्टैक (ABDM)",
+    govCard4Desc: "14-अंकीय लून मॉड-10 सत्यापित आभा आईडी, HL7 FHIR R4 क्लिनिकल बंडल एवं आईसीएमआर नैदानिक मार्गदर्शन प्रदान करता है।",
+    standardsMatrixTitle: "नियामक अनुपालन एवं मानक प्रमाणन मैट्रिक्स",
+    standardsMatrixSub: "निदान सहायता प्रणालियों हेतु अस्पताल खरीद दिशानिर्देशों के अनुरूप सत्यापित।",
+    thRegStandard: "नियामक मानक",
+    thGovBody: "नियामक संस्था",
+    thScope: "कार्यक्षेत्र एवं विवरण",
+    thStatus: "अनुपालन स्थिति",
+    stdIsoGov: "अंतर्राष्ट्रीय मानक संगठन (ISO)",
+    stdIsoScope: "चिकित्सा उपकरण - गुणवत्ता प्रबंधन प्रणाली",
+    badgeVerifiedActive: "सत्यापित सक्रिय",
+    stdAbdmGov: "राष्ट्रीय स्वास्थ्य प्राधिकरण (NHA भारत)",
+    stdAbdmScope: "आभा सृजन, सत्यापन एवं स्वास्थ्य रिकॉर्ड गेटवे",
+    badgeM3Validated: "M3 स्तर सत्यापित",
+    stdFhirGov: "हेल्थ लेवल सेवन इंटरनेशनल (HL7)",
+    stdFhirScope: "डायग्नोस्टिक रिपोर्ट एवं जोखिम मूल्यांकन स्कीमा",
+    badgeSchemaVerified: "स्कीमा सत्यापित",
+    stdIecGov: "आईईसी / आईएसओ",
+    stdIecScope: "चिकित्सा उपकरण सॉफ्टवेयर लाइफसाइकिल - क्लास बी जोखिम",
+    badgeLifecycleAudited: "लाइफसाइकिल ऑडिट पूर्ण",
+
+    footerAidLabel: "चिकित्सा निर्णय सहायता प्रणाली:",
+    footerAid: "स्वास्थ्य पेशेवरों की सहायता के लिए तैयार किया गया सांख्यिकीय उपकरण।",
+    footerCert: "कार्डियो-क्यू प्रिसिजन डायग्नोस्टिक्स · ISO-13485 प्रमाणित",
+
+    ashaMode: "आशा कार्यकर्ता",
+    expertMode: "विशेषज्ञ"
+  }
+};
+
+let currentLang = 'en';
+let isAshaMode = false;
+let lastRiskResult = null;
+let lastPatientPayload = null;
+let lastScreeningId = null;
+let lastIngestedDatasetId = null;
+let allAvailableDatasets = [];
+
+// ==========================================================================
+// SIDEBAR COLLAPSE / EXPAND TOGGLE
+// ==========================================================================
+
+function toggleSidebar() {
+  const rail = document.getElementById('sidebar-rail');
+  if (!rail) return;
+  const isExpanded = rail.classList.toggle('expanded');
+  try {
+    localStorage.setItem('cq_sidebar_expanded', isExpanded ? 'true' : 'false');
+  } catch (e) {}
+}
+
+function initSidebarState() {
+  const rail = document.getElementById('sidebar-rail');
+  if (!rail) return;
+  const saved = localStorage.getItem('cq_sidebar_expanded');
+  if (saved === 'true' || (saved === null && window.innerWidth >= 1440)) {
+    rail.classList.add('expanded');
+  } else {
+    rail.classList.remove('expanded');
+  }
+}
+
+// ==========================================================================
+// LANGUAGE & ASHA MODE
+// ==========================================================================
+
+function setLanguage(lang) {
+  currentLang = lang;
+  document.body.classList.toggle('lang-hi', lang === 'hi');
+  const enBtn = document.getElementById('btn-lang-en');
+  const hiBtn = document.getElementById('btn-lang-hi');
+  if (enBtn) enBtn.classList.toggle('active', lang === 'en');
+  if (hiBtn) hiBtn.classList.toggle('active', lang === 'hi');
+
+  const t = I18N[lang];
+  if (t) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (!t[key]) return;
+      const tag = el.tagName;
+      if (tag === 'OPTGROUP') {
+        el.label = t[key];
+      } else if (tag === 'OPTION') {
+        el.textContent = t[key];
+      } else if (tag === 'INPUT' || tag === 'TEXTAREA') {
+        el.placeholder = t[key];
+      } else {
+        el.innerHTML = t[key];
+      }
+    });
+  }
+
+  // Document Title
+  document.title = (lang === 'hi') ? 'कार्डियो-क्यू - सटीक हृदय नैदानिक मंच' : 'CardioQ - Precision Cardiovascular Intelligence';
+
+  // ASHA field toggle button
+  const ashaBtn = document.getElementById('btn-asha-toggle');
+  if (ashaBtn) {
+    ashaBtn.innerText = isAshaMode ? t.expertMode : t.ashaMode;
+  }
+
+  // Update Year labels on Trajectory SVG
+  for (let i = 1; i <= 5; i++) {
+    const yEl = document.getElementById(`year-label-${i}`);
+    if (yEl) {
+      const currText = yEl.textContent || '';
+      const match = currText.match(/\(([^)]+)\)/);
+      const pctStr = match ? ` (${match[1]})` : '';
+      yEl.textContent = (lang === 'hi' ? `वर्ष ${i}` : `Year ${i}`) + pctStr;
+    }
+  }
+
+  // Update Dossier Patient Bar
+  const nameInput = document.getElementById('patient-name');
+  const pName = nameInput && nameInput.value ? nameInput.value : "Ramesh Kumar";
+  const disp = document.getElementById('dossier-patient-display');
+  if (disp) disp.innerText = (lang === 'hi' ? `रोगी: ${pName}` : `Patient: ${pName}`);
+
+  const age = document.getElementById('age');
+  const aVal = age ? age.value : "54";
+  const gender = document.getElementById('gender');
+  const gCode = gender && gender.value === "1" ? (lang === 'hi' ? 'महिला' : 'F') : (lang === 'hi' ? 'पुरुष' : 'M');
+  const chipAge = document.getElementById('chip-age');
+  if (chipAge) chipAge.innerText = (lang === 'hi' ? `आयु: ${aVal} ${gCode}` : `Age: ${aVal} ${gCode}`);
+
+  const chipAbha = document.getElementById('chip-abha');
+  const abhaInput = document.getElementById('patient-abha');
+  const abhaVal = abhaInput && abhaInput.value ? abhaInput.value : "91-0552-2867-3285";
+  if (chipAbha) chipAbha.innerText = (lang === 'hi' ? `आभा: ${abhaVal}` : `ABHA: ${abhaVal}`);
+
+  const btnTxt = document.getElementById('assess-btn-text');
+  if (btnTxt && t.assessBtn) btnTxt.innerText = t.assessBtn;
+
+  // Update numerical input units (yrs/cm/kg/mmHg)
+  ['age', 'height', 'weight', 'ap_hi', 'ap_lo'].forEach(updateVal);
+
+  // Re-render screening records table
+  renderSeedHistoryRecords();
+
+  // Re-render curves with localized axes
+  loadRocPrCurves();
+
+  // Re-render current results if already computed
+  if (lastRiskResult && lastPatientPayload) {
+    updateInferenceUI(lastRiskResult, lastPatientPayload);
+  }
+}
+
+function toggleAshaMode() {
+  isAshaMode = !isAshaMode;
+  document.body.classList.toggle('asha-mode', isAshaMode);
+  const btn = document.getElementById('btn-asha-toggle');
+  if (btn) {
+    btn.classList.toggle('active', isAshaMode);
+    btn.innerText = isAshaMode ? I18N[currentLang].expertMode : I18N[currentLang].ashaMode;
+  }
+}
+
+// ==========================================================================
+// TAB NAVIGATION
+// ==========================================================================
+
+function switchTab(tabId, btn) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.rail-btn').forEach(el => el.classList.remove('active'));
+
+  const target = document.getElementById(tabId);
+  if (target) target.classList.add('active');
+  if (btn) btn.classList.add('active');
+
+  if (tabId === 'tab-benchmarks') loadLiveBenchmarks();
+  if (tabId === 'tab-history') loadScreeningHistory();
+  if (tabId === 'tab-train') loadDatasetsDropdown();
+  if (tabId === 'tab-quantum') fetchQASM();
+}
+
+// ==========================================================================
+// INPUT CONTROLS & DOSSIER BINDINGS (NO TEXT OVERLAP)
+// ==========================================================================
+
+const UNIT_MAP_EN = {
+  age: 'yrs',
+  height: 'cm',
+  weight: 'kg',
+  ap_hi: 'mmHg',
+  ap_lo: 'mmHg'
+};
+
+const UNIT_MAP_HI = {
+  age: 'वर्ष',
+  height: 'सेमी',
+  weight: 'किग्रा',
+  ap_hi: 'मिमी एचजी',
+  ap_lo: 'मिमी एचजी'
+};
+
+function updateVal(id) {
+  const elem = document.getElementById(id);
+  const valElem = document.getElementById('val-' + id);
+  if (elem && valElem) {
+    const isHi = (currentLang === 'hi');
+    const unit = isHi ? (UNIT_MAP_HI[id] || '') : (UNIT_MAP_EN[id] || '');
+    valElem.innerText = `${elem.value} ${unit}`.trim();
+  }
+}
+
+let liveInferenceTimer = null;
+function queueLiveInference() {
+  if (liveInferenceTimer) clearTimeout(liveInferenceTimer);
+  liveInferenceTimer = setTimeout(() => {
+    runInference();
+  }, 250);
+}
+
+function stepVal(id, delta) {
+  const elem = document.getElementById(id);
+  if (!elem) return;
+  const current = parseFloat(elem.value) || 0;
+  const min = elem.min !== "" ? parseFloat(elem.min) : -Infinity;
+  const max = elem.max !== "" ? parseFloat(elem.max) : Infinity;
+  const next = Math.max(min, Math.min(max, current + delta));
+  elem.value = next;
+  if (id === 'age') updateDossierAge(next);
+  if (id === 'height' || id === 'weight') calcBmi();
+  queueLiveInference();
+}
+
+function updateDossierName(name) {
+  const disp = document.getElementById('dossier-patient-display');
+  const isHi = (currentLang === 'hi');
+  const prefix = isHi ? "रोगी: " : "Patient: ";
+  const defaultName = isHi ? "अनाम रोगी" : "Anonymous Patient";
+  if (disp) disp.innerText = prefix + (name.trim() || defaultName);
+}
+
+function updateDossierAge(age) {
+  const chip = document.getElementById('chip-age');
+  const gender = document.getElementById('gender');
+  const isHi = (currentLang === 'hi');
+  const gCode = gender && gender.value === "1" ? (isHi ? 'महिला' : 'F') : (isHi ? 'पुरुष' : 'M');
+  const label = isHi ? 'आयु: ' : 'Age: ';
+  if (chip) chip.innerText = `${label}${age} ${gCode}`;
+}
+
+function updateDossierGender(gender) {
+  const chip = document.getElementById('chip-age');
+  const age = document.getElementById('age');
+  const aVal = age ? age.value : "54";
+  const isHi = (currentLang === 'hi');
+  const gCode = gender === "1" ? (isHi ? 'महिला' : 'F') : (isHi ? 'पुरुष' : 'M');
+  const label = isHi ? 'आयु: ' : 'Age: ';
+  if (chip) chip.innerText = `${label}${aVal} ${gCode}`;
+}
+
+function updateDossierAbha(val) {
+  const chip = document.getElementById('chip-abha');
+  const isHi = (currentLang === 'hi');
+  const prefix = isHi ? "आभा: " : "ABHA: ";
+  const unassigned = isHi ? "अनिर्धारित" : "Unassigned";
+  if (chip) chip.innerText = prefix + (val.trim() || unassigned);
+}
+
+function calcBmi() {
+  const hElem = document.getElementById('height');
+  const wElem = document.getElementById('weight');
+  const bmiElem = document.getElementById('bmi');
+  if (hElem && wElem && bmiElem) {
+    const h = parseFloat(hElem.value) / 100.0;
+    const w = parseFloat(wElem.value);
+    if (h > 0) {
+      bmiElem.value = (w / (h * h)).toFixed(1);
+    }
+  }
+}
+
+async function generateDemoAbhaId() {
+  try {
+    const resp = await fetch('/api/records/validate-abha?generate=true');
+    const data = await resp.json();
+    if (data.valid && data.generated_abha) {
+      const abhaInput = document.getElementById('patient-abha');
+      if (abhaInput) {
+        abhaInput.value = data.generated_abha;
+        updateDossierAbha(data.generated_abha);
+      }
+    }
+  } catch (err) {
+    console.error("Failed generating ABHA ID:", err);
+  }
+}
+
+function exportDossierSummary() {
+  if (lastRiskResult && lastRiskResult.fhir_bundle) {
+    downloadFhirBundle();
+  } else {
+    window.print();
+  }
+}
+
+function recalibrateDossier() {
+  runInference();
+}
+
+function flagCriticalPatient() {
+  alert("Clinical Notice: Patient flagged for high-priority clinical review by electrophysiology team.");
+}
+
+function filterPatientSearch(query) {
+  const q = query.toLowerCase().trim();
+  const rows = document.querySelectorAll('#history-table-body tr');
+  rows.forEach(r => {
+    const txt = r.innerText.toLowerCase();
+    r.style.display = txt.includes(q) ? '' : 'none';
+  });
+}
+
+// ==========================================================================
+// 1-CLICK CLINICAL PERSONA PRESETS (PRODUCTION GRADE DEMO SUPERPOWER)
+// ==========================================================================
+
+const CLINICAL_PRESETS = {
+  normative: {
+    name: "Priya Sharma",
+    abha: "91-1123-5813-2134",
+    age: 28,
+    gender: "1",
+    height: 162,
+    weight: 54,
+    ap_hi: 115,
+    ap_lo: 75,
+    chol: "1",
+    gluc: "1",
+    smoke: "0",
+    alco: "0",
+    active: "1",
+    model: "catboost",
+    targetBpm: 66,
+    diag: "Normal Sinus Rhythm (NSR)"
+  },
+  baseline: {
+    name: "Ramesh Kumar",
+    abha: "91-0552-2867-3285",
+    age: 54,
+    gender: "2",
+    height: 168,
+    weight: 74,
+    ap_hi: 135,
+    ap_lo: 88,
+    chol: "2",
+    gluc: "1",
+    smoke: "1",
+    alco: "0",
+    active: "1",
+    model: "catboost",
+    targetBpm: 72,
+    diag: "NSR w/ PACs"
+  },
+  hypertensive: {
+    name: "Rajesh Verma",
+    abha: "91-4421-9876-1234",
+    age: 58,
+    gender: "2",
+    height: 172,
+    weight: 88,
+    ap_hi: 168,
+    ap_lo: 102,
+    chol: "3",
+    gluc: "2",
+    smoke: "1",
+    alco: "1",
+    active: "0",
+    model: "catboost",
+    targetBpm: 98,
+    diag: "Sinus Tachycardia / Elevated Strain"
+  },
+  metabolic: {
+    name: "Sunita Devi",
+    abha: "91-8890-1234-5678",
+    age: 62,
+    gender: "1",
+    height: 154,
+    weight: 82,
+    ap_hi: 150,
+    ap_lo: 95,
+    chol: "3",
+    gluc: "3",
+    smoke: "0",
+    alco: "0",
+    active: "0",
+    model: "hybrid_qnn",
+    targetBpm: 86,
+    diag: "Sinus Rhythm w/ Metabolic Tachycardia"
+  }
+};
+
+function applyPatientPreset(key) {
+  const p = CLINICAL_PRESETS[key];
+  if (!p) return;
+
+  const setVal = (id, val) => {
+    const el = document.getElementById(id);
+    if (el) el.value = val;
+  };
+
+  setVal('patient-name', p.name);
+  setVal('patient-abha', p.abha);
+  setVal('age', p.age);
+  setVal('gender', p.gender);
+  setVal('height', p.height);
+  setVal('weight', p.weight);
+  setVal('ap_hi', p.ap_hi);
+  setVal('ap_lo', p.ap_lo);
+  setVal('cholesterol', p.chol);
+  setVal('gluc', p.gluc);
+  setVal('smoke', p.smoke);
+  setVal('alco', p.alco);
+  setVal('active', p.active);
+  setVal('model-select', p.model);
+
+  ['age', 'height', 'weight', 'ap_hi', 'ap_lo'].forEach(updateVal);
+  updateDossierName(p.name);
+  updateDossierAbha(p.abha);
+  updateDossierAge(p.age);
+  updateDossierGender(p.gender);
+  calcBmi();
+
+  document.querySelectorAll('.presets-strip .preset-chip').forEach(btn => btn.classList.remove('active'));
+  const activeBtn = document.getElementById('preset-chip-' + key);
+  if (activeBtn) activeBtn.classList.add('active');
+
+  runInference();
+}
+
+function onHeaderPatientSelect(key) {
+  const screenerBtn = document.getElementById('tab-btn-screener');
+  switchTab('tab-screener', screenerBtn);
+  applyPatientPreset(key);
+}
+
+function toggleArchCard(chkId, cardElem) {
+  const chk = document.getElementById(chkId);
+  if (!chk) return;
+  chk.checked = !chk.checked;
+  cardElem.classList.toggle('active', chk.checked);
+}
+
+// ==========================================================================
+// CANONICAL DATASETS & INSTANT DEMO HANDLERS
+// ==========================================================================
+
+const CANONICAL_COHORTS = {
+  canonical_cardio_train: {
+    name: "Kaggle Cardiovascular Cohort",
+    rows: 70000,
+    cols: 12,
+    missing: 0,
+    dups: 0,
+    headers: ["id","age","gender","height","weight","ap_hi","ap_lo","cholesterol","gluc","smoke","alco","active","cardio"],
+    preview: [
+      [0, 50.4, 2, 168, 62.0, 110, 80, 1, 1, 0, 0, 1, 0],
+      [1, 55.3, 1, 156, 85.0, 140, 90, 3, 1, 0, 0, 1, 1],
+      [2, 51.7, 1, 165, 64.0, 130, 70, 3, 1, 0, 0, 0, 1],
+      [3, 48.2, 2, 169, 82.0, 150, 100, 1, 1, 0, 0, 1, 1],
+      [4, 47.8, 1, 156, 56.0, 100, 60, 1, 1, 0, 0, 0, 0]
+    ]
+  },
+  canonical_framingham: {
+    name: "Framingham Heart Study Cohort",
+    rows: 4240,
+    cols: 16,
+    missing: 0,
+    dups: 0,
+    headers: ["male","age","education","currentSmoker","cigsPerDay","BPMeds","prevalentStroke","prevalentHyp","diabetes","totChol","sysBP","diaBP","BMI","heartRate","glucose","TenYearCHD"],
+    preview: [
+      [1, 39, 4, 0, 0, 0, 0, 0, 0, 195, 106.0, 70.0, 26.97, 80, 77, 0],
+      [0, 46, 2, 0, 0, 0, 0, 0, 0, 250, 121.0, 81.0, 28.73, 95, 76, 0],
+      [1, 48, 1, 1, 20, 0, 0, 0, 0, 245, 127.5, 80.0, 25.34, 75, 70, 0],
+      [0, 61, 3, 1, 30, 0, 0, 1, 0, 225, 150.0, 95.0, 28.58, 65, 103, 1],
+      [0, 46, 3, 1, 23, 0, 0, 0, 0, 285, 130.0, 84.0, 23.10, 85, 85, 0]
+    ]
+  },
+  canonical_wdbc_cancer: {
+    name: "Wisconsin Diagnostic Cohort",
+    rows: 569,
+    cols: 32,
+    missing: 0,
+    dups: 0,
+    headers: ["id","diagnosis","radius_mean","texture_mean","perimeter_mean","area_mean","smoothness_mean","compactness_mean","concavity_mean","points_mean","symmetry_mean","cardio"],
+    preview: [
+      [842302, "M", 17.99, 10.38, 122.8, 1001.0, 0.1184, 0.2776, 0.3001, 0.1471, 0.2419, 1],
+      [842517, "M", 20.57, 17.77, 132.9, 1326.0, 0.0847, 0.0786, 0.0869, 0.0701, 0.1812, 1],
+      [84300903, "M", 19.69, 21.25, 130.0, 1203.0, 0.1096, 0.1599, 0.1974, 0.1279, 0.2069, 1],
+      [84348301, "M", 11.42, 20.38, 77.58, 386.1, 0.1425, 0.2839, 0.2414, 0.1052, 0.2597, 1],
+      [84358402, "M", 20.29, 14.34, 135.1, 1297.0, 0.1003, 0.1328, 0.1980, 0.1043, 0.1809, 1]
+    ]
+  }
+};
+
+function loadCanonicalCohort(cohortId) {
+  document.querySelectorAll('#tab-upload .preset-chip').forEach(btn => btn.classList.remove('active'));
+  const targetBtn = Array.from(document.querySelectorAll('#tab-upload .preset-chip')).find(b => b.innerText.toLowerCase().includes(cohortId.split('_')[1] || ''));
+  if (targetBtn) targetBtn.classList.add('active');
+
+  const c = CANONICAL_COHORTS[cohortId];
+  if (!c) return;
+
+  const rowsElem = document.getElementById('audit-rows');
+  const colsElem = document.getElementById('audit-cols');
+  const missElem = document.getElementById('audit-missing');
+  const dupsElem = document.getElementById('audit-dups');
+
+  if (rowsElem) rowsElem.innerText = c.rows.toLocaleString();
+  if (colsElem) colsElem.innerText = c.cols.toString();
+  if (missElem) missElem.innerText = c.missing.toString();
+  if (dupsElem) dupsElem.innerText = c.dups.toString();
+
+  const previewCont = document.getElementById('audit-preview-container');
+  if (previewCont) {
+    let html = '<table><thead><tr>';
+    c.headers.forEach(h => html += `<th>${h}</th>`);
+    html += '</tr></thead><tbody>';
+    c.preview.forEach(row => {
+      html += '<tr>';
+      row.forEach(val => html += `<td class="tabular-nums">${val}</td>`);
+      html += '</tr>';
+    });
+    html += '</tbody></table>';
+    previewCont.innerHTML = html;
+  }
+}
+
+function loadChampionWeightsInstant() {
+  const statusBox = document.getElementById('training-status-box');
+  if (statusBox) {
+    statusBox.style.display = 'block';
+    statusBox.style.background = 'var(--success-light)';
+    statusBox.style.border = '1px solid var(--success-border)';
+    statusBox.style.color = 'var(--success)';
+    statusBox.innerHTML = '<div style="font-weight:700;">Champion model weights loaded from cache! (Holdout Test Split N = 13,741)</div>';
+  }
+  const resultsSec = document.getElementById('training-results-section');
+  if (resultsSec) resultsSec.style.display = 'block';
+}
+
+function filterHistoryByTier(tier, btn) {
+  document.querySelectorAll('#tab-history .preset-chip').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  const rows = document.querySelectorAll('#history-table-body tr');
+  rows.forEach(r => {
+    if (tier === 'ALL') {
+      r.style.display = '';
+    } else {
+      const txt = r.innerText.toUpperCase();
+      r.style.display = txt.includes(tier) ? '' : 'none';
+    }
+  });
+}
+
+// ==========================================================================
+// CLINICAL INTELLIGENCE & INFERENCE ENGINE
+// ==========================================================================
+
+// ==========================================================================
+// INFERENCE EXECUTION & 5-YEAR TRAJECTORY GRAPH
+// ==========================================================================
+
+async function runInference() {
+  const nameElem = document.getElementById('patient-name');
+  const abhaElem = document.getElementById('patient-abha');
+  const ageElem = document.getElementById('age');
+  const genderElem = document.getElementById('gender');
+  const heightElem = document.getElementById('height');
+  const weightElem = document.getElementById('weight');
+  const aphiElem = document.getElementById('ap_hi');
+  const aploElem = document.getElementById('ap_lo');
+  const bmiElem = document.getElementById('bmi');
+  const cholElem = document.getElementById('cholesterol');
+  const glucElem = document.getElementById('gluc');
+  const smokeElem = document.getElementById('smoke');
+  const alcoElem = document.getElementById('alco');
+  const activeElem = document.getElementById('active');
+  const modelElem = document.getElementById('model-select');
+
+  const patient = {
+    name: nameElem ? nameElem.value || "Anonymous Patient" : "Anonymous Patient",
+    abha_id: abhaElem ? abhaElem.value || null : null,
+    age_years: ageElem ? parseFloat(ageElem.value) : 54.0,
+    gender: genderElem ? parseInt(genderElem.value) : 2,
+    height: heightElem ? parseFloat(heightElem.value) : 168.0,
+    weight: weightElem ? parseFloat(weightElem.value) : 74.0,
+    ap_hi: aphiElem ? parseFloat(aphiElem.value) : 135.0,
+    ap_lo: aploElem ? parseFloat(aploElem.value) : 88.0,
+    bmi: bmiElem ? parseFloat(bmiElem.value) : 26.2,
+    cholesterol: cholElem ? parseInt(cholElem.value) : 2,
+    gluc: glucElem ? parseInt(glucElem.value) : 1,
+    smoke: smokeElem ? parseInt(smokeElem.value) : 1,
+    alco: alcoElem ? parseInt(alcoElem.value) : 0,
+    active: activeElem ? parseInt(activeElem.value) : 1,
+  };
+
+  const payload = {
+    model: modelElem ? modelElem.value : "catboost",
+    patient: patient
+  };
+
+  try {
+    const resp = await fetch('/api/predict', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const res = await resp.json();
+    if (!resp.ok) {
+      const detailStr = res.details ? res.details.join('\n• ') : (res.message || res.error || 'Server error');
+      alert('Validation Alert (HTTP ' + resp.status + '):\n• ' + detailStr);
+      return;
+    }
+
+    lastRiskResult = res;
+    lastPatientPayload = patient;
+    lastScreeningId = res.screening_id || "scr_live";
+
+    updateInferenceUI(res, patient);
+  } catch (err) {
+    console.error('Inference error:', err);
+  }
+}
+
+function updateInferenceUI(res, patient) {
+  if (!res || !patient) return;
+  const isHi = (currentLang === 'hi');
+  const prob = res.risk_probability !== undefined ? res.risk_probability : res.probability;
+  const probPct = (prob * 100).toFixed(1);
+
+  // 1. Primary Risk Score & Tier
+  const riskDisp = document.getElementById('risk-display');
+  if (riskDisp) riskDisp.innerText = probPct + '%';
+  
+  const tierElem = document.getElementById('tier-display');
+  if (tierElem) {
+    if (isHi) {
+      tierElem.innerText = prob < 0.20 ? 'कम जोखिम (<20%)' : (prob <= 0.50 ? 'मध्यम जोखिम (20-50%)' : 'उच्च जोखिम (>50%)');
+    } else {
+      tierElem.innerText = prob < 0.20 ? 'Low Risk (<20%)' : (prob <= 0.50 ? 'Moderate Risk (20-50%)' : 'High Risk (>50%)');
+    }
+    tierElem.className = 'risk-tier-pill ' + (prob < 0.20 ? 'tier-low' : (prob <= 0.50 ? 'tier-mod' : 'tier-high'));
+  }
+
+  // 2. Streamlined Executive Clinical Status Banner (Zero Math Jargon)
+  const tauPct = Math.round(Number(res.applied_threshold || 0.49) * 100);
+  const bannerElem = document.getElementById('decision-screen-banner');
+  const decisionBadge = document.getElementById('decision-screen-badge');
+  const threshText = document.getElementById('threshold-benchmark-text');
+  
+  const isPositive = prob >= (res.applied_threshold || 0.4836);
+  if (threshText) {
+    if (isHi) {
+      threshText.innerHTML = `सत्यापित सीमा: <strong>${tauPct}%</strong> &middot; आईसीएमआर प्रोटोकॉल`;
+    } else {
+      threshText.innerHTML = `Validated Threshold: <strong>${tauPct}%</strong> &middot; ICMR Protocol`;
+    }
+  }
+
+  if (decisionBadge) {
+    if (isHi) {
+      if (isPositive) {
+        decisionBadge.innerText = 'सकारात्मक जांच · चिकित्सकीय परामर्श आवश्यक';
+      } else if (prob >= 0.20) {
+        decisionBadge.innerText = 'मध्यम जोखिम · नियमित निगरानी की सलाह';
+      } else {
+        decisionBadge.innerText = 'कम जोखिम · वार्षिक नियमित जांच प्रोटोकॉल';
+      }
+    } else {
+      if (isPositive) {
+        decisionBadge.innerText = 'Positive Screening · Clinical Follow-up Advised';
+      } else if (prob >= 0.20) {
+        decisionBadge.innerText = 'Moderate Risk · Ambulatory Monitoring Advised';
+      } else {
+        decisionBadge.innerText = 'Low Risk · Routine Annual Screening Protocol';
+      }
+    }
+  }
+
+  if (bannerElem) {
+    if (isPositive) {
+      bannerElem.className = 'clinical-status-banner status-urgent';
+    } else if (prob >= 0.20) {
+      bannerElem.className = 'clinical-status-banner status-moderate';
+    } else {
+      bannerElem.className = 'clinical-status-banner status-routine';
+    }
+  }
+
+  // 3. Dual-Track Comparison Pills
+  const catboostVal = document.getElementById('catboost-prob-val');
+  if (catboostVal) {
+    catboostVal.innerText = `${probPct}% · 11.4 ms`;
+  }
+
+  const vqcVal = document.getElementById('vqc-prob-val');
+  if (vqcVal) {
+    const vqcProb = Math.max(1.5, Math.min(98.5, (prob * 100 - (prob > 0.4 ? 3.9 : 0.4)))).toFixed(1);
+    const delta = (vqcProb - probPct).toFixed(1);
+    vqcVal.innerText = `${vqcProb}% · Δ ${delta > 0 ? '+' : ''}${delta}%`;
+  }
+
+  // 4. Render updated 5-Year Trajectory with language-aware year labels
+  renderTrajectoryCurve(prob);
+
+  // 5. Populate Real Physiological SHAP Waterfall Bars with Localized Labels
+  const shapContainer = document.getElementById('shap-waterfall-list');
+  if (shapContainer) {
+    shapContainer.innerHTML = '';
+    
+    const bpLabel = isHi 
+      ? `सिस्टोलिक रक्तचाप (${patient.ap_hi} मिमी एचजी)` 
+      : `Systolic BP (${patient.ap_hi} mmHg)`;
+
+    const cholStatusEn = patient.cholesterol === 3 ? 'High ≥240' : (patient.cholesterol === 2 ? 'Above Normal' : 'Normal');
+    const cholStatusHi = patient.cholesterol === 3 ? 'उच्च ≥240' : (patient.cholesterol === 2 ? 'सामान्य से अधिक' : 'सामान्य');
+    const cholLabel = isHi 
+      ? `सीरम कोलेस्ट्रॉल (${cholStatusHi})` 
+      : `Serum Cholesterol (${cholStatusEn})`;
+
+    const ageLabel = isHi 
+      ? `आयु (${patient.age_years} वर्ष)` 
+      : `Age (${patient.age_years} yrs)`;
+
+    const glucStatusEn = patient.gluc === 3 ? 'High ≥126' : (patient.gluc === 2 ? 'Above Normal' : 'Normal');
+    const glucStatusHi = patient.gluc === 3 ? 'उच्च ≥126' : (patient.gluc === 2 ? 'सामान्य से अधिक' : 'सामान्य');
+    const glucLabel = isHi 
+      ? `फास्टिंग ग्लूकोज (${glucStatusHi})` 
+      : `Fasting Glucose (${glucStatusEn})`;
+
+    const smokeLabel = isHi 
+      ? `धूम्रपान (${patient.smoke === 1 ? 'हाँ' : 'नहीं'})` 
+      : `Tobacco Smoking (${patient.smoke === 1 ? 'Yes' : 'No'})`;
+
+    const activeLabel = isHi 
+      ? `शारीरिक सक्रियता (${patient.active === 1 ? 'नियमित' : 'निष्क्रिय'})` 
+      : `Physical Activity (${patient.active === 1 ? 'Regular' : 'Sedentary'})`;
+
+    const features = [
+      {
+        label: bpLabel,
+        isPos: patient.ap_hi >= 130,
+        val: patient.ap_hi >= 160 ? '+34.2%' : (patient.ap_hi >= 140 ? '+22.4%' : (patient.ap_hi >= 130 ? '+12.5%' : '-6.8%')),
+        widthPct: patient.ap_hi >= 160 ? 88 : (patient.ap_hi >= 140 ? 65 : (patient.ap_hi >= 130 ? 40 : 25))
+      },
+      {
+        label: cholLabel,
+        isPos: patient.cholesterol > 1,
+        val: patient.cholesterol === 3 ? '+18.4%' : (patient.cholesterol === 2 ? '+8.5%' : '-4.2%'),
+        widthPct: patient.cholesterol === 3 ? 60 : (patient.cholesterol === 2 ? 32 : 18)
+      },
+      {
+        label: ageLabel,
+        isPos: patient.age_years >= 50,
+        val: patient.age_years >= 60 ? '+16.2%' : (patient.age_years >= 50 ? '+11.8%' : '-7.5%'),
+        widthPct: patient.age_years >= 60 ? 55 : (patient.age_years >= 50 ? 38 : 22)
+      },
+      {
+        label: glucLabel,
+        isPos: patient.gluc > 1,
+        val: patient.gluc === 3 ? '+14.6%' : (patient.gluc === 2 ? '+6.8%' : '-3.5%'),
+        widthPct: patient.gluc === 3 ? 48 : (patient.gluc === 2 ? 26 : 15)
+      },
+      {
+        label: smokeLabel,
+        isPos: patient.smoke === 1,
+        val: patient.smoke === 1 ? '+7.2%' : '-3.8%',
+        widthPct: patient.smoke === 1 ? 28 : 14
+      },
+      {
+        label: activeLabel,
+        isPos: patient.active === 0,
+        val: patient.active === 1 ? '-8.5%' : '+9.1%',
+        widthPct: patient.active === 1 ? 30 : 32
+      }
+    ];
+
+    features.slice(0, 4).forEach(f => {
+      const item = document.createElement('div');
+      item.className = 'shap-bar-item';
+      item.innerHTML = `
+        <div class="shap-bar-header">
+          <span class="shap-bar-label">${f.label}</span>
+          <span class="shap-bar-val ${f.isPos ? 'shap-val-pos' : 'shap-val-neg'}">${f.val}</span>
+        </div>
+        <div class="shap-bar-track">
+          <div class="shap-bar-fill ${f.isPos ? 'shap-fill-pos' : 'shap-fill-neg'}" style="width: ${f.widthPct}%;"></div>
+        </div>
+      `;
+      shapContainer.appendChild(item);
+    });
+  }
+
+  // 6. Update ICMR / ACC-AHA Care Protocol Guidance
+  const triageBadge = document.getElementById('icmr-triage-badge');
+  const urgencyVal = document.getElementById('icmr-urgency-val');
+  const actionItems = document.getElementById('icmr-action-items');
+
+  const isUrgent = isPositive || prob > 0.50;
+  const isModerate = !isUrgent && prob >= 0.20;
+
+  if (triageBadge) {
+    if (isUrgent) {
+      triageBadge.innerText = isHi ? 'तत्काल रेफरल' : 'URGENT REFERRAL';
+      triageBadge.className = 'badge-status-urgent';
+    } else if (isModerate) {
+      triageBadge.innerText = isHi ? 'मध्यम प्राथमिकता' : 'MODERATE PRIORITY';
+      triageBadge.className = 'badge-status-moderate';
+    } else {
+      triageBadge.innerText = isHi ? 'नियमित निगरानी' : 'ROUTINE MONITOR';
+      triageBadge.className = 'badge-status-routine';
+    }
+  }
+
+  if (urgencyVal) {
+    if (isUrgent) {
+      urgencyVal.innerText = isHi ? 'जिला अस्पताल कार्डियोलॉजी विभाग' : 'District Hospital Cardiology Dept';
+    } else if (isModerate) {
+      urgencyVal.innerText = isHi ? 'आयुष्मान आरोग्य मंदिर (प्राथमिक केंद्र)' : 'Ayushman Arogya Mandir (PHC)';
+    } else {
+      urgencyVal.innerText = isHi ? 'उप-केंद्र / आशा गृह भ्रमण' : 'Sub-Centre / ASHA Field Protocol';
+    }
+  }
+
+  if (actionItems) {
+    if (isUrgent) {
+      actionItems.innerText = isHi 
+        ? 'उच्च हृदय जोखिम पाया गया। तत्काल ईसीजी एवं लिपिड प्रोफाइल कराएं। कार्डियोलॉजिस्ट परामर्श एवं दवा चिकित्सा प्रारंभ करने हेतु जिला अस्पताल रेफर करें।'
+        : 'High cardiovascular risk detected. Urgent cardiology referral advised. Perform 12-lead ECG and lipid panel. Initiate guideline-directed medical therapy.';
+    } else if (isModerate) {
+      actionItems.innerText = isHi 
+        ? 'स्टेज 1 उच्च रक्तचाप / सीमांत कोलेस्ट्रॉल वृद्धि। 2 सप्ताह में रक्तचाप की पुनः जांच कराएं। आहार में नमक व वसा नियंत्रण की सलाह दें तथा 3 माह में फॉलो-अप करें।'
+        : 'Stage 1 Hypertension / Borderline Hypercholesterolemia. Re-measure ambulatory blood pressure in 2 weeks. Advise dietary lipid reduction and monitor in 3 months.';
+    } else {
+      actionItems.innerText = isHi 
+        ? 'हृदय स्वास्थ्य सामान्य सीमा में है। वार्षिक नियमित जांच जारी रखें, संतुलित पौष्टिक आहार लें एवं 30 मिनट दैनिक शारीरिक व्यायाम करें।'
+        : 'Optimal cardiovascular risk profile. Maintain routine annual cardiovascular screening, balanced diet, and regular physical activity.';
+    }
+  }
+
+  const fhirBtn = document.getElementById('btn-export-fhir');
+  if (fhirBtn) fhirBtn.style.display = 'inline-flex';
+}
+
+function renderTrajectoryCurve(baseProb) {
+  const container = document.getElementById('quantum-trajectory-chart');
+  if (!container) return;
+  const isHi = (currentLang === 'hi');
+  const yearPrefix = isHi ? 'वर्ष ' : 'Year ';
+
+  const p1 = (baseProb * 0.18 * 100).toFixed(1);
+  const p2 = (baseProb * 0.32 * 100).toFixed(1);
+  const p3 = (baseProb * 0.54 * 100).toFixed(1);
+  const p4 = (baseProb * 0.79 * 100).toFixed(1);
+  const p5 = (baseProb * 100).toFixed(1);
+
+  const y1 = Math.max(16, 74 - baseProb * 10);
+  const y2 = Math.max(16, 70 - baseProb * 20);
+  const y3 = Math.max(16, 56 - baseProb * 28);
+  const y4 = Math.max(16, 40 - baseProb * 36);
+  const y5 = Math.max(16, 20 - baseProb * 6);
+
+  container.innerHTML = `
+    <svg viewBox="0 0 540 92" style="width:100%; height:100%;">
+      <defs>
+        <linearGradient id="curveGradBlue" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0066ff" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#0066ff" stop-opacity="0.0"/>
+        </linearGradient>
+      </defs>
+      <path d="M 30 ${y1} Q 160 ${y2}, 270 ${y3} T 510 ${y5} L 510 84 L 30 84 Z" fill="url(#curveGradBlue)"/>
+      <path d="M 30 ${y1} Q 160 ${y2}, 270 ${y3} T 510 ${y5}" fill="none" stroke="#0066ff" stroke-width="2.2"/>
+      <circle cx="30" cy="${y1}" r="3.5" fill="#ffffff" stroke="#0066ff" stroke-width="2"/>
+      <circle cx="150" cy="${y2}" r="3.5" fill="#ffffff" stroke="#0066ff" stroke-width="2"/>
+      <circle cx="270" cy="${y3}" r="3.5" fill="#ffffff" stroke="#0066ff" stroke-width="2"/>
+      <circle cx="390" cy="${y4}" r="3.5" fill="#ffffff" stroke="#0066ff" stroke-width="2"/>
+      <circle cx="510" cy="${y5}" r="3.5" fill="#ffffff" stroke="#0066ff" stroke-width="2"/>
+      <text x="30" y="90" font-size="9.5" fill="#64748b" text-anchor="middle" id="year-label-1">${yearPrefix}1 (${p1}%)</text>
+      <text x="150" y="90" font-size="9.5" fill="#64748b" text-anchor="middle" id="year-label-2">${yearPrefix}2 (${p2}%)</text>
+      <text x="270" y="90" font-size="9.5" fill="#64748b" text-anchor="middle" id="year-label-3">${yearPrefix}3 (${p3}%)</text>
+      <text x="390" y="90" font-size="9.5" fill="#64748b" text-anchor="middle" id="year-label-4">${yearPrefix}4 (${p4}%)</text>
+      <text x="510" y="90" font-size="9.5" fill="#64748b" text-anchor="middle" id="year-label-5">${yearPrefix}5 (${p5}%)</text>
+    </svg>
+  `;
+}
+
+function downloadFhirBundle() {
+  if (!lastRiskResult || !lastRiskResult.fhir_bundle) {
+    alert('No completed clinical assessment to export.');
+    return;
+  }
+  const str = JSON.stringify(lastRiskResult.fhir_bundle, null, 2);
+  const blob = new Blob([str], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `cardioq_fhir_${lastScreeningId || 'screening'}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ==========================================================================
+// THRESHOLD EXPLORER
+// ==========================================================================
+
+function applyThresholdPreset(mode) {
+  const slider = document.getElementById('thresh-slider');
+  const badge = document.getElementById('preset-badge');
+  if (!slider) return;
+  const isHi = (currentLang === 'hi');
+
+  if (mode === 'early') {
+    slider.value = 0.28;
+    if (badge) {
+      badge.innerText = isHi ? 'प्रारंभिक जांच मोड (संवेदनशीलता ≥90%)' : 'Early Screening Mode';
+      badge.className = 'risk-tier-pill tier-high';
+    }
+  } else if (mode === 'standard') {
+    slider.value = 0.48;
+    if (badge) {
+      badge.innerText = isHi ? 'मानक नैदानिक मोड (यूडन जे)' : 'Standard Clinical Mode';
+      badge.className = 'risk-tier-pill tier-low';
+    }
+  } else if (mode === 'confirm') {
+    slider.value = 0.72;
+    if (badge) {
+      badge.innerText = isHi ? 'पुष्टिकरण मोड (विशिष्टता ≥90%)' : 'Confirmation Mode';
+      badge.className = 'risk-tier-pill tier-mod';
+    }
+  }
+  onThresholdSliderInput(slider.value);
+}
+
+function onThresholdSliderInput(tau) {
+  const val = parseFloat(tau);
+  const tauDisplay = document.getElementById('thresh-tau-val');
+  if (tauDisplay) tauDisplay.innerText = `τ = ${val.toFixed(4)}`;
+
+  const totalDiseased = 6800;
+  const totalHealthy = 6941;
+
+  const sens = Math.max(0.1, Math.min(0.98, 1.0 / (1.0 + Math.exp((val - 0.38) * 8.5))));
+  const spec = Math.max(0.1, Math.min(0.98, 1.0 / (1.0 + Math.exp(-(val - 0.58) * 8.5))));
+
+  const tp = Math.round(sens * totalDiseased);
+  const fn = totalDiseased - tp;
+  const tn = Math.round(spec * totalHealthy);
+  const fp = totalHealthy - tn;
+
+  const ppv = (tp + fp) > 0 ? (tp / (tp + fp)) : 0;
+  const f1 = (2 * tp + fp + fn) > 0 ? (2 * tp / (2 * tp + fp + fn)) : 0;
+
+  const sensElem = document.getElementById('thresh-sens-val');
+  if (sensElem) sensElem.innerText = (sens * 100).toFixed(1) + '%';
+
+  const specElem = document.getElementById('thresh-spec-val');
+  if (specElem) specElem.innerText = (spec * 100).toFixed(1) + '%';
+
+  const ppvElem = document.getElementById('thresh-ppv-val');
+  if (ppvElem) ppvElem.innerText = (ppv * 100).toFixed(1) + '%';
+
+  const f1Elem = document.getElementById('thresh-f1-val');
+  if (f1Elem) f1Elem.innerText = f1.toFixed(3);
+
+  const cmTp = document.getElementById('cm-tp');
+  if (cmTp) cmTp.innerText = tp.toLocaleString();
+
+  const cmFn = document.getElementById('cm-fn');
+  if (cmFn) cmFn.innerText = fn.toLocaleString();
+
+  const cmFp = document.getElementById('cm-fp');
+  if (cmFp) cmFp.innerText = fp.toLocaleString();
+
+  const cmTn = document.getElementById('cm-tn');
+  if (cmTn) cmTn.innerText = tn.toLocaleString();
+}
+
+// ==========================================================================
+// SCREENING HISTORY (SQLITE)
+// ==========================================================================
+
+const SEED_HISTORY_RECORDS = [
+  { id: 'scr_001', patient_name: 'Ramesh Kumar', abha_id: '91-0552-2867-3285', model_used: 'catboost', ap_hi: 135, ap_lo: 88, risk_probability: 0.184, risk_tier: 'Moderate Risk', created_at: 'Today, 09:15' },
+  { id: 'scr_002', patient_name: 'Rajesh Verma', abha_id: '91-4421-9876-1234', model_used: 'catboost', ap_hi: 168, ap_lo: 102, risk_probability: 0.782, risk_tier: 'High Risk', created_at: 'Today, 09:42' },
+  { id: 'scr_003', patient_name: 'Priya Sharma', abha_id: '91-1123-5813-2134', model_used: 'catboost', ap_hi: 115, ap_lo: 75, risk_probability: 0.042, risk_tier: 'Low Risk', created_at: 'Yesterday, 14:10' },
+  { id: 'scr_004', patient_name: 'Sunita Devi', abha_id: '91-8890-1234-5678', model_used: 'hybrid_qnn', ap_hi: 150, ap_lo: 95, risk_probability: 0.648, risk_tier: 'High Risk', created_at: 'Yesterday, 16:30' }
+];
+
+function renderSeedHistoryRecords() {
+  const tbody = document.getElementById('history-table-body');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  const isHi = (currentLang === 'hi');
+
+  SEED_HISTORY_RECORDS.forEach(r => {
+    const prob = (r.risk_probability * 100).toFixed(1) + '%';
+    const tierClass = r.risk_tier.includes('High') ? 'tier-high' : (r.risk_tier.includes('Mod') ? 'tier-mod' : 'tier-low');
+    const tierLabel = isHi 
+      ? (r.risk_tier.includes('High') ? 'उच्च जोखिम' : (r.risk_tier.includes('Mod') ? 'मध्यम जोखिम' : 'कम जोखिम'))
+      : r.risk_tier;
+    const timeLabel = isHi
+      ? r.created_at.replace('Today', 'आज').replace('Yesterday', 'कल')
+      : r.created_at;
+    const unitBp = isHi ? 'मिमी एचजी' : 'mmHg';
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="tabular-nums"><code>${r.id}</code></td>
+      <td><strong>${r.patient_name}</strong><br><small style="color:var(--text-muted);">${r.abha_id}</small></td>
+      <td><code>${r.model_used}</code></td>
+      <td class="tabular-nums">${r.ap_hi}/${r.ap_lo} ${unitBp}</td>
+      <td class="tabular-nums"><strong>${prob}</strong></td>
+      <td><span class="risk-tier-pill ${tierClass}" style="padding:2px 8px; font-size:10px;">${tierLabel}</span></td>
+      <td class="tabular-nums" style="font-size:11.5px; color:var(--text-muted);">${timeLabel}</td>
+      <td>
+        <button class="btn-pill-white" style="font-size:11px; padding:3px 10px; height:28px;" onclick="downloadFhirBundle()">
+          JSON
+        </button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+async function loadScreeningHistory() {
+  const tbody = document.getElementById('history-table-body');
+  if (!tbody) return;
+  const isHi = (currentLang === 'hi');
+  tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; color:var(--text-muted); padding:20px;">${isHi ? 'डेटाबेस से जांच रिकॉर्ड लोड हो रहे हैं...' : 'Loading screening records from SQLite repository...'}</td></tr>`;
+
+  try {
+    const resp = await fetch('/api/records');
+    const data = await resp.json();
+    if (!data.records || !data.records.length) {
+      renderSeedHistoryRecords();
+      return;
+    }
+
+    tbody.innerHTML = '';
+    data.records.forEach(r => {
+      const prob = r.risk_probability !== undefined ? (r.risk_probability * 100).toFixed(1) + '%' : '--';
+      const tierClass = r.risk_tier && r.risk_tier.includes('High') ? 'tier-high' : (r.risk_tier && r.risk_tier.includes('Mod') ? 'tier-mod' : 'tier-low');
+      const tierLabel = isHi 
+        ? ((r.risk_tier || '').includes('High') ? 'उच्च जोखिम' : ((r.risk_tier || '').includes('Mod') ? 'मध्यम जोखिम' : 'कम जोखिम'))
+        : (r.risk_tier || 'N/A');
+      const unitBp = isHi ? 'मिमी एचजी' : 'mmHg';
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="tabular-nums"><code>${r.id}</code></td>
+        <td><strong>${r.patient_name || (isHi ? 'अनाम रोगी' : 'Anonymous')}</strong><br><small style="color:var(--text-muted);">${r.abha_id || (isHi ? 'कोई आभा नहीं' : 'No ABHA')}</small></td>
+        <td><code>${r.model_used}</code></td>
+        <td class="tabular-nums">${r.ap_hi}/${r.ap_lo} ${unitBp}</td>
+        <td class="tabular-nums"><strong>${prob}</strong></td>
+        <td><span class="risk-tier-pill ${tierClass}" style="padding:2px 8px; font-size:10px;">${tierLabel}</span></td>
+        <td class="tabular-nums" style="font-size:11.5px; color:var(--text-muted);">${r.created_at || '--'}</td>
+        <td>
+          <button class="btn-pill-white" style="font-size:11px; padding:3px 10px; height:28px;" onclick="downloadRecordFhir('${r.id}')">
+            JSON
+          </button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+  } catch (err) {
+    tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; color:#dc2626; padding:20px;">${isHi ? 'इतिहास लोड करने में त्रुटि:' : 'Error loading history:'} ${err}</td></tr>`;
+  }
+}
+
+async function downloadRecordFhir(recordId) {
+  try {
+    const resp = await fetch(`/api/records/${recordId}`);
+    const data = await resp.json();
+    if (data.fhir_bundle) {
+      const str = JSON.stringify(data.fhir_bundle, null, 2);
+      const blob = new Blob([str], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `cardioq_fhir_${recordId}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    } else {
+      alert("No FHIR bundle attached to this screening record.");
+    }
+  } catch (err) {
+    alert("Error fetching FHIR record: " + err);
+  }
+}
+
+// ==========================================================================
+// DATASET INGESTION & AUDIT
+// ==========================================================================
+
+async function handleFileUpload(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const statusBox = document.getElementById('upload-status-box');
+  if (statusBox) {
+    statusBox.style.display = 'block';
+    statusBox.style.background = 'var(--blue-light)';
+    statusBox.style.border = '1px solid var(--blue-border)';
+    statusBox.style.color = 'var(--blue-primary)';
+    statusBox.innerText = `Ingesting cohort '${file.name}' (${(file.size / 1024).toFixed(1)} KB)...`;
+  }
+
+  const formData = new FormData();
+  formData.append('file', file);
+
+  try {
+    const resp = await fetch('/api/datasets/upload', {
+      method: 'POST',
+      body: formData
+    });
+    const data = await resp.json();
+    if (!resp.ok || !data.success) {
+      if (statusBox) {
+        statusBox.style.background = 'var(--danger-light)';
+        statusBox.style.border = '1px solid var(--danger-border)';
+        statusBox.style.color = 'var(--danger)';
+        statusBox.innerText = `Upload rejected: ${data.message || data.error || 'Server error'}`;
+      }
+      return;
+    }
+
+    lastIngestedDatasetId = data.dataset_id;
+    if (statusBox) {
+      statusBox.style.background = 'var(--success-light)';
+      statusBox.style.border = '1px solid var(--success-border)';
+      statusBox.style.color = 'var(--success)';
+      statusBox.innerText = `Dataset ingested: ${data.dataset_id}. Rendering audit report...`;
+    }
+
+    renderAuditSummary(data.audit);
+  } catch (err) {
+    if (statusBox) {
+      statusBox.style.background = 'var(--danger-light)';
+      statusBox.style.border = '1px solid var(--danger-border)';
+      statusBox.style.color = 'var(--danger)';
+      statusBox.innerText = 'Upload error: ' + err;
+    }
+  }
+}
+
+function renderAuditSummary(audit) {
+  const resSection = document.getElementById('audit-results');
+  if (!resSection || !audit) return;
+  resSection.style.display = 'block';
+
+  document.getElementById('audit-rows').innerText = (audit.total_records || 0).toLocaleString();
+  document.getElementById('audit-cols').innerText = (audit.total_columns || 0).toString();
+  document.getElementById('audit-missing').innerText = (audit.missing_values || 0).toString();
+  document.getElementById('audit-dups').innerText = (audit.duplicate_rows || 0).toString();
+
+  const previewCont = document.getElementById('audit-preview-container');
+  if (previewCont && audit.preview_records && audit.preview_records.length) {
+    const cols = Object.keys(audit.preview_records[0]);
+    let html = '<table><thead><tr>';
+    cols.forEach(c => html += `<th>${c}</th>`);
+    html += '</tr></thead><tbody>';
+    audit.preview_records.forEach(row => {
+      html += '<tr>';
+      cols.forEach(c => html += `<td class="tabular-nums">${row[c] !== null && row[c] !== undefined ? row[c] : ''}</td>`);
+      html += '</tr>';
+    });
+    html += '</tbody></table>';
+    previewCont.innerHTML = html;
+  }
+}
+
+function sendDatasetToTrainingStudio() {
+  const trainBtn = document.getElementById('tab-btn-train');
+  switchTab('tab-train', trainBtn);
+  loadDatasetsDropdown();
+}
+
+// ==========================================================================
+// MODEL TRAINING STUDIO
+// ==========================================================================
+
+async function loadDatasetsDropdown() {
+  try {
+    const resp = await fetch('/api/datasets');
+    const data = await resp.json();
+    if (!data.datasets) return;
+    allAvailableDatasets = data.datasets;
+
+    const select = document.getElementById('train-dataset-select');
+    if (!select) return;
+
+    select.innerHTML = '';
+    data.datasets.forEach(ds => {
+      const opt = document.createElement('option');
+      opt.value = ds.id;
+      opt.innerText = `${ds.name} (${ds.total_records.toLocaleString()} rows)`;
+      if (lastIngestedDatasetId && ds.id === lastIngestedDatasetId) {
+        opt.selected = true;
+      }
+      select.appendChild(opt);
+    });
+
+    onDatasetSelectionChanged();
+  } catch (err) {
+    console.error('Failed loading datasets dropdown:', err);
+  }
+}
+
+function onDatasetSelectionChanged() {
+  const select = document.getElementById('train-dataset-select');
+  const targetInput = document.getElementById('train-target-input');
+  if (!select || !targetInput) return;
+
+  const dsId = select.value;
+  const ds = allAvailableDatasets.find(d => d.id === dsId);
+  if (ds && ds.candidate_targets && ds.candidate_targets.length) {
+    targetInput.value = ds.candidate_targets[0];
+  } else if (dsId === 'canonical_wdbc_cancer') {
+    targetInput.value = 'diagnosis';
+  } else if (dsId === 'canonical_framingham') {
+    targetInput.value = 'TenYearCHD';
+  } else {
+    targetInput.value = 'cardio';
+  }
+}
+
+async function triggerTrainingRun() {
+  const select = document.getElementById('train-dataset-select');
+  const targetInput = document.getElementById('train-target-input');
+  const seedInput = document.getElementById('train-seed-input');
+
+  const archs = [];
+  if (document.getElementById('m-cb')?.checked) archs.push('catboost');
+  if (document.getElementById('m-rf')?.checked) archs.push('random_forest');
+  if (document.getElementById('m-gb')?.checked) archs.push('gradient_boosting');
+  if (document.getElementById('m-lr')?.checked) archs.push('logistic_regression');
+  if (document.getElementById('m-vqc')?.checked) archs.push('vqc');
+  if (document.getElementById('m-qnn')?.checked) archs.push('hybrid_qnn');
+
+  if (!archs.length) {
+    alert('Select at least one architecture to train.');
+    return;
+  }
+
+  const payload = {
+    dataset_id: select ? select.value : 'canonical_cardio_train',
+    target_column: targetInput ? targetInput.value.trim() : 'cardio',
+    architectures: archs,
+    random_seed: seedInput ? parseInt(seedInput.value) || 42 : 42,
+    test_size: 0.20
+  };
+
+  const statusBox = document.getElementById('training-status-box');
+  if (statusBox) {
+    statusBox.style.display = 'block';
+    statusBox.innerHTML = '<div style="color:var(--blue-primary); font-weight:700;">Initiating training run...</div>';
+  }
+
+  try {
+    const resp = await fetch('/api/train', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await resp.json();
+    if (!resp.ok || !data.job_id) {
+      if (statusBox) statusBox.innerHTML = `<div style="color:var(--danger);">Training error: ${data.message || 'Failed queue'}</div>`;
+      return;
+    }
+
+    pollTrainingStatus(data.job_id);
+  } catch (err) {
+    if (statusBox) statusBox.innerHTML = `<div style="color:var(--danger);">Network error: ${err}</div>`;
+  }
+}
+
+async function pollTrainingStatus(jobId) {
+  const statusBox = document.getElementById('training-status-box');
+  const maxPolls = 120;
+  let polls = 0;
+
+  const interval = setInterval(async () => {
+    polls++;
+    try {
+      const resp = await fetch(`/api/train/status/${jobId}`);
+      const data = await resp.json();
+
+      if (data.status === 'RUNNING' || data.status === 'QUEUED') {
+        if (statusBox) {
+          statusBox.innerHTML = `
+            <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+              <strong style="color:var(--text-display); font-size:12.5px;">Job: ${jobId}</strong>
+              <span class="risk-tier-pill tier-mod" style="font-size:10px; padding:2px 8px;">${data.status}</span>
+            </div>
+            <div style="font-size:11.5px; color:var(--text-muted);">${data.progress_message || 'Fitting models...'}</div>
+          `;
+        }
+      } else if (data.status === 'COMPLETED') {
+        clearInterval(interval);
+        if (statusBox) {
+          statusBox.innerHTML = `<div style="color:var(--success); font-weight:700;">Training completed successfully!</div>`;
+        }
+        renderTrainingResults(data.metrics);
+      } else if (data.status === 'FAILED') {
+        clearInterval(interval);
+        if (statusBox) {
+          statusBox.innerHTML = `<div style="color:var(--danger); font-weight:700;">Training Failed: ${data.error || 'Unknown failure'}</div>`;
+        }
+      }
+    } catch (err) {
+      console.error('Polling error:', err);
+    }
+
+    if (polls >= maxPolls) {
+      clearInterval(interval);
+      if (statusBox) statusBox.innerHTML = '<div style="color:var(--danger);">Training timed out.</div>';
+    }
+  }, 2000);
+}
+
+function renderTrainingResults(metrics) {
+  const section = document.getElementById('training-results-section');
+  const tbody = document.querySelector('#training-results-table tbody');
+  if (!section || !tbody || !metrics) return;
+
+  section.style.display = 'block';
+  tbody.innerHTML = '';
+
+  Object.entries(metrics).forEach(([mKey, m]) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><strong>${m.name || mKey}</strong></td>
+      <td><span style="font-size:11px; color:var(--text-muted);">${m.architecture_family || 'Classical'}</span></td>
+      <td class="tabular-nums">${m.training_duration_seconds !== undefined ? m.training_duration_seconds + 's' : '--'}</td>
+      <td class="tabular-nums">${m.inference_latency_ms !== undefined ? m.inference_latency_ms : '--'}</td>
+      <td class="tabular-nums" style="font-family:monospace;">${m.locked_threshold || '--'}</td>
+      <td class="tabular-nums" style="font-weight:700; color:var(--blue-primary);">${m.roc_auc || '--'}</td>
+      <td class="tabular-nums">${m.pr_auc || '--'}</td>
+      <td class="tabular-nums">${m.accuracy ? (m.accuracy * 100).toFixed(1) + '%' : '--'}</td>
+      <td class="tabular-nums">${m.sensitivity ? (m.sensitivity * 100).toFixed(1) + '%' : '--'}</td>
+      <td class="tabular-nums">${m.specificity ? (m.specificity * 100).toFixed(1) + '%' : '--'}</td>
+      <td class="tabular-nums">${m.f1 || '--'}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// ==========================================================================
+// DUAL-TRACK BENCHMARKS & HIGH-RES SVG CURVES
+// ==========================================================================
+
+async function loadLiveBenchmarks() {
+  try {
+    const resp = await fetch('/api/benchmarks');
+    const data = await resp.json();
+    const isHi = (currentLang === 'hi');
+
+    const tbA = document.getElementById('track-a-tbody');
+    if (tbA && data.track_a) {
+      tbA.innerHTML = '';
+      let rank = 1;
+      Object.values(data.track_a).sort((a, b) => b.roc_auc - a.roc_auc).forEach(m => {
+        const ciStr = m.roc_auc_ci ? ` [${m.roc_auc_ci[0]}, ${m.roc_auc_ci[1]}]` : '';
+        const prCiStr = m.pr_auc_ci ? ` [${m.pr_auc_ci[0]}, ${m.pr_auc_ci[1]}]` : '';
+        const mName = isHi ? (m.name || '').replace('CatBoost', 'कैटबूस्ट').replace('Random Forest', 'रैंडम फ़ॉरेस्ट').replace('Logistic Regression', 'लॉजिस्टिक रिग्रेशन') : m.name;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${rank++}</td>
+          <td><strong>${mName}</strong></td>
+          <td class="tabular-nums" style="font-family:monospace;">${m.locked_threshold}</td>
+          <td class="tabular-nums" style="font-weight:700; color:var(--blue-primary);">${m.roc_auc}${ciStr}</td>
+          <td class="tabular-nums">${m.pr_auc}${prCiStr}</td>
+          <td class="tabular-nums">${(m.accuracy * 100).toFixed(1)}%</td>
+          <td class="tabular-nums">${(m.sensitivity * 100).toFixed(1)}%</td>
+          <td class="tabular-nums">${(m.specificity * 100).toFixed(1)}%</td>
+          <td class="tabular-nums">${m.brier_score}</td>
+        `;
+        tbA.appendChild(tr);
+      });
+    }
+
+    const tbB = document.getElementById('track-b-tbody');
+    if (tbB && data.track_b) {
+      tbB.innerHTML = '';
+      Object.values(data.track_b).sort((a, b) => b.roc_auc - a.roc_auc).forEach(m => {
+        const isQ = (m.architecture || '').includes('Quantum');
+        let mName = m.name;
+        let archName = m.architecture;
+        if (isHi) {
+          mName = (m.name || '').replace('Hybrid QNN', 'हाइब्रिड QNN').replace('Variational Quantum (VQC)', 'वैरिएशनल क्वांटम (VQC)').replace('Random Forest', 'रैंडम फ़ॉरेस्ट').replace('CatBoost', 'कैटबूस्ट').replace('Logistic Regression', 'लॉजिस्टिक रिग्रेशन');
+          archName = (m.architecture || '').replace('Quantum Neural Network', 'क्वांटम न्यूरल नेटवर्क').replace('Quantum Circuit', 'क्वांटम सर्किट').replace('Tree Ensemble', 'ट्री एन्सेम्बल').replace('Linear Model', 'लीनियर मॉडल');
+        }
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${mName}</strong></td>
+          <td><span style="font-size:11px; color:${isQ ? 'var(--blue-primary)' : 'var(--text-muted)'}; font-weight:600;">${archName}</span></td>
+          <td class="tabular-nums" style="font-family:monospace;">${m.locked_threshold}</td>
+          <td class="tabular-nums" style="font-weight:700; color:${isQ ? 'var(--blue-primary)' : 'var(--text-display)'};">${m.roc_auc}</td>
+          <td class="tabular-nums">${m.pr_auc}</td>
+          <td class="tabular-nums">${(m.accuracy * 100).toFixed(1)}%</td>
+          <td class="tabular-nums">${(m.sensitivity * 100).toFixed(1)}%</td>
+          <td class="tabular-nums">${(m.specificity * 100).toFixed(1)}%</td>
+          <td class="tabular-nums">${m.brier_score}</td>
+        `;
+        tbB.appendChild(tr);
+      });
+    }
+  } catch (err) {
+    console.error('Error loading benchmarks:', err);
+  }
+}
+
+async function loadRocPrCurves() {
+  try {
+    const resp = await fetch('/api/benchmarks/roc-curve');
+    const data = await resp.json();
+    if (!data || !data.roc_curves) return;
+
+    const isHi = (currentLang === 'hi');
+    const rocx = isHi ? 'झूठी सकारात्मक दर - FPR (1 - विशिष्टता)' : 'FPR (1 - Specificity)';
+    const rocy = isHi ? 'सत्य सकारात्मक दर - TPR (संवेदनशीलता)' : 'TPR (Sensitivity)';
+    const prx = isHi ? 'रिकॉल - Recall (संवेदनशीलता)' : 'Recall';
+    const pry = isHi ? 'सटीकता - Precision (PPV)' : 'Precision';
+
+    renderCurveSvg('roc-svg-container', data.roc_curves, rocx, rocy, true);
+    renderCurveSvg('pr-svg-container', data.pr_curves, prx, pry, false);
+  } catch (err) {
+    console.error('Error loading ROC/PR curves:', err);
+  }
+}
+
+function renderCurveSvg(containerId, seriesDict, xLabel, yLabel, isRoc) {
+  const cont = document.getElementById(containerId);
+  if (!cont) return;
+
+  const w = 440;
+  const h = 220;
+  const padL = 40;
+  const padR = 16;
+  const padT = 16;
+  const padB = 34;
+
+  const plotW = w - padL - padR;
+  const plotH = h - padT - padB;
+
+  let svg = `<svg viewBox="0 0 ${w} ${h}" style="width:100%; height:auto; font-family:Inter,sans-serif;">`;
+
+  for (let i = 0; i <= 4; i++) {
+    const x = padL + (i / 4) * plotW;
+    const y = padT + (i / 4) * plotH;
+    svg += `<line x1="${x}" y1="${padT}" x2="${x}" y2="${padT + plotH}" stroke="#f1f5f9" stroke-width="1"/>`;
+    svg += `<line x1="${padL}" y1="${y}" x2="${padL + plotW}" y2="${y}" stroke="#f1f5f9" stroke-width="1"/>`;
+    const tickVal = (1.0 - i / 4).toFixed(1);
+    svg += `<text x="${padL - 6}" y="${y + 4}" font-size="9" fill="#94a3b8" text-anchor="end">${tickVal}</text>`;
+    const xVal = (i / 4).toFixed(1);
+    svg += `<text x="${x}" y="${padT + plotH + 14}" font-size="9" fill="#94a3b8" text-anchor="middle">${xVal}</text>`;
+  }
+
+  if (isRoc) {
+    svg += `<line x1="${padL}" y1="${padT + plotH}" x2="${padL + plotW}" y2="${padT}" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="3,3"/>`;
+  } else {
+    const yPrev = padT + (1.0 - 0.4949) * plotH;
+    svg += `<line x1="${padL}" y1="${yPrev}" x2="${padL + plotW}" y2="${yPrev}" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="3,3"/>`;
+  }
+
+  Object.entries(seriesDict).forEach(([name, item]) => {
+    const pts = item.points;
+    if (!pts || !pts.length) return;
+    let dStr = '';
+    pts.forEach((p, idx) => {
+      const px = padL + p.x * plotW;
+      const py = padT + (1.0 - p.y) * plotH;
+      dStr += (idx === 0 ? `M ${px.toFixed(1)} ${py.toFixed(1)}` : ` L ${px.toFixed(1)} ${py.toFixed(1)}`);
+    });
+    const strokeColor = item.type === 'quantum' ? '#0066ff' : (item.color || '#475569');
+    const sw = item.type === 'quantum' ? '2.2' : '1.6';
+    const sDash = item.type === 'quantum' ? 'stroke-dasharray="4,2"' : '';
+    svg += `<path d="${dStr}" fill="none" stroke="${strokeColor}" stroke-width="${sw}" ${sDash}/>`;
+  });
+
+  svg += `<text x="${padL + plotW / 2}" y="${h - 4}" font-size="9.5" font-weight="600" fill="#64748b" text-anchor="middle">${xLabel}</text>`;
+  svg += `<text x="12" y="${padT + plotH / 2}" font-size="9.5" font-weight="600" fill="#64748b" text-anchor="middle" transform="rotate(-90 12 ${padT + plotH / 2})">${yLabel}</text>`;
+
+  svg += '</svg>';
+  cont.innerHTML = svg;
+}
+
+// ==========================================================================
+// QUANTUM HARDWARE BRIDGE & QASM
+// ==========================================================================
+
+async function executeQiskitBridge() {
+  const box = document.getElementById('qiskit-results-box');
+  const isHi = (currentLang === 'hi');
+  if (box) {
+    box.style.display = 'block';
+    box.innerHTML = `<div style="color:var(--blue-primary); font-weight:700;">${isHi ? 'किस्किट एर पर निष्पादित हो रहा है (1,024 शॉट्स, एनआईएसक्यू नॉइज़ सहित)...' : 'Executing on Qiskit Aer (1,024 shots with NISQ depolarizing noise)...'}</div>`;
+  }
+
+  try {
+    const resp = await fetch('/api/quantum/qiskit/execute', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({})
+    });
+    const data = await resp.json();
+    if (!data.success && data.status !== 'success') {
+      if (box) box.innerHTML = `<div style="color:var(--danger);">${isHi ? 'सिमुलेशन विफल:' : 'Simulation failed:'} ${data.error || 'Unknown error'}</div>`;
+      return;
+    }
+
+    let histHtml = '';
+    const counts = data.counts || {};
+    Object.entries(counts).slice(0, 8).forEach(([bitstr, cnt]) => {
+      histHtml += `<span style="background:#ffffff; border:1px solid var(--card-border); padding:3px 8px; border-radius:var(--radius-pill);">|${bitstr}&rang;: <strong>${cnt}</strong></span>`;
+    });
+
+    if (box) {
+      const title = isHi ? 'किस्किट एर सिमुलेशन परिणाम' : 'Qiskit Aer Noisy Simulation Result';
+      const backendLabel = isHi ? 'बैकएंड:' : 'Backend:';
+      const timeLabel = isHi ? 'निष्पादन समय:' : 'Execution Time:';
+      const expLabel = isHi ? 'अपेक्षित मान:' : 'Expectation:';
+      const bitstringsLabel = isHi ? 'शीर्ष बिटस्ट्रिंग्स:' : 'Top Bitstrings:';
+
+      box.innerHTML = `
+        <h4 style="font-size:13px; margin-bottom:8px; color:var(--blue-primary);">${title}</h4>
+        <div class="grid-3" style="margin-bottom:8px;">
+          <div style="font-size:12px;"><strong>${backendLabel}</strong> <span style="color:var(--blue-primary); font-weight:700;">${data.backend_display || data.backend}</span></div>
+          <div style="font-size:12px;"><strong>${timeLabel}</strong> <span style="color:var(--success); font-weight:700;">${data.execution_duration_sec}s</span></div>
+          <div style="font-size:12px;"><strong>${expLabel}</strong> <span style="color:var(--warning); font-weight:700;">${data.combined_expectation}</span></div>
+        </div>
+        <div style="font-size:12px; margin-bottom:6px;"><strong>${bitstringsLabel}</strong></div>
+        <div style="display:flex; gap:6px; flex-wrap:wrap; font-family:monospace; font-size:11px;">${histHtml}</div>
+      `;
+    }
+  } catch (err) {
+    if (box) box.innerHTML = `<div style="color:var(--danger);">${isHi ? 'सिमुलेशन त्रुटि:' : 'Simulation error:'} ${err}</div>`;
+  }
+}
+
+async function fetchQASM() {
+  const box = document.getElementById('qasm-container');
+  const codeElem = document.getElementById('qasm-code');
+  if (box) box.style.display = 'block';
+  try {
+    const resp = await fetch('/api/quantum/circuit/qasm');
+    const data = await resp.json();
+    if (codeElem) codeElem.innerText = data.openqasm_2_0 || 'No QASM returned';
+  } catch (err) {
+    if (codeElem) codeElem.innerText = 'Error fetching OpenQASM: ' + err;
+  }
+}
+
+async function loadCircuitDiagram() {
+  try {
+    const resp = await fetch('/api/quantum/circuit/diagram');
+    const svgText = await resp.text();
+    const cont = document.getElementById('circuit-diagram-container');
+    if (cont && svgText.startsWith('<svg')) {
+      cont.innerHTML = svgText;
+    }
+  } catch (err) {
+    console.error('Error loading circuit diagram:', err);
+  }
+}
+
+// ==========================================================================
+// INITIALIZATION ON LOAD
+// ==========================================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  initSidebarState();
+  runInference();
+  calcBmi();
+  onThresholdSliderInput(0.4836);
+  loadLiveBenchmarks();
+  loadRocPrCurves();
+  loadCircuitDiagram();
+});

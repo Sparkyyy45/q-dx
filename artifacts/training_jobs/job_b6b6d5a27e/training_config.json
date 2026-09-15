@@ -1,0 +1,19 @@
+{
+  "job_id": "job_b6b6d5a27e",
+  "dataset_name": "Uploaded: test_explicit_target.csv",
+  "target_column": "actual_risk_outcome",
+  "feature_columns": [
+    "feature_age",
+    "feature_bp",
+    "unrelated_flag"
+  ],
+  "test_size": 0.2,
+  "random_seed": 42,
+  "cv_folds": 5,
+  "enable_quantum": false,
+  "models_to_train": [
+    "logistic_regression"
+  ],
+  "started_at": "2026-09-07T14:57:19Z",
+  "completed_at": "2026-09-07T14:57:19Z"
+}

@@ -1,0 +1,859 @@
+{
+  "config": {
+    "random_seed": 42,
+    "data_path": "cardio_train_fixed (1).csv",
+    "target_column": "cardio",
+    "positive_class": 1,
+    "negative_class": 0,
+    "identifier_columns": [
+      "id"
+    ],
+    "drop_columns": [
+      "bp_category_encoded",
+      "bp_category"
+    ],
+    "group_column": null,
+    "test_size": 0.2,
+    "n_splits": 5,
+    "shuffle_folds": true,
+    "scaling_strategy": "robust",
+    "outlier_clipping": true,
+    "outlier_factor": 1.5,
+    "numeric_imputation_strategy": "median",
+    "categorical_imputation_strategy": "most_frequent",
+    "enable_feature_engineering": true,
+    "reduction_strategy": "none",
+    "reduction_k": 15,
+    "pca_components": 10,
+    "artifacts_dir": "artifacts",
+    "external_data_path": "framingham.csv",
+    "tune_hyperparameters": false,
+    "tuning_iter": 10,
+    "tuning_cv": 3,
+    "model_params": {
+      "lr_c": 1.0,
+      "lr_max_iter": 1000,
+      "lr_solver": "lbfgs",
+      "svm_c": 1.0,
+      "svm_max_iter": 2000,
+      "svm_calibration_method": "sigmoid",
+      "svm_calibration_cv": 3,
+      "rf_n_estimators": 100,
+      "rf_max_depth": 12,
+      "rf_min_samples_split": 10,
+      "rf_min_samples_leaf": 4,
+      "rf_n_jobs": -1,
+      "gb_max_iter": 100,
+      "gb_learning_rate": 0.08,
+      "gb_max_depth": 6,
+      "gb_min_samples_leaf": 20,
+      "mlp_hidden_layer_sizes": [
+        64,
+        32
+      ],
+      "mlp_activation": "relu",
+      "mlp_alpha": 0.001,
+      "mlp_max_iter": 100,
+      "mlp_early_stopping": true,
+      "mlp_n_iter_no_change": 10,
+      "xgb_n_estimators": 200,
+      "xgb_max_depth": 6,
+      "xgb_learning_rate": 0.05,
+      "xgb_subsample": 0.8,
+      "xgb_colsample_bytree": 0.8,
+      "lgb_n_estimators": 200,
+      "lgb_num_leaves": 31,
+      "lgb_learning_rate": 0.05,
+      "lgb_subsample": 0.8,
+      "lgb_colsample_bytree": 0.8,
+      "cat_iterations": 200,
+      "cat_depth": 6,
+      "cat_learning_rate": 0.05,
+      "cat_features": [
+        "gender",
+        "cholesterol",
+        "gluc"
+      ]
+    }
+  },
+  "dataset_summary": {
+    "filepath": "cardio_train_fixed (1).csv",
+    "sha256_hash": "ba6523e1d823640d117c1ce8cbdb356240780f8cc376a42302d97545e0a507d4",
+    "row_count": 70000,
+    "column_count": 13,
+    "feature_count": 11,
+    "target_distribution": {
+      "0": 35021,
+      "1": 34979
+    },
+    "target_proportions": {
+      "0": 0.5003,
+      "1": 0.4997
+    },
+    "positive_class_resolved": 1,
+    "negative_class_resolved": 0,
+    "missing_values_by_column": {
+      "id": 0,
+      "age": 0,
+      "gender": 0,
+      "height": 0,
+      "weight": 0,
+      "ap_hi": 0,
+      "ap_lo": 0,
+      "cholesterol": 0,
+      "gluc": 0,
+      "smoke": 0,
+      "alco": 0,
+      "active": 0,
+      "cardio": 0
+    },
+    "total_missing_values": 0,
+    "duplicate_rows_count": 0,
+    "column_dtypes": {
+      "id": "int64",
+      "age": "int64",
+      "gender": "int64",
+      "height": "int64",
+      "weight": "float64",
+      "ap_hi": "int64",
+      "ap_lo": "int64",
+      "cholesterol": "int64",
+      "gluc": "int64",
+      "smoke": "int64",
+      "alco": "int64",
+      "active": "int64",
+      "cardio": "int64"
+    },
+    "numeric_columns": [
+      "age",
+      "gender",
+      "height",
+      "weight",
+      "ap_hi",
+      "ap_lo",
+      "cholesterol",
+      "gluc",
+      "smoke",
+      "alco",
+      "active"
+    ],
+    "categorical_columns": [],
+    "basic_statistics": {
+      "age": {
+        "mean": 19468.865814285713,
+        "std": 2467.2516672414013,
+        "min": 10798.0,
+        "25%": 17664.0,
+        "50%": 19703.0,
+        "75%": 21327.0,
+        "max": 23713.0
+      },
+      "gender": {
+        "mean": 1.3495714285714286,
+        "std": 0.47683801558286387,
+        "min": 1.0,
+        "25%": 1.0,
+        "50%": 1.0,
+        "75%": 2.0,
+        "max": 2.0
+      },
+      "height": {
+        "mean": 164.35922857142856,
+        "std": 8.210126364538038,
+        "min": 55.0,
+        "25%": 159.0,
+        "50%": 165.0,
+        "75%": 170.0,
+        "max": 250.0
+      },
+      "weight": {
+        "mean": 74.20569,
+        "std": 14.395756678511379,
+        "min": 10.0,
+        "25%": 65.0,
+        "50%": 72.0,
+        "75%": 82.0,
+        "max": 200.0
+      },
+      "ap_hi": {
+        "mean": 128.8172857142857,
+        "std": 154.01141945609137,
+        "min": -150.0,
+        "25%": 120.0,
+        "50%": 120.0,
+        "75%": 140.0,
+        "max": 16020.0
+      },
+      "ap_lo": {
+        "mean": 96.63041428571428,
+        "std": 188.47253029639026,
+        "min": -70.0,
+        "25%": 80.0,
+        "50%": 80.0,
+        "75%": 90.0,
+        "max": 11000.0
+      },
+      "cholesterol": {
+        "mean": 1.3668714285714285,
+        "std": 0.680250348699381,
+        "min": 1.0,
+        "25%": 1.0,
+        "50%": 1.0,
+        "75%": 2.0,
+        "max": 3.0
+      },
+      "gluc": {
+        "mean": 1.226457142857143,
+        "std": 0.572270276613845,
+        "min": 1.0,
+        "25%": 1.0,
+        "50%": 1.0,
+        "75%": 1.0,
+        "max": 3.0
+      },
+      "smoke": {
+        "mean": 0.08812857142857143,
+        "std": 0.28348381676993517,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 0.0,
+        "75%": 0.0,
+        "max": 1.0
+      },
+      "alco": {
+        "mean": 0.053771428571428574,
+        "std": 0.2255677036041049,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 0.0,
+        "75%": 0.0,
+        "max": 1.0
+      },
+      "active": {
+        "mean": 0.8037285714285715,
+        "std": 0.3971790635049283,
+        "min": 0.0,
+        "25%": 1.0,
+        "50%": 1.0,
+        "75%": 1.0,
+        "max": 1.0
+      }
+    }
+  },
+  "audit_report": {
+    "dimensions": [
+      10000,
+      13
+    ],
+    "row_count": 10000,
+    "column_count": 13,
+    "feature_names": [
+      "id",
+      "age",
+      "gender",
+      "height",
+      "weight",
+      "ap_hi",
+      "ap_lo",
+      "cholesterol",
+      "gluc",
+      "smoke",
+      "alco",
+      "active"
+    ],
+    "numeric_features": [
+      "id",
+      "age",
+      "gender",
+      "height",
+      "weight",
+      "ap_hi",
+      "ap_lo",
+      "cholesterol",
+      "gluc",
+      "smoke",
+      "alco",
+      "active"
+    ],
+    "categorical_features": [],
+    "missing_value_counts": {
+      "id": 0,
+      "age": 0,
+      "gender": 0,
+      "height": 0,
+      "weight": 0,
+      "ap_hi": 0,
+      "ap_lo": 0,
+      "cholesterol": 0,
+      "gluc": 0,
+      "smoke": 0,
+      "alco": 0,
+      "active": 0,
+      "cardio": 0
+    },
+    "missing_value_percentages": {
+      "id": 0.0,
+      "age": 0.0,
+      "gender": 0.0,
+      "height": 0.0,
+      "weight": 0.0,
+      "ap_hi": 0.0,
+      "ap_lo": 0.0,
+      "cholesterol": 0.0,
+      "gluc": 0.0,
+      "smoke": 0.0,
+      "alco": 0.0,
+      "active": 0.0,
+      "cardio": 0.0
+    },
+    "duplicate_rows_total": 0,
+    "duplicate_rows_excluding_id": 1,
+    "constant_features": [],
+    "near_constant_features": {},
+    "categorical_cardinality": {},
+    "target_class_counts": {
+      "1": 5036,
+      "0": 4964
+    },
+    "class_imbalance_ratio": 0.9857029388403494,
+    "potential_identifier_columns": [
+      "id"
+    ],
+    "potential_leakage_columns": [],
+    "redundant_duplicate_columns": [],
+    "invalid_or_infinite_counts": {},
+    "biological_plausibility_flags": [
+      "Found 168 rows where systolic BP (ap_hi) < diastolic BP (ap_lo).",
+      "Found 6 height measurements outside [100cm, 220cm].",
+      "Found 4 weight measurements outside [30kg, 200kg].",
+      "Found 9 calculated BMI values outside [10, 70]. Max BMI observed: 187.8.",
+      "Age unit confirmed in days per FEATURE_DICTIONARY: observed range 14,282\u201323,692 days (~39.1\u201364.9 years)."
+    ],
+    "suspicious_target_related_columns": [],
+    "findings": [
+      {
+        "category": "redundancy",
+        "column": "[multiple_features]",
+        "severity": "MEDIUM",
+        "detail": "Found 1 duplicate rows when ignoring ID columns.",
+        "action_recommended": "Retain for training if representing distinct clinical encounters, or record provenance."
+      },
+      {
+        "category": "identifier",
+        "column": "id",
+        "severity": "HIGH",
+        "detail": "Column exhibits identifier characteristics (10000 unique values / 10000 rows).",
+        "action_recommended": "Strictly exclude from model features to prevent memorization leakage."
+      },
+      {
+        "category": "invalid_values",
+        "column": "ap_hi, ap_lo",
+        "severity": "HIGH",
+        "detail": "168 instances where systolic BP < diastolic BP.",
+        "action_recommended": "Apply clinical boundary correction or IQR clipping."
+      },
+      {
+        "category": "invalid_values",
+        "column": "bmi (calculated)",
+        "severity": "MEDIUM",
+        "detail": "9 extreme BMI values detected (min: 3.5, max: 187.8).",
+        "action_recommended": "Apply robust IQR clipping or pre-split cleaning to eliminate physiological measurement errors."
+      }
+    ]
+  },
+  "oof_comparison": [
+    {
+      "Model": "CatBoost",
+      "ROC-AUC": "0.7975 (\u00b10.010)",
+      "PR-AUC": "0.7767 (\u00b10.010)",
+      "Brier Score": "0.1816",
+      "ECE": "0.0146",
+      "Sensitivity (Recall)": "0.7009",
+      "Specificity": "0.7696",
+      "Precision": "0.7515",
+      "F1-Score": "0.7253",
+      "Accuracy": "0.7353",
+      "Balanced Accuracy": "0.7352"
+    },
+    {
+      "Model": "Random Forest",
+      "ROC-AUC": "0.7950 (\u00b10.010)",
+      "PR-AUC": "0.7744 (\u00b10.010)",
+      "Brier Score": "0.1831",
+      "ECE": "0.0204",
+      "Sensitivity (Recall)": "0.6937",
+      "Specificity": "0.7734",
+      "Precision": "0.7527",
+      "F1-Score": "0.7220",
+      "Accuracy": "0.7337",
+      "Balanced Accuracy": "0.7336"
+    },
+    {
+      "Model": "Logistic Regression",
+      "ROC-AUC": "0.7938 (\u00b10.009)",
+      "PR-AUC": "0.7717 (\u00b10.009)",
+      "Brier Score": "0.1849",
+      "ECE": "0.0237",
+      "Sensitivity (Recall)": "0.6776",
+      "Specificity": "0.7823",
+      "Precision": "0.7558",
+      "F1-Score": "0.7146",
+      "Accuracy": "0.7301",
+      "Balanced Accuracy": "0.7300"
+    },
+    {
+      "Model": "Multilayer Perceptron",
+      "ROC-AUC": "0.7933 (\u00b10.008)",
+      "PR-AUC": "0.7729 (\u00b10.010)",
+      "Brier Score": "0.1847",
+      "ECE": "0.0215",
+      "Sensitivity (Recall)": "0.7062",
+      "Specificity": "0.7480",
+      "Precision": "0.7359",
+      "F1-Score": "0.7208",
+      "Accuracy": "0.7272",
+      "Balanced Accuracy": "0.7271"
+    },
+    {
+      "Model": "Calibrated SVM",
+      "ROC-AUC": "0.7931 (\u00b10.009)",
+      "PR-AUC": "0.7710 (\u00b10.010)",
+      "Brier Score": "0.1850",
+      "ECE": "0.0255",
+      "Sensitivity (Recall)": "0.6779",
+      "Specificity": "0.7853",
+      "Precision": "0.7584",
+      "F1-Score": "0.7159",
+      "Accuracy": "0.7318",
+      "Balanced Accuracy": "0.7316"
+    },
+    {
+      "Model": "Gradient Boosting",
+      "ROC-AUC": "0.7921 (\u00b10.009)",
+      "PR-AUC": "0.7731 (\u00b10.010)",
+      "Brier Score": "0.1845",
+      "ECE": "0.0228",
+      "Sensitivity (Recall)": "0.6930",
+      "Specificity": "0.7742",
+      "Precision": "0.7531",
+      "F1-Score": "0.7218",
+      "Accuracy": "0.7337",
+      "Balanced Accuracy": "0.7336"
+    },
+    {
+      "Model": "LightGBM",
+      "ROC-AUC": "0.7888 (\u00b10.009)",
+      "PR-AUC": "0.7701 (\u00b10.010)",
+      "Brier Score": "0.1863",
+      "ECE": "0.0314",
+      "Sensitivity (Recall)": "0.7021",
+      "Specificity": "0.7655",
+      "Precision": "0.7486",
+      "F1-Score": "0.7246",
+      "Accuracy": "0.7339",
+      "Balanced Accuracy": "0.7338"
+    },
+    {
+      "Model": "XGBoost",
+      "ROC-AUC": "0.7888 (\u00b10.011)",
+      "PR-AUC": "0.7717 (\u00b10.010)",
+      "Brier Score": "0.1865",
+      "ECE": "0.0350",
+      "Sensitivity (Recall)": "0.6909",
+      "Specificity": "0.7663",
+      "Precision": "0.7461",
+      "F1-Score": "0.7175",
+      "Accuracy": "0.7287",
+      "Balanced Accuracy": "0.7286"
+    }
+  ],
+  "holdout_test_metrics": {
+    "Logistic Regression": {
+      "roc_auc": 0.7973249600639805,
+      "pr_auc": 0.7794243820825959,
+      "accuracy": 0.7333333333333333,
+      "balanced_accuracy": 0.7331704123303366,
+      "sensitivity": 0.6874361593462717,
+      "specificity": 0.7789046653144016,
+      "precision": 0.755331088664422,
+      "npv": 0.7150837988826816,
+      "f1": 0.7197860962566844,
+      "brier_score": 0.18301532271355525,
+      "expected_calibration_error": 0.03253076500942997,
+      "confusion_matrix": [
+        [
+          768,
+          218
+        ],
+        [
+          306,
+          673
+        ]
+      ],
+      "tn": 768,
+      "fp": 218,
+      "fn": 306,
+      "tp": 673
+    },
+    "Calibrated SVM": {
+      "roc_auc": 0.7977082629748035,
+      "pr_auc": 0.779492833322871,
+      "accuracy": 0.7348600508905853,
+      "balanced_accuracy": 0.734680832989742,
+      "sensitivity": 0.6843718079673136,
+      "specificity": 0.7849898580121704,
+      "precision": 0.7596371882086168,
+      "npv": 0.7146814404432132,
+      "f1": 0.7200429876410532,
+      "brier_score": 0.1826656002911436,
+      "expected_calibration_error": 0.02875836761573412,
+      "confusion_matrix": [
+        [
+          774,
+          212
+        ],
+        [
+          309,
+          670
+        ]
+      ],
+      "tn": 774,
+      "fp": 212,
+      "fn": 309,
+      "tp": 670
+    },
+    "Random Forest": {
+      "roc_auc": 0.7980071356498641,
+      "pr_auc": 0.7802778658934246,
+      "accuracy": 0.7424936386768448,
+      "balanced_accuracy": 0.742363466467211,
+      "sensitivity": 0.7058222676200204,
+      "specificity": 0.7789046653144016,
+      "precision": 0.7601760176017601,
+      "npv": 0.7272727272727273,
+      "f1": 0.7319915254237288,
+      "brier_score": 0.18145965294542174,
+      "expected_calibration_error": 0.01581348255694593,
+      "confusion_matrix": [
+        [
+          768,
+          218
+        ],
+        [
+          288,
+          691
+        ]
+      ],
+      "tn": 768,
+      "fp": 218,
+      "fn": 288,
+      "tp": 691
+    },
+    "Gradient Boosting": {
+      "roc_auc": 0.7958000360511926,
+      "pr_auc": 0.771948856738134,
+      "accuracy": 0.7409669211195928,
+      "balanced_accuracy": 0.7408566716461513,
+      "sensitivity": 0.7099080694586313,
+      "specificity": 0.7718052738336714,
+      "precision": 0.7554347826086957,
+      "npv": 0.7282296650717703,
+      "f1": 0.7319641916798315,
+      "brier_score": 0.18266119471417416,
+      "expected_calibration_error": 0.023918048101201062,
+      "confusion_matrix": [
+        [
+          761,
+          225
+        ],
+        [
+          284,
+          695
+        ]
+      ],
+      "tn": 761,
+      "fp": 225,
+      "fn": 284,
+      "tp": 695
+    },
+    "Multilayer Perceptron": {
+      "roc_auc": 0.7964039971241922,
+      "pr_auc": 0.783150593810665,
+      "accuracy": 0.732824427480916,
+      "balanced_accuracy": 0.7327322038674228,
+      "sensitivity": 0.7068437180796732,
+      "specificity": 0.7586206896551724,
+      "precision": 0.7440860215053764,
+      "npv": 0.7227053140096619,
+      "f1": 0.7249869041382923,
+      "brier_score": 0.1828898041552019,
+      "expected_calibration_error": 0.026297544028284495,
+      "confusion_matrix": [
+        [
+          748,
+          238
+        ],
+        [
+          287,
+          692
+        ]
+      ],
+      "tn": 748,
+      "fp": 238,
+      "fn": 287,
+      "tp": 692
+    },
+    "XGBoost": {
+      "roc_auc": 0.7921643561443457,
+      "pr_auc": 0.7633924222387392,
+      "accuracy": 0.7368956743002545,
+      "balanced_accuracy": 0.7367817473225773,
+      "sensitivity": 0.7048008171603677,
+      "specificity": 0.768762677484787,
+      "precision": 0.7516339869281046,
+      "npv": 0.7239732569245463,
+      "f1": 0.7274644175013179,
+      "brier_score": 0.18441885072914949,
+      "expected_calibration_error": 0.045421843910376535,
+      "confusion_matrix": [
+        [
+          758,
+          228
+        ],
+        [
+          289,
+          690
+        ]
+      ],
+      "tn": 758,
+      "fp": 228,
+      "fn": 289,
+      "tp": 690
+    },
+    "LightGBM": {
+      "roc_auc": 0.7900712114651081,
+      "pr_auc": 0.7634471148323294,
+      "accuracy": 0.7424936386768448,
+      "balanced_accuracy": 0.7423815956589392,
+      "sensitivity": 0.710929519918284,
+      "specificity": 0.7738336713995944,
+      "precision": 0.7573449401523396,
+      "npv": 0.7294455066921606,
+      "f1": 0.7334035827186512,
+      "brier_score": 0.18542160140260872,
+      "expected_calibration_error": 0.03469866637403396,
+      "confusion_matrix": [
+        [
+          763,
+          223
+        ],
+        [
+          283,
+          696
+        ]
+      ],
+      "tn": 763,
+      "fp": 223,
+      "fn": 283,
+      "tp": 696
+    },
+    "CatBoost": {
+      "roc_auc": 0.7997641133167719,
+      "pr_auc": 0.7802055688398467,
+      "accuracy": 0.7384223918575064,
+      "balanced_accuracy": 0.7382957938203283,
+      "sensitivity": 0.7027579162410623,
+      "specificity": 0.7738336713995944,
+      "precision": 0.7552140504939627,
+      "npv": 0.7239089184060721,
+      "f1": 0.728042328042328,
+      "brier_score": 0.1804983161252059,
+      "expected_calibration_error": 0.011038409338003116,
+      "confusion_matrix": [
+        [
+          763,
+          223
+        ],
+        [
+          291,
+          688
+        ]
+      ],
+      "tn": 763,
+      "fp": 223,
+      "fn": 291,
+      "tp": 688
+    }
+  },
+  "threshold_recalibration": [
+    {
+      "Model": "Logistic Regression",
+      "Cohort": "Internal Holdout (49.8%)",
+      "Fixed Cutoff": "0.5000",
+      "Fixed Sens": "0.6874",
+      "Fixed Spec": "0.7789",
+      "Optimal Cutoff": "0.5472",
+      "Optimal Sens": "0.6435",
+      "Optimal Spec": "0.8306",
+      "Youden's J": "0.4741"
+    },
+    {
+      "Model": "Calibrated SVM",
+      "Cohort": "Internal Holdout (49.8%)",
+      "Fixed Cutoff": "0.5000",
+      "Fixed Sens": "0.6844",
+      "Fixed Spec": "0.7850",
+      "Optimal Cutoff": "0.5482",
+      "Optimal Sens": "0.6456",
+      "Optimal Spec": "0.8316",
+      "Youden's J": "0.4772"
+    },
+    {
+      "Model": "Random Forest",
+      "Cohort": "Internal Holdout (49.8%)",
+      "Fixed Cutoff": "0.5000",
+      "Fixed Sens": "0.7058",
+      "Fixed Spec": "0.7789",
+      "Optimal Cutoff": "0.4940",
+      "Optimal Sens": "0.7109",
+      "Optimal Spec": "0.7769",
+      "Youden's J": "0.4878"
+    },
+    {
+      "Model": "Gradient Boosting",
+      "Cohort": "Internal Holdout (49.8%)",
+      "Fixed Cutoff": "0.5000",
+      "Fixed Sens": "0.7099",
+      "Fixed Spec": "0.7718",
+      "Optimal Cutoff": "0.5239",
+      "Optimal Sens": "0.6956",
+      "Optimal Spec": "0.7931",
+      "Youden's J": "0.4887"
+    },
+    {
+      "Model": "Multilayer Perceptron",
+      "Cohort": "Internal Holdout (49.8%)",
+      "Fixed Cutoff": "0.5000",
+      "Fixed Sens": "0.7068",
+      "Fixed Spec": "0.7586",
+      "Optimal Cutoff": "0.5376",
+      "Optimal Sens": "0.6752",
+      "Optimal Spec": "0.7951",
+      "Youden's J": "0.4703"
+    },
+    {
+      "Model": "XGBoost",
+      "Cohort": "Internal Holdout (49.8%)",
+      "Fixed Cutoff": "0.5000",
+      "Fixed Sens": "0.7048",
+      "Fixed Spec": "0.7688",
+      "Optimal Cutoff": "0.4619",
+      "Optimal Sens": "0.7446",
+      "Optimal Spec": "0.7434",
+      "Youden's J": "0.4880"
+    },
+    {
+      "Model": "LightGBM",
+      "Cohort": "Internal Holdout (49.8%)",
+      "Fixed Cutoff": "0.5000",
+      "Fixed Sens": "0.7109",
+      "Fixed Spec": "0.7738",
+      "Optimal Cutoff": "0.4923",
+      "Optimal Sens": "0.7191",
+      "Optimal Spec": "0.7698",
+      "Youden's J": "0.4889"
+    },
+    {
+      "Model": "CatBoost",
+      "Cohort": "Internal Holdout (49.8%)",
+      "Fixed Cutoff": "0.5000",
+      "Fixed Sens": "0.7028",
+      "Fixed Spec": "0.7738",
+      "Optimal Cutoff": "0.5637",
+      "Optimal Sens": "0.6568",
+      "Optimal Spec": "0.8266",
+      "Youden's J": "0.4834"
+    }
+  ],
+  "patient_explanation": {
+    "patient_id": 1001,
+    "estimated_risk_probability": 0.950357082697388,
+    "risk_tier": "High Estimated Risk (>50%)",
+    "top_risk_increasing_factors": [
+      {
+        "feature": "mean_arterial_pressure",
+        "patient_value": 2.5,
+        "cohort_mean": 0.2931840352886291,
+        "attribution_score": 2.049983269378334,
+        "clinical_meaning": "Mean Arterial Pressure (MAP): Mean systemic perfusion pressure determining end-organ perfusion and systemic vascular strain."
+      },
+      {
+        "feature": "cholesterol",
+        "patient_value": 2.0,
+        "cohort_mean": 0.3746023667133223,
+        "attribution_score": 1.6152987635737732,
+        "clinical_meaning": "Serum Total Cholesterol: Circulating atherogenic lipoproteins contributing to arterial intimal plaque formation and luminal narrowing."
+      },
+      {
+        "feature": "ap_hi",
+        "patient_value": 2.5,
+        "cohort_mean": 0.32035246214531105,
+        "attribution_score": 1.4344628826346384,
+        "clinical_meaning": "Systolic Blood Pressure: Peak arterial pressure during ventricular contraction; primary mechanical driver of vascular remodeling and coronary wall stress."
+      },
+      {
+        "feature": "age_squared",
+        "patient_value": 0.8002083066897309,
+        "cohort_mean": -0.02382471558838871,
+        "attribution_score": 1.0440707269312837,
+        "clinical_meaning": "Accelerated Vascular Age: Non-linear acceleration in atherosclerotic plaque burden observed in older adults."
+      },
+      {
+        "feature": "log_pulse_pressure",
+        "patient_value": 2.499999999999999,
+        "cohort_mean": 0.43571395935605256,
+        "attribution_score": 0.6899259840867767,
+        "clinical_meaning": "Log Pulse Pressure: Skew-stabilized representation of large-artery pulsatile load."
+      }
+    ],
+    "top_risk_reducing_factors": [
+      {
+        "feature": "age_bp_interaction",
+        "patient_value": 1.9963291998272557,
+        "cohort_mean": 0.02784452953664285,
+        "attribution_score": -3.8807873734846545,
+        "clinical_meaning": "Vascular Age \u00d7 Systolic Burden: Synergistic cardiovascular hazard where advanced arterial age amplifies the harm of hypertension."
+      },
+      {
+        "feature": "metabolic_synergy",
+        "patient_value": 1.0,
+        "cohort_mean": 0.09657717266827841,
+        "attribution_score": -0.6992578777617446,
+        "clinical_meaning": "Metabolic Syndrome Flag: Concurrent elevation of cholesterol and glucose reflecting heightened cardiometabolic risk."
+      },
+      {
+        "feature": "gluc",
+        "patient_value": 2.0,
+        "cohort_mean": 0.23616236162361623,
+        "attribution_score": -0.4083829007016564,
+        "clinical_meaning": "Blood Glucose Level: Biomarker of glycemic dysregulation and insulin resistance promoting vascular endothelial inflammation."
+      },
+      {
+        "feature": "ap_lo",
+        "patient_value": 1.9,
+        "cohort_mean": 0.1350807990838529,
+        "attribution_score": -0.3613333182073012,
+        "clinical_meaning": "Diastolic Blood Pressure: Resting systemic vascular resistance between contractions; high values indicate continuous microvascular tension."
+      },
+      {
+        "feature": "active",
+        "patient_value": 0.0,
+        "cohort_mean": -0.19608092632650465,
+        "attribution_score": -0.07984668696949204,
+        "clinical_meaning": "Physical Activity: Regular aerobic activity preserves endothelial nitric oxide availability and lowers resting vascular tone."
+      }
+    ],
+    "clinical_summary": "Patient exhibits an estimated model probability of 95.0% for cardiovascular disease risk, categorizing into the High Estimated Risk (>50%) band. Top positive risk driver: mean_arterial_pressure.",
+    "disclaimer": "DISCLAIMER: The output represents an estimated statistical model probability and is NOT a medical diagnosis. Clinical prediction tools are decision-support aids designed to assist licensed healthcare providers, not replace professional clinical judgment."
+  }
+}

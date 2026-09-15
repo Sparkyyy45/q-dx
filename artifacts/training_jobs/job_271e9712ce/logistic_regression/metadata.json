@@ -1,0 +1,9 @@
+{
+  "model_key": "logistic_regression",
+  "model_name": "Logistic Regression",
+  "target_column": "TenYearCHD",
+  "dataset_name": "Framingham Heart Study Cohort",
+  "locked_threshold": 0.15469274491201104,
+  "cv_folds": 5,
+  "random_seed": 42
+}

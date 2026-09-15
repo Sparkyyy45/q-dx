@@ -1,0 +1,32 @@
+{
+  "job_id": "job_b0e7f832a9",
+  "dataset_name": "Uploaded: cardio_train_corrected.csv",
+  "target_column": "cardio",
+  "feature_columns": [
+    "id",
+    "age",
+    "gender",
+    "height",
+    "weight",
+    "ap_hi",
+    "ap_lo",
+    "cholesterol",
+    "gluc",
+    "smoke",
+    "alco",
+    "active"
+  ],
+  "test_size": 0.2,
+  "random_seed": 42,
+  "cv_folds": 5,
+  "enable_quantum": true,
+  "models_to_train": [
+    "catboost",
+    "random_forest",
+    "gradient_boosting",
+    "logistic_regression",
+    "vqc"
+  ],
+  "started_at": "2026-09-07T15:56:23Z",
+  "completed_at": "2026-09-07T15:57:14Z"
+}

@@ -1,0 +1,91 @@
+{
+  "dataset_id": "ds_1d62265d5e",
+  "filename": "test_screening_cohort.csv",
+  "file_size_bytes": 73,
+  "row_count": 4,
+  "column_count": 4,
+  "columns": [
+    "age",
+    "cholesterol",
+    "ap_hi",
+    "cardio"
+  ],
+  "column_types": {
+    "age": "numeric",
+    "cholesterol": "numeric",
+    "ap_hi": "numeric",
+    "cardio": "numeric"
+  },
+  "missing_values_total": 0,
+  "missing_values_by_column": {
+    "age": 0,
+    "cholesterol": 0,
+    "ap_hi": 0,
+    "cardio": 0
+  },
+  "duplicate_rows_count": 0,
+  "candidate_targets": [
+    "age",
+    "cholesterol",
+    "ap_hi",
+    "cardio"
+  ],
+  "preview_rows": [
+    {
+      "age": 50,
+      "cholesterol": 1,
+      "ap_hi": 120,
+      "cardio": 0
+    },
+    {
+      "age": 55,
+      "cholesterol": 2,
+      "ap_hi": 140,
+      "cardio": 1
+    },
+    {
+      "age": 60,
+      "cholesterol": 3,
+      "ap_hi": 160,
+      "cardio": 1
+    },
+    {
+      "age": 45,
+      "cholesterol": 1,
+      "ap_hi": 110,
+      "cardio": 0
+    }
+  ],
+  "class_distributions": {
+    "age": {
+      "50": 1,
+      "55": 1,
+      "60": 1,
+      "45": 1
+    },
+    "cholesterol": {
+      "1": 2,
+      "2": 1,
+      "3": 1
+    },
+    "ap_hi": {
+      "120": 1,
+      "140": 1,
+      "160": 1,
+      "110": 1
+    },
+    "cardio": {
+      "0": 2,
+      "1": 2
+    }
+  },
+  "numeric_columns": [
+    "age",
+    "cholesterol",
+    "ap_hi",
+    "cardio"
+  ],
+  "categorical_columns": [],
+  "is_cardio_schema": false,
+  "schema_status": "USER_GENERAL_SCHEMA"
+}

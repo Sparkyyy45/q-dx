@@ -1,0 +1,250 @@
+{
+  "dataset_id": "ds_c31fc89193",
+  "filename": "test_upload_cohort.csv",
+  "file_size_bytes": 265,
+  "row_count": 5,
+  "column_count": 14,
+  "columns": [
+    "age",
+    "sex",
+    "cp",
+    "trestbps",
+    "chol",
+    "fbs",
+    "restecg",
+    "thalach",
+    "exang",
+    "oldpeak",
+    "slope",
+    "ca",
+    "thal",
+    "target"
+  ],
+  "column_types": {
+    "age": "numeric",
+    "sex": "numeric",
+    "cp": "numeric",
+    "trestbps": "numeric",
+    "chol": "numeric",
+    "fbs": "numeric",
+    "restecg": "numeric",
+    "thalach": "numeric",
+    "exang": "numeric",
+    "oldpeak": "numeric",
+    "slope": "numeric",
+    "ca": "numeric",
+    "thal": "numeric",
+    "target": "numeric"
+  },
+  "missing_values_total": 0,
+  "missing_values_by_column": {
+    "age": 0,
+    "sex": 0,
+    "cp": 0,
+    "trestbps": 0,
+    "chol": 0,
+    "fbs": 0,
+    "restecg": 0,
+    "thalach": 0,
+    "exang": 0,
+    "oldpeak": 0,
+    "slope": 0,
+    "ca": 0,
+    "thal": 0,
+    "target": 0
+  },
+  "duplicate_rows_count": 0,
+  "candidate_targets": [
+    "age",
+    "sex",
+    "cp",
+    "trestbps",
+    "chol",
+    "fbs",
+    "restecg",
+    "thalach",
+    "exang",
+    "oldpeak",
+    "slope",
+    "ca",
+    "thal",
+    "target"
+  ],
+  "preview_rows": [
+    {
+      "age": 63.0,
+      "sex": 1.0,
+      "cp": 3.0,
+      "trestbps": 145.0,
+      "chol": 233.0,
+      "fbs": 1.0,
+      "restecg": 0.0,
+      "thalach": 150.0,
+      "exang": 0.0,
+      "oldpeak": 2.3,
+      "slope": 0.0,
+      "ca": 0.0,
+      "thal": 1.0,
+      "target": 1.0
+    },
+    {
+      "age": 67.0,
+      "sex": 1.0,
+      "cp": 0.0,
+      "trestbps": 160.0,
+      "chol": 286.0,
+      "fbs": 0.0,
+      "restecg": 0.0,
+      "thalach": 108.0,
+      "exang": 1.0,
+      "oldpeak": 1.5,
+      "slope": 1.0,
+      "ca": 3.0,
+      "thal": 2.0,
+      "target": 1.0
+    },
+    {
+      "age": 67.0,
+      "sex": 1.0,
+      "cp": 0.0,
+      "trestbps": 120.0,
+      "chol": 229.0,
+      "fbs": 0.0,
+      "restecg": 0.0,
+      "thalach": 129.0,
+      "exang": 1.0,
+      "oldpeak": 2.6,
+      "slope": 1.0,
+      "ca": 2.0,
+      "thal": 3.0,
+      "target": 0.0
+    },
+    {
+      "age": 37.0,
+      "sex": 1.0,
+      "cp": 2.0,
+      "trestbps": 130.0,
+      "chol": 250.0,
+      "fbs": 0.0,
+      "restecg": 1.0,
+      "thalach": 187.0,
+      "exang": 0.0,
+      "oldpeak": 3.5,
+      "slope": 0.0,
+      "ca": 0.0,
+      "thal": 2.0,
+      "target": 1.0
+    },
+    {
+      "age": 41.0,
+      "sex": 0.0,
+      "cp": 1.0,
+      "trestbps": 130.0,
+      "chol": 204.0,
+      "fbs": 0.0,
+      "restecg": 0.0,
+      "thalach": 172.0,
+      "exang": 0.0,
+      "oldpeak": 1.4,
+      "slope": 2.0,
+      "ca": 0.0,
+      "thal": 2.0,
+      "target": 1.0
+    }
+  ],
+  "class_distributions": {
+    "age": {
+      "67": 2,
+      "63": 1,
+      "37": 1,
+      "41": 1
+    },
+    "sex": {
+      "1": 4,
+      "0": 1
+    },
+    "cp": {
+      "0": 2,
+      "3": 1,
+      "2": 1,
+      "1": 1
+    },
+    "trestbps": {
+      "130": 2,
+      "145": 1,
+      "160": 1,
+      "120": 1
+    },
+    "chol": {
+      "233": 1,
+      "286": 1,
+      "229": 1,
+      "250": 1,
+      "204": 1
+    },
+    "fbs": {
+      "0": 4,
+      "1": 1
+    },
+    "restecg": {
+      "0": 4,
+      "1": 1
+    },
+    "thalach": {
+      "150": 1,
+      "108": 1,
+      "129": 1,
+      "187": 1,
+      "172": 1
+    },
+    "exang": {
+      "0": 3,
+      "1": 2
+    },
+    "oldpeak": {
+      "2.3": 1,
+      "1.5": 1,
+      "2.6": 1,
+      "3.5": 1,
+      "1.4": 1
+    },
+    "slope": {
+      "0": 2,
+      "1": 2,
+      "2": 1
+    },
+    "ca": {
+      "0": 3,
+      "3": 1,
+      "2": 1
+    },
+    "thal": {
+      "2": 3,
+      "1": 1,
+      "3": 1
+    },
+    "target": {
+      "1": 4,
+      "0": 1
+    }
+  },
+  "numeric_columns": [
+    "age",
+    "sex",
+    "cp",
+    "trestbps",
+    "chol",
+    "fbs",
+    "restecg",
+    "thalach",
+    "exang",
+    "oldpeak",
+    "slope",
+    "ca",
+    "thal",
+    "target"
+  ],
+  "categorical_columns": [],
+  "is_cardio_schema": false,
+  "schema_status": "USER_GENERAL_SCHEMA"
+}

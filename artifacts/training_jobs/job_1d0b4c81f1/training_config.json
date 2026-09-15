@@ -1,0 +1,23 @@
+{
+  "job_id": "job_1d0b4c81f1",
+  "dataset_name": "mini_test_cohort",
+  "target_column": "cardio",
+  "feature_columns": [
+    "age_years",
+    "ap_hi",
+    "ap_lo",
+    "cholesterol",
+    "gluc",
+    "smoke"
+  ],
+  "test_size": 0.25,
+  "random_seed": 42,
+  "cv_folds": 5,
+  "enable_quantum": false,
+  "models_to_train": [
+    "logistic_regression",
+    "random_forest"
+  ],
+  "started_at": "2026-09-07T13:57:24Z",
+  "completed_at": "2026-09-07T13:57:25Z"
+}

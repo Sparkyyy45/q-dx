@@ -1,0 +1,9 @@
+{
+  "model_key": "random_forest",
+  "model_name": "Random Forest",
+  "target_column": "cardio",
+  "dataset_name": "mini_test_cohort",
+  "locked_threshold": 0.25,
+  "cv_folds": 5,
+  "random_seed": 42
+}

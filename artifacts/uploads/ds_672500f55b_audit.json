@@ -1,0 +1,68 @@
+{
+  "dataset_id": "ds_672500f55b",
+  "filename": "test_require_target.csv",
+  "file_size_bytes": 216,
+  "row_count": 20,
+  "column_count": 3,
+  "columns": [
+    "feature_age",
+    "feature_bp",
+    "custom_label"
+  ],
+  "column_types": {
+    "feature_age": "numeric",
+    "feature_bp": "numeric",
+    "custom_label": "numeric"
+  },
+  "missing_values_total": 0,
+  "missing_values_by_column": {
+    "feature_age": 0,
+    "feature_bp": 0,
+    "custom_label": 0
+  },
+  "duplicate_rows_count": 0,
+  "candidate_targets": [
+    "custom_label"
+  ],
+  "preview_rows": [
+    {
+      "feature_age": 40,
+      "feature_bp": 110,
+      "custom_label": 1
+    },
+    {
+      "feature_age": 41,
+      "feature_bp": 112,
+      "custom_label": 0
+    },
+    {
+      "feature_age": 42,
+      "feature_bp": 114,
+      "custom_label": 1
+    },
+    {
+      "feature_age": 43,
+      "feature_bp": 116,
+      "custom_label": 0
+    },
+    {
+      "feature_age": 44,
+      "feature_bp": 118,
+      "custom_label": 1
+    }
+  ],
+  "class_distributions": {
+    "custom_label": {
+      "1": 10,
+      "0": 10
+    }
+  },
+  "numeric_columns": [
+    "feature_age",
+    "feature_bp",
+    "custom_label"
+  ],
+  "categorical_columns": [],
+  "is_cardio_schema": false,
+  "schema_status": "USER_GENERAL_SCHEMA"
+}

@@ -1,0 +1,23 @@
+{
+  "snapshot_name": "baseline_v1",
+  "timestamp": "2026-09-07T10:11:25.273081+00:00",
+  "command": "python run_all.py --data \"cardio_train_fixed (1).csv\" --external-data framingham.csv --quantum",
+  "python_version": "3.12.3",
+  "datasets": {
+    "cardio_train_fixed (1).csv": "ba6523e1d823640d117c1ce8cbdb356240780f8cc376a42302d97545e0a507d4",
+    "framingham.csv": "63618ce2dcbef80363ca7fbe4fba3214b5d5976d7fbd96e53b783e5b32a83e06"
+  },
+  "files": {
+    "metrics.json": "d9391cf0caa8b4ee3b48d44502b8f4fa72518396bc5eeb235b4ee35db63906c5",
+    "config.json": "f9ffe265402277a7a6902626493d8f551501ed3f8d1cc74b448df2b7458b9f43",
+    "git_commit.txt": "827b5d7ede993bb2115301d3a9c400cfe9f8f4792b096b21650618c060c2a59d",
+    "environment.txt": "7547fe076ca70016271f35881a645ddbd2f15a460be300c8f5e904d7604da951",
+    "dataset_sha256.txt": "c1eeb979786a76345f5ee464c05235d219e796d74f3d4f6ccbd16d88bac5188a",
+    "figures/confusion_matrices.png": "0d7d32f23332976889d6542e9343a1c3da09ff8aa82d6d6bde031440fb04c413",
+    "figures/pr_curves_comparison.png": "6a62d86b92de4bc8d74f4d720901eb5b7c3f7a7e29011fc872990c9e5440c6b6",
+    "figures/calibration_curves.png": "fb66f524bd1b2d83303a8b8878d01cddd3a4ed9d2856a3a33dbf5c0768e35863",
+    "figures/roc_curves_comparison.png": "ed75e914f01f1087d3c2c4bb4430f4f2b92169c106b9fc3b5cc974fdd89672f9",
+    "figures/feature_importance_top.png": "f8dfc5dbff65a6a964748dd5f9f223e07da665477c7241eb24ae644a43e7d5f1",
+    "report/pipeline_report.md": "3f302e507d84a3a84903229e485ee7fa4122f4830b80bb51f6ce2ac825983c15"
+  }
+}

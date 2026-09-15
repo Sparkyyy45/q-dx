@@ -1,0 +1,19 @@
+{
+  "n_qubits": 4,
+  "n_layers": 1,
+  "num_parameters": 8,
+  "entanglement_topology": "circular_cnot",
+  "ansatz_type": "Hardware-Efficient Variational (Ry-Rz-CNOT)",
+  "encoding_type": "Dense Angle Encoding (arctan/minmax)",
+  "measurement_observables": [
+    "Pauli-Z_q0",
+    "Pauli-Z_q1",
+    "Pauli-Z_q2",
+    "Pauli-Z_q3"
+  ],
+  "hilbert_dimension": 16,
+  "model_name": "Quantum Support Vector Machine",
+  "is_fitted": true,
+  "n_support_vectors": 1000,
+  "representation_type": "unsupervised_standard_scaler_pca_22_to_4"
+}

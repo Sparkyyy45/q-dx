@@ -1,0 +1,8 @@
+{
+  "locked_threshold": 0.15469274491201104,
+  "threshold_method": "youden",
+  "threshold_source": "training_oof",
+  "cv_folds": 5,
+  "random_seed": 42,
+  "youden_j": 0.36296236303322976
+}

@@ -1,0 +1,9 @@
+{
+  "model_key": "random_forest",
+  "model_name": "Random Forest",
+  "target_column": "cardio",
+  "dataset_name": "Uploaded: cardio_train_corrected.csv",
+  "locked_threshold": 0.48237801771892835,
+  "cv_folds": 5,
+  "random_seed": 42
+}

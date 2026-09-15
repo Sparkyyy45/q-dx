@@ -1,0 +1,9 @@
+{
+  "model_key": "gradient_boosting",
+  "model_name": "HistGradientBoosting",
+  "target_column": "cardio",
+  "dataset_name": "Canonical Cardiovascular Cohort (Kaggle)",
+  "locked_threshold": 0.5185808096973304,
+  "cv_folds": 5,
+  "random_seed": 42
+}

@@ -1,0 +1,28 @@
+{
+  "job_id": "job_034c554c7f",
+  "dataset_name": "Canonical Cardiovascular Cohort (Kaggle)",
+  "target_column": "cardio",
+  "feature_columns": [
+    "id",
+    "age",
+    "gender",
+    "height",
+    "weight",
+    "ap_hi",
+    "ap_lo",
+    "cholesterol",
+    "gluc",
+    "smoke",
+    "alco",
+    "active"
+  ],
+  "test_size": 0.2,
+  "random_seed": 42,
+  "cv_folds": 5,
+  "enable_quantum": false,
+  "models_to_train": [
+    "logistic_regression"
+  ],
+  "started_at": "2026-09-07T14:57:16Z",
+  "completed_at": "2026-09-07T14:57:18Z"
+}

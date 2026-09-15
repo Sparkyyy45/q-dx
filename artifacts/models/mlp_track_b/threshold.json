@@ -1,0 +1,6 @@
+{
+  "locked_threshold": 0.5189323193060542,
+  "threshold_source": "OOF_Youden",
+  "metric": "Youden_J",
+  "oof_youden_j": 0.44816481648164813
+}

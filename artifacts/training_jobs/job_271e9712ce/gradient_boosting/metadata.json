@@ -1,0 +1,9 @@
+{
+  "model_key": "gradient_boosting",
+  "model_name": "HistGradientBoosting",
+  "target_column": "TenYearCHD",
+  "dataset_name": "Framingham Heart Study Cohort",
+  "locked_threshold": 0.1442902519564002,
+  "cv_folds": 5,
+  "random_seed": 42
+}

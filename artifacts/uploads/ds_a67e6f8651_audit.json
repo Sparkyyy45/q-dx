@@ -1,0 +1,87 @@
+{
+  "dataset_id": "ds_a67e6f8651",
+  "filename": "multi_candidates.csv",
+  "file_size_bytes": 103,
+  "row_count": 6,
+  "column_count": 4,
+  "columns": [
+    "feature_1",
+    "binary_opt_a",
+    "binary_opt_b",
+    "binary_opt_c"
+  ],
+  "column_types": {
+    "feature_1": "numeric",
+    "binary_opt_a": "numeric",
+    "binary_opt_b": "numeric",
+    "binary_opt_c": "numeric"
+  },
+  "missing_values_total": 0,
+  "missing_values_by_column": {
+    "feature_1": 0,
+    "binary_opt_a": 0,
+    "binary_opt_b": 0,
+    "binary_opt_c": 0
+  },
+  "duplicate_rows_count": 0,
+  "candidate_targets": [
+    "binary_opt_a",
+    "binary_opt_b",
+    "binary_opt_c"
+  ],
+  "preview_rows": [
+    {
+      "feature_1": 10,
+      "binary_opt_a": 0,
+      "binary_opt_b": 1,
+      "binary_opt_c": 0
+    },
+    {
+      "feature_1": 20,
+      "binary_opt_a": 1,
+      "binary_opt_b": 0,
+      "binary_opt_c": 1
+    },
+    {
+      "feature_1": 30,
+      "binary_opt_a": 0,
+      "binary_opt_b": 1,
+      "binary_opt_c": 0
+    },
+    {
+      "feature_1": 40,
+      "binary_opt_a": 1,
+      "binary_opt_b": 0,
+      "binary_opt_c": 1
+    },
+    {
+      "feature_1": 50,
+      "binary_opt_a": 0,
+      "binary_opt_b": 1,
+      "binary_opt_c": 0
+    }
+  ],
+  "class_distributions": {
+    "binary_opt_a": {
+      "0": 3,
+      "1": 3
+    },
+    "binary_opt_b": {
+      "1": 3,
+      "0": 3
+    },
+    "binary_opt_c": {
+      "0": 3,
+      "1": 3
+    }
+  },
+  "numeric_columns": [
+    "feature_1",
+    "binary_opt_a",
+    "binary_opt_b",
+    "binary_opt_c"
+  ],
+  "categorical_columns": [],
+  "is_cardio_schema": false,
+  "schema_status": "USER_GENERAL_SCHEMA"
+}

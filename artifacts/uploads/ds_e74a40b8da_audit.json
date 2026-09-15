@@ -1,0 +1,152 @@
+{
+  "dataset_id": "ds_e74a40b8da",
+  "filename": "judge_demo.csv",
+  "file_size_bytes": 141,
+  "row_count": 2,
+  "column_count": 12,
+  "columns": [
+    "age",
+    "gender",
+    "height",
+    "weight",
+    "ap_hi",
+    "ap_lo",
+    "cholesterol",
+    "gluc",
+    "smoke",
+    "alco",
+    "active",
+    "cardio"
+  ],
+  "column_types": {
+    "age": "numeric",
+    "gender": "numeric",
+    "height": "numeric",
+    "weight": "numeric",
+    "ap_hi": "numeric",
+    "ap_lo": "numeric",
+    "cholesterol": "numeric",
+    "gluc": "numeric",
+    "smoke": "numeric",
+    "alco": "numeric",
+    "active": "numeric",
+    "cardio": "numeric"
+  },
+  "missing_values_total": 0,
+  "missing_values_by_column": {
+    "age": 0,
+    "gender": 0,
+    "height": 0,
+    "weight": 0,
+    "ap_hi": 0,
+    "ap_lo": 0,
+    "cholesterol": 0,
+    "gluc": 0,
+    "smoke": 0,
+    "alco": 0,
+    "active": 0,
+    "cardio": 0
+  },
+  "duplicate_rows_count": 0,
+  "candidate_targets": [
+    "age",
+    "gender",
+    "height",
+    "weight",
+    "ap_hi",
+    "ap_lo",
+    "cholesterol",
+    "smoke",
+    "active",
+    "cardio"
+  ],
+  "preview_rows": [
+    {
+      "age": 50,
+      "gender": 1,
+      "height": 165,
+      "weight": 68,
+      "ap_hi": 120,
+      "ap_lo": 80,
+      "cholesterol": 1,
+      "gluc": 1,
+      "smoke": 0,
+      "alco": 0,
+      "active": 1,
+      "cardio": 0
+    },
+    {
+      "age": 60,
+      "gender": 2,
+      "height": 175,
+      "weight": 85,
+      "ap_hi": 150,
+      "ap_lo": 95,
+      "cholesterol": 2,
+      "gluc": 1,
+      "smoke": 1,
+      "alco": 0,
+      "active": 0,
+      "cardio": 1
+    }
+  ],
+  "class_distributions": {
+    "age": {
+      "50": 1,
+      "60": 1
+    },
+    "gender": {
+      "1": 1,
+      "2": 1
+    },
+    "height": {
+      "165": 1,
+      "175": 1
+    },
+    "weight": {
+      "68": 1,
+      "85": 1
+    },
+    "ap_hi": {
+      "120": 1,
+      "150": 1
+    },
+    "ap_lo": {
+      "80": 1,
+      "95": 1
+    },
+    "cholesterol": {
+      "1": 1,
+      "2": 1
+    },
+    "smoke": {
+      "0": 1,
+      "1": 1
+    },
+    "active": {
+      "1": 1,
+      "0": 1
+    },
+    "cardio": {
+      "0": 1,
+      "1": 1
+    }
+  },
+  "numeric_columns": [
+    "age",
+    "gender",
+    "height",
+    "weight",
+    "ap_hi",
+    "ap_lo",
+    "cholesterol",
+    "gluc",
+    "smoke",
+    "alco",
+    "active",
+    "cardio"
+  ],
+  "categorical_columns": [],
+  "is_cardio_schema": true,
+  "schema_status": "CARDIOQ_CANONICAL_SCHEMA"
+}

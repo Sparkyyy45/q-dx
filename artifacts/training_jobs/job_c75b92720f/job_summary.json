@@ -1,0 +1,54 @@
+{
+  "job_id": "job_c75b92720f",
+  "status": "COMPLETED",
+  "dataset_name": "Canonical Cardiovascular Cohort (Kaggle)",
+  "dataset_records": 70000,
+  "target_column": "cardio",
+  "feature_count": 12,
+  "feature_columns": [
+    "id",
+    "age",
+    "gender",
+    "height",
+    "weight",
+    "ap_hi",
+    "ap_lo",
+    "cholesterol",
+    "gluc",
+    "smoke",
+    "alco",
+    "active"
+  ],
+  "train_samples": 56000,
+  "test_samples": 14000,
+  "random_seed": 42,
+  "models_trained": [
+    "logistic_regression"
+  ],
+  "results": {
+    "logistic_regression": {
+      "model_key": "logistic_regression",
+      "model_name": "Logistic Regression",
+      "model_type": "Classical",
+      "training_time_seconds": 0.606,
+      "inference_latency_ms": 0.0,
+      "locked_threshold": 0.4885,
+      "roc_auc": 0.7784,
+      "pr_auc": 0.7566,
+      "accuracy": 0.7144,
+      "sensitivity": 0.6941,
+      "specificity": 0.7346,
+      "precision": 0.7232,
+      "f1": 0.7083,
+      "brier_score": 0.1944,
+      "artifact_path": "artifacts/training_jobs/job_c75b92720f/logistic_regression",
+      "threshold_source": "training_oof",
+      "threshold_method": "youden",
+      "cv_folds": 5
+    }
+  },
+  "started_at": "2026-09-07T13:57:26Z",
+  "completed_at": "2026-09-07T13:57:26Z",
+  "error_message": null,
+  "cv_folds": 5
+}

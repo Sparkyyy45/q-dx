@@ -1,0 +1,62 @@
+{
+  "job_id": "job_2a4e557c8f",
+  "status": "COMPLETED",
+  "dataset_name": "mini_test_cohort",
+  "dataset_records": 120,
+  "target_column": "cardio",
+  "feature_count": 6,
+  "feature_columns": [
+    "age_years",
+    "ap_hi",
+    "ap_lo",
+    "cholesterol",
+    "gluc",
+    "smoke"
+  ],
+  "train_samples": 90,
+  "test_samples": 30,
+  "random_seed": 42,
+  "models_trained": [
+    "logistic_regression",
+    "random_forest"
+  ],
+  "results": {
+    "logistic_regression": {
+      "model_key": "logistic_regression",
+      "model_name": "Logistic Regression",
+      "model_type": "Classical",
+      "training_time_seconds": 0.002,
+      "inference_latency_ms": 0.005,
+      "locked_threshold": 0.4484,
+      "roc_auc": 0.4464,
+      "pr_auc": 0.5584,
+      "accuracy": 0.4,
+      "sensitivity": 0.6429,
+      "specificity": 0.1875,
+      "precision": 0.4091,
+      "f1": 0.5,
+      "brier_score": 0.253,
+      "artifact_path": "artifacts/training_jobs/job_2a4e557c8f/logistic_regression"
+    },
+    "random_forest": {
+      "model_key": "random_forest",
+      "model_name": "Random Forest",
+      "model_type": "Classical",
+      "training_time_seconds": 0.071,
+      "inference_latency_ms": 0.859,
+      "locked_threshold": 0.67,
+      "roc_auc": 0.442,
+      "pr_auc": 0.5934,
+      "accuracy": 0.6333,
+      "sensitivity": 0.2857,
+      "specificity": 0.9375,
+      "precision": 0.8,
+      "f1": 0.4211,
+      "brier_score": 0.2864,
+      "artifact_path": "artifacts/training_jobs/job_2a4e557c8f/random_forest"
+    }
+  },
+  "started_at": "2026-09-07T13:17:49Z",
+  "completed_at": "2026-09-07T13:17:49Z",
+  "error_message": null
+}

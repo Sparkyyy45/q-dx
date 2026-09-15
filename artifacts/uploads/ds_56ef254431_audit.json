@@ -1,0 +1,190 @@
+{
+  "dataset_id": "ds_56ef254431",
+  "filename": "cardio_train_corrected.csv",
+  "file_size_bytes": 2941524,
+  "row_count": 70000,
+  "column_count": 13,
+  "columns": [
+    "id",
+    "age",
+    "gender",
+    "height",
+    "weight",
+    "ap_hi",
+    "ap_lo",
+    "cholesterol",
+    "gluc",
+    "smoke",
+    "alco",
+    "active",
+    "cardio"
+  ],
+  "column_types": {
+    "id": "numeric",
+    "age": "numeric",
+    "gender": "numeric",
+    "height": "numeric",
+    "weight": "numeric",
+    "ap_hi": "numeric",
+    "ap_lo": "numeric",
+    "cholesterol": "numeric",
+    "gluc": "numeric",
+    "smoke": "numeric",
+    "alco": "numeric",
+    "active": "numeric",
+    "cardio": "numeric"
+  },
+  "missing_values_total": 0,
+  "missing_values_by_column": {
+    "id": 0,
+    "age": 0,
+    "gender": 0,
+    "height": 0,
+    "weight": 0,
+    "ap_hi": 0,
+    "ap_lo": 0,
+    "cholesterol": 0,
+    "gluc": 0,
+    "smoke": 0,
+    "alco": 0,
+    "active": 0,
+    "cardio": 0
+  },
+  "duplicate_rows_count": 0,
+  "candidate_targets": [
+    "gender",
+    "cholesterol",
+    "gluc",
+    "smoke",
+    "alco",
+    "active",
+    "cardio"
+  ],
+  "preview_rows": [
+    {
+      "id": 0.0,
+      "age": 18393.0,
+      "gender": 2.0,
+      "height": 168.0,
+      "weight": 62.0,
+      "ap_hi": 110.0,
+      "ap_lo": 80.0,
+      "cholesterol": 1.0,
+      "gluc": 1.0,
+      "smoke": 0.0,
+      "alco": 0.0,
+      "active": 1.0,
+      "cardio": 0.0
+    },
+    {
+      "id": 1.0,
+      "age": 20228.0,
+      "gender": 1.0,
+      "height": 156.0,
+      "weight": 85.0,
+      "ap_hi": 140.0,
+      "ap_lo": 90.0,
+      "cholesterol": 3.0,
+      "gluc": 1.0,
+      "smoke": 0.0,
+      "alco": 0.0,
+      "active": 1.0,
+      "cardio": 1.0
+    },
+    {
+      "id": 2.0,
+      "age": 18857.0,
+      "gender": 1.0,
+      "height": 165.0,
+      "weight": 64.0,
+      "ap_hi": 130.0,
+      "ap_lo": 70.0,
+      "cholesterol": 3.0,
+      "gluc": 1.0,
+      "smoke": 0.0,
+      "alco": 0.0,
+      "active": 0.0,
+      "cardio": 1.0
+    },
+    {
+      "id": 3.0,
+      "age": 17623.0,
+      "gender": 2.0,
+      "height": 169.0,
+      "weight": 82.0,
+      "ap_hi": 150.0,
+      "ap_lo": 100.0,
+      "cholesterol": 1.0,
+      "gluc": 1.0,
+      "smoke": 0.0,
+      "alco": 0.0,
+      "active": 1.0,
+      "cardio": 1.0
+    },
+    {
+      "id": 4.0,
+      "age": 17474.0,
+      "gender": 1.0,
+      "height": 156.0,
+      "weight": 56.0,
+      "ap_hi": 100.0,
+      "ap_lo": 60.0,
+      "cholesterol": 1.0,
+      "gluc": 1.0,
+      "smoke": 0.0,
+      "alco": 0.0,
+      "active": 0.0,
+      "cardio": 0.0
+    }
+  ],
+  "class_distributions": {
+    "gender": {
+      "1": 45530,
+      "2": 24470
+    },
+    "cholesterol": {
+      "1": 52385,
+      "2": 9549,
+      "3": 8066
+    },
+    "gluc": {
+      "1": 59479,
+      "3": 5331,
+      "2": 5190
+    },
+    "smoke": {
+      "0": 63831,
+      "1": 6169
+    },
+    "alco": {
+      "0": 66236,
+      "1": 3764
+    },
+    "active": {
+      "1": 56261,
+      "0": 13739
+    },
+    "cardio": {
+      "0": 35021,
+      "1": 34979
+    }
+  },
+  "numeric_columns": [
+    "id",
+    "age",
+    "gender",
+    "height",
+    "weight",
+    "ap_hi",
+    "ap_lo",
+    "cholesterol",
+    "gluc",
+    "smoke",
+    "alco",
+    "active",
+    "cardio"
+  ],
+  "categorical_columns": [],
+  "is_cardio_schema": true,
+  "schema_status": "CARDIOQ_CANONICAL_SCHEMA"
+}

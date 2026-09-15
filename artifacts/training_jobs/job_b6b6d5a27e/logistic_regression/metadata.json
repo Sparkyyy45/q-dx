@@ -1,0 +1,9 @@
+{
+  "model_key": "logistic_regression",
+  "model_name": "Logistic Regression",
+  "target_column": "actual_risk_outcome",
+  "dataset_name": "Uploaded: test_explicit_target.csv",
+  "locked_threshold": 0.6315773175387243,
+  "cv_folds": 5,
+  "random_seed": 42
+}

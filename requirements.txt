@@ -1,0 +1,26 @@
+# CardioQ: Production Dependencies
+# Precision Cardiovascular Intelligence Platform
+
+# Core Scientific & Data Processing
+numpy>=1.24.0,<3.0.0
+pandas>=2.0.0,<4.0.0
+scipy>=1.10.0
+scikit-learn>=1.3.0
+joblib>=1.3.0
+matplotlib>=3.7.0
+
+# Gradient Boosting & Neural Champions
+catboost>=1.2.0
+lightgbm>=4.0.0
+xgboost>=2.0.0
+torch>=2.0.0
+
+# Quantum Computing & Hardware Simulation
+qiskit>=1.0.0
+qiskit-aer>=0.14.0
+
+# API & Web Server Framework
+fastapi>=0.100.0
+uvicorn>=0.23.0
+pydantic>=2.0.0
+jinja2>=3.1.0

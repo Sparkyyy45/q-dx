@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: cardioq-clinical-workstation
+    env: python
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: python app.py --host 0.0.0.0 --port $PORT
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: CARDIOQ_DEBUG
+        value: false

@@ -1,0 +1,33 @@
+{
+  "job_id": "job_271e9712ce",
+  "dataset_name": "Framingham Heart Study Cohort",
+  "target_column": "TenYearCHD",
+  "feature_columns": [
+    "male",
+    "age",
+    "education",
+    "currentSmoker",
+    "cigsPerDay",
+    "BPMeds",
+    "prevalentStroke",
+    "prevalentHyp",
+    "diabetes",
+    "totChol",
+    "sysBP",
+    "diaBP",
+    "BMI",
+    "heartRate",
+    "glucose"
+  ],
+  "test_size": 0.2,
+  "random_seed": 42,
+  "cv_folds": 5,
+  "enable_quantum": false,
+  "models_to_train": [
+    "catboost",
+    "gradient_boosting",
+    "logistic_regression"
+  ],
+  "started_at": "2026-09-07T16:23:55Z",
+  "completed_at": "2026-09-07T16:23:59Z"
+}

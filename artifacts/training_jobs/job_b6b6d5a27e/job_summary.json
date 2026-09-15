@@ -1,0 +1,45 @@
+{
+  "job_id": "job_b6b6d5a27e",
+  "status": "COMPLETED",
+  "dataset_name": "Uploaded: test_explicit_target.csv",
+  "dataset_records": 20,
+  "target_column": "actual_risk_outcome",
+  "feature_count": 3,
+  "feature_columns": [
+    "feature_age",
+    "feature_bp",
+    "unrelated_flag"
+  ],
+  "train_samples": 16,
+  "test_samples": 4,
+  "random_seed": 42,
+  "models_trained": [
+    "logistic_regression"
+  ],
+  "results": {
+    "logistic_regression": {
+      "model_key": "logistic_regression",
+      "model_name": "Logistic Regression",
+      "model_type": "Classical",
+      "training_time_seconds": 0.099,
+      "inference_latency_ms": 0.053,
+      "locked_threshold": 0.6316,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "accuracy": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "precision": 1.0,
+      "f1": 1.0,
+      "brier_score": 0.0672,
+      "artifact_path": "C:\\Users\\suyas\\Downloads\\heartdisease 3\\heartdisease\\artifacts\\training_jobs\\job_b6b6d5a27e\\logistic_regression",
+      "threshold_source": "training_oof",
+      "threshold_method": "youden",
+      "cv_folds": 5
+    }
+  },
+  "started_at": "2026-09-07T14:57:19Z",
+  "completed_at": "2026-09-07T14:57:19Z",
+  "error_message": null,
+  "cv_folds": 5
+}

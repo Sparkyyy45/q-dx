@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  cardioq-workstation:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: cardioq:latest
+    container_name: cardioq_workstation
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - CARDIOQ_HOST=0.0.0.0
+      - CARDIOQ_PORT=8080
+      - CARDIOQ_DEBUG=false
+      - PYTHONUNBUFFERED=1
+    volumes:
+      # Persist SQLite audit history, uploaded datasets, and custom trained models
+      - ./artifacts:/app/artifacts
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s

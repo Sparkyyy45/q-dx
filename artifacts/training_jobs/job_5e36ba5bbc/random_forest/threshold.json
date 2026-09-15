@@ -1,0 +1,5 @@
+{
+  "locked_threshold": 0.67,
+  "threshold_source": "Train_Youden_J",
+  "youden_j": 1.0
+}

@@ -1,0 +1,82 @@
+{
+  "dataset_id": "ds_b997e39c7f",
+  "filename": "test_no_last_col.csv",
+  "file_size_bytes": 278,
+  "row_count": 20,
+  "column_count": 4,
+  "columns": [
+    "feature_age",
+    "feature_bp",
+    "actual_risk_outcome",
+    "unrelated_flag"
+  ],
+  "column_types": {
+    "feature_age": "numeric",
+    "feature_bp": "numeric",
+    "actual_risk_outcome": "numeric",
+    "unrelated_flag": "numeric"
+  },
+  "missing_values_total": 0,
+  "missing_values_by_column": {
+    "feature_age": 0,
+    "feature_bp": 0,
+    "actual_risk_outcome": 0,
+    "unrelated_flag": 0
+  },
+  "duplicate_rows_count": 0,
+  "candidate_targets": [
+    "actual_risk_outcome",
+    "unrelated_flag"
+  ],
+  "preview_rows": [
+    {
+      "feature_age": 40,
+      "feature_bp": 110,
+      "actual_risk_outcome": 1,
+      "unrelated_flag": 0
+    },
+    {
+      "feature_age": 41,
+      "feature_bp": 112,
+      "actual_risk_outcome": 0,
+      "unrelated_flag": 1
+    },
+    {
+      "feature_age": 42,
+      "feature_bp": 114,
+      "actual_risk_outcome": 1,
+      "unrelated_flag": 0
+    },
+    {
+      "feature_age": 43,
+      "feature_bp": 116,
+      "actual_risk_outcome": 0,
+      "unrelated_flag": 1
+    },
+    {
+      "feature_age": 44,
+      "feature_bp": 118,
+      "actual_risk_outcome": 1,
+      "unrelated_flag": 0
+    }
+  ],
+  "class_distributions": {
+    "actual_risk_outcome": {
+      "1": 10,
+      "0": 10
+    },
+    "unrelated_flag": {
+      "0": 10,
+      "1": 10
+    }
+  },
+  "numeric_columns": [
+    "feature_age",
+    "feature_bp",
+    "actual_risk_outcome",
+    "unrelated_flag"
+  ],
+  "categorical_columns": [],
+  "is_cardio_schema": false,
+  "schema_status": "USER_GENERAL_SCHEMA"
+}
