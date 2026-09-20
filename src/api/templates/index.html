@@ -2100,309 +2100,72 @@
 
       </div>
     </main>
-  <!-- ROLE-BASED LOGIN & ONBOARDING GATEWAY MODAL -->
+  <!-- SIMPLE & CLEAN LOGIN MODAL -->
   <div id="role-gateway-overlay" class="role-gateway-overlay">
-    <div class="role-gateway-modal login-modal-elevated">
+    <div class="simple-login-card">
       
-      <!-- Top Gateway Institutional Security Header -->
-      <div class="gateway-header login-portal-header">
-        <div class="gateway-header-top-row">
-          <div class="gateway-brand">
-            <div class="gateway-brand-badge">Q</div>
-            <div class="gateway-brand-text-block">
-              <div class="gateway-brand-title-wrap">
-                <span class="gateway-brand-name">CardioQ Q-DX™</span>
-                <span class="gateway-brand-tag">CLINICAL INTELLIGENCE SUITE</span>
-              </div>
-              <span class="gateway-brand-sub">MoHFW · Department of Health Research · Clinical AI Workstation</span>
-            </div>
+      <!-- Brand Header -->
+      <div class="simple-login-header">
+        <div class="simple-brand-badge">Q</div>
+        <h2 class="simple-login-title">CardioQ Diagnostics</h2>
+        <p class="simple-login-subtitle">Sign in to your clinical workstation</p>
+      </div>
+
+      <!-- Quick 1-Click Role Login Buttons -->
+      <div class="quick-role-buttons">
+        <button type="button" class="btn-quick-role btn-quick-doctor" onclick="loginAs('researcher')">
+          <span class="role-emoji">👨‍⚕️</span>
+          <div class="role-btn-text">
+            <strong>Continue as Doctor</strong>
+            <small>Full Research &amp; Cardiology Suite</small>
           </div>
-          <div class="gateway-security-chips">
-            <span class="sec-chip sec-chip-online"><span class="chip-pulse-dot"></span> GATEWAY: SECURE [NODE-IN-DEL-04]</span>
-            <span class="sec-chip"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> TLS 1.3 / AES-256</span>
-            <span class="sec-chip"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> ABDM &amp; ISO-13485 CERTIFIED</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+
+        <button type="button" class="btn-quick-role btn-quick-asha" onclick="loginAs('asha')">
+          <span class="role-emoji">🩺</span>
+          <div class="role-btn-text">
+            <strong>Continue as ASHA Worker</strong>
+            <small>आशा कार्यकर्ता फ़ील्ड मोड (Rural Triage)</small>
           </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+      <!-- Divider -->
+      <div class="simple-divider">
+        <span>or sign in with email</span>
+      </div>
+
+      <!-- Standard Email / Password Form -->
+      <form id="simple-login-form" onsubmit="handleSimpleLogin(event)">
+        <div class="simple-form-group">
+          <label for="simple-email">Email / Work ID</label>
+          <input type="text" id="simple-email" class="simple-input" placeholder="doctor@cardioq.ai" value="doctor@cardioq.ai" required>
         </div>
-        <div class="gateway-portal-headline">
-          <h2 class="gateway-title" data-i18n="loginPortalTitle">Clinical Workstation Authentication</h2>
-          <p class="gateway-sub" data-i18n="loginPortalSub">Authenticate using institutional credentials or select an authorized clinical demo profile below to launch your tailored clinical workstation.</p>
+
+        <div class="simple-form-group">
+          <div class="simple-label-row">
+            <label for="simple-password">Password</label>
+            <span class="simple-hint">Demo: any password works</span>
+          </div>
+          <input type="password" id="simple-password" class="simple-input" placeholder="••••••••" value="doctor123" required>
+        </div>
+
+        <button type="submit" class="btn-simple-submit">
+          <span>Sign In</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </form>
+
+      <!-- Clean footer notes with credentials -->
+      <div class="simple-login-footer">
+        <div class="credentials-hint-box">
+          <div class="hint-line"><strong>Doctor:</strong> <code>doctor@cardioq.ai</code> / <code>doctor123</code></div>
+          <div class="hint-line"><strong>ASHA:</strong> <code>asha@cardioq.ai</code> / <code>asha123</code></div>
         </div>
       </div>
 
-      <div class="gateway-body login-split-grid">
-        
-        <!-- LEFT COLUMN: PRE-AUTHORIZED CREDENTIALS (QUICK DEMO ACCESS) -->
-        <div class="login-left-pane">
-          <div class="pane-section-header">
-            <div class="pane-tag-wrap">
-              <span class="pane-kicker-tag">PRE-AUTHORIZED CREDENTIALS</span>
-              <span class="pane-live-badge">CLICK TO AUTO-FILL &amp; SIGN IN</span>
-            </div>
-            <h3 class="pane-title" data-i18n="demoCredentialsTitle">Authorized Clinical Test Profiles</h3>
-            <p class="pane-subtitle" data-i18n="demoCredentialsSub">Select any certified clinical persona below. Credentials will auto-populate with one-click immediate authentication:</p>
-          </div>
-
-          <div class="credential-cards-stack">
-            
-            <!-- Card 1: Cardiologist / Lead Researcher -->
-            <div class="auth-cred-card" id="cred-card-researcher" onclick="autofillLogin('dr.arjun.sharma@cardioq.ai', 'CardioQ#2026', 'researcher')">
-              <div class="auth-cred-header">
-                <div class="auth-cred-avatar icon-res">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-                </div>
-                <div class="auth-cred-meta">
-                  <div class="auth-cred-name">Dr. Arjun Sharma, MD, DM</div>
-                  <div class="auth-cred-role-title">Lead Cardiologist &amp; AI Research Scientist</div>
-                  <div class="auth-cred-org">AIIMS New Delhi · Cardiac Research Lab 04</div>
-                </div>
-                <span class="auth-badge auth-badge-res">RESEARCH SUITE</span>
-              </div>
-              <div class="auth-cred-details">
-                <div class="auth-cred-row">
-                  <span class="cred-label">Institutional ID:</span>
-                  <code class="cred-code" id="code-email-res">dr.arjun.sharma@cardioq.ai</code>
-                  <button type="button" class="btn-copy-cred" onclick="event.stopPropagation(); copyCred('dr.arjun.sharma@cardioq.ai', this)" title="Copy ID">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-                  </button>
-                </div>
-                <div class="auth-cred-row">
-                  <span class="cred-label">Passkey:</span>
-                  <code class="cred-code" id="code-pass-res">CardioQ#2026</code>
-                  <button type="button" class="btn-copy-cred" onclick="event.stopPropagation(); copyCred('CardioQ#2026', this)" title="Copy Passkey">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-                  </button>
-                </div>
-              </div>
-              <div class="auth-cred-scope">
-                <span>Access:</span> Full 7-tab scientific suite, QPU variational circuits, TreeSHAP, dual-track benchmarks
-              </div>
-              <div class="auth-cred-actions">
-                <button type="button" class="btn-autologin btn-autologin-res" onclick="event.stopPropagation(); quickOneClickLogin('dr.arjun.sharma@cardioq.ai', 'CardioQ#2026', 'researcher')">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                  <span>1-Click Sign In (Researcher)</span>
-                </button>
-                <button type="button" class="btn-fill-only" onclick="event.stopPropagation(); autofillLogin('dr.arjun.sharma@cardioq.ai', 'CardioQ#2026', 'researcher')">
-                  Autofill Form
-                </button>
-              </div>
-            </div>
-
-            <!-- Card 2: ASHA Frontline Health Worker -->
-            <div class="auth-cred-card" id="cred-card-asha" onclick="autofillLogin('asha.radha.devi@nhm.gov.in', 'AshaField#2026', 'asha')">
-              <div class="auth-cred-header">
-                <div class="auth-cred-avatar icon-asha">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-                </div>
-                <div class="auth-cred-meta">
-                  <div class="auth-cred-name">राधा देवी · Radha Devi</div>
-                  <div class="auth-cred-role-title">वरिष्ठ आशा कार्यकर्ता (Senior ASHA Worker · NHM-UP-8842)</div>
-                  <div class="auth-cred-org">प्राथमिक स्वास्थ्य केंद्र (PHC) बदलापुर · राष्ट्रीय स्वास्थ्य मिशन</div>
-                </div>
-                <span class="auth-badge auth-badge-asha">FIELD TRIAGE</span>
-              </div>
-              <div class="auth-cred-details">
-                <div class="auth-cred-row">
-                  <span class="cred-label">Institutional ID:</span>
-                  <code class="cred-code" id="code-email-asha">asha.radha.devi@nhm.gov.in</code>
-                  <button type="button" class="btn-copy-cred" onclick="event.stopPropagation(); copyCred('asha.radha.devi@nhm.gov.in', this)" title="Copy ID">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-                  </button>
-                </div>
-                <div class="auth-cred-row">
-                  <span class="cred-label">Passkey:</span>
-                  <code class="cred-code" id="code-pass-asha">AshaField#2026</code>
-                  <button type="button" class="btn-copy-cred" onclick="event.stopPropagation(); copyCred('AshaField#2026', this)" title="Copy Passkey">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-                  </button>
-                </div>
-              </div>
-              <div class="auth-cred-scope">
-                <span>Access:</span> Frontline camp triage, Hindi bilingual UI, instant ABHA Luhn-10 validation, printable referral slip
-              </div>
-              <div class="auth-cred-actions">
-                <button type="button" class="btn-autologin btn-autologin-asha" onclick="event.stopPropagation(); quickOneClickLogin('asha.radha.devi@nhm.gov.in', 'AshaField#2026', 'asha')">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                  <span>1-Click Sign In (आशा मोड)</span>
-                </button>
-                <button type="button" class="btn-fill-only" onclick="event.stopPropagation(); autofillLogin('asha.radha.devi@nhm.gov.in', 'AshaField#2026', 'asha')">
-                  Autofill Form
-                </button>
-              </div>
-            </div>
-
-            <!-- Card 3: Chief Regulatory Auditor / CDSCO -->
-            <div class="auth-cred-card" id="cred-card-auditor" onclick="autofillLogin('auditor.kapoor@mohfw.gov.in', 'AuditSecure#2026', 'researcher')">
-              <div class="auth-cred-header">
-                <div class="auth-cred-avatar icon-audit">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-                </div>
-                <div class="auth-cred-meta">
-                  <div class="auth-cred-name">Dr. Sunita Kapoor, Ph.D.</div>
-                  <div class="auth-cred-role-title">Chief Clinical Auditor &amp; Regulatory Inspector</div>
-                  <div class="auth-cred-org">CDSCO / National Health Authority (NHA) Interop Cell</div>
-                </div>
-                <span class="auth-badge auth-badge-audit">GOVERNANCE &amp; AUDIT</span>
-              </div>
-              <div class="auth-cred-details">
-                <div class="auth-cred-row">
-                  <span class="cred-label">Institutional ID:</span>
-                  <code class="cred-code" id="code-email-auditor">auditor.kapoor@mohfw.gov.in</code>
-                  <button type="button" class="btn-copy-cred" onclick="event.stopPropagation(); copyCred('auditor.kapoor@mohfw.gov.in', this)" title="Copy ID">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-                  </button>
-                </div>
-                <div class="auth-cred-row">
-                  <span class="cred-label">Passkey:</span>
-                  <code class="cred-code" id="code-pass-auditor">AuditSecure#2026</code>
-                  <button type="button" class="btn-copy-cred" onclick="event.stopPropagation(); copyCred('AuditSecure#2026', this)" title="Copy Passkey">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-                  </button>
-                </div>
-              </div>
-              <div class="auth-cred-scope">
-                <span>Access:</span> Model bias audits, calibration drift monitoring, HL7 FHIR bundle export, regulatory traceability
-              </div>
-              <div class="auth-cred-actions">
-                <button type="button" class="btn-autologin btn-autologin-audit" onclick="event.stopPropagation(); quickOneClickLogin('auditor.kapoor@mohfw.gov.in', 'AuditSecure#2026', 'researcher')">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                  <span>1-Click Sign In (Auditor)</span>
-                </button>
-                <button type="button" class="btn-fill-only" onclick="event.stopPropagation(); autofillLogin('auditor.kapoor@mohfw.gov.in', 'AuditSecure#2026', 'researcher')">
-                  Autofill Form
-                </button>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="login-pane-legal-notice">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            <span>Authorized access only. All diagnostic inquiries are cryptographically audited with SHA-256 signatures under DISHA Health Data Management Framework.</span>
-          </div>
-        </div>
-
-        <!-- RIGHT COLUMN: WORKSTATION AUTHENTICATION FORM -->
-        <div class="login-right-pane">
-          
-          <div class="auth-form-card">
-            <div class="auth-form-header">
-              <div class="form-kicker"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> SECURE WORKSTATION TERMINAL</div>
-              <h3 class="auth-form-title">Enter Clinical Credentials</h3>
-              <p class="auth-form-desc">Provide institutional identity to unlock localized quantum/classical model weights and patient records.</p>
-            </div>
-
-            <!-- Operational Mode Switcher -->
-            <div class="workstation-mode-selector">
-              <label class="form-field-label">Target Clinical Workstation:</label>
-              <div class="mode-tabs-grid">
-                <button type="button" class="btn-mode-tab active" id="tab-auth-researcher" onclick="setAuthRoleTab('researcher')">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-                  <span>Researcher / MD</span>
-                </button>
-                <button type="button" class="btn-mode-tab" id="tab-auth-asha" onclick="setAuthRoleTab('asha')">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-                  <span>आशा (ASHA Field)</span>
-                </button>
-              </div>
-            </div>
-
-            <form id="clinical-login-form" onsubmit="handleManualLoginSubmit(event)" novalidate>
-              
-              <!-- Field 1: Email / Work ID -->
-              <div class="form-group-login">
-                <label for="login-email-input" class="form-field-label">
-                  <span>Healthcare Professional ID / Work Email</span>
-                  <span class="required-star">*</span>
-                </label>
-                <div class="login-input-wrap">
-                  <span class="login-input-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                  </span>
-                  <input type="text" id="login-email-input" class="login-text-input" placeholder="e.g. dr.arjun.sharma@cardioq.ai" value="dr.arjun.sharma@cardioq.ai" autocomplete="username" required>
-                </div>
-                <span class="input-subhint">Accepted: Institutional email, ABDM HPR token, or NHM field ID</span>
-              </div>
-
-              <!-- Field 2: Password / PIN -->
-              <div class="form-group-login">
-                <div class="label-row-between">
-                  <label for="login-password-input" class="form-field-label">
-                    <span>Clinical Security Passkey / Access PIN</span>
-                    <span class="required-star">*</span>
-                  </label>
-                  <span class="caps-warning" id="caps-warning" style="display:none;">⚠️ Caps Lock On</span>
-                </div>
-                <div class="login-input-wrap">
-                  <span class="login-input-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                  </span>
-                  <input type="password" id="login-password-input" class="login-text-input" placeholder="••••••••••••" value="CardioQ#2026" autocomplete="current-password" required>
-                  <button type="button" class="btn-toggle-password" onclick="togglePasswordVisibility()" title="Show/Hide passkey">
-                    <svg id="eye-icon-open" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                    <svg id="eye-icon-closed" style="display:none;" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></svg>
-                  </button>
-                </div>
-                <div class="pass-strength-bar">
-                  <div class="pass-strength-fill" id="pass-strength-fill"></div>
-                </div>
-              </div>
-
-              <!-- Field 3: Workstation Terminal Environment -->
-              <div class="form-group-login">
-                <label for="login-terminal-select" class="form-field-label">Institutional Workstation Node</label>
-                <div class="login-input-wrap">
-                  <span class="login-input-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
-                  </span>
-                  <select id="login-terminal-select" class="login-text-input login-select">
-                    <option value="AIIMS-DELHI-CLINICAL-TERMINAL-01" selected>AIIMS Central Workstation (High-Performance QPU Enclave)</option>
-                    <option value="NHM-UP-FIELD-TABLET-8842">NHM Community Health Camp Tablet (Offline Cache Mode)</option>
-                    <option value="CDSCO-REGULATORY-CONSOLE-02">CDSCO / NHA Central Forensic Console (Audit Enclave)</option>
-                    <option value="LOCAL-DIAGNOSTIC-SANDBOX">Local Diagnostic Workstation (Encrypted Memory)</option>
-                  </select>
-                </div>
-              </div>
-
-              <!-- Shift & Security Checkboxes -->
-              <div class="login-meta-row">
-                <label class="custom-checkbox-wrap">
-                  <input type="checkbox" id="login-remember-shift" checked>
-                  <span class="checkmark"></span>
-                  <span class="checkbox-label">Keep workstation unlocked for shift (8 hours)</span>
-                </label>
-                <a href="javascript:void(0)" class="link-emergency-help" onclick="showEmergencyHelp()">Emergency Help</a>
-              </div>
-
-              <!-- Live Dynamic Feedback Alert -->
-              <div id="login-feedback-alert" class="login-alert-box" style="display:none;">
-                <div class="login-alert-icon" id="login-alert-icon"></div>
-                <div class="login-alert-msg" id="login-alert-msg"></div>
-              </div>
-
-              <!-- Primary Submit Button -->
-              <button type="submit" id="btn-submit-clinical-login" class="btn-primary-auth">
-                <span class="btn-auth-icon" id="btn-auth-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-                </span>
-                <span id="btn-auth-label" data-i18n="btnAuthenticate">Authenticate &amp; Launch Workstation</span>
-                <span class="auth-spinner" id="auth-spinner" style="display:none;"></span>
-              </button>
-
-            </form>
-
-            <!-- Fast Preview Bypass for zero-friction exploration -->
-            <div class="login-footer-actions">
-              <span class="divider-text">OR FAST TESTING</span>
-              <button type="button" class="btn-ghost-bypass" onclick="quickGuestBypass()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
-                <span>Direct Clinical Preview (Instant Bypass)</span>
-              </button>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
     </div>
   </div>
 

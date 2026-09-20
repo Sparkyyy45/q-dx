@@ -752,335 +752,74 @@ function setLanguage(lang) {
 let currentAuthRole = 'researcher';
 
 function initUserRole() {
-  // Check if session exists and is within validity
   try {
+    const savedRole = localStorage.getItem('cardioq_user_role');
     const savedAuth = localStorage.getItem('cardioq_auth_user');
-    if (savedAuth) {
-      const userObj = JSON.parse(savedAuth);
-      if (userObj && userObj.role) {
-        updateUserProfileHeader(userObj);
-        applyUserRole(userObj.role);
-        return; // Valid session exists
-      }
+    if (savedRole && savedAuth) {
+      const user = JSON.parse(savedAuth);
+      updateUserProfileHeader(user);
+      applyUserRole(savedRole);
+      return;
     }
   } catch(e) {}
-
-  // Otherwise, present the authentic clinical login gateway
+  // Default: show login gateway
   openRoleGateway();
 }
 
 function openRoleGateway() {
   const overlay = document.getElementById('role-gateway-overlay');
-  if (overlay) {
-    overlay.classList.add('active');
-    const emailInput = document.getElementById('login-email-input');
-    const passInput = document.getElementById('login-password-input');
-    if (emailInput && !emailInput.value) {
-      emailInput.value = 'dr.arjun.sharma@cardioq.ai';
-    }
-    if (passInput && !passInput.value) {
-      passInput.value = 'CardioQ#2026';
-    }
-    clearLoginAlert();
-    setupCapsDetector();
-  }
+  if (overlay) overlay.classList.add('active');
 }
 
 function closeRoleGateway() {
   const overlay = document.getElementById('role-gateway-overlay');
   if (overlay) overlay.classList.remove('active');
   const savedRole = localStorage.getItem('cardioq_user_role');
-  if (!savedRole) {
-    applyUserRole('researcher');
-  }
+  if (!savedRole) applyUserRole('researcher');
 }
 
-function setAuthRoleTab(role) {
-  currentAuthRole = role;
-  const tabRes = document.getElementById('tab-auth-researcher');
-  const tabAsha = document.getElementById('tab-auth-asha');
-  if (tabRes) tabRes.classList.toggle('active', role === 'researcher');
-  if (tabAsha) tabAsha.classList.toggle('active', role === 'asha');
+function loginAs(role) {
+  const isAsha = (role === 'asha');
+  const userData = isAsha ? {
+    name: 'राधा देवी (Radha Devi)',
+    role: 'asha',
+    title: 'Senior ASHA Field Worker',
+    institution: 'PHC Badlapur · NHM',
+    avatar: 'RD',
+    email: 'asha@cardioq.ai'
+  } : {
+    name: 'Dr. Arjun Sharma, MD',
+    role: 'researcher',
+    title: 'Cardiologist & AI Scientist',
+    institution: 'AIIMS New Delhi',
+    avatar: 'Dr',
+    email: 'doctor@cardioq.ai'
+  };
 
-  const termSelect = document.getElementById('login-terminal-select');
-  if (termSelect) {
-    termSelect.value = (role === 'asha') 
-      ? 'NHM-UP-FIELD-TABLET-8842' 
-      : 'AIIMS-DELHI-CLINICAL-TERMINAL-01';
-  }
-}
-
-function autofillLogin(email, password, role) {
-  const emailInput = document.getElementById('login-email-input');
-  const passInput = document.getElementById('login-password-input');
-  if (emailInput) {
-    emailInput.value = email;
-    emailInput.focus();
-  }
-  if (passInput) {
-    passInput.value = password;
-  }
-  setAuthRoleTab(role);
-
-  // Highlight selected card
-  document.querySelectorAll('.auth-cred-card').forEach(c => c.classList.remove('selected-card'));
-  if (email.includes('sharma')) {
-    const c = document.getElementById('cred-card-researcher');
-    if (c) c.classList.add('selected-card');
-  } else if (email.includes('asha') || email.includes('radha')) {
-    const c = document.getElementById('cred-card-asha');
-    if (c) c.classList.add('selected-card');
-  } else if (email.includes('kapoor') || email.includes('auditor')) {
-    const c = document.getElementById('cred-card-auditor');
-    if (c) c.classList.add('selected-card');
-  }
-
-  showLoginAlert('info', `Autofilled credentials for ${email}. Click "Authenticate" below to launch.`);
-}
-
-function quickOneClickLogin(email, password, role) {
-  autofillLogin(email, password, role);
-  performLogin(email, password, role, true);
-}
-
-function quickGuestBypass() {
-  quickOneClickLogin('dr.arjun.sharma@cardioq.ai', 'CardioQ#2026', 'researcher');
-}
-
-function copyCred(text, btnElement) {
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(() => {
-      onCopySuccess(btnElement);
-    }).catch(() => {
-      fallbackCopy(text, btnElement);
-    });
-  } else {
-    fallbackCopy(text, btnElement);
-  }
-}
-
-function fallbackCopy(text, btnElement) {
-  const ta = document.createElement('textarea');
-  ta.value = text;
-  document.body.appendChild(ta);
-  ta.select();
   try {
-    document.execCommand('copy');
-    onCopySuccess(btnElement);
-  } catch (err) {}
-  document.body.removeChild(ta);
-}
+    localStorage.setItem('cardioq_user_role', role);
+    localStorage.setItem('cardioq_auth_user', JSON.stringify(userData));
+  } catch(e) {}
 
-function onCopySuccess(btnElement) {
-  if (!btnElement) return;
-  btnElement.classList.add('copied');
-  const origHtml = btnElement.innerHTML;
-  btnElement.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>`;
-  setTimeout(() => {
-    btnElement.classList.remove('copied');
-    btnElement.innerHTML = origHtml;
-  }, 1800);
-}
+  updateUserProfileHeader(userData);
+  applyUserRole(role);
+  closeRoleGateway();
 
-function togglePasswordVisibility() {
-  const passInput = document.getElementById('login-password-input');
-  const eyeOpen = document.getElementById('eye-icon-open');
-  const eyeClosed = document.getElementById('eye-icon-closed');
-  if (!passInput) return;
-
-  if (passInput.type === 'password') {
-    passInput.type = 'text';
-    if (eyeOpen) eyeOpen.style.display = 'none';
-    if (eyeClosed) eyeClosed.style.display = 'block';
+  if (isAsha) {
+    showToast('🩺 आशा कार्यकर्ता फ़ील्ड मोड सक्रिय (ASHA Triage Active)');
   } else {
-    passInput.type = 'password';
-    if (eyeOpen) eyeOpen.style.display = 'block';
-    if (eyeClosed) eyeClosed.style.display = 'none';
+    showToast('👨‍⚕️ Welcome Doctor. Cardiology Workstation Active.');
   }
 }
 
-function setupCapsDetector() {
-  const passInput = document.getElementById('login-password-input');
-  const capsWarn = document.getElementById('caps-warning');
-  if (!passInput || !capsWarn) return;
-
-  passInput.addEventListener('keyup', (e) => {
-    if (e.getModifierState && e.getModifierState('CapsLock')) {
-      capsWarn.style.display = 'inline-block';
-    } else {
-      capsWarn.style.display = 'none';
-    }
-  });
-}
-
-function showLoginAlert(type, msg) {
-  const box = document.getElementById('login-feedback-alert');
-  const msgEl = document.getElementById('login-alert-msg');
-  const iconEl = document.getElementById('login-alert-icon');
-  if (!box || !msgEl) return;
-
-  box.className = `login-alert-box alert-${type}`;
-  box.style.display = 'flex';
-  msgEl.innerText = msg;
-
-  if (iconEl) {
-    if (type === 'error') {
-      iconEl.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
-    } else if (type === 'success') {
-      iconEl.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>`;
-    } else {
-      iconEl.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12.01" y2="16"/><line x1="12" y1="8" x2="12" y2="12"/></svg>`;
-    }
-  }
-}
-
-function clearLoginAlert() {
-  const box = document.getElementById('login-feedback-alert');
-  if (box) box.style.display = 'none';
-}
-
-function handleManualLoginSubmit(e) {
+function handleSimpleLogin(e) {
   if (e) e.preventDefault();
-  const emailInput = document.getElementById('login-email-input');
-  const passInput = document.getElementById('login-password-input');
-  const email = (emailInput ? emailInput.value : '').trim();
-  const pass = (passInput ? passInput.value : '').trim();
-
-  if (!email) {
-    showLoginAlert('error', 'Please enter your institutional email or ID.');
-    if (emailInput) emailInput.focus();
-    return;
-  }
-  if (!pass) {
-    showLoginAlert('error', 'Please enter your clinical security passkey.');
-    if (passInput) passInput.focus();
-    return;
-  }
-
-  performLogin(email, pass, currentAuthRole, false);
-}
-
-async function performLogin(email, password, role, isQuick = false) {
-  const btn = document.getElementById('btn-submit-clinical-login');
-  const btnLabel = document.getElementById('btn-auth-label');
-  const spinner = document.getElementById('auth-spinner');
-  const btnIcon = document.getElementById('btn-auth-icon');
-  const termSelect = document.getElementById('login-terminal-select');
-  const terminalVal = termSelect ? termSelect.value : 'DEFAULT-TERMINAL';
-
-  if (btn) btn.disabled = true;
-  if (spinner) spinner.style.display = 'inline-block';
-  if (btnIcon) btnIcon.style.display = 'none';
-  if (btnLabel) btnLabel.innerText = isQuick ? 'Validating Demo Passkey...' : 'Authenticating...';
-
-  showLoginAlert('loading', 'Verifying cryptographic credentials against institutional registry...');
-
-  try {
-    const payload = {
-      email: email,
-      password: password,
-      role: role,
-      workstation: terminalVal
-    };
-
-    let authResult = null;
-
-    try {
-      const resp = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      if (resp.ok) {
-        authResult = await resp.json();
-      } else {
-        const errData = await resp.json().catch(() => ({}));
-        throw new Error(errData.message || 'Authentication rejected by security gate.');
-      }
-    } catch (networkOrApiError) {
-      console.warn('Using client-side verification fallback:', networkOrApiError);
-
-      const DEMO_DB = {
-        'dr.arjun.sharma@cardioq.ai': {
-          pass: 'CardioQ#2026',
-          name: 'Dr. Arjun Sharma, MD, DM',
-          role: 'researcher',
-          title: 'Lead Cardiologist & Research Scientist',
-          institution: 'AIIMS New Delhi · Cardiac Lab 04',
-          avatar: 'AS'
-        },
-        'asha.radha.devi@nhm.gov.in': {
-          pass: 'AshaField#2026',
-          name: 'राधा देवी · Radha Devi',
-          role: 'asha',
-          title: 'Senior ASHA Field Worker (NHM-UP-8842)',
-          institution: 'PHC Badlapur · National Health Mission',
-          avatar: 'RD'
-        },
-        'auditor.kapoor@mohfw.gov.in': {
-          pass: 'AuditSecure#2026',
-          name: 'Dr. Sunita Kapoor, Ph.D.',
-          role: 'researcher',
-          title: 'Chief Clinical Auditor & Regulatory Inspector',
-          institution: 'CDSCO / National Health Authority Interop Cell',
-          avatar: 'SK'
-        }
-      };
-
-      const matched = DEMO_DB[email.toLowerCase()];
-      if (matched && matched.pass !== password) {
-        throw new Error('Invalid clinical security passkey. Please check authorized demo credentials.');
-      }
-
-      const resRole = matched ? matched.role : (role || (email.includes('asha') ? 'asha' : 'researcher'));
-      const cleanName = matched ? matched.name : email.split('@')[0].replace('.', ' ').toUpperCase();
-      const initials = matched ? matched.avatar : cleanName.slice(0, 2);
-
-      authResult = {
-        authenticated: true,
-        token: 'cq_mock_' + Math.random().toString(36).substring(2, 10),
-        user: {
-          email: email,
-          name: cleanName,
-          role: resRole,
-          title: matched ? matched.title : 'Authorized Practitioner',
-          institution: matched ? matched.institution : 'Healthcare Facility',
-          avatar: initials
-        }
-      };
-    }
-
-    if (authResult && authResult.authenticated) {
-      showLoginAlert('success', `✓ Cryptographic identity verified. Initializing ${authResult.user.name}...`);
-      
-      const user = authResult.user;
-      localStorage.setItem('cardioq_auth_user', JSON.stringify(user));
-      localStorage.setItem('cardioq_user_role', user.role);
-
-      setTimeout(() => {
-        updateUserProfileHeader(user);
-        applyUserRole(user.role);
-        closeRoleGateway();
-
-        if (btn) btn.disabled = false;
-        if (spinner) spinner.style.display = 'none';
-        if (btnIcon) btnIcon.style.display = 'inline-flex';
-        if (btnLabel) btnLabel.innerText = 'Authenticate & Launch Workstation';
-        clearLoginAlert();
-
-        showToast(`Welcome, ${user.name}. Workstation online.`);
-      }, 700);
-
-    } else {
-      throw new Error(authResult.message || 'Authentication failed.');
-    }
-
-  } catch (err) {
-    showLoginAlert('error', err.message || 'Authentication error. Please check credentials.');
-    if (btn) btn.disabled = false;
-    if (spinner) spinner.style.display = 'none';
-    if (btnIcon) btnIcon.style.display = 'inline-flex';
-    if (btnLabel) btnLabel.innerText = 'Authenticate & Launch Workstation';
+  const emailInput = document.getElementById('simple-email');
+  const email = (emailInput ? emailInput.value : '').toLowerCase().trim();
+  if (email.includes('asha') || email.includes('field') || email.includes('nhm') || email.includes('radha')) {
+    loginAs('asha');
+  } else {
+    loginAs('researcher');
   }
 }
 
@@ -1089,7 +828,6 @@ function updateUserProfileHeader(user) {
   const avatarEl = document.getElementById('user-avatar-pill');
   const nameEl = document.getElementById('user-header-name');
   const orgEl = document.getElementById('user-header-org');
-  
   if (avatarEl) avatarEl.innerText = user.avatar || 'MD';
   if (nameEl) nameEl.innerText = user.name || 'Clinical Practitioner';
   if (orgEl) orgEl.innerText = user.institution || 'CardioQ Workstation';
@@ -1100,28 +838,13 @@ function logoutUser() {
     localStorage.removeItem('cardioq_auth_user');
     localStorage.removeItem('cardioq_user_role');
   } catch(e) {}
-
   openRoleGateway();
-  showLoginAlert('info', 'You have been signed out. Enter credentials to re-enter.');
-}
-
-function showEmergencyHelp() {
-  alert(
-    "CardioQ Clinical Emergency Assistance:\n\n" +
-    "• Institutional Helpdesk: +91-11-26588500 (Ext. 4022)\n" +
-    "• AIIMS Central IT: it-support@cardioq.ai\n" +
-    "• ASHA NHM Helpline: 104 / 1800-180-1104\n\n" +
-    "For demonstration access, use one of the pre-authorized profiles on the left panel."
-  );
 }
 
 function selectUserRole(role) {
-  try {
-    localStorage.setItem('cardioq_user_role', role);
-  } catch (e) {}
-  applyUserRole(role);
-  closeRoleGateway();
+  loginAs(role);
 }
+
 
 function applyUserRole(role) {
   const isAsha = (role === 'asha');
