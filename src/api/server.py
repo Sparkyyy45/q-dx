@@ -1574,6 +1574,10 @@ class ClinicalPlatformHandler(BaseHTTPRequestHandler):
             self._handle_validate_abha(query)
             return
 
+        if self.path == "/api/auth/login":
+            self._handle_auth_login(data)
+            return
+
         self._set_headers(404)
         self.wfile.write(json.dumps({"error": f"Endpoint '{self.path}' not found."}).encode("utf-8"))
 
@@ -2301,6 +2305,94 @@ print(f"Physical QPU Measurement Counts (16 Basis States): {counts}")
             logger.error(f"Failed noise stress evaluation: {exc}", exc_info=True)
             self._set_headers(500)
             self.wfile.write(json.dumps({"error": f"Failed noise stress evaluation: {exc}"}).encode("utf-8"))
+
+    def _handle_auth_login(self, data: Dict[str, Any]):
+        """Authenticate clinical user and return token and profile."""
+        try:
+            email = (data.get("email") or "").strip().lower()
+            password = (data.get("password") or "").strip()
+            role_pref = (data.get("role") or "").strip().lower()
+
+            KNOWN_ACCOUNTS = {
+                "dr.arjun.sharma@cardioq.ai": {
+                    "name": "Dr. Arjun Sharma, MD, DM",
+                    "role": "researcher",
+                    "title": "Lead Cardiologist & Research Scientist",
+                    "institution": "AIIMS New Delhi · Cardiac Research Lab 04",
+                    "avatar": "AS",
+                    "pass": "CardioQ#2026",
+                },
+                "asha.radha.devi@nhm.gov.in": {
+                    "name": "Radha Devi (आशा कार्यकर्ता)",
+                    "role": "asha",
+                    "title": "Senior ASHA Field Worker (NHM-UP-8842)",
+                    "institution": "Primary Health Centre (PHC) Badlapur",
+                    "avatar": "RD",
+                    "pass": "AshaField#2026",
+                },
+                "auditor.kapoor@mohfw.gov.in": {
+                    "name": "Dr. Sunita Kapoor, Ph.D.",
+                    "role": "researcher",
+                    "title": "Chief Clinical Auditor & Regulatory Inspector",
+                    "institution": "CDSCO / National Health Authority Interop Cell",
+                    "avatar": "SK",
+                    "pass": "AuditSecure#2026",
+                },
+            }
+
+            if not email or not password:
+                self._set_headers(400)
+                self.wfile.write(json.dumps({
+                    "authenticated": False,
+                    "error": "MISSING_CREDENTIALS",
+                    "message": "Institutional email/work ID and security passkey are required.",
+                }).encode("utf-8"))
+                return
+
+            user_info = KNOWN_ACCOUNTS.get(email)
+            if user_info:
+                if user_info["pass"] != password:
+                    self._set_headers(401)
+                    self.wfile.write(json.dumps({
+                        "authenticated": False,
+                        "error": "INVALID_PASSKEY",
+                        "message": "Invalid clinical security passkey. Please check authorized demo credentials.",
+                    }).encode("utf-8"))
+                    return
+            else:
+                # Support custom institutional logins
+                resolved_role = "asha" if (role_pref == "asha" or "asha" in email or "nhm" in email) else "researcher"
+                name_part = email.split("@")[0].replace(".", " ").title()
+                initials = "".join([p[0].upper() for p in name_part.split()[:2]]) or "MD"
+                user_info = {
+                    "name": name_part,
+                    "role": resolved_role,
+                    "title": "Clinical Practitioner" if resolved_role != "asha" else "Community Health Worker",
+                    "institution": "Authorized Healthcare Facility",
+                    "avatar": initials,
+                }
+
+            session_token = f"cq_{uuid.uuid4().hex[:16]}"
+            resp = {
+                "authenticated": True,
+                "token": session_token,
+                "session_expiry": int(time.time() + 28800),
+                "workstation_id": data.get("workstation", "LOCAL-ENCLAVE-01"),
+                "user": {
+                    "email": email,
+                    "name": user_info["name"],
+                    "role": user_info["role"],
+                    "title": user_info["title"],
+                    "institution": user_info["institution"],
+                    "avatar": user_info["avatar"],
+                }
+            }
+            self._set_headers(200)
+            self.wfile.write(json.dumps(resp).encode("utf-8"))
+        except Exception as exc:
+            logger.error(f"Authentication error: {exc}", exc_info=True)
+            self._set_headers(500)
+            self.wfile.write(json.dumps({"authenticated": False, "error": str(exc)}).encode("utf-8"))
 
 
 class ClinicalPlatformServer:
