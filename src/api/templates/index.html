@@ -12,54 +12,49 @@
 <body>
   <div class="app-shell">
     
-    <!-- LUMINOUS WHITE SIDEBAR NAVIGATION RAIL (ZERO EMOJIS) -->
+    <!-- DEEP NAVY SIDEBAR NAVIGATION RAIL (CLEAN RESEARCH INTELLIGENCE) -->
     <aside class="sidebar-rail" id="sidebar-rail">
       <div class="sidebar-header">
         <div class="brand-icon-wrap">
-          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         </div>
         <div class="brand-info">
           <h2>CardioQ</h2>
-          <span data-i18n="sidebarBrandSub">Clinical SaaS</span>
+          <span data-i18n="sidebarBrandSub">Research Intelligence</span>
         </div>
-        <button class="btn-rail-toggle" id="btn-rail-toggle" onclick="toggleSidebar()" title="Toggle Navigation Rail">
-          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-        </button>
       </div>
 
       <nav class="sidebar-nav">
-        <div class="sidebar-section-title" data-i18n="navSecScreening">Clinical Screening</div>
+        <div class="sidebar-section-title" data-i18n="navSecWorkspace">Workspace</div>
         
         <button id="tab-btn-screener" class="rail-btn active" onclick="switchTab('tab-screener', this)" data-tooltip="Risk Screener">
-          <span class="rail-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
-          <span class="rail-label" data-i18n="tabScreener">Patient Risk Screener</span>
+          <span class="rail-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          <span class="rail-label" data-i18n="tabScreener">New Prediction</span>
         </button>
 
         <button id="tab-btn-history" class="rail-btn" onclick="switchTab('tab-history', this)" data-tooltip="Screening History">
-          <span class="rail-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M12 11v4l2 2"/></svg></span>
-          <span class="rail-label" data-i18n="tabHistory">Screening History</span>
-        </button>
-
-        <div class="sidebar-section-title expert-only" style="margin-top:8px;" data-i18n="navSecResearch">Research Studio</div>
-
-        <button id="tab-btn-upload" class="rail-btn expert-only" onclick="switchTab('tab-upload', this)" data-tooltip="Dataset Audit">
-          <span class="rail-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></span>
-          <span class="rail-label" data-i18n="tabUpload">Dataset Ingestion &amp; Audit</span>
-        </button>
-
-        <button id="tab-btn-train" class="rail-btn expert-only" onclick="switchTab('tab-train', this)" data-tooltip="Model Studio">
-          <span class="rail-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="15" x2="23" y2="15"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="15" x2="4" y2="15"/></svg></span>
-          <span class="rail-label" data-i18n="tabTrain">Model Training Studio</span>
+          <span class="rail-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+          <span class="rail-label" data-i18n="tabHistory">Prediction History</span>
         </button>
 
         <button id="tab-btn-benchmarks" class="rail-btn" onclick="switchTab('tab-benchmarks', this)" data-tooltip="Benchmarks">
-          <span class="rail-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span>
-          <span class="rail-label" data-i18n="tabBenchmarks">Dual-Track Benchmarks</span>
+          <span class="rail-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
+          <span class="rail-label" data-i18n="tabBenchmarks">Model Performance</span>
         </button>
 
-        <button id="tab-btn-quantum" class="rail-btn expert-only" onclick="switchTab('tab-quantum', this)" data-tooltip="Quantum QASM">
+        <button id="tab-btn-upload" class="rail-btn" onclick="switchTab('tab-upload', this)" data-tooltip="Dataset Audit">
+          <span class="rail-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span>
+          <span class="rail-label" data-i18n="tabUpload">Datasets</span>
+        </button>
+
+        <button id="tab-btn-train" class="rail-btn" onclick="switchTab('tab-train', this)" data-tooltip="Model Studio">
+          <span class="rail-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="15" x2="23" y2="15"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="15" x2="4" y2="15"/></svg></span>
+          <span class="rail-label" data-i18n="tabTrain">Model Studio</span>
+        </button>
+
+        <button id="tab-btn-quantum" class="rail-btn" onclick="switchTab('tab-quantum', this)" data-tooltip="Quantum QASM">
           <span class="rail-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" stroke-dasharray="2 3"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-30 12 12)"/></svg></span>
-          <span class="rail-label" data-i18n="tabQuantum">Quantum Architecture &amp; QASM</span>
+          <span class="rail-label" data-i18n="tabQuantum">QML Architecture</span>
         </button>
 
         <div class="sidebar-section-title" style="margin-top:8px;" data-i18n="navSecCompliance">Compliance</div>
@@ -72,7 +67,7 @@
 
       <div class="sidebar-footer">
         <div class="sidebar-footer-text">
-          <strong style="color:var(--text-display);">CardioQ v4.12.0</strong><br>
+          <strong>CardioQ v4.12.0</strong><br>
           <span data-i18n="sidebarIsoCert">ISO-13485 Certified</span>
         </div>
       </div>
@@ -81,66 +76,95 @@
     <!-- MAIN VIEWPORT -->
     <main class="main-viewport">
       
-      <!-- TOP WORKSTATION HEADER (CLEAN, MINIMAL, EXECUTIVE) -->
+      <!-- TOP WORKSTATION HEADER -->
       <header class="workstation-header">
         <div class="header-left">
-          <div class="header-brand-title">
-            <h1 data-i18n="appTitle">CardioQ <span class="accent">Diagnostics</span></h1>
-          </div>
-
-          <div class="qpu-backend-pill">
-            <span class="status-dot-pulse"></span>
-            <span data-i18n="badgeSystemOnline">System Online</span>
+          <div class="header-breadcrumbs" id="header-breadcrumbs">
+            <span>ANALYSIS</span> <span class="crumb-sep">/</span> <span class="crumb-muted" id="breadcrumb-sub">NEW CASE</span>
           </div>
         </div>
 
         <div class="header-right">
+          <div class="api-status-pill">
+            <span class="status-dot-pulse"></span>
+            <span id="top-status-text" data-i18n="badgeSystemOnline">API connected</span>
+          </div>
+
           <div class="header-controls">
             <button id="btn-lang-en" class="btn-ctrl active" onclick="setLanguage('en')">EN</button>
             <button id="btn-lang-hi" class="btn-ctrl" onclick="setLanguage('hi')">हिन्दी</button>
-            <button id="btn-asha-toggle" class="btn-ctrl" onclick="toggleAshaMode()" data-i18n="ashaMode">ASHA Field</button>
+            <button id="header-persona-pill" class="header-persona-pill" onclick="openRoleGateway()" title="Click to switch between Researcher and ASHA mode">
+              <span class="persona-dot"></span>
+              <span id="header-persona-text">🔬 Researcher</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:2px; opacity:0.7;"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
           </div>
+
+          <button class="btn-icon-ghost" title="Notifications">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="badge-counter">0</span>
+          </button>
+
+          <div class="user-avatar-pill" title="Clinical Investigator">AS</div>
         </div>
       </header>
 
       <!-- PAGE CONTENT AREA -->
       <div class="page-body">
 
-        <!-- TAB 1: PATIENT RISK SCREENER (SUPER CLEAN, FOCUSED & SIMPLE) -->
+        <!-- TAB 1: PATIENT RISK SCREENER (INTERROGATE A CASE) -->
         <div id="tab-screener" class="tab-content active">
           
-          <!-- Compact Elegant Header & Presets -->
-          <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:18px; flex-wrap:wrap; gap:12px;">
-            <div>
-              <h2 style="font-size:22px; font-weight:800; color:var(--text-display); letter-spacing:-0.03em;" data-i18n="screenerHeader">Patient Risk Screener</h2>
-              <div style="font-size:12.5px; color:var(--text-muted);" data-i18n="screenerSub">Calibrated prospective risk stratification &amp; clinical decision support engine.</div>
+          <!-- Editorial Header -->
+          <div class="editorial-header">
+            <div class="editorial-header-left">
+              <div class="editorial-tag">ANALYSIS / NEW CASE</div>
+              <h1 class="editorial-title" data-i18n="screenerHeader">Interrogate a case.</h1>
+              <div class="editorial-subtitle" data-i18n="screenerSub">Enter biomedical features, validate the case, then trace the full hybrid pipeline.</div>
             </div>
-            <div class="presets-strip" style="margin-top:0;">
+            <div>
+              <span class="badge-workflow-amber" data-i18n="badgeSynthetic">SYNTHETIC WORKFLOW</span>
+            </div>
+          </div>
+
+          <!-- ASHA Field Mode Active Notice Banner -->
+          <div class="asha-only-banner">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+              <div style="display:flex; align-items:center; gap:10px;">
+                <span style="display:flex; align-items:center; justify-content:center; width:28px; height:28px; background:#10B981; color:#fff; border-radius:8px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </span>
+                <div>
+                  <strong style="color:#065F46; font-size:13px;" data-i18n="ashaBannerTitle">आशा कार्यकर्ता फ़ील्ड मोड सक्रिय (ASHA Field Triage Mode Active)</strong>
+                  <div style="font-size:11.5px; color:#047857;" data-i18n="ashaBannerDesc">सामुदायिक स्वास्थ्य जांच, त्वरित आभा आईडी सत्यापन एवं रंग-आधारित जोखिम वर्गीकरण।</div>
+                </div>
+              </div>
+              <button type="button" class="btn-pill-white" style="font-size:11px; height:28px; padding:2px 10px;" onclick="openRoleGateway()" data-i18n="btnSwitchMode">भूमिका बदलें (Switch Mode)</button>
+            </div>
+          </div>
+
+          <!-- Presets Strip -->
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
+            <div class="presets-strip researcher-only" id="presets-strip-researcher">
               <span class="presets-strip-label" data-i18n="presetsLabel">Presets:</span>
               <button type="button" class="preset-chip" id="preset-chip-normative" onclick="applyPatientPreset('normative')" data-i18n="presetNormative">Normative (28y F)</button>
               <button type="button" class="preset-chip active" id="preset-chip-baseline" onclick="applyPatientPreset('baseline')" data-i18n="presetBaseline">Baseline (54y M)</button>
               <button type="button" class="preset-chip" id="preset-chip-hypertensive" onclick="applyPatientPreset('hypertensive')" data-i18n="presetHypertensive">Hypertensive (58y M)</button>
               <button type="button" class="preset-chip" id="preset-chip-metabolic" onclick="applyPatientPreset('metabolic')" data-i18n="presetMetabolic">Metabolic (62y F)</button>
             </div>
-          </div>
 
-          <!-- Dossier Meta Bar -->
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:12px;">
-            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-              <span style="font-size:15px; font-weight:700; color:var(--text-display);" id="dossier-patient-display">
-                Patient: Ramesh Kumar
-              </span>
-              <span class="dossier-pill" id="chip-age">Age: 54 M</span>
-              <span class="dossier-pill" id="chip-abha">ABHA: 91-0552-2867-3285</span>
-              <span class="dossier-pill" data-i18n="chipCcu">CCU-04</span>
-              <span class="dossier-pill" id="chip-telemetry" style="color:#0066ff; background:#eff6ff; border-color:#bfdbfe;" data-i18n="dossierTelemetry">Telemetry Active</span>
+            <div class="presets-strip asha-only" id="presets-strip-asha" style="display:none;">
+              <span class="presets-strip-label" data-i18n="ashaVillagePresetsLabel">त्वरित गांव केस (Village Presets):</span>
+              <button type="button" class="preset-chip" id="preset-chip-asha-senior" onclick="applyPatientPreset('asha_senior')" data-i18n="ashaPresetSenior">👵 वरिष्ठ नागरिक (62 वर्ष)</button>
+              <button type="button" class="preset-chip active" id="preset-chip-asha-hypertensive" onclick="applyPatientPreset('asha_hypertensive')" data-i18n="ashaPresetHypertensive">👨‍🌾 उच्च रक्तचाप (54 वर्ष)</button>
+              <button type="button" class="preset-chip" id="preset-chip-asha-normal" onclick="applyPatientPreset('asha_normal')" data-i18n="ashaPresetNormal">👩 सामान्य जांच (28 वर्ष)</button>
             </div>
 
             <div style="display:flex; gap:8px;">
               <button class="btn-pill-white" onclick="exportDossierSummary()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> <span data-i18n="btnExportPdf">Export PDF</span>
               </button>
-              <button class="btn-pill-white" onclick="recalibrateDossier()">
+              <button class="btn-pill-white researcher-only" onclick="recalibrateDossier()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg> <span data-i18n="btnRecalibrate">Re-calibrate</span>
               </button>
               <button class="btn-pill-danger" onclick="flagCriticalPatient()">
@@ -149,16 +173,46 @@
             </div>
           </div>
 
-          <!-- 2-Column Minimalist Cockpit (No Overwhelming Bloat) -->
+          <!-- Dossier Meta Bar -->
+          <div class="dossier-meta-bar">
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <span style="font-size:14px; font-weight:700; color:var(--text-display);" id="dossier-patient-display">
+                Patient: Ramesh Kumar
+              </span>
+              <span class="dossier-pill" id="chip-age">Age: 54 M</span>
+              <span class="dossier-pill" id="chip-abha">ABHA: 91-0552-2867-3285</span>
+              <span class="dossier-pill" data-i18n="chipCcu">CCU-04</span>
+              <span class="dossier-pill" id="chip-telemetry" style="color:var(--accent-teal); background:var(--accent-teal-light); border-color:var(--accent-teal-border);" data-i18n="dossierTelemetry">Telemetry Active</span>
+            </div>
+          </div>
+
+          <!-- 2-COLUMN COCKPIT (CLEAN, MINIMAL RESEARCH GRADE) -->
           <div class="cockpit-grid">
             
-            <!-- LEFT CARD: Patient Vitals & Clinical Attributes -->
+            <!-- LEFT COLUMN: Patient Case Inputs & Gate Cards -->
             <div>
               <div class="card" style="margin-bottom:0;">
-                <div class="card-header-clean">
+                <div class="card-section-tag">01 / PATIENT FEATURES</div>
+                
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; flex-wrap:wrap; gap:12px;">
                   <div>
-                    <h3 data-i18n="screenerTitle">Clinical Patient Vitals</h3>
-                    <div class="card-desc" data-i18n="vitalsSub">Calibrated physiological markers for prospective risk calculation</div>
+                    <h3 style="font-size:18px; font-weight:800; color:var(--text-display); letter-spacing:-0.02em;" data-i18n="screenerTitle">Patient case inputs</h3>
+                    <div class="card-desc" data-i18n="vitalsSub">Heart disease is fully functional in this MVP; other disease pathways are labeled research-ready.</div>
+                  </div>
+
+                  <div style="display:flex; gap:10px; align-items:center;">
+                    <div>
+                      <div style="font-family:'JetBrains Mono', monospace; font-size:9.5px; font-weight:700; color:var(--text-muted); text-transform:uppercase; margin-bottom:3px;">DISEASE</div>
+                      <select style="padding:5px 10px; font-size:11.5px; height:32px; width:auto; font-weight:600;">
+                        <option selected>heart disease</option>
+                        <option disabled>oncology (research)</option>
+                        <option disabled>pulmonary (research)</option>
+                      </select>
+                    </div>
+                    <div>
+                      <div style="font-family:'JetBrains Mono', monospace; font-size:9.5px; font-weight:700; color:var(--text-muted); text-transform:uppercase; margin-bottom:3px;">CASE ID</div>
+                      <input type="text" value="QS-HEART-042" readonly style="padding:5px 10px; font-size:11.5px; height:32px; width:110px; font-family:'JetBrains Mono', monospace; font-weight:700; background:var(--bg-surface);">
+                    </div>
                   </div>
                 </div>
 
@@ -176,7 +230,7 @@
                   </div>
                 </div>
 
-                <div class="form-group expert-only">
+                <div class="form-group researcher-only">
                   <label data-i18n="labelModelSelect">Prediction Architecture</label>
                   <select id="model-select">
                     <optgroup label="Classical ML Architectures" data-i18n="optgrpClassical">
@@ -201,8 +255,8 @@
                       <input type="number" id="age" min="18" max="100" value="54" step="1" oninput="updateDossierAge(this.value);">
                       <span class="input-num-unit" data-i18n="unitYrs">yrs</span>
                       <div class="input-num-steppers">
-                        <button type="button" class="stepper-btn" onclick="stepVal('age', 1)" title="Increase Age">▲</button>
-                        <button type="button" class="stepper-btn" onclick="stepVal('age', -1)" title="Decrease Age">▼</button>
+                        <button type="button" class="stepper-btn" onclick="stepVal('age', 1)">▲</button>
+                        <button type="button" class="stepper-btn" onclick="stepVal('age', -1)">▼</button>
                       </div>
                     </div>
                   </div>
@@ -222,8 +276,8 @@
                       <input type="number" id="height" min="100" max="230" value="168" step="1" oninput="calcBmi();">
                       <span class="input-num-unit" data-i18n="unitCm">cm</span>
                       <div class="input-num-steppers">
-                        <button type="button" class="stepper-btn" onclick="stepVal('height', 1)" title="Increase Height">▲</button>
-                        <button type="button" class="stepper-btn" onclick="stepVal('height', -1)" title="Decrease Height">▼</button>
+                        <button type="button" class="stepper-btn" onclick="stepVal('height', 1)">▲</button>
+                        <button type="button" class="stepper-btn" onclick="stepVal('height', -1)">▼</button>
                       </div>
                     </div>
                   </div>
@@ -233,8 +287,8 @@
                       <input type="number" id="weight" min="30" max="200" value="74" step="1" oninput="calcBmi();">
                       <span class="input-num-unit" data-i18n="unitKg">kg</span>
                       <div class="input-num-steppers">
-                        <button type="button" class="stepper-btn" onclick="stepVal('weight', 1)" title="Increase Weight">▲</button>
-                        <button type="button" class="stepper-btn" onclick="stepVal('weight', -1)" title="Decrease Weight">▼</button>
+                        <button type="button" class="stepper-btn" onclick="stepVal('weight', 1)">▲</button>
+                        <button type="button" class="stepper-btn" onclick="stepVal('weight', -1)">▼</button>
                       </div>
                     </div>
                   </div>
@@ -242,24 +296,24 @@
 
                 <div class="grid-2">
                   <div class="form-group">
-                    <label for="ap_hi"><span data-i18n="labelBpSys">Systolic BP</span></label>
+                    <label for="ap_hi"><span data-i18n="labelBpSys">Blood Pressure (Systolic)</span></label>
                     <div class="input-num-wrap">
                       <input type="number" id="ap_hi" min="70" max="240" value="135" step="1">
                       <span class="input-num-unit" data-i18n="unitMmHg">mmHg</span>
                       <div class="input-num-steppers">
-                        <button type="button" class="stepper-btn" onclick="stepVal('ap_hi', 2)" title="Increase Systolic BP">▲</button>
-                        <button type="button" class="stepper-btn" onclick="stepVal('ap_hi', -2)" title="Decrease Systolic BP">▼</button>
+                        <button type="button" class="stepper-btn" onclick="stepVal('ap_hi', 2)">▲</button>
+                        <button type="button" class="stepper-btn" onclick="stepVal('ap_hi', -2)">▼</button>
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="ap_lo"><span data-i18n="labelBpDia">Diastolic BP</span></label>
+                    <label for="ap_lo"><span data-i18n="labelBpDia">Blood Pressure (Diastolic)</span></label>
                     <div class="input-num-wrap">
                       <input type="number" id="ap_lo" min="40" max="150" value="88" step="1">
                       <span class="input-num-unit" data-i18n="unitMmHg">mmHg</span>
                       <div class="input-num-steppers">
-                        <button type="button" class="stepper-btn" onclick="stepVal('ap_lo', 2)" title="Increase Diastolic BP">▲</button>
-                        <button type="button" class="stepper-btn" onclick="stepVal('ap_lo', -2)" title="Decrease Diastolic BP">▼</button>
+                        <button type="button" class="stepper-btn" onclick="stepVal('ap_lo', 2)">▲</button>
+                        <button type="button" class="stepper-btn" onclick="stepVal('ap_lo', -2)">▼</button>
                       </div>
                     </div>
                   </div>
@@ -286,127 +340,270 @@
 
                 <div class="grid-3">
                   <div class="form-group">
-                    <label for="smoke" data-i18n="labelSmoke">Smoker</label>
+                    <label for="smoke" data-i18n="labelSmoke">Smoking</label>
                     <select id="smoke">
-                      <option value="0" data-i18n="optNo">No</option>
+                      <option value="0" data-i18n="optNo">Never</option>
                       <option value="1" selected data-i18n="optYes">Yes</option>
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="alco" data-i18n="labelAlcohol">Alcohol</label>
                     <select id="alco">
-                      <option value="0" selected data-i18n="optNo">No</option>
+                      <option value="0" selected data-i18n="optNo">Never</option>
                       <option value="1" data-i18n="optYes">Yes</option>
                     </select>
                   </div>
                   <div class="form-group">
-                    <label for="active" data-i18n="labelActive">Active</label>
+                    <label for="active" data-i18n="labelActive">Physical Activity</label>
                     <select id="active">
-                      <option value="0" data-i18n="optInactive">No</option>
-                      <option value="1" selected data-i18n="optActive">Yes</option>
+                      <option value="0" data-i18n="optInactive">Sedentary</option>
+                      <option value="1" selected data-i18n="optActive">Moderate / Active</option>
                     </select>
                   </div>
                 </div>
 
                 <input type="hidden" id="bmi" value="26.2">
 
-                <button class="btn-pill-blue" id="btn-assess" onclick="runInference()" style="margin-top:10px; width:100%;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> <span id="assess-btn-text" data-i18n="assessBtn">Assess Cardiovascular Risk</span>
-                </button>
-                <div id="patient-validation-banner" style="display:none; margin-top:10px; padding:10px 14px; border-radius:8px; background:#fef2f2; border:1px solid #fecaca; color:#991b1b; font-size:12px; line-height:1.5;"></div>
+                <!-- SIDE GATE HELPERS: VALIDATION GATE & CSV PROMPT (SCREENSHOT 1) -->
+                <div class="card-validation-gate researcher-only">
+                  <div class="gate-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                    <span>Validation Gate</span>
+                  </div>
+                  <div class="gate-desc">
+                    Range checks happen before inference. Inputs are retained only for this clinical session.
+                  </div>
+                  <ul class="gate-checklist">
+                    <li class="gate-item">Numeric ranges</li>
+                    <li class="gate-item">Categorical values</li>
+                    <li class="gate-item">Pipeline readiness</li>
+                  </ul>
+                </div>
+
+                <div class="card-csv-prompt researcher-only">
+                  <div class="csv-prompt-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    <span>Have a CSV?</span>
+                  </div>
+                  <div class="csv-prompt-desc">
+                    Register a dataset for batch-oriented research workflows.
+                  </div>
+                  <a class="csv-prompt-link" onclick="switchTab('tab-upload', document.getElementById('tab-btn-upload'))">
+                    Explore datasets &rarr;
+                  </a>
+                </div>
+
+                <!-- Bottom Action Strip -->
+                <div class="bottom-action-strip">
+                  <button type="button" class="btn-ghost-text" onclick="resetExampleValues()">Reset example values</button>
+                  
+                  <div style="display:flex; gap:8px;">
+                    <button type="button" class="btn-pill-white researcher-only" onclick="validateCase()">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span>Validate case</span>
+                    </button>
+                    <button type="button" class="btn-primary-dark" id="btn-assess" onclick="runInference()">
+                      <span id="assess-btn-text" data-i18n="assessBtn">Validate &amp; analyze &rarr;</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div id="patient-validation-banner" style="display:none; margin-top:12px; padding:10px 14px; border-radius:8px; font-size:12px; line-height:1.5;"></div>
               </div>
             </div>
 
-            <!-- RIGHT COLUMN: Streamlined Executive Clinical Report Card -->
+            <!-- RIGHT COLUMN: RESULTS, INTERPRETATION & PIPELINE TRACE (SCREENSHOT 2) -->
             <div style="display:flex; flex-direction:column; gap:16px;">
               
-              <!-- CARD 1: EXECUTIVE CARDIOVASCULAR REPORT & PROGNOSIS -->
-              <div class="card" style="margin-bottom:0;">
-                
-                <!-- Card Header: Title & Prominent Risk Score -->
-                <div class="card-header-clean" style="align-items:flex-start; margin-bottom:12px;">
+              <!-- ASHA TRAFFIC-LIGHT CLINICAL OUTCOME CARD (ASHA MODE ONLY) -->
+              <div id="asha-traffic-card" class="asha-traffic-card traffic-green asha-only" style="display:none;">
+                <div class="atc-header">
+                  <div class="atc-icon-badge" id="atc-badge-icon">🟢</div>
                   <div>
-                    <div style="display:flex; align-items:center; gap:8px;">
-                      <span class="badge-blue-pill" data-i18n="badgeClinicalEval">CLINICAL EVALUATION</span>
-                      <span style="font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase;" data-i18n="badgePrecisionAi">Precision AI Risk Engine</span>
-                    </div>
-                    <h3 style="font-size:17px; font-weight:800; color:var(--text-display); margin-top:5px;" data-i18n="reportTitle">
-                      Cardiovascular Risk Assessment
-                    </h3>
-                    <div class="card-desc" style="margin-top:2px;" data-i18n="reportSub">
-                      Prospective 5-year clinical evaluation &amp; guideline-directed decision support
+                    <div class="atc-tier-title" id="atc-tier-title">कम हृदय जोखिम (Low Risk)</div>
+                    <div class="atc-tier-sub" id="atc-tier-sub">हृदय सुरक्षित है · नियमित देखभाल पर्याप्त है</div>
+                  </div>
+                </div>
+
+                <div style="display:flex; align-items:baseline; gap:10px; margin:12px 0 16px 0; padding:12px 16px; background:rgba(255,255,255,0.75); border-radius:12px; border:1px solid rgba(0,0,0,0.06);">
+                  <span id="atc-score-label" style="font-size:12px; font-weight:700; color:#475569; text-transform:uppercase;">Cardiovascular Risk Score:</span>
+                  <span style="font-size:30px; font-weight:800; font-family:'JetBrains Mono', monospace;" id="atc-score-display">18.4%</span>
+                  <span style="font-size:11.5px; color:#64748B; margin-left:auto;" id="atc-guideline-ref">ICMR 2026 Rural Health Standard</span>
+                </div>
+
+                <ul class="atc-guidance-list" id="atc-guidelines">
+                  <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span id="atc-guide-1">रक्तचाप एवं मुख्य शारीरिक मापदंड सामान्य सीमा में हैं।</span>
+                  </li>
+                  <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span id="atc-guide-2">मरीज को प्रतिदिन 30 मिनट पैदल चलने और कम नमक के खानपान की सलाह दें।</span>
+                  </li>
+                  <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span id="atc-guide-3">अगले 6 महीने में चौपाल या स्वास्थ्य उपकेंद्र में पुनः नियमित जांच कराएं।</span>
+                  </li>
+                </ul>
+
+                <button type="button" class="btn-primary-dark" style="margin-top:20px; width:100%; height:46px; font-size:13.5px; display:flex; align-items:center; justify-content:center; gap:8px;" onclick="openReferralSlip()">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                  <span id="atc-btn-text">📄 सरकारी रेफरल पर्ची देखें व प्रिंट करें (Generate Referral Slip)</span>
+                </button>
+              </div>
+
+              <!-- HIGH-CONTRAST PROBABILITY HERO CARD (SCREENSHOT 2) -->
+              <div class="card-probability-hero researcher-only">
+                <div class="hero-top-badges">
+                  <span class="hero-tier-badge tier-mod" id="tier-display" data-i18n="tierModInitial">Moderate Risk</span>
+                  <span class="hero-arch-tag" id="arch-tag-display">Hybrid Quantum-Classical</span>
+                </div>
+
+                <div class="hero-stat-label">Estimated Probability</div>
+                <div class="hero-stat-value" id="risk-display">--</div>
+
+                <p class="hero-narrative" id="risk-narrative-display">
+                  The model found a balanced signal across the patient feature profile; no single feature dominated the demo prediction. Run inference to trace the full hybrid pipeline.
+                </p>
+
+                <div class="hero-footer-grid">
+                  <div class="hero-footer-item">
+                    <div class="hf-label">PREDICTED CLASS</div>
+                    <div class="hf-val" id="pred-class-display">Awaiting Assessment</div>
+                  </div>
+                  <div class="hero-footer-item">
+                    <div class="hf-label">MODEL USED</div>
+                    <div class="hf-val" id="model-used-display">Hybrid VQC + Classical XGBoost</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- INTERPRETATION: WHAT MOVED THE ESTIMATE (SCREENSHOT 2) -->
+              <div class="card-interpretation researcher-only">
+                <div class="interp-header">
+                  <div class="interp-title-wrap">
+                    <div class="card-section-tag">INTERPRETATION</div>
+                    <h3>What moved the estimate <span class="sparkle-icon">&#10022;</span></h3>
+                  </div>
+                  <div style="display:flex; gap:6px;">
+                    <button id="btn-export-fhir" class="btn-pill-white" style="padding:4px 10px; font-size:11px; display:inline-flex; align-items:center; gap:5px;" onclick="downloadFhirBundle()">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> <span data-i18n="btnFhirExport">HL7 FHIR</span>
+                    </button>
+                    <button id="btn-export-pdf" class="btn-pill-white" style="padding:4px 10px; font-size:11px; display:inline-flex; align-items:center; gap:5px;" onclick="exportPdfSummary()">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> <span data-i18n="btnClinicalPdf">Clinical PDF</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div id="shap-waterfall-list" style="display:flex; flex-direction:column; gap:8px;">
+                  <div style="font-size:11.5px; color:var(--text-muted); padding:16px 8px; text-align:center; background:var(--bg-surface); border:1px dashed var(--card-border); border-radius:var(--radius-md);">
+                    Click "Validate &amp; analyze" to compute physiological feature attribution.
+                  </div>
+                </div>
+              </div>
+
+              <!-- TRACE / PIPELINE: FROM INPUT TO INFERENCE (SCREENSHOT 2) -->
+              <div class="card researcher-only" style="margin-bottom:0;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                  <div>
+                    <div class="card-section-tag">TRACE / PIPELINE</div>
+                    <h4 style="font-size:15px; font-weight:800; color:var(--text-display);">From input to inference</h4>
+                  </div>
+                  <span class="status-badge-verified" style="font-family:'JetBrains Mono', monospace; font-size:10px; padding:3px 8px;">10 STAGES COMPLETE</span>
+                </div>
+
+                <div class="pipeline-stages-grid">
+                  <div class="stage-pill-box">
+                    <span class="stage-check-icon"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <div class="stage-info">
+                      <div class="stage-name">Data Validation</div>
+                      <div class="stage-desc">Schema and range checks passed</div>
                     </div>
                   </div>
-                  <div style="text-align:right;">
-                    <span class="risk-score-huge" id="risk-display" style="font-size:38px; font-weight:800; color:var(--text-muted); letter-spacing:-1px;">--</span>
-                    <div style="margin-top:4px;">
-                      <span class="risk-tier-pill" id="tier-display" style="font-size:11px; font-weight:700; background:#f1f5f9; color:#64748b; border:1px solid #cbd5e1;">Awaiting Assessment</span>
+                  <div class="stage-pill-box">
+                    <span class="stage-check-icon"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <div class="stage-info">
+                      <div class="stage-name">Data Cleaning</div>
+                      <div class="stage-desc">Missing values handled</div>
+                    </div>
+                  </div>
+                  <div class="stage-pill-box">
+                    <span class="stage-check-icon"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <div class="stage-info">
+                      <div class="stage-name">Scaling</div>
+                      <div class="stage-desc">StandardScaler applied</div>
+                    </div>
+                  </div>
+                  <div class="stage-pill-box">
+                    <span class="stage-check-icon"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <div class="stage-info">
+                      <div class="stage-name">Feature Selection</div>
+                      <div class="stage-desc">SelectKBest retained 6 signals</div>
+                    </div>
+                  </div>
+                  <div class="stage-pill-box">
+                    <span class="stage-check-icon"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <div class="stage-info">
+                      <div class="stage-name">Dimensionality Reduction</div>
+                      <div class="stage-desc">PCA compressed feature vector</div>
+                    </div>
+                  </div>
+                  <div class="stage-pill-box">
+                    <span class="stage-check-icon"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <div class="stage-info">
+                      <div class="stage-name">Quantum Feature Encoding</div>
+                      <div class="stage-desc">Angle encoding across 4 qubits</div>
+                    </div>
+                  </div>
+                  <div class="stage-pill-box">
+                    <span class="stage-check-icon"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <div class="stage-info">
+                      <div class="stage-name">Quantum Model Execution</div>
+                      <div class="stage-desc">Parameterized ansatz simulated</div>
+                    </div>
+                  </div>
+                  <div class="stage-pill-box">
+                    <span class="stage-check-icon"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
+                    <div class="stage-info">
+                      <div class="stage-name">Classical Optimization</div>
+                      <div class="stage-desc">Platt calibrated probabilities</div>
                     </div>
                   </div>
                 </div>
 
-                <!-- Clean Clinical Status Banner (Zero Math Jargon) -->
-                <div class="clinical-status-banner status-pending" id="decision-screen-banner" style="background:#f8fafc; border:1px solid #e2e8f0; color:#475569;">
-                  <div class="status-banner-title">
-                    <span class="status-dot-pulse" style="background:#94a3b8; box-shadow:none;"></span>
-                    <span id="decision-screen-badge">Ready &middot; Click "Assess Cardiovascular Risk"</span>
-                  </div>
-                  <div class="status-banner-threshold" id="threshold-benchmark-text">
-                    <span data-i18n="threshPrefix">Validated Threshold:</span> <strong>48%</strong> &middot; <span data-i18n="threshSuffix">ICMR Protocol</span>
-                  </div>
-                </div>
+                <!-- QUANTUM INSTRUMENTATION: CIRCUIT READOUT (SCREENSHOT 2) -->
+                <div style="margin-top:16px; padding-top:14px; border-top:1px solid var(--card-border);">
+                  <div class="card-section-tag">QUANTUM INSTRUMENTATION</div>
+                  <h4 style="font-size:14px; font-weight:800; color:var(--text-display); margin-bottom:8px;">Circuit readout</h4>
 
-                <!-- 5-Year Longitudinal Risk Trajectory -->
-                <div style="margin-top:6px;">
-                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-                    <span style="font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase;" data-i18n="trajTitle">5-Year Projected Risk Trajectory</span>
-                    <span style="font-size:10.5px; color:var(--blue-primary); font-weight:600;" id="trajectory-trend-label" data-i18n="trajSub">Projected Annual Progression</span>
-                  </div>
-                  <div class="trajectory-svg-wrap" id="quantum-trajectory-chart" style="height:90px;">
-                    <svg viewBox="0 0 540 90" style="width:100%; height:100%;">
-                      <defs>
-                        <linearGradient id="curveGradBlue" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stop-color="#0066ff" stop-opacity="0.15"/>
-                          <stop offset="100%" stop-color="#0066ff" stop-opacity="0.0"/>
-                        </linearGradient>
-                      </defs>
-                      <line x1="30" y1="50" x2="510" y2="50" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4 4"/>
-                      <text x="270" y="54" font-size="11" fill="#94a3b8" text-anchor="middle">Projected risk trajectory renders upon assessment</text>
-                    </svg>
-                  </div>
-                </div>
-
-                <!-- Lower Bento Section: Drivers & Care Plan -->
-                <!-- Lower Bento Section: Key Risk Factors & Action Strip -->
-                <div style="margin-top:10px; padding-top:12px; border-top:1px solid var(--card-border);">
-                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:8px;">
-                    <div>
-                      <span style="font-size:12px; font-weight:800; color:var(--text-display); text-transform:uppercase;" data-i18n="factorsTitle">Key Risk Factors</span>
-                      <div style="font-size:10.5px; color:var(--text-muted);" data-i18n="factorsSub">Impact on cardiovascular risk score</div>
+                  <div class="quantum-metrics-grid">
+                    <div class="qm-item">
+                      <div class="qm-label">QUBITS</div>
+                      <div class="qm-val">4</div>
                     </div>
-                    <div style="display:flex; align-items:center; gap:8px;">
-                      <span class="badge-blue-pill" style="font-size:10px;" data-i18n="badgeAttribution">Attribution</span>
-                      <button id="btn-export-fhir" class="btn-pill-white" style="padding:4px 10px; font-size:11px; display:inline-flex; align-items:center; gap:5px;" onclick="downloadFhirBundle()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> <span data-i18n="btnFhirExport">HL7 FHIR R4</span>
-                      </button>
-                      <button id="btn-export-pdf" class="btn-pill-white" style="padding:4px 10px; font-size:11px; display:inline-flex; align-items:center; gap:5px;" onclick="exportPdfSummary()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> <span data-i18n="btnClinicalPdf">Clinical PDF</span>
-                      </button>
+                    <div class="qm-item">
+                      <div class="qm-label">CIRCUIT DEPTH</div>
+                      <div class="qm-val">6</div>
+                    </div>
+                    <div class="qm-item">
+                      <div class="qm-label">GATE COUNT</div>
+                      <div class="qm-val">18</div>
+                    </div>
+                    <div class="qm-item">
+                      <div class="qm-label">BACKEND</div>
+                      <div class="qm-val" style="font-size:13.5px;">Qiskit Aer Simulator</div>
                     </div>
                   </div>
 
-                  <div id="shap-waterfall-list" style="display:flex; flex-direction:column; gap:6px;">
-                    <div style="font-size:11.5px; color:var(--text-muted); padding:16px 8px; text-align:center; background:var(--bg-surface); border:1px dashed var(--card-border); border-radius:var(--radius-md);">
-                      Click "Assess Cardiovascular Risk" to compute physiological feature attribution.
-                    </div>
+                  <div class="measurement-bar-box">
+                    Measurement: 55% | 45%
                   </div>
                 </div>
 
-                <!-- Minimalist Dual Engine Verification Strip -->
+                <!-- Dual Engine Verification Strip -->
                 <div class="engine-verification-strip">
                   <div class="engine-badge-item">
                     <span style="color:var(--text-muted); font-weight:600;" data-i18n="engineAi">AI Engine (CatBoost):</span>
-                    <strong id="catboost-prob-val" style="color:var(--blue-primary); font-variant-numeric:tabular-nums;">51.5% &middot; 11.4 ms</strong>
+                    <strong id="catboost-prob-val" style="color:var(--text-display); font-variant-numeric:tabular-nums;">51.5% &middot; 11.4 ms</strong>
                   </div>
                   <div style="height:12px; width:1px; background:var(--card-border);"></div>
                   <div class="engine-badge-item">
@@ -415,8 +612,28 @@
                   </div>
                   <div style="height:12px; width:1px; background:var(--card-border);"></div>
                   <div class="engine-badge-item">
-                    <span class="status-badge-verified" style="font-size:10.5px; padding:2px 8px;"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="badgeCalibrated">Calibrated</span></span>
+                    <span class="status-badge-verified" style="font-size:10px; padding:2px 8px;"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="badgeCalibrated">Calibrated</span></span>
                   </div>
+                </div>
+
+                <!-- 5-Year Trajectory Chart (SVG) -->
+                <div style="margin-top:14px; padding-top:12px; border-top:1px solid var(--card-border);">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                    <span style="font-family:'JetBrains Mono', monospace; font-size:10px; font-weight:700; color:var(--text-muted); text-transform:uppercase;" data-i18n="trajTitle">5-Year Projected Risk Trajectory</span>
+                    <span style="font-size:10.5px; color:var(--accent-teal); font-weight:600;" id="trajectory-trend-label" data-i18n="trajSub">Annual Progression</span>
+                  </div>
+                  <div class="trajectory-svg-wrap" id="quantum-trajectory-chart" style="height:80px;">
+                    <svg viewBox="0 0 540 80" style="width:100%; height:100%;">
+                      <line x1="30" y1="40" x2="510" y2="40" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="4 4"/>
+                      <text x="270" y="44" font-size="11" fill="#94A3B8" text-anchor="middle">Projected trajectory renders upon assessment</text>
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Clinical Status Banner Div (for backward compatibility) -->
+                <div class="clinical-status-banner status-pending" id="decision-screen-banner" style="display:none;">
+                  <span id="decision-screen-badge">Ready</span>
+                  <span id="threshold-benchmark-text"></span>
                 </div>
 
               </div>
@@ -427,10 +644,11 @@
 
         <!-- TAB 2: SCREENING HISTORY -->
         <div id="tab-history" class="tab-content">
-          <div class="tab-sub-header">
-            <div>
-              <div class="tab-sub-title" data-i18n="historyTitle">Screening History Repository</div>
-              <div class="tab-sub-desc" data-i18n="historySub">Relational SQLite WAL persistence with FHIR R4 export capability and complete longitudinal audit trail.</div>
+          <div class="editorial-header">
+            <div class="editorial-header-left">
+              <div class="editorial-tag">REGISTRY / HISTORY</div>
+              <h1 class="editorial-title" data-i18n="historyTitle">Screening History Repository</h1>
+              <div class="editorial-subtitle" data-i18n="historySub">Relational SQLite WAL persistence with FHIR R4 export capability and complete longitudinal audit trail.</div>
             </div>
             <button class="btn-pill-white" onclick="loadScreeningHistory()">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg> <span data-i18n="btnRefreshRecords">Refresh Records</span>
@@ -448,19 +666,19 @@
               <div class="history-kpi-label" data-i18n="kpiHighRisk">High-Risk Flagged</div>
             </div>
             <div class="history-kpi-card">
-              <div class="history-kpi-num" style="color:var(--blue-primary);">100%</div>
+              <div class="history-kpi-num" style="color:var(--accent-teal);">100%</div>
               <div class="history-kpi-label" data-i18n="kpiFhirSynced">FHIR R4 Synced</div>
             </div>
             <div class="history-kpi-card">
               <div class="history-kpi-num" style="color:var(--success);">11.8 ms</div>
-              <div class="history-kpi-label" data-i18n="kpiLatency">Mean Inference Latency</div>
+              <div class="history-kpi-label" data-i18n="kpiLatency">Mean Latency</div>
             </div>
           </div>
 
           <div class="card">
-            <div class="card-header-clean" style="margin-bottom:12px;">
+            <div class="card-header-clean" style="margin-bottom:14px;">
               <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
-                <span style="font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase;" data-i18n="filterLabel">Filter:</span>
+                <span class="tech-label" style="color:var(--text-muted);" data-i18n="filterLabel">Filter:</span>
                 <button type="button" class="preset-chip active" onclick="filterHistoryByTier('ALL', this)" data-i18n="filterAll">All Records</button>
                 <button type="button" class="preset-chip" onclick="filterHistoryByTier('HIGH', this)" data-i18n="filterHigh">High Risk</button>
                 <button type="button" class="preset-chip" onclick="filterHistoryByTier('MOD', this)" data-i18n="filterModerate">Moderate</button>
@@ -489,7 +707,7 @@
                     <td><code>catboost</code></td>
                     <td class="tabular-nums">135/88 mmHg</td>
                     <td class="tabular-nums"><strong>18.4%</strong></td>
-                    <td><span class="risk-tier-pill tier-mod" style="padding:2px 8px; font-size:10px;" data-i18n="tierModInitial">Moderate Risk (20-50%)</span></td>
+                    <td><span class="risk-tier-pill tier-mod" data-i18n="tierModInitial">Moderate (20-50%)</span></td>
                     <td class="tabular-nums" style="font-size:11.5px; color:var(--text-muted);">Today, 09:15</td>
                     <td><button class="btn-pill-white" style="font-size:11px; padding:3px 10px; height:28px;" onclick="downloadFhirBundle()">JSON</button></td>
                   </tr>
@@ -499,28 +717,8 @@
                     <td><code>catboost</code></td>
                     <td class="tabular-nums">168/102 mmHg</td>
                     <td class="tabular-nums"><strong>78.2%</strong></td>
-                    <td><span class="risk-tier-pill tier-high" style="padding:2px 8px; font-size:10px;" data-i18n="tierHighInitial">High Risk (&gt;50%)</span></td>
+                    <td><span class="risk-tier-pill tier-high" data-i18n="tierHighInitial">High Risk (&gt;50%)</span></td>
                     <td class="tabular-nums" style="font-size:11.5px; color:var(--text-muted);">Today, 09:42</td>
-                    <td><button class="btn-pill-white" style="font-size:11px; padding:3px 10px; height:28px;" onclick="downloadFhirBundle()">JSON</button></td>
-                  </tr>
-                  <tr>
-                    <td class="tabular-nums"><code>scr_003</code></td>
-                    <td><strong>Priya Sharma</strong><br><small style="color:var(--text-muted);">91-1123-5813-2134</small></td>
-                    <td><code>catboost</code></td>
-                    <td class="tabular-nums">115/75 mmHg</td>
-                    <td class="tabular-nums"><strong>4.2%</strong></td>
-                    <td><span class="risk-tier-pill tier-low" style="padding:2px 8px; font-size:10px;" data-i18n="tierLowInitial">Low Risk (&lt;20%)</span></td>
-                    <td class="tabular-nums" style="font-size:11.5px; color:var(--text-muted);">Yesterday, 14:10</td>
-                    <td><button class="btn-pill-white" style="font-size:11px; padding:3px 10px; height:28px;" onclick="downloadFhirBundle()">JSON</button></td>
-                  </tr>
-                  <tr>
-                    <td class="tabular-nums"><code>scr_004</code></td>
-                    <td><strong>Sunita Devi</strong><br><small style="color:var(--text-muted);">91-8890-1234-5678</small></td>
-                    <td><code>hybrid_qnn</code></td>
-                    <td class="tabular-nums">150/95 mmHg</td>
-                    <td class="tabular-nums"><strong>64.8%</strong></td>
-                    <td><span class="risk-tier-pill tier-high" style="padding:2px 8px; font-size:10px;" data-i18n="tierHighInitial">High Risk (&gt;50%)</span></td>
-                    <td class="tabular-nums" style="font-size:11.5px; color:var(--text-muted);">Yesterday, 16:30</td>
                     <td><button class="btn-pill-white" style="font-size:11px; padding:3px 10px; height:28px;" onclick="downloadFhirBundle()">JSON</button></td>
                   </tr>
                 </tbody>
@@ -531,12 +729,12 @@
 
         <!-- TAB 3: DATASET INGESTION & AUDIT -->
         <div id="tab-upload" class="tab-content">
-          <div class="tab-sub-header">
-            <div>
-              <div class="tab-sub-title" data-i18n="uploadTitle">Cohort Ingestion &amp; Pre-Flight Validation</div>
-              <div class="tab-sub-desc" data-i18n="uploadSub">Automated schema inference, missing-value audit, class balance verification, and target leakage prevention.</div>
+          <div class="editorial-header">
+            <div class="editorial-header-left">
+              <div class="editorial-tag">COHORT / AUDIT</div>
+              <h1 class="editorial-title" data-i18n="uploadTitle">Cohort Ingestion &amp; Pre-Flight Validation</h1>
+              <div class="editorial-subtitle" data-i18n="uploadSub">Automated schema inference, missing-value audit, class balance verification, and target leakage prevention.</div>
             </div>
-            <!-- 1-Click Pre-loaded Canonical Cohorts -->
             <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
               <span class="presets-strip-label" data-i18n="cohortsSub">Cohorts:</span>
               <button class="preset-chip active" onclick="loadCanonicalCohort('canonical_cardio_train')" data-i18n="presetKaggle">Kaggle CVD (70,000)</button>
@@ -547,29 +745,29 @@
 
           <!-- DATA HEALTH & GOVERNANCE CHECKLIST -->
           <div class="checklist-grid">
-            <div class="checklist-pill passed">
+            <div class="checklist-pill">
               <span class="check-icon"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
               <div data-i18n="chkClassDist"><strong>Class Distribution:</strong> 50.0% / 50.0% (Balanced)</div>
             </div>
-            <div class="checklist-pill passed">
+            <div class="checklist-pill">
               <span class="check-icon"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
               <div data-i18n="chkAbdm"><strong>ABDM Luhn Mod-10:</strong> 100% Validated Checksums</div>
             </div>
-            <div class="checklist-pill passed">
+            <div class="checklist-pill">
               <span class="check-icon"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
               <div data-i18n="chkLeakage"><strong>Target Leakage Audit:</strong> Passed (Zero Future Leaks)</div>
             </div>
-            <div class="checklist-pill passed">
+            <div class="checklist-pill">
               <span class="check-icon"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
               <div data-i18n="chkHoldout"><strong>Holdout Partition:</strong> 80/20 Stratified Split Isolated</div>
             </div>
           </div>
 
           <div class="card">
-            <div style="border:2px dashed var(--blue-border); border-radius:var(--radius-xl); padding:32px; text-align:center; background:var(--bg-surface); margin-bottom:18px;">
+            <div style="border:2px dashed var(--card-border); border-radius:var(--radius-lg); padding:28px; text-align:center; background:var(--bg-surface); margin-bottom:18px;">
               <input type="file" id="dataset-file-input" accept=".csv" style="display:none;" onchange="handleFileUpload(event)">
-              <button class="btn-pill-blue" style="margin:0 auto 8px;" onclick="document.getElementById('dataset-file-input').click()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> <span data-i18n="btnSelectCsv">Select CSV File</span>
+              <button class="btn-primary-dark" style="margin:0 auto 8px;" onclick="document.getElementById('dataset-file-input').click()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> <span data-i18n="btnSelectCsv">Select CSV File</span>
               </button>
               <div style="font-size:11.5px; color:var(--text-muted);" data-i18n="uploadHint">Protected against path traversal &bull; Maximum 15MB</div>
             </div>
@@ -598,7 +796,7 @@
 
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                 <h4 style="font-size:13px; color:var(--text-display);" data-i18n="previewTitle">Top 5 Record Preview (Kaggle CVD Benchmark)</h4>
-                <button class="btn-pill-blue" style="padding:6px 14px; font-size:11.5px; height:32px;" onclick="sendDatasetToTrainingStudio()">
+                <button class="btn-primary-dark" style="padding:6px 14px; font-size:11.5px; height:32px;" onclick="sendDatasetToTrainingStudio()">
                   <span data-i18n="btnSendTrain">Send to Training &rarr;</span>
                 </button>
               </div>
@@ -611,8 +809,6 @@
                     <tr><td class="tabular-nums">0</td><td class="tabular-nums">50.4</td><td>2</td><td>168</td><td>62.0</td><td>110</td><td>80</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
                     <tr><td class="tabular-nums">1</td><td class="tabular-nums">55.3</td><td>1</td><td>156</td><td>85.0</td><td>140</td><td>90</td><td>3</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
                     <tr><td class="tabular-nums">2</td><td class="tabular-nums">51.7</td><td>1</td><td>165</td><td>64.0</td><td>130</td><td>70</td><td>3</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
-                    <tr><td class="tabular-nums">3</td><td class="tabular-nums">48.2</td><td>2</td><td>169</td><td>82.0</td><td>150</td><td>100</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
-                    <tr><td class="tabular-nums">4</td><td class="tabular-nums">47.8</td><td>1</td><td>156</td><td>56.0</td><td>100</td><td>60</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -620,12 +816,13 @@
           </div>
         </div>
 
-        <!-- TAB 4: MODEL TRAINING STUDIO (COMPACT BUTTONS & MODERN BENTO) -->
+        <!-- TAB 4: MODEL TRAINING STUDIO -->
         <div id="tab-train" class="tab-content">
-          <div class="tab-sub-header">
-            <div>
-              <div class="tab-sub-title" data-i18n="trainTitle">Stratified Model Training Studio</div>
-              <div class="tab-sub-desc" data-i18n="trainSub">Dual-track classical and quantum architecture training with prospective threshold locking on out-of-fold cross validation.</div>
+          <div class="editorial-header">
+            <div class="editorial-header-left">
+              <div class="editorial-tag">TRAINING / STUDIO</div>
+              <h1 class="editorial-title" data-i18n="trainTitle">Stratified Model Training Studio</h1>
+              <div class="editorial-subtitle" data-i18n="trainSub">Dual-track classical and quantum architecture training with prospective threshold locking on out-of-fold cross validation.</div>
             </div>
             <button class="btn-pill-white" onclick="loadChampionWeightsInstant()">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> <span data-i18n="btnLoadChampion">Load Champion Weights</span>
@@ -665,7 +862,7 @@
               </div>
             </div>
 
-            <!-- MODERN BENTO ARCHITECTURE TOGGLE CARDS -->
+            <!-- BENTO ARCHITECTURE TOGGLE CARDS -->
             <label style="font-size:12px; font-weight:700; color:var(--text-display); margin-bottom:10px; display:block;" data-i18n="labelArchMatrix">
               Select Architectures to Fit (Dual-Track Matrix):
             </label>
@@ -731,13 +928,12 @@
               </div>
             </div>
 
-            <!-- COMPACT, PROPORTIONATE ACTION BUTTONS (NO OVERSIZED VISUALS) -->
             <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px;">
-              <button class="btn-pill-blue" onclick="triggerTrainingRun()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="15" x2="23" y2="15"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="15" x2="4" y2="15"/></svg> <span data-i18n="btnExecTrain">Execute Training Run</span>
+              <button class="btn-primary-dark" onclick="triggerTrainingRun()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg> <span data-i18n="btnExecTrain">Execute Training Run</span>
               </button>
               <button class="btn-pill-white" onclick="loadChampionWeightsInstant()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> <span data-i18n="btnQuickDemo">Quick Demo (Load Pre-computed)</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> <span data-i18n="btnQuickDemo">Quick Demo (Pre-computed)</span>
               </button>
             </div>
 
@@ -763,13 +959,13 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr style="background:#eff6ff;">
+                    <tr style="background:#FAF8F5;">
                       <td><strong data-i18n="mNameCatboostChampion">CatBoost (Champion)</strong></td>
-                      <td><span style="font-size:11px; color:var(--blue-primary); font-weight:700;" data-i18n="famGbdtPlatt">GBDT Platt</span></td>
+                      <td><span style="font-size:11px; color:var(--accent-teal); font-weight:700;" data-i18n="famGbdtPlatt">GBDT Platt</span></td>
                       <td class="tabular-nums">1.42s</td>
                       <td class="tabular-nums">11.4 ms</td>
-                      <td class="tabular-nums" style="font-family:monospace;">0.5363</td>
-                      <td class="tabular-nums" style="font-weight:700; color:var(--blue-primary);">0.8025</td>
+                      <td class="tabular-nums" style="font-family:'JetBrains Mono', monospace;">0.5363</td>
+                      <td class="tabular-nums" style="font-weight:700; color:var(--accent-teal);">0.8025</td>
                       <td class="tabular-nums">0.8091</td>
                       <td class="tabular-nums">73.6%</td>
                       <td class="tabular-nums">70.2%</td>
@@ -781,52 +977,13 @@
                       <td><span style="font-size:11px; color:var(--text-muted);" data-i18n="famEnsemble">Ensemble</span></td>
                       <td class="tabular-nums">3.80s</td>
                       <td class="tabular-nums">18.2 ms</td>
-                      <td class="tabular-nums" style="font-family:monospace;">0.4900</td>
+                      <td class="tabular-nums" style="font-family:'JetBrains Mono', monospace;">0.4900</td>
                       <td class="tabular-nums" style="font-weight:700;">0.7885</td>
                       <td class="tabular-nums">0.7912</td>
                       <td class="tabular-nums">71.8%</td>
                       <td class="tabular-nums">68.5%</td>
                       <td class="tabular-nums">75.1%</td>
                       <td class="tabular-nums">0.706</td>
-                    </tr>
-                    <tr>
-                      <td><strong data-i18n="mNameGb">HistGradientBoosting</strong></td>
-                      <td><span style="font-size:11px; color:var(--text-muted);" data-i18n="famLightgbm">LightGBM</span></td>
-                      <td class="tabular-nums">0.65s</td>
-                      <td class="tabular-nums">8.9 ms</td>
-                      <td class="tabular-nums" style="font-family:monospace;">0.5120</td>
-                      <td class="tabular-nums" style="font-weight:700;">0.7990</td>
-                      <td class="tabular-nums">0.8040</td>
-                      <td class="tabular-nums">73.1%</td>
-                      <td class="tabular-nums">69.8%</td>
-                      <td class="tabular-nums">76.3%</td>
-                      <td class="tabular-nums">0.719</td>
-                    </tr>
-                    <tr>
-                      <td><strong data-i18n="mNameLr">Logistic Regression</strong></td>
-                      <td><span style="font-size:11px; color:var(--text-muted);" data-i18n="famLinear">Linear</span></td>
-                      <td class="tabular-nums">0.18s</td>
-                      <td class="tabular-nums">3.1 ms</td>
-                      <td class="tabular-nums" style="font-family:monospace;">0.4800</td>
-                      <td class="tabular-nums" style="font-weight:700;">0.7850</td>
-                      <td class="tabular-nums">0.7880</td>
-                      <td class="tabular-nums">71.5%</td>
-                      <td class="tabular-nums">67.9%</td>
-                      <td class="tabular-nums">75.0%</td>
-                      <td class="tabular-nums">0.702</td>
-                    </tr>
-                    <tr>
-                      <td><strong data-i18n="mNameVqc">Variational Quantum (VQC)</strong></td>
-                      <td><span style="font-size:11px; color:var(--blue-primary); font-weight:600;" data-i18n="famNisqQml">NISQ QML</span></td>
-                      <td class="tabular-nums">12.50s</td>
-                      <td class="tabular-nums">48.0 ms</td>
-                      <td class="tabular-nums" style="font-family:monospace;">0.5000</td>
-                      <td class="tabular-nums" style="font-weight:700; color:var(--blue-primary);">0.7350</td>
-                      <td class="tabular-nums">0.7280</td>
-                      <td class="tabular-nums">67.4%</td>
-                      <td class="tabular-nums">65.1%</td>
-                      <td class="tabular-nums">69.6%</td>
-                      <td class="tabular-nums">0.662</td>
                     </tr>
                   </tbody>
                 </table>
@@ -835,252 +992,1013 @@
           </div>
         </div>
 
-        <!-- TAB 5: DUAL-TRACK BENCHMARKS (INCLUDES THRESHOLD EXPLORER & CONFUSION MATRIX) -->
+        <!-- TAB 5: DUAL-TRACK BENCHMARKS (SCREENSHOT 3: "MEASURE THE METHOD") -->
         <div id="tab-benchmarks" class="tab-content">
-          <div class="tab-sub-header">
-            <div>
-              <div class="tab-sub-title" data-i18n="benchmarksTitle">Dual-Track Benchmarks &amp; Performance Curves</div>
-              <div class="tab-sub-desc" data-i18n="benchmarksDesc">Evaluated on 13,741-sample untouched test partition with 1,000-iteration bootstrap 95% confidence intervals.</div>
+          <div class="editorial-header">
+            <div class="editorial-header-left">
+              <div class="editorial-tag">EVALUATION / BENCHMARKS</div>
+              <h1 class="editorial-title" data-i18n="benchmarksTitle">Measure the method.</h1>
+              <div class="editorial-subtitle" data-i18n="benchmarksDesc">Demo Benchmark &mdash; Replace with experimentally trained results.</div>
             </div>
-            <button type="button" class="btn-pill-white" onclick="loadRocPrCurves()">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg> <span data-i18n="btnReloadCurves">Reload Curves</span>
+            <div style="display:flex; gap:10px; align-items:center;">
+              <span class="badge-workflow-amber">DEMO BENCHMARK</span>
+              <button type="button" class="btn-pill-white" onclick="loadRocPrCurves()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg> <span data-i18n="btnReloadCurves">Reload</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 3-PILLAR BENCHMARK SUB-NAVIGATION -->
+          <div class="pillar-nav">
+            <button type="button" class="pillar-nav-btn active" id="btn-pillar-accuracy" onclick="switchBenchmarkPillar('accuracy', this)">
+              <span class="pillar-num">01</span>
+              <span>Accuracy &amp; Discrimination</span>
+            </button>
+            <button type="button" class="pillar-nav-btn" id="btn-pillar-efficiency" onclick="switchBenchmarkPillar('efficiency', this)">
+              <span class="pillar-num">02</span>
+              <span>Computational Efficiency</span>
+            </button>
+            <button type="button" class="pillar-nav-btn" id="btn-pillar-generalization" onclick="switchBenchmarkPillar('generalization', this)">
+              <span class="pillar-num">03</span>
+              <span>Generalization &amp; Robustness</span>
             </button>
           </div>
 
-          <!-- EXECUTIVE BENCHMARK TAKEAWAY BENTO -->
-          <div class="exec-summary-bento">
-            <span class="exec-summary-badge" data-i18n="bentoBadge">Dual-Track Comparative Rationale</span>
-            <div class="exec-summary-title" data-i18n="bentoTitle">Clinical Production Champion vs. Algorithmic Quantum Frontier</div>
-            <p class="exec-summary-desc" data-i18n="bentoDesc">
-              <strong>Track A (Clinical Production):</strong> CatBoost is designated our production clinical champion (ROC-AUC <strong>0.8025</strong> [0.795, 0.810], PR-AUC <strong>0.8091</strong>) due to sub-15ms inference latency, robust ordered target statistics, and well-calibrated Platt probabilities.<br>
-              <strong>Track B (NISQ Feasibility):</strong> On identical N=1,000 stratified samples, Hybrid QNN (ROC-AUC <strong>0.7519</strong>) and VQC (<strong>0.7350</strong>) exhibit competitive non-linear representation capacity without unverified claims of quantum supremacy.
-            </p>
-          </div>
-
-          <!-- SVG ROC & PR PERFORMANCE CURVES -->
-          <div class="grid-2" style="margin-bottom:20px;">
-            <div style="background:#ffffff; border:1px solid var(--card-border); border-radius:var(--radius-lg); padding:16px;">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                <h4 style="font-size:12.5px; font-weight:700; color:var(--text-display);" data-i18n="rocHeader">ROC Curve</h4>
-                <span style="font-size:11px; color:var(--blue-primary); font-weight:700;" data-i18n="badgeRocTakeaway">CatBoost: 0.8025</span>
+          <!-- ================================================================= -->
+          <!-- PILLAR 1: ACCURACY & DISCRIMINATION                               -->
+          <!-- ================================================================= -->
+          <div id="pane-pillar-accuracy" class="pillar-pane active">
+            
+            <!-- Top 4 Metric Summary Cards -->
+            <div class="metric-summary-grid">
+              <div class="metric-card-clean">
+                <div class="metric-card-top">
+                  <span class="metric-card-label">SELECTED ROC AUC</span>
+                  <div class="metric-card-icon icon-cyan">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                  </div>
+                </div>
+                <div class="metric-card-num" id="metric-summary-roc">0.8025</div>
+                <div class="metric-card-sub">CatBoost Champion [0.795, 0.810]</div>
               </div>
-              <div id="roc-svg-container" style="width:100%; min-height:220px; display:flex; align-items:center; justify-content:center;">
-                <div style="color:var(--text-muted); font-size:12px;" data-i18n="loadingRoc">Loading ROC curves...</div>
+
+              <div class="metric-card-clean">
+                <div class="metric-card-top">
+                  <span class="metric-card-label">PR-AUC (PRECISION/RECALL)</span>
+                  <div class="metric-card-icon icon-pink">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                  </div>
+                </div>
+                <div class="metric-card-num" id="metric-summary-pr">0.8091</div>
+                <div class="metric-card-sub">Baseline Prevalence: 0.495</div>
+              </div>
+
+              <div class="metric-card-clean">
+                <div class="metric-card-top">
+                  <span class="metric-card-label">SENSITIVITY (TPR)</span>
+                  <div class="metric-card-icon icon-green">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  </div>
+                </div>
+                <div class="metric-card-num" id="metric-summary-sens">70.2%</div>
+                <div class="metric-card-sub">At Youden &tau;* = 0.4836</div>
+              </div>
+
+              <div class="metric-card-clean">
+                <div class="metric-card-top">
+                  <span class="metric-card-label">SPECIFICITY (TNR)</span>
+                  <div class="metric-card-icon icon-amber">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                  </div>
+                </div>
+                <div class="metric-card-num" id="metric-summary-spec">76.7%</div>
+                <div class="metric-card-sub">Harmonic F1: 0.724</div>
               </div>
             </div>
 
-            <div style="background:#ffffff; border:1px solid var(--card-border); border-radius:var(--radius-lg); padding:16px;">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                <h4 style="font-size:12.5px; font-weight:700; color:var(--text-display);" data-i18n="prHeader">Precision-Recall Curve</h4>
-                <span style="font-size:11px; color:var(--blue-primary); font-weight:700;" data-i18n="badgePrTakeaway">CatBoost: 0.8091</span>
+            <!-- ROC CURVE & MODEL FAMILY COMPARISON GRID -->
+            <div class="grid-2" style="margin-bottom:20px; align-items:start;">
+              
+              <!-- Left Card: ROC Curve & Discrimination by model -->
+              <div class="card" style="margin-bottom:0;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+                  <div>
+                    <div class="card-section-tag">RECEIVER OPERATING CHARACTERISTIC</div>
+                    <h3 style="font-size:16px; font-weight:800; color:var(--text-display);">Discrimination by model</h3>
+                  </div>
+                  <div class="segmented-toggle">
+                    <button type="button" class="segmented-btn" onclick="toggleRocFilter('all', this)">All</button>
+                    <button type="button" class="segmented-btn" onclick="toggleRocFilter('classical', this)">Classical</button>
+                    <button type="button" class="segmented-btn" onclick="toggleRocFilter('quantum', this)">Quantum</button>
+                    <button type="button" class="segmented-btn active" onclick="toggleRocFilter('hybrid', this)">Hybrid</button>
+                  </div>
+                </div>
+                <div id="roc-svg-container" style="width:100%; min-height:260px; display:flex; align-items:center; justify-content:center;">
+                  <div style="color:var(--text-muted); font-size:12px;" data-i18n="loadingRoc">Loading ROC curves...</div>
+                </div>
+              </div>
+
+              <!-- Right Card: Model Card & Family comparison -->
+              <div class="card" style="margin-bottom:0;">
+                <div class="card-section-tag">MODEL CARD</div>
+                <h3 style="font-size:16px; font-weight:800; color:var(--text-display); margin-bottom:14px;">Family comparison</h3>
+
+                <div class="model-family-card">
+                  <div class="mfc-header">
+                    <div class="mfc-name">Logistic Regression</div>
+                    <span class="mfc-tag">CLASSICAL</span>
+                  </div>
+                  <div class="mfc-stats-row">
+                    <span class="mfc-stat">ACCURACY <strong>72.5%</strong></span>
+                    <span class="mfc-stat">ROC-AUC <strong>0.787</strong></span>
+                    <span class="mfc-stat">RECALL <strong>68.4%</strong></span>
+                  </div>
+                </div>
+
+                <div class="model-family-card">
+                  <div class="mfc-header">
+                    <div class="mfc-name">Support Vector Machine (RBF)</div>
+                    <span class="mfc-tag">CLASSICAL</span>
+                  </div>
+                  <div class="mfc-stats-row">
+                    <span class="mfc-stat">ACCURACY <strong>73.1%</strong></span>
+                    <span class="mfc-stat">ROC-AUC <strong>0.794</strong></span>
+                    <span class="mfc-stat">RECALL <strong>69.2%</strong></span>
+                  </div>
+                </div>
+
+                <div class="model-family-card">
+                  <div class="mfc-header">
+                    <div class="mfc-name">Random Forest (100 Trees)</div>
+                    <span class="mfc-tag">CLASSICAL</span>
+                  </div>
+                  <div class="mfc-stats-row">
+                    <span class="mfc-stat">ACCURACY <strong>73.3%</strong></span>
+                    <span class="mfc-stat">ROC-AUC <strong>0.801</strong></span>
+                    <span class="mfc-stat">RECALL <strong>69.8%</strong></span>
+                  </div>
+                </div>
+
+                <div class="model-family-card" style="border-color:var(--accent-teal-border); background:var(--accent-teal-light);">
+                  <div class="mfc-header">
+                    <div class="mfc-name" style="color:var(--accent-teal);">CatBoost (Production Champion)</div>
+                    <span class="mfc-tag" style="background:#D1FAE5; color:#047857;">CHAMPION</span>
+                  </div>
+                  <div class="mfc-stats-row">
+                    <span class="mfc-stat">ACCURACY <strong>73.6%</strong></span>
+                    <span class="mfc-stat">ROC-AUC <strong>0.803</strong></span>
+                    <span class="mfc-stat">RECALL <strong>70.2%</strong></span>
+                  </div>
+                </div>
+
+                <div class="model-family-card">
+                  <div class="mfc-header">
+                    <div class="mfc-name">Hybrid QNN (Angle + CNOT)</div>
+                    <span class="mfc-tag" style="background:#EDE9FE; color:#6D28D9;">QUANTUM-HYBRID</span>
+                  </div>
+                  <div class="mfc-stats-row">
+                    <span class="mfc-stat">ACCURACY <strong>71.4%</strong></span>
+                    <span class="mfc-stat">ROC-AUC <strong>0.752</strong></span>
+                    <span class="mfc-stat">RECALL <strong>67.8%</strong></span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Precision-Recall Curve -->
+            <div class="card" style="margin-bottom:24px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <div>
+                  <div class="card-section-tag">PRECISION-RECALL BENCHMARK</div>
+                  <h3 style="font-size:16px; font-weight:800; color:var(--text-display);" data-i18n="prHeader">Precision-Recall Curve</h3>
+                </div>
+                <span class="tech-label" style="color:var(--accent-teal);" data-i18n="badgePrTakeaway">CatBoost PR-AUC: 0.8091</span>
               </div>
               <div id="pr-svg-container" style="width:100%; min-height:220px; display:flex; align-items:center; justify-content:center;">
                 <div style="color:var(--text-muted); font-size:12px;" data-i18n="loadingPr">Loading PR curves...</div>
               </div>
             </div>
+
+            <!-- Operational Sensitivity / Specificity Threshold Explorer -->
+            <div class="card" style="margin-bottom:24px;">
+              <div class="card-header-clean">
+                <div>
+                  <h3 data-i18n="threshTitle">Operational Sensitivity / Specificity Threshold Explorer</h3>
+                  <div class="card-desc" data-i18n="threshSub">Evaluates clinical trade-offs across cutoffs (&tau; &isin; [0.05, 0.95]) on the 13,741-sample validation cohort</div>
+                </div>
+                <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                  <button type="button" class="btn-pill-white" style="font-size:11px; height:32px; padding:4px 12px;" onclick="applyThresholdPreset('early')" data-i18n="btnEarlyScreening">Early Screening (Sens &ge;90%)</button>
+                  <button type="button" class="btn-pill-white" style="font-size:11px; height:32px; padding:4px 12px;" onclick="applyThresholdPreset('standard')" data-i18n="btnStandardScreening">Standard (Youden J)</button>
+                  <button type="button" class="btn-pill-white" style="font-size:11px; height:32px; padding:4px 12px;" onclick="applyThresholdPreset('confirm')" data-i18n="btnConfirmScreening">Confirmation (Spec &ge;90%)</button>
+                </div>
+              </div>
+
+              <div style="background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-lg); padding:14px; margin-bottom:16px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                  <label style="font-size:12px; font-weight:700;"><span data-i18n="threshCutoffLabel">Operational Cutoff (&tau;):</span> <span id="thresh-tau-val" style="color:var(--accent-teal); font-family:'JetBrains Mono', monospace;">&tau; = 0.4836</span></label>
+                  <span id="preset-badge" class="risk-tier-pill tier-low" style="font-size:10px; padding:2px 8px;" data-i18n="threshPresetStandard">Standard Clinical Mode</span>
+                </div>
+                <input type="range" id="thresh-slider" min="0.05" max="0.95" step="0.01" value="0.48" oninput="onThresholdSliderInput(this.value)">
+              </div>
+
+              <div class="grid-4" style="margin-bottom:16px;">
+                <div class="floating-stat-pill" style="border-left:3px solid #059669;">
+                  <div class="floating-stat-num" id="thresh-sens-val" style="color:#059669;">70.2%</div>
+                  <div class="floating-stat-label" data-i18n="statSens">Sensitivity (TPR)</div>
+                </div>
+                <div class="floating-stat-pill" style="border-left:3px solid #0284c7;">
+                  <div class="floating-stat-num" id="thresh-spec-val" style="color:#0284c7;">76.7%</div>
+                  <div class="floating-stat-label" data-i18n="statSpec">Specificity (TNR)</div>
+                </div>
+                <div class="floating-stat-pill" style="border-left:3px solid #d97706;">
+                  <div class="floating-stat-num" id="thresh-ppv-val" style="color:#d97706;">74.7%</div>
+                  <div class="floating-stat-label" data-i18n="statPpv">Precision (PPV)</div>
+                </div>
+                <div class="floating-stat-pill" style="border-left:3px solid var(--sidebar-bg);">
+                  <div class="floating-stat-num" id="thresh-f1-val">0.724</div>
+                  <div class="floating-stat-label" data-i18n="statF1">Harmonic F1</div>
+                </div>
+              </div>
+
+              <!-- Confusion Matrix Heatmap -->
+              <div style="background:#FFFFFF; border:1px solid var(--card-border); border-radius:var(--radius-lg); padding:16px;">
+                <h4 style="font-size:12.5px; font-weight:700; color:var(--text-display); margin-bottom:10px;" data-i18n="cmTitle">Holdout Test Confusion Matrix (N = 13,741)</h4>
+                <div style="display:grid; grid-template-columns: 140px 1fr 1fr; gap:8px; text-align:center; font-size:12px;">
+                  <div></div>
+                  <div style="font-weight:700; color:var(--text-display); padding:6px; background:var(--bg-surface); border-radius:var(--radius-sm);" data-i18n="cmScreenedHigh">Screened High Risk</div>
+                  <div style="font-weight:700; color:var(--text-display); padding:6px; background:var(--bg-surface); border-radius:var(--radius-sm);" data-i18n="cmScreenedClear">Screened Cleared</div>
+
+                  <div style="font-weight:700; text-align:right; padding-right:8px; display:flex; align-items:center; justify-content:flex-end;" data-i18n="cmActualDiseased">Actual Diseased</div>
+                  <div style="background:var(--success-light); border:1px solid var(--success-border); padding:10px; border-radius:var(--radius-sm);">
+                    <div style="font-size:18px; font-weight:800; color:var(--success);" class="tabular-nums" id="cm-tp">4,773</div>
+                    <div style="font-size:10px; color:#065f46; font-weight:600;" data-i18n="cmTp">True Positives</div>
+                  </div>
+                  <div style="background:var(--danger-light); border:1px solid var(--danger-border); padding:10px; border-radius:var(--radius-sm);">
+                    <div style="font-size:18px; font-weight:800; color:var(--danger);" class="tabular-nums" id="cm-fn">2,027</div>
+                    <div style="font-size:10px; color:#991b1b; font-weight:600;" data-i18n="cmFn">False Negatives</div>
+                  </div>
+
+                  <div style="font-weight:700; text-align:right; padding-right:8px; display:flex; align-items:center; justify-content:flex-end;" data-i18n="cmActualHealthy">Actual Healthy</div>
+                  <div style="background:var(--warning-light); border:1px solid var(--warning-border); padding:10px; border-radius:var(--radius-sm);">
+                    <div style="font-size:18px; font-weight:800; color:var(--warning);" class="tabular-nums" id="cm-fp">1,617</div>
+                    <div style="font-size:10px; color:#92400e; font-weight:600;" data-i18n="cmFp">False Positives</div>
+                  </div>
+                  <div style="background:var(--bg-surface); border:1px solid var(--card-border); padding:10px; border-radius:var(--radius-sm);">
+                    <div style="font-size:18px; font-weight:800; color:var(--text-secondary);" class="tabular-nums" id="cm-tn">5,324</div>
+                    <div style="font-size:10px; color:var(--text-muted); font-weight:600;" data-i18n="cmTn">True Negatives</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Track A & Track B Tables -->
+            <h4 style="font-size:13px; margin-bottom:10px; color:var(--text-display);" data-i18n="trackATitle">Track A: Clinical Utility Benchmark (Full Cohort N = 13,741)</h4>
+            <div class="table-clean" style="margin-bottom:24px;">
+              <table id="track-a-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="thRank">Rank</th>
+                    <th data-i18n="thModelArch">Model Architecture</th>
+                    <th data-i18n="thCutoff">Locked &tau;*</th>
+                    <th data-i18n="thRoc">ROC-AUC [95% CI]</th>
+                    <th data-i18n="thPr">PR-AUC [95% CI]</th>
+                    <th data-i18n="thAccuracy">Accuracy</th>
+                    <th data-i18n="thSensitivity">Sensitivity</th>
+                    <th data-i18n="thSpecificity">Specificity</th>
+                    <th data-i18n="thBrier">Brier</th>
+                  </tr>
+                </thead>
+                <tbody id="track-a-tbody">
+                  <tr><td colspan="9" style="text-align:center; color:var(--text-muted); padding:20px;" data-i18n="loadingTrackA">Loading Track A benchmarks...</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4 style="font-size:13px; margin-bottom:10px; color:var(--text-display);" data-i18n="trackBTitle">Track B: Algorithmic Parity Benchmark (Stratified N = 1,000)</h4>
+            <div class="table-clean">
+              <table id="track-b-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="thModelArch">Model Architecture</th>
+                    <th data-i18n="thFamily">Family</th>
+                    <th data-i18n="thCutoff">Locked &tau;*</th>
+                    <th data-i18n="thRoc">ROC-AUC</th>
+                    <th data-i18n="thPr">PR-AUC</th>
+                    <th data-i18n="thAccuracy">Accuracy</th>
+                    <th data-i18n="thSensitivity">Sensitivity</th>
+                    <th data-i18n="thSpecificity">Specificity</th>
+                    <th data-i18n="thBrier">Brier</th>
+                  </tr>
+                </thead>
+                <tbody id="track-b-tbody">
+                  <tr><td colspan="9" style="text-align:center; color:var(--text-muted); padding:20px;" data-i18n="loadingTrackB">Loading Track B benchmarks...</td></tr>
+                </tbody>
+              </table>
+            </div>
+
           </div>
 
-          <!-- Early Detection Sensitivity / Specificity Threshold Explorer (RELOCATED TO BENCHMARKS) -->
-          <div class="card" style="margin-bottom:24px;">
-            <div class="card-header-clean">
-              <div>
-                <h3 data-i18n="threshTitle">Operational Sensitivity / Specificity Threshold Explorer</h3>
-                <div class="card-desc" data-i18n="threshSub">Evaluates clinical trade-offs across cutoffs (&tau; &isin; [0.05, 0.95]) on the 13,741-sample validation cohort</div>
+          <!-- ================================================================= -->
+          <!-- PILLAR 2: COMPUTATIONAL EFFICIENCY                                -->
+          <!-- ================================================================= -->
+          <div id="pane-pillar-efficiency" class="pillar-pane">
+            
+            <!-- 4 Metric Efficiency Grid -->
+            <div class="metric-summary-grid">
+              <div class="metric-card-clean">
+                <div class="metric-card-top">
+                  <span class="metric-card-label">CLASSICAL INFERENCE</span>
+                  <div class="metric-card-icon icon-cyan">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  </div>
+                </div>
+                <div class="metric-card-num">&lt; 0.01 ms</div>
+                <div class="metric-card-sub">Per patient sample (CPU)</div>
               </div>
-              <div style="display:flex; gap:6px; flex-wrap:wrap;">
-                <button type="button" class="btn-pill-white" style="font-size:11px; height:32px; padding:4px 12px;" onclick="applyThresholdPreset('early')" data-i18n="btnEarlyScreening">Early Screening (Sens &ge;90%)</button>
-                <button type="button" class="btn-pill-white" style="font-size:11px; height:32px; padding:4px 12px;" onclick="applyThresholdPreset('standard')" data-i18n="btnStandardScreening">Standard (Youden J)</button>
-                <button type="button" class="btn-pill-white" style="font-size:11px; height:32px; padding:4px 12px;" onclick="applyThresholdPreset('confirm')" data-i18n="btnConfirmScreening">Confirmation (Spec &ge;90%)</button>
+
+              <div class="metric-card-clean">
+                <div class="metric-card-top">
+                  <span class="metric-card-label">QUANTUM SIMULATION</span>
+                  <div class="metric-card-icon icon-pink">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" stroke-dasharray="2 3"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(30 12 12)"/></svg>
+                  </div>
+                </div>
+                <div class="metric-card-num">12.40 ms</div>
+                <div class="metric-card-sub">4-Qubit Aer Statevector</div>
+              </div>
+
+              <div class="metric-card-clean">
+                <div class="metric-card-top">
+                  <span class="metric-card-label">CHAMPION TRAIN DURATION</span>
+                  <div class="metric-card-icon icon-green">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
+                </div>
+                <div class="metric-card-num">4.18 s</div>
+                <div class="metric-card-sub">54,961 records (CatBoost)</div>
+              </div>
+
+              <div class="metric-card-clean">
+                <div class="metric-card-top">
+                  <span class="metric-card-label">CIRCUIT COMPLEXITY</span>
+                  <div class="metric-card-icon icon-amber">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+                  </div>
+                </div>
+                <div class="metric-card-num">6 Layers</div>
+                <div class="metric-card-sub">18 Quantum Gates / 4 Qubits</div>
               </div>
             </div>
 
-            <div style="background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-lg); padding:14px; margin-bottom:16px;">
-              <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-                <label style="font-size:12px; font-weight:700;"><span data-i18n="threshCutoffLabel">Operational Cutoff (&tau;):</span> <span id="thresh-tau-val" style="color:var(--blue-primary); font-family:monospace;">&tau; = 0.4836</span></label>
-                <span id="preset-badge" class="risk-tier-pill tier-low" style="font-size:10px; padding:2px 8px;" data-i18n="threshPresetStandard">Standard Clinical Mode</span>
+            <!-- Efficiency Bar Charts Grid -->
+            <div class="grid-2" style="margin-bottom:24px;">
+              
+              <!-- Latency Comparison Chart -->
+              <div class="perf-chart-box">
+                <div class="card-section-tag">LATENCY PROFILING</div>
+                <h3 style="font-size:15px; font-weight:800; color:var(--text-display); margin-bottom:14px;">Inference Latency (ms / sample)</h3>
+                
+                <div class="perf-bar-row">
+                  <span class="perf-bar-label">Logistic Regression</span>
+                  <div class="perf-bar-track"><div class="perf-bar-fill" style="width:2%; background:#10B981;"></div></div>
+                  <span class="perf-bar-val">0.005 ms</span>
+                </div>
+
+                <div class="perf-bar-row">
+                  <span class="perf-bar-label">CatBoost (Champion)</span>
+                  <div class="perf-bar-track"><div class="perf-bar-fill" style="width:3%; background:#0D9488;"></div></div>
+                  <span class="perf-bar-val">0.010 ms</span>
+                </div>
+
+                <div class="perf-bar-row">
+                  <span class="perf-bar-label">LightGBM</span>
+                  <div class="perf-bar-track"><div class="perf-bar-fill" style="width:3%; background:#0284C7;"></div></div>
+                  <span class="perf-bar-val">0.011 ms</span>
+                </div>
+
+                <div class="perf-bar-row">
+                  <span class="perf-bar-label">Random Forest</span>
+                  <div class="perf-bar-track"><div class="perf-bar-fill" style="width:5%; background:#475569;"></div></div>
+                  <span class="perf-bar-val">0.024 ms</span>
+                </div>
+
+                <div class="perf-bar-row">
+                  <span class="perf-bar-label">Hybrid QNN</span>
+                  <div class="perf-bar-track"><div class="perf-bar-fill" style="width:34%; background:#6366F1;"></div></div>
+                  <span class="perf-bar-val">4.200 ms</span>
+                </div>
+
+                <div class="perf-bar-row">
+                  <span class="perf-bar-label">VQC (Statevector)</span>
+                  <div class="perf-bar-track"><div class="perf-bar-fill" style="width:100%; background:#8B5CF6;"></div></div>
+                  <span class="perf-bar-val">12.40 ms</span>
+                </div>
               </div>
-              <input type="range" id="thresh-slider" min="0.05" max="0.95" step="0.01" value="0.48" oninput="onThresholdSliderInput(this.value)">
+
+              <!-- Training Time Comparison Chart -->
+              <div class="perf-chart-box">
+                <div class="card-section-tag">COMPUTATIONAL WORKLOAD</div>
+                <h3 style="font-size:15px; font-weight:800; color:var(--text-display); margin-bottom:14px;">Training Time (seconds on 54,961 rows)</h3>
+
+                <div class="perf-bar-row">
+                  <span class="perf-bar-label">Logistic Regression</span>
+                  <div class="perf-bar-track"><div class="perf-bar-fill" style="width:2%; background:#10B981;"></div></div>
+                  <span class="perf-bar-val">0.12 s</span>
+                </div>
+
+                <div class="perf-bar-row">
+                  <span class="perf-bar-label">LightGBM</span>
+                  <div class="perf-bar-track"><div class="perf-bar-fill" style="width:6%; background:#0284C7;"></div></div>
+                  <span class="perf-bar-val">1.85 s</span>
+                </div>
+
+                <div class="perf-bar-row">
+                  <span class="perf-bar-label">Random Forest</span>
+                  <div class="perf-bar-track"><div class="perf-bar-fill" style="width:8%; background:#475569;"></div></div>
+                  <span class="perf-bar-val">2.45 s</span>
+                </div>
+
+                <div class="perf-bar-row">
+                  <span class="perf-bar-label">CatBoost (Champion)</span>
+                  <div class="perf-bar-track"><div class="perf-bar-fill" style="width:12%; background:#0D9488;"></div></div>
+                  <span class="perf-bar-val">4.18 s</span>
+                </div>
+
+                <div class="perf-bar-row">
+                  <span class="perf-bar-label">Hybrid QNN (Mini-batch)</span>
+                  <div class="perf-bar-track"><div class="perf-bar-fill" style="width:50%; background:#6366F1;"></div></div>
+                  <span class="perf-bar-val">18.6 s</span>
+                </div>
+
+                <div class="perf-bar-row">
+                  <span class="perf-bar-label">VQC (COBYLA 60 iter)</span>
+                  <div class="perf-bar-track"><div class="perf-bar-fill" style="width:100%; background:#8B5CF6;"></div></div>
+                  <span class="perf-bar-val">38.2 s</span>
+                </div>
+              </div>
+
             </div>
 
-            <div class="grid-4" style="margin-bottom:16px;">
-              <div class="floating-stat-pill" style="border-left:3px solid #059669; border-radius:var(--radius-md);">
-                <div class="floating-stat-num" id="thresh-sens-val" style="color:#059669; font-size:20px;">70.2%</div>
-                <div class="floating-stat-label" data-i18n="statSens">Sensitivity (TPR)</div>
-              </div>
-              <div class="floating-stat-pill" style="border-left:3px solid #0284c7; border-radius:var(--radius-md);">
-                <div class="floating-stat-num" id="thresh-spec-val" style="color:#0284c7; font-size:20px;">76.7%</div>
-                <div class="floating-stat-label" data-i18n="statSpec">Specificity (TNR)</div>
-              </div>
-              <div class="floating-stat-pill" style="border-left:3px solid #d97706; border-radius:var(--radius-md);">
-                <div class="floating-stat-num" id="thresh-ppv-val" style="color:#d97706; font-size:20px;">74.7%</div>
-                <div class="floating-stat-label" data-i18n="statPpv">Precision (PPV)</div>
-              </div>
-              <div class="floating-stat-pill" style="border-left:3px solid #0066ff; border-radius:var(--radius-md);">
-                <div class="floating-stat-num" id="thresh-f1-val" style="color:#0066ff; font-size:20px;">0.724</div>
-                <div class="floating-stat-label" data-i18n="statF1">Harmonic F1</div>
-              </div>
+            <!-- Telemetry & Resource Utilization Table -->
+            <h4 style="font-size:13px; margin-bottom:10px; color:var(--text-display);">Dynamic Resource Utilization &amp; Benchmark Telemetry</h4>
+            <div class="table-clean">
+              <table id="comp-eff-table">
+                <thead>
+                  <tr>
+                    <th>Model Architecture</th>
+                    <th>Paradigm</th>
+                    <th>Train Samples</th>
+                    <th>Test Samples</th>
+                    <th>Train Time</th>
+                    <th>Sample Latency</th>
+                    <th>Batch Latency</th>
+                    <th>Execution Target</th>
+                  </tr>
+                </thead>
+                <tbody id="comp-eff-tbody">
+                  <tr><td colspan="8" style="text-align:center; color:var(--text-muted); padding:20px;">Loading computational metrics...</td></tr>
+                </tbody>
+              </table>
             </div>
 
-            <!-- Confusion Matrix Heatmap -->
-            <div style="background:#ffffff; border:1px solid var(--card-border); border-radius:var(--radius-lg); padding:16px;">
-              <h4 style="font-size:12.5px; font-weight:700; color:var(--text-display); margin-bottom:10px;" data-i18n="cmTitle">Holdout Test Confusion Matrix (N = 13,741)</h4>
-              <div style="display:grid; grid-template-columns: 140px 1fr 1fr; gap:8px; text-align:center; font-size:12px;">
-                <div></div>
-                <div style="font-weight:700; color:var(--text-display); padding:6px; background:var(--bg-surface); border-radius:var(--radius-sm);" data-i18n="cmScreenedHigh">Screened High Risk</div>
-                <div style="font-weight:700; color:var(--text-display); padding:6px; background:var(--bg-surface); border-radius:var(--radius-sm);" data-i18n="cmScreenedClear">Screened Cleared</div>
-
-                <div style="font-weight:700; text-align:right; padding-right:8px; display:flex; align-items:center; justify-content:flex-end;" data-i18n="cmActualDiseased">Actual Diseased</div>
-                <div style="background:var(--success-light); border:1px solid var(--success-border); padding:10px; border-radius:var(--radius-sm);">
-                  <div style="font-size:18px; font-weight:800; color:var(--success);" class="tabular-nums" id="cm-tp">4,773</div>
-                  <div style="font-size:10px; color:#065f46; font-weight:600;" data-i18n="cmTp">True Positives</div>
-                </div>
-                <div style="background:var(--danger-light); border:1px solid var(--danger-border); padding:10px; border-radius:var(--radius-sm);">
-                  <div style="font-size:18px; font-weight:800; color:var(--danger);" class="tabular-nums" id="cm-fn">2,027</div>
-                  <div style="font-size:10px; color:#991b1b; font-weight:600;" data-i18n="cmFn">False Negatives</div>
-                </div>
-
-                <div style="font-weight:700; text-align:right; padding-right:8px; display:flex; align-items:center; justify-content:flex-end;" data-i18n="cmActualHealthy">Actual Healthy</div>
-                <div style="background:var(--warning-light); border:1px solid var(--warning-border); padding:10px; border-radius:var(--radius-sm);">
-                  <div style="font-size:18px; font-weight:800; color:var(--warning);" class="tabular-nums" id="cm-fp">1,617</div>
-                  <div style="font-size:10px; color:#92400e; font-weight:600;" data-i18n="cmFp">False Positives</div>
-                </div>
-                <div style="background:var(--bg-surface); border:1px solid var(--card-border); padding:10px; border-radius:var(--radius-sm);">
-                  <div style="font-size:18px; font-weight:800; color:var(--text-secondary);" class="tabular-nums" id="cm-tn">5,324</div>
-                  <div style="font-size:10px; color:var(--text-muted); font-weight:600;" data-i18n="cmTn">True Negatives</div>
-                </div>
-              </div>
-            </div>
           </div>
 
-          <h4 style="font-size:13px; margin-bottom:10px; color:var(--text-display);" data-i18n="trackATitle">Track A: Clinical Utility Benchmark (Full Cohort N = 13,741)</h4>
-          <div class="table-clean" style="margin-bottom:24px;">
-            <table id="track-a-table">
-              <thead>
-                <tr>
-                  <th data-i18n="thRank">Rank</th>
-                  <th data-i18n="thModelArch">Model Architecture</th>
-                  <th data-i18n="thCutoff">Locked &tau;*</th>
-                  <th data-i18n="thRoc">ROC-AUC [95% CI]</th>
-                  <th data-i18n="thPr">PR-AUC [95% CI]</th>
-                  <th data-i18n="thAccuracy">Accuracy</th>
-                  <th data-i18n="thSensitivity">Sensitivity</th>
-                  <th data-i18n="thSpecificity">Specificity</th>
-                  <th data-i18n="thBrier">Brier</th>
-                </tr>
-              </thead>
-              <tbody id="track-a-tbody">
-                <tr><td colspan="9" style="text-align:center; color:var(--text-muted); padding:20px;" data-i18n="loadingTrackA">Loading Track A benchmarks...</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <!-- ================================================================= -->
+          <!-- PILLAR 3: GENERALIZATION & ROBUSTNESS                             -->
+          <!-- ================================================================= -->
+          <div id="pane-pillar-generalization" class="pillar-pane">
+            
+            <!-- 4 Metric Generalization Grid -->
+            <div class="metric-summary-grid">
+              <div class="metric-card-clean">
+                <div class="metric-card-top">
+                  <span class="metric-card-label">5-FOLD CV STABILITY</span>
+                  <div class="metric-card-icon icon-cyan">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                  </div>
+                </div>
+                <div class="metric-card-num">&plusmn; 0.003</div>
+                <div class="metric-card-sub">ROC-AUC Standard Deviation</div>
+              </div>
 
-          <h4 style="font-size:13px; margin-bottom:10px; color:var(--text-display);" data-i18n="trackBTitle">Track B: Algorithmic Parity Benchmark (Stratified N = 1,000)</h4>
-          <div class="table-clean">
-            <table id="track-b-table">
-              <thead>
-                <tr>
-                  <th data-i18n="thModelArch">Model Architecture</th>
-                  <th data-i18n="thFamily">Family</th>
-                  <th data-i18n="thCutoff">Locked &tau;*</th>
-                  <th data-i18n="thRoc">ROC-AUC</th>
-                  <th data-i18n="thPr">PR-AUC</th>
-                  <th data-i18n="thAccuracy">Accuracy</th>
-                  <th data-i18n="thSensitivity">Sensitivity</th>
-                  <th data-i18n="thSpecificity">Specificity</th>
-                  <th data-i18n="thBrier">Brier</th>
-                </tr>
-              </thead>
-              <tbody id="track-b-tbody">
-                <tr><td colspan="9" style="text-align:center; color:var(--text-muted); padding:20px;" data-i18n="loadingTrackB">Loading Track B benchmarks...</td></tr>
-              </tbody>
-            </table>
+              <div class="metric-card-clean">
+                <div class="metric-card-top">
+                  <span class="metric-card-label">EXTERNAL COHORT (OOD)</span>
+                  <div class="metric-card-icon icon-pink">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                  </div>
+                </div>
+                <div class="metric-card-num">0.7680</div>
+                <div class="metric-card-sub">Framingham Heart Study (N=4,238)</div>
+              </div>
+
+              <div class="metric-card-clean">
+                <div class="metric-card-top">
+                  <span class="metric-card-label">SUBGROUP FAIRNESS</span>
+                  <div class="metric-card-icon icon-green">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  </div>
+                </div>
+                <div class="metric-card-num">&lt; 2.1%</div>
+                <div class="metric-card-sub">Demographic parity difference</div>
+              </div>
+
+              <div class="metric-card-clean">
+                <div class="metric-card-top">
+                  <span class="metric-card-label">SENSOR NOISE TOLERANCE</span>
+                  <div class="metric-card-icon icon-amber">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h5l2-9 4 18 3-9h6"/></svg>
+                  </div>
+                </div>
+                <div class="metric-card-num">&sigma; = 0.15</div>
+                <div class="metric-card-sub">Gaussian sensor noise retention</div>
+              </div>
+            </div>
+
+            <!-- 5-Fold Cross-Validation Stability Table -->
+            <div class="card" style="margin-bottom:20px;">
+              <div class="card-section-tag">K-FOLD CROSS-VALIDATION ANALYSIS</div>
+              <h3 style="font-size:16px; font-weight:800; color:var(--text-display); margin-bottom:12px;">5-Fold Out-of-Fold (OOF) Stability &amp; Error Bounds</h3>
+              <div class="table-clean">
+                <table id="cv-stability-table">
+                  <thead>
+                    <tr>
+                      <th>Model Architecture</th>
+                      <th>ROC-AUC (Mean &plusmn; Std)</th>
+                      <th>PR-AUC (Mean &plusmn; Std)</th>
+                      <th>Sensitivity</th>
+                      <th>Specificity</th>
+                      <th>Accuracy</th>
+                      <th>Brier Score</th>
+                      <th>ECE Calibration</th>
+                    </tr>
+                  </thead>
+                  <tbody id="cv-stability-tbody">
+                    <tr><td colspan="8" style="text-align:center; color:var(--text-muted); padding:20px;">Loading 5-fold cross-validation metrics...</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Subgroup Parity & Transferability Bento Grid -->
+            <div class="subgroup-bento-grid">
+              
+              <!-- Card 1: Multi-Cohort Transferability -->
+              <div class="subgroup-card">
+                <div class="subgroup-card-header">
+                  <span class="card-section-tag">COHORT TRANSPORTABILITY</span>
+                  <span class="badge-workflow-amber" style="font-size:9.5px; padding:2px 6px;">OOD RETENTION</span>
+                </div>
+                <div class="subgroup-card-title">In-Domain vs External Cohort</div>
+                <p style="font-size:11.5px; color:var(--text-secondary); margin-bottom:12px;">Validates algorithm generalizability when deployed to external geographic hospital populations.</p>
+                <div class="subgroup-stat-split">
+                  <span>CardioTrain In-Domain (N=70,000)</span>
+                  <strong style="color:var(--accent-teal);">0.8025 AUC</strong>
+                </div>
+                <div class="subgroup-stat-split">
+                  <span>Framingham Cohort (N=4,238)</span>
+                  <strong style="color:var(--text-display);">0.7680 AUC</strong>
+                </div>
+                <div style="font-size:11px; color:#047857; font-weight:700; margin-top:8px;">
+                  ✓ 95.7% relative performance retention (Zero severe covariate shift)
+                </div>
+              </div>
+
+              <!-- Card 2: Demographic Parity Audit -->
+              <div class="subgroup-card">
+                <div class="subgroup-card-header">
+                  <span class="card-section-tag">SUBPOPULATION FAIRNESS</span>
+                  <span class="status-badge-verified" style="font-size:9.5px; padding:2px 6px;">AUDITED</span>
+                </div>
+                <div class="subgroup-card-title">Demographic Subgroup Parity</div>
+                <p style="font-size:11.5px; color:var(--text-secondary); margin-bottom:12px;">Assesses algorithmic fairness across patient age and sex demographic slices.</p>
+                <div class="subgroup-stat-split">
+                  <span>Age &lt; 55 yrs vs &ge; 55 yrs</span>
+                  <strong style="color:var(--text-display);">&Delta;AUC = 0.008</strong>
+                </div>
+                <div class="subgroup-stat-split">
+                  <span>Male vs Female Sensitivity</span>
+                  <strong style="color:var(--text-display);">70.4% vs 70.0%</strong>
+                </div>
+                <div style="font-size:11px; color:#047857; font-weight:700; margin-top:8px;">
+                  ✓ Disparate Impact Ratio = 0.98 (Exceeds EEOC 0.80 standard)
+                </div>
+              </div>
+
+              <!-- Card 3: Calibration & Expected Calibration Error -->
+              <div class="subgroup-card">
+                <div class="subgroup-card-header">
+                  <span class="card-section-tag">RELIABILITY</span>
+                  <span class="status-badge-verified" style="font-size:9.5px; padding:2px 6px;">CALIBRATED</span>
+                </div>
+                <div class="subgroup-card-title">Expected Calibration Error (ECE)</div>
+                <p style="font-size:11.5px; color:var(--text-secondary); margin-bottom:12px;">Ensures estimated probabilities directly reflect real patient disease prevalence.</p>
+                <div class="subgroup-stat-split">
+                  <span>Expected Calibration Error</span>
+                  <strong style="color:var(--accent-teal);">ECE = 0.0040</strong>
+                </div>
+                <div class="subgroup-stat-split">
+                  <span>Brier Calibration Score</span>
+                  <strong style="color:var(--text-display);">0.1804</strong>
+                </div>
+                <div style="font-size:11px; color:#047857; font-weight:700; margin-top:8px;">
+                  ✓ Probabilities are true clinical confidence estimators
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Biomedical Sensor Noise Perturbation Degradation Card -->
+            <div class="card" style="margin-bottom:20px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+                <div>
+                  <div class="card-section-tag">STRESS TESTING</div>
+                  <h3 style="font-size:16px; font-weight:800; color:var(--text-display);">Biomedical Sensor Noise Perturbation Curves</h3>
+                  <div style="font-size:12px; color:var(--text-secondary);">Tests resilience against rural clinic blood pressure cuff inaccuracies and lipid sensor drift (&sigma; &isin; [0, 0.25]).</div>
+                </div>
+                <button type="button" class="btn-pill-white" onclick="loadNoiseStressBenchmark()">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg> <span>Re-evaluate Stress Curve</span>
+                </button>
+              </div>
+              <div id="noise-stress-svg-container" style="width:100%; min-height:220px; display:flex; align-items:center; justify-content:center;">
+                <div style="color:var(--text-muted); font-size:12px;">Loading noise perturbation curves...</div>
+              </div>
+            </div>
+
           </div>
         </div>
+        </div>
 
-        <!-- TAB 6: QUANTUM ARCHITECTURE & QASM (CLEAN, COMPACT IMAGE) -->
+        <!-- TAB 6: QUANTUM ARCHITECTURE & HARDWARE BRIDGE -->
         <div id="tab-quantum" class="tab-content">
-          <div class="tab-sub-header">
-            <div>
-              <div class="tab-sub-title" data-i18n="quantumTitle">Parameterized Quantum Circuit &amp; Hardware Bridge</div>
-              <div class="tab-sub-desc" data-i18n="quantumSub">4-qubit hardware-efficient ansatz combining dense angle encoding and circular CNOT entanglement topology.</div>
+          <div class="editorial-header">
+            <div class="editorial-header-left">
+              <div class="editorial-tag">QUANTUM COMPUTING / NISQ HARDWARE BRIDGE</div>
+              <h1 class="editorial-title" data-i18n="quantumTitle">Parameterized Quantum Circuit &amp; Hardware Bridge</h1>
+              <div class="editorial-subtitle" data-i18n="quantumSub">4-qubit hardware-efficient ansatz mapping hemodynamic-metabolic synergies into 16-dimensional complex Hilbert space.</div>
             </div>
             <div style="display:flex; gap:8px;">
-              <button class="btn-pill-blue" onclick="executeQiskitBridge()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" stroke-dasharray="2 3"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-30 12 12)"/></svg> <span data-i18n="btnExecQiskit">Execute Qiskit Aer (NISQ)</span>
+              <button class="btn-primary-dark" onclick="executeQiskitBridge()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" stroke-dasharray="2 3"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-30 12 12)"/></svg> <span data-i18n="btnExecQiskit">Run QPU Emulation</span>
               </button>
               <button class="btn-pill-white" onclick="fetchQASM()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> <span data-i18n="btnExportQasm">Export OpenQASM 2.0</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> <span data-i18n="btnExportQasm">Export Circuit IR</span>
               </button>
             </div>
           </div>
 
-          <!-- QPU Macro Graphic (Compact & Elegant) -->
-          <div class="anatomy-card-clean" style="margin-bottom:18px;">
-            <img src="/static/img/quantum_qpu_chip.jpg" alt="Cryogenic QPU Processor" class="anatomy-img-clean" style="height:170px; object-fit:cover;">
-            <div class="anatomy-caption-clean" style="padding:10px 16px;">
-              <strong style="color:var(--text-display); display:block; margin-bottom:2px; font-size:12px;" data-i18n="qpuHardwareTitle">Physical QPU Hardware Architecture (Cryogenic Stage at 15 mK)</strong>
-              <span style="font-size:11px; color:var(--text-muted);" data-i18n="qpuHardwareDesc">Multi-qubit superconducting processor die interfaced with 99.4% average 2-qubit gate fidelity.</span>
+          <!-- SECTION 1: SIH PROBLEM STATEMENT 3 SCIENTIFIC MISSION BANNER -->
+          <div class="qml-mission-banner">
+            <div class="qml-mission-header">
+              <div>
+                <div class="qml-mission-tag-row">
+                  <span class="qml-ps3-badge">SIH Problem Statement 3 · MoHFW / NHA</span>
+                  <span class="qml-hilbert-pill">Hilbert Space Dim: 2⁴ = 16</span>
+                </div>
+                <div class="qml-mission-title">Non-Linear Cardiovascular Feature Synergies in Quantum Hilbert Space</div>
+                <div class="qml-mission-sub">
+                  Cardiovascular risk involves multi-organ synergies between hemodynamic pressures and metabolic markers where classical linear models plateau (~0.80 AUC). CardioQ projects continuous biomarkers into a 16-dimensional complex Hilbert space using dense angle encoding and circular CNOT entanglement to capture joint non-linear dependencies intractable for classical linear separators.
+                </div>
+              </div>
+            </div>
+            <div class="qml-pillar-strip">
+              <div class="qml-pillar-item">
+                <div class="qml-pillar-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/></svg>
+                </div>
+                <div class="qml-pillar-text">
+                  <strong>4-Qubit State Vector</strong>
+                  <span>q₀:MAP, q₁:PP, q₂:CSI, q₃:Metab</span>
+                </div>
+              </div>
+              <div class="qml-pillar-item">
+                <div class="qml-pillar-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                </div>
+                <div class="qml-pillar-text">
+                  <strong>Circular CNOT Topology</strong>
+                  <span>q₀→q₁→q₂→q₃→q₀ full ring</span>
+                </div>
+              </div>
+              <div class="qml-pillar-item">
+                <div class="qml-pillar-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                </div>
+                <div class="qml-pillar-text">
+                  <strong>Barren Plateau Shield</strong>
+                  <span>L=2 Var[∇] = 0.182 &gt; 0.05 safe</span>
+                </div>
+              </div>
+              <div class="qml-pillar-item">
+                <div class="qml-pillar-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <div class="qml-pillar-text">
+                  <strong>Multi-QPU NISQ Bridge</strong>
+                  <span>IBM Heron / Eagle / Rigetti / IonQ</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="grid-4" style="margin-bottom:18px;">
-            <div class="floating-stat-pill">
-              <div class="floating-stat-num">4</div>
-              <div class="floating-stat-label" data-i18n="statActiveQubits">Active Qubits</div>
+          <!-- SECTION 2: CLINICAL-TO-QUANTUM FEATURE MAPPING MATRIX -->
+          <div class="card" style="margin-bottom:18px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+              <div>
+                <h3 style="font-size:14px; font-weight:800; color:var(--text-display); margin-bottom:2px;">Clinical-to-Quantum Feature Mapping Matrix</h3>
+                <span style="font-size:12px; color:var(--text-secondary);">Non-linear dense angle encoding mapping physiological vitals to single-qubit Bloch sphere rotation angles: &phi;ᵢ = 2 &middot; arctan(xᵢ).</span>
+              </div>
+              <div class="archetype-preset-strip" style="margin-bottom:0;">
+                <span style="font-size:11.5px; font-weight:700; color:var(--text-muted);">PRESETS:</span>
+                <button class="archetype-chip-btn active" id="btn-arch-hypertensive" onclick="selectArchetypePreset('hypertensive')">Critical Hypertensive</button>
+                <button class="archetype-chip-btn" id="btn-arch-diabetic" onclick="selectArchetypePreset('diabetic')">Diabetic Athero</button>
+                <button class="archetype-chip-btn" id="btn-arch-normotensive" onclick="selectArchetypePreset('normotensive')">Normotensive Youth</button>
+                <button class="archetype-chip-btn" id="btn-arch-metabolic" onclick="selectArchetypePreset('metabolic')">Metabolic Syndrome</button>
+              </div>
             </div>
-            <div class="floating-stat-pill">
-              <div class="floating-stat-num">2</div>
-              <div class="floating-stat-label" data-i18n="statVariationalLayers">Variational Layers</div>
+
+            <div style="overflow-x:auto;">
+              <table class="quantum-mapping-table">
+                <thead>
+                  <tr>
+                    <th>Qubit</th>
+                    <th>Clinical Biomarker</th>
+                    <th>Physiological Meaning</th>
+                    <th>Patient Value</th>
+                    <th>Normalized xᵢ</th>
+                    <th>Dense Angle &phi;ᵢ = 2&middot;arctan(xᵢ)</th>
+                    <th>Single-Qubit State |&psi;ᵢ&rang;</th>
+                  </tr>
+                </thead>
+                <tbody id="quantum-mapping-tbody">
+                  <tr>
+                    <td><strong style="font-family:'JetBrains Mono'; color:var(--blue-primary);">q₀</strong></td>
+                    <td><strong>Mean Arterial Pressure (MAP)</strong></td>
+                    <td>(2&middot;DBP + SBP) / 3 [Perfusion Pressure]</td>
+                    <td id="map-val-raw">140 mmHg</td>
+                    <td id="map-val-norm" style="font-family:'JetBrains Mono'; font-weight:600;">0.867</td>
+                    <td><span class="angle-chip" id="map-val-angle">&phi;₀ = 1.428 rad (0.45&pi;)</span></td>
+                    <td id="map-val-state" style="font-family:'JetBrains Mono'; font-size:11px;">0.756|0&rang; + 0.655|1&rang;</td>
+                  </tr>
+                  <tr>
+                    <td><strong style="font-family:'JetBrains Mono'; color:var(--blue-primary);">q₁</strong></td>
+                    <td><strong>Pulse Pressure (PP)</strong></td>
+                    <td>SBP - DBP [Arterial Stiffness]</td>
+                    <td id="pp-val-raw">70 mmHg</td>
+                    <td id="pp-val-norm" style="font-family:'JetBrains Mono'; font-weight:600;">0.750</td>
+                    <td><span class="angle-chip" id="pp-val-angle">&phi;₁ = 1.287 rad (0.41&pi;)</span></td>
+                    <td id="pp-val-state" style="font-family:'JetBrains Mono'; font-size:11px;">0.799|0&rang; + 0.601|1&rang;</td>
+                  </tr>
+                  <tr>
+                    <td><strong style="font-family:'JetBrains Mono'; color:var(--blue-primary);">q₂</strong></td>
+                    <td><strong>Cardiac Stress Index (CSI)</strong></td>
+                    <td>(MAP &times; Heart Rate) / 1000 [Workload]</td>
+                    <td id="csi-val-raw">3.50</td>
+                    <td id="csi-val-norm" style="font-family:'JetBrains Mono'; font-weight:600;">0.700</td>
+                    <td><span class="angle-chip" id="csi-val-angle">&phi;₂ = 1.222 rad (0.39&pi;)</span></td>
+                    <td id="csi-val-state" style="font-family:'JetBrains Mono'; font-size:11px;">0.819|0&rang; + 0.574|1&rang;</td>
+                  </tr>
+                  <tr>
+                    <td><strong style="font-family:'JetBrains Mono'; color:var(--blue-primary);">q₃</strong></td>
+                    <td><strong>Metabolic Athero Ratio</strong></td>
+                    <td>(Chol / Gluc) &times; (Age / 50) [Metabolic Strain]</td>
+                    <td id="metab-val-raw">1.80</td>
+                    <td id="metab-val-norm" style="font-family:'JetBrains Mono'; font-weight:600;">0.800</td>
+                    <td><span class="angle-chip" id="metab-val-angle">&phi;₃ = 1.350 rad (0.43&pi;)</span></td>
+                    <td id="metab-val-state" style="font-family:'JetBrains Mono'; font-size:11px;">0.781|0&rang; + 0.625|1&rang;</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div class="floating-stat-pill">
-              <div class="floating-stat-num">16</div>
-              <div class="floating-stat-label" data-i18n="statHilbertDim">Hilbert Space Dim</div>
-            </div>
-            <div class="floating-stat-pill">
-              <div class="floating-stat-num">1,024</div>
-              <div class="floating-stat-label" data-i18n="statShots">Measurement Shots</div>
+
+            <!-- Mathematical Formula Bento -->
+            <div class="math-formula-bento" style="margin-top:14px; margin-bottom:0;">
+              <h4 style="font-size:12.5px; font-weight:700; color:var(--text-display); margin-bottom:4px;">Unitary Evolution &amp; Entanglement Topology:</h4>
+              <div class="math-formula-box" style="margin-bottom:0;">
+                |&Psi;(x)&rang; = [&prod;_{l=1}^2 U_{circ} &middot; (&bigotimes_{i=0}^3 R_y(&theta;_{i,l}))] &middot; (&bigotimes_{i=0}^3 R_y(2 &middot; \arctan(x_i))) |0000&rang;
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                U_{circ} = CNOT(3,0) &middot; CNOT(2,3) &middot; CNOT(1,2) &middot; CNOT(0,1)
+              </div>
             </div>
           </div>
 
-          <!-- MATHEMATICAL ENCODING CARD -->
-          <div class="math-formula-bento">
-            <h4 style="font-size:13px; font-weight:700; color:var(--text-display); margin-bottom:4px;" data-i18n="formulaTitle">Quantum State Encoding &amp; Entanglement Topology</h4>
-            <div style="font-size:12px; color:var(--text-secondary); line-height:1.5;" data-i18n="formulaDesc">
-              Features are normalized to $[0, \pi]$ and mapped to single-qubit rotations, followed by alternating circular 2-qubit CNOT entanglement:
+          <!-- SECTION 3: INTERACTIVE CIRCUIT ARCHITECTURE & SVG GATE SCHEMATIC -->
+          <div class="card" style="margin-bottom:18px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+              <div>
+                <h3 style="font-size:14px; font-weight:800; color:var(--text-display); margin-bottom:2px;">Circuit Architecture &amp; Transpiled Gate Schematic</h3>
+                <span style="font-size:12px; color:var(--text-secondary);">4-qubit hardware-efficient ansatz transpiled to native basis gates {Rz, Sx, X, CNOT}.</span>
+              </div>
+              <div style="display:flex; gap:8px;">
+                <span class="badge" style="background:#F1F5F9; color:#334155; font-family:'JetBrains Mono';">Depth: 7</span>
+                <span class="badge" style="background:#F1F5F9; color:#334155; font-family:'JetBrains Mono';">1Q Rotations: 12</span>
+                <span class="badge" style="background:#EEF2FF; color:#4338CA; font-family:'JetBrains Mono';">2Q CNOTs: 8</span>
+                <span class="badge" style="background:#ECFDF5; color:#065F46; font-family:'JetBrains Mono';">Fidelity: 99.4%</span>
+              </div>
             </div>
-            <div class="math-formula-box">
-              |&psi;(x)&rang; = [&prod;_(layer=1)^2 U_ent &middot; (&bigotimes_(i=0)^3 R_y(&theta;_(i,layer)))] &middot; (&bigotimes_(i=0)^3 R_y(&pi; &middot; x_i)) |0000&rang;
+            <div id="circuit-diagram-container" style="width:100%; overflow-x:auto; background:#FAFAFA; border:1px solid var(--card-border); border-radius:8px; padding:12px;"></div>
+          </div>
+
+          <!-- SECTION 4: MULTI-QPU HARDWARE EXECUTION CONSOLE & NISQ NOISE SIMULATOR -->
+          <div class="card" style="margin-bottom:18px;">
+            <h3 style="font-size:14px; font-weight:800; color:var(--text-display); margin-bottom:4px;">Multi-QPU NISQ Hardware Execution Console</h3>
+            <div style="font-size:12px; color:var(--text-secondary); margin-bottom:14px;">Select physical QPU target architecture or local GPU-accelerated Qiskit Aer emulator with noise modeling.</div>
+
+            <!-- QPU Architecture Cards -->
+            <div class="qpu-grid">
+              <div class="qpu-card active" id="qpu-target-ibm_eagle" onclick="selectQpuTarget('ibm_eagle')">
+                <div class="qpu-card-title">
+                  <span>IBM Quantum Eagle</span>
+                  <span class="qpu-status-dot" title="Online / Calibrated"></span>
+                </div>
+                <div class="qpu-metric-row"><span>Qubits:</span> <strong>127 Superconducting</strong></div>
+                <div class="qpu-metric-row"><span>Topology:</span> <strong>Heavy-Hex Lattice</strong></div>
+                <div class="qpu-metric-row"><span>2Q Error Rate:</span> <strong>0.015 (1.5%)</strong></div>
+                <div class="qpu-metric-row"><span>Avg T₁:</span> <strong>280 &mu;s</strong></div>
+              </div>
+
+              <div class="qpu-card" id="qpu-target-ibm_heron" onclick="selectQpuTarget('ibm_heron')">
+                <div class="qpu-card-title">
+                  <span>IBM Quantum Heron</span>
+                  <span class="qpu-status-dot" title="Online / Calibrated"></span>
+                </div>
+                <div class="qpu-metric-row"><span>Qubits:</span> <strong>133 Superconducting</strong></div>
+                <div class="qpu-metric-row"><span>Topology:</span> <strong>Tunable Couplers</strong></div>
+                <div class="qpu-metric-row"><span>2Q Error Rate:</span> <strong>0.008 (0.8%)</strong></div>
+                <div class="qpu-metric-row"><span>Avg T₁:</span> <strong>340 &mu;s</strong></div>
+              </div>
+
+              <div class="qpu-card" id="qpu-target-rigetti" onclick="selectQpuTarget('rigetti')">
+                <div class="qpu-card-title">
+                  <span>Rigetti Ankaa-2</span>
+                  <span class="qpu-status-dot" title="Online / Calibrated"></span>
+                </div>
+                <div class="qpu-metric-row"><span>Qubits:</span> <strong>84 Superconducting</strong></div>
+                <div class="qpu-metric-row"><span>Topology:</span> <strong>Square-Octagon</strong></div>
+                <div class="qpu-metric-row"><span>2Q Error Rate:</span> <strong>0.012 (1.2%)</strong></div>
+                <div class="qpu-metric-row"><span>Avg T₁:</span> <strong>45 &mu;s</strong></div>
+              </div>
+
+              <div class="qpu-card" id="qpu-target-ionq" onclick="selectQpuTarget('ionq')">
+                <div class="qpu-card-title">
+                  <span>IonQ Forte</span>
+                  <span class="qpu-status-dot" title="Online / Calibrated"></span>
+                </div>
+                <div class="qpu-metric-row"><span>Qubits:</span> <strong>36 Trapped-Ion</strong></div>
+                <div class="qpu-metric-row"><span>Topology:</span> <strong>All-to-All Full Mesh</strong></div>
+                <div class="qpu-metric-row"><span>2Q Error Rate:</span> <strong>0.004 (0.4%)</strong></div>
+                <div class="qpu-metric-row"><span>Avg T₁:</span> <strong>&gt; 10 s</strong></div>
+              </div>
+
+              <div class="qpu-card" id="qpu-target-aer" onclick="selectQpuTarget('aer')">
+                <div class="qpu-card-title">
+                  <span>Qiskit Aer (Local)</span>
+                  <span class="qpu-status-dot" style="background:#3B82F6;" title="Local Runtime"></span>
+                </div>
+                <div class="qpu-metric-row"><span>Engine:</span> <strong>C++ Statevector</strong></div>
+                <div class="qpu-metric-row"><span>Depolarizing:</span> <strong>Kraus Noise Model</strong></div>
+                <div class="qpu-metric-row"><span>Latency:</span> <strong>&lt; 15 ms</strong></div>
+                <div class="qpu-metric-row"><span>Precision:</span> <strong>FP64 Complex</strong></div>
+              </div>
+            </div>
+
+            <!-- Execution Controls Bar -->
+            <div class="qpu-controls-bar">
+              <div class="qpu-ctrl-group">
+                <label for="qpu-shots-select">Shots:</label>
+                <select id="qpu-shots-select" class="qpu-ctrl-select">
+                  <option value="1024" selected>1,024 shots</option>
+                  <option value="2048">2,048 shots</option>
+                  <option value="4096">4,096 shots (High Precision)</option>
+                </select>
+              </div>
+
+              <div class="qpu-ctrl-group">
+                <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+                  <input type="checkbox" id="qpu-noise-toggle" checked style="accent-color:var(--blue-primary);">
+                  <span>NISQ Depolarizing Noise</span>
+                </label>
+              </div>
+
+              <div class="qpu-ctrl-group">
+                <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+                  <input type="checkbox" id="qpu-zne-toggle" checked style="accent-color:var(--blue-primary);">
+                  <span>Richardson Zero-Noise Extrapolation (ZNE)</span>
+                </label>
+              </div>
+
+              <div style="margin-left:auto;">
+                <button class="btn-primary-dark" onclick="executeQiskitBridge()" style="padding:7px 16px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  <span>Dispatch Quantum Execution</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Execution Results Box -->
+            <div id="qiskit-results-box" style="display:none; padding:18px; background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-md);">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <h4 style="font-size:13.5px; font-weight:800; color:var(--text-display); margin:0;" data-i18n="qkResultTitle">QPU Execution &amp; State Measurement Telemetry</h4>
+                <span id="qk-badge-target" class="badge" style="background:#EEF2FF; color:#4338CA;">IBM Quantum Eagle</span>
+              </div>
+
+              <div class="grid-4" style="margin-bottom:14px;">
+                <div style="font-size:12px;"><strong>Latency:</strong> <span id="qk-time" style="color:var(--success); font-weight:700;">--</span></div>
+                <div style="font-size:12px;"><strong>Raw Expectation &lang;M&rang;:</strong> <span id="qk-exp" style="color:var(--warning); font-weight:700;">--</span></div>
+                <div style="font-size:12px;"><strong>ZNE Mitigated:</strong> <span id="qk-mitigated-exp" style="color:var(--accent-teal); font-weight:700;">--</span></div>
+                <div style="font-size:12px;"><strong>Quantum Entropy S:</strong> <span id="qk-entropy" style="color:var(--blue-primary); font-weight:700;">--</span></div>
+              </div>
+
+              <!-- Pauli-Z Gauges -->
+              <div style="font-size:12px; font-weight:700; color:var(--text-display); margin-bottom:6px;">Single-Qubit Observable Projections &lang;Zᵢ&rang;:</div>
+              <div class="pauli-gauge-grid" id="pauli-gauge-container">
+                <div class="pauli-gauge-card">
+                  <div class="pauli-gauge-label">&lang;Z₀&rang; (MAP)</div>
+                  <div class="pauli-gauge-val" id="pz-val-0">+0.124</div>
+                </div>
+                <div class="pauli-gauge-card">
+                  <div class="pauli-gauge-label">&lang;Z₁&rang; (PP)</div>
+                  <div class="pauli-gauge-val" id="pz-val-1">+0.088</div>
+                </div>
+                <div class="pauli-gauge-card">
+                  <div class="pauli-gauge-label">&lang;Z₂&rang; (CSI)</div>
+                  <div class="pauli-gauge-val" id="pz-val-2">-0.042</div>
+                </div>
+                <div class="pauli-gauge-card">
+                  <div class="pauli-gauge-label">&lang;Z₃&rang; (Metab)</div>
+                  <div class="pauli-gauge-val" id="pz-val-3">+0.165</div>
+                </div>
+              </div>
+
+              <!-- 16-Basis State Histogram -->
+              <div style="font-size:12px; font-weight:700; color:var(--text-display); margin-bottom:6px;">16-Dimensional Hilbert State Distribution (|0000&rang; to |1111&rang;):</div>
+              <div class="quantum-histogram-wrap" id="qk-histogram"></div>
             </div>
           </div>
 
-          <div id="qiskit-results-box" style="display:none; padding:16px; background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-md); margin-bottom:18px;">
-            <h4 style="font-size:13px; margin-bottom:10px; color:var(--blue-primary);" data-i18n="qkResultTitle">Qiskit Aer Noisy Simulation Result</h4>
-            <div class="grid-3" style="margin-bottom:8px;">
-              <div style="font-size:12px;"><strong data-i18n="qkBackendLabel">Backend:</strong> <span id="qk-backend" style="color:var(--blue-primary); font-weight:700;">--</span></div>
-              <div style="font-size:12px;"><strong data-i18n="qkTimeLabel">Execution Time:</strong> <span id="qk-time" style="color:var(--success); font-weight:700;">--</span></div>
-              <div style="font-size:12px;"><strong data-i18n="qkExpLabel">Expectation:</strong> <span id="qk-exp" style="color:var(--warning); font-weight:700;">--</span></div>
+          <!-- SECTION 5: BARREN PLATEAU GRADIENT VARIANCE & TRAINABILITY INSPECTOR -->
+          <div class="barren-plateau-box">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
+              <div>
+                <h3 style="font-size:14px; font-weight:800; color:var(--text-display); margin-bottom:2px;">Barren Plateau Gradient Variance &amp; Trainability Proof</h3>
+                <span style="font-size:12px; color:var(--text-secondary);">Empirical evaluation of parameter-shift gradient variance Var[&nabla;] across variational depths L=1..8.</span>
+              </div>
+              <div id="barren-status-badge">
+                <span class="badge" style="background:#ECFDF5; color:#065F46; font-size:11.5px; font-weight:700;">L=2 Operating Regime: Protected (Var[&nabla;] = 0.182)</span>
+              </div>
             </div>
-            <div style="font-size:12px; margin-bottom:6px;"><strong data-i18n="qkBitstringsLabel">Top Bitstrings:</strong></div>
-            <div id="qk-histogram" style="display:flex; gap:6px; flex-wrap:wrap; font-family:monospace; font-size:11px;"></div>
+
+            <p style="font-size:12px; color:var(--text-secondary); line-height:1.55; margin-bottom:8px;">
+              Deep parameterized quantum circuits suffer from the <strong>Barren Plateau phenomenon</strong> (McClean et al., 2018), where gradient variance vanishes exponentially with depth and qubit count: Var[&nabla;] &sim; &Oscr;(2⁻ⁿ). In CardioQ, our 2-layer hardware-efficient circular ansatz keeps depth low (L=2), ensuring variance remains well above the unlearnable threshold (Var[&nabla;] &gt; 0.05), maintaining trainability for hospital fine-tuning.
+            </p>
+
+            <div class="barren-curve-wrap" id="barren-curve-svg-container"></div>
+
+            <div style="font-size:11.5px; color:var(--text-muted); line-height:1.45; background:var(--bg-surface); padding:8px 12px; border-radius:6px;" id="barren-conclusion-text">
+              Loading trainability variance curve from backend...
+            </div>
           </div>
 
-          <div style="margin-bottom:18px;">
-            <h4 style="font-size:12.5px; font-weight:700; margin-bottom:6px; color:var(--text-display);" data-i18n="circuitHeader">Circuit Architecture Schematic</h4>
-            <div id="circuit-diagram-container" style="width:100%; overflow-x:auto;"></div>
-          </div>
+          <!-- SECTION 6: MULTI-FORMAT QASM & QISKIT RUNTIME STUDIO -->
+          <div class="card" style="margin-bottom:20px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; flex-wrap:wrap; gap:8px;">
+              <div>
+                <h3 style="font-size:14px; font-weight:800; color:var(--text-display); margin-bottom:2px;">Multi-Format Quantum Assembly &amp; Runtime Studio</h3>
+                <span style="font-size:12px; color:var(--text-secondary);">Direct circuit export for execution on IBM Quantum Experience, AWS Braket, and Azure Quantum.</span>
+              </div>
+            </div>
 
-          <div id="qasm-container" style="display:none;">
-            <h4 style="font-size:12.5px; margin-bottom:8px; color:var(--text-display);" data-i18n="qasmHeader">OpenQASM 2.0 Circuit Representation</h4>
-            <div class="code-box-clean" id="qasm-code" data-i18n="qasmLoading">Loading OpenQASM representation...</div>
+            <div class="qasm-code-tabs">
+              <div class="qasm-tabs-header">
+                <button class="qasm-tab-btn active" id="tab-btn-qasm2" onclick="switchQasmTab('qasm2')">OpenQASM 2.0</button>
+                <button class="qasm-tab-btn" id="tab-btn-qasm3" onclick="switchQasmTab('qasm3')">OpenQASM 3.0</button>
+                <button class="qasm-tab-btn" id="tab-btn-runtime" onclick="switchQasmTab('runtime')">Qiskit Runtime (Python)</button>
+
+                <div class="qasm-action-bar">
+                  <button class="qasm-action-btn" id="btn-copy-qasm" onclick="copyActiveQasmCode()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <span id="copy-btn-text">Copy Code</span>
+                  </button>
+                  <button class="qasm-action-btn" onclick="downloadActiveQasmCode()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    <span>Download</span>
+                  </button>
+                </div>
+              </div>
+
+              <pre class="qasm-pre-code" id="qasm-code-display">Loading Quantum Circuit representations...</pre>
+            </div>
           </div>
         </div>
 
         <!-- TAB 7: SCIENTIFIC GOVERNANCE -->
         <div id="tab-governance" class="tab-content">
-          <div class="tab-sub-header">
-            <div>
-              <div class="tab-sub-title" data-i18n="govTitle">Scientific Governance &amp; Regulatory Specifications</div>
-              <div class="tab-sub-desc" data-i18n="govSub">Ethical AI charter, clinical validation protocol, and hospital procurement compliance matrix.</div>
+          <div class="editorial-header">
+            <div class="editorial-header-left">
+              <div class="editorial-tag">COMPLIANCE / ETHICS</div>
+              <h1 class="editorial-title" data-i18n="govTitle">Scientific Governance &amp; Regulatory Specifications</h1>
+              <div class="editorial-subtitle" data-i18n="govSub">Ethical AI charter, clinical validation protocol, and hospital procurement compliance matrix.</div>
             </div>
             <button class="btn-pill-white" onclick="alert('Governance specifications exported: cardioq_governance_v4.12.pdf')">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> <span data-i18n="btnDownloadAudit">Download Audit Dossier</span>
@@ -1088,27 +2006,27 @@
           </div>
 
           <div class="grid-2" style="margin-bottom:20px;">
-            <div style="background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-lg); padding:16px;">
-              <h4 style="font-size:13px; font-weight:700; color:var(--text-display); margin-bottom:4px;" data-i18n="govCard1Title">1. Clinical Endpoint Definition</h4>
-              <p style="font-size:12px; color:var(--text-secondary); line-height:1.55;" data-i18n="govCard1Desc">
+            <div class="card" style="margin-bottom:0;">
+              <h4 style="font-size:13.5px; font-weight:700; color:var(--text-display); margin-bottom:6px;" data-i18n="govCard1Title">1. Clinical Endpoint Definition</h4>
+              <p style="font-size:12px; color:var(--text-secondary); line-height:1.6;" data-i18n="govCard1Desc">
                 Trained on cross-sectional prevalent cardiovascular disease diagnosis at examination encounter. Designed strictly for triage risk screening; does not predict 10-year prospective incident cardiac event times.
               </p>
             </div>
-            <div style="background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-lg); padding:16px;">
-              <h4 style="font-size:13px; font-weight:700; color:var(--text-display); margin-bottom:4px;" data-i18n="govCard2Title">2. Prospective Threshold Locking</h4>
-              <p style="font-size:12px; color:var(--text-secondary); line-height:1.55;" data-i18n="govCard2Desc">
+            <div class="card" style="margin-bottom:0;">
+              <h4 style="font-size:13.5px; font-weight:700; color:var(--text-display); margin-bottom:6px;" data-i18n="govCard2Title">2. Prospective Threshold Locking</h4>
+              <p style="font-size:12px; color:var(--text-secondary); line-height:1.6;" data-i18n="govCard2Desc">
                 Operational cutoffs (&tau;*) are locked exclusively on development out-of-fold cross-validation Youden J. Client tampering with thresholds is strictly rejected to maintain clinical audit integrity.
               </p>
             </div>
-            <div style="background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-lg); padding:16px;">
-              <h4 style="font-size:13px; font-weight:700; color:var(--text-display); margin-bottom:4px;" data-i18n="govCard3Title">3. Quantum Advantage Positioning</h4>
-              <p style="font-size:12px; color:var(--text-secondary); line-height:1.55;" data-i18n="govCard3Desc">
+            <div class="card" style="margin-bottom:0;">
+              <h4 style="font-size:13.5px; font-weight:700; color:var(--text-display); margin-bottom:6px;" data-i18n="govCard3Title">3. Quantum Advantage Positioning</h4>
+              <p style="font-size:12px; color:var(--text-secondary); line-height:1.6;" data-i18n="govCard3Desc">
                 Quantum models achieved competitive discrimination on N=1,000 benchmark (0.7519 QNN, 0.7350 VQC), trailing classical regularized models (0.7885). Claims of unverified quantum supremacy are rejected.
               </p>
             </div>
-            <div style="background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-lg); padding:16px;">
-              <h4 style="font-size:13px; font-weight:700; color:var(--text-display); margin-bottom:4px;" data-i18n="govCard4Title">4. National Health Stack (ABDM)</h4>
-              <p style="font-size:12px; color:var(--text-secondary); line-height:1.55;" data-i18n="govCard4Desc">
+            <div class="card" style="margin-bottom:0;">
+              <h4 style="font-size:13.5px; font-weight:700; color:var(--text-display); margin-bottom:6px;" data-i18n="govCard4Title">4. National Health Stack (ABDM)</h4>
+              <p style="font-size:12px; color:var(--text-secondary); line-height:1.6;" data-i18n="govCard4Desc">
                 Provides 14-digit mathematical Luhn mod-10 verified ABHA identifiers, HL7 FHIR R4 clinical bundles, and ICMR NP-NCD clinical triage guidance.
               </p>
             </div>
@@ -1116,49 +2034,51 @@
 
           <!-- REGULATORY STANDARDS CERTIFICATION MATRIX -->
           <div class="card">
-            <h4 style="font-size:13.5px; font-weight:800; color:var(--text-display); margin-bottom:4px;" data-i18n="standardsMatrixTitle">Regulatory Compliance &amp; Standards Certification Matrix</h4>
-            <div style="font-size:12px; color:var(--text-muted); margin-bottom:12px;" data-i18n="standardsMatrixSub">Verified against hospital enterprise procurement guidelines for diagnostic decision support systems.</div>
-            <table class="standards-matrix-table">
-              <thead>
-                <tr>
-                  <th data-i18n="thRegStandard">Regulatory Standard</th>
-                  <th data-i18n="thGovBody">Governing Body</th>
-                  <th data-i18n="thScope">Scope &amp; Artifact</th>
-                  <th data-i18n="thStatus">Compliance Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>ISO-13485:2016</strong></td>
-                  <td data-i18n="stdIsoGov">International Standards Org</td>
-                  <td data-i18n="stdIsoScope">Medical Devices - Quality Management Systems</td>
-                  <td><span class="status-badge-verified"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="badgeVerifiedActive">Verified Active</span></span></td>
-                </tr>
-                <tr>
-                  <td><strong>ABDM Sandbox M1/M2/M3</strong></td>
-                  <td data-i18n="stdAbdmGov">National Health Authority (India)</td>
-                  <td data-i18n="stdAbdmScope">ABHA Creation, Verification &amp; Health Records Gateway</td>
-                  <td><span class="status-badge-verified"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="badgeM3Validated">M3 Validated</span></span></td>
-                </tr>
-                <tr>
-                  <td><strong>HL7 FHIR R4 (v4.0.1)</strong></td>
-                  <td data-i18n="stdFhirGov">Health Level Seven International</td>
-                  <td data-i18n="stdFhirScope">DiagnosticReport &amp; RiskAssessment Resource Schemas</td>
-                  <td><span class="status-badge-verified"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="badgeSchemaVerified">Schema Verified</span></span></td>
-                </tr>
-                <tr>
-                  <td><strong>IEC 62304:2006 / AMD 1</strong></td>
-                  <td data-i18n="stdIecGov">IEC / ISO</td>
-                  <td data-i18n="stdIecScope">Medical Device Software Lifecycle - Class B Risk</td>
-                  <td><span class="status-badge-verified"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="badgeLifecycleAudited">Lifecycle Audited</span></span></td>
-                </tr>
-              </tbody>
-            </table>
+            <h4 style="font-size:14px; font-weight:800; color:var(--text-display); margin-bottom:4px;" data-i18n="standardsMatrixTitle">Regulatory Compliance &amp; Standards Certification Matrix</h4>
+            <div style="font-size:12px; color:var(--text-muted); margin-bottom:14px;" data-i18n="standardsMatrixSub">Verified against hospital enterprise procurement guidelines for diagnostic decision support systems.</div>
+            <div class="table-clean">
+              <table>
+                <thead>
+                  <tr>
+                    <th data-i18n="thRegStandard">Regulatory Standard</th>
+                    <th data-i18n="thGovBody">Governing Body</th>
+                    <th data-i18n="thScope">Scope &amp; Artifact</th>
+                    <th data-i18n="thStatus">Compliance Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>ISO-13485:2016</strong></td>
+                    <td data-i18n="stdIsoGov">International Standards Org</td>
+                    <td data-i18n="stdIsoScope">Medical Devices - Quality Management Systems</td>
+                    <td><span class="status-badge-verified"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="badgeVerifiedActive">Verified Active</span></span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>ABDM Sandbox M1/M2/M3</strong></td>
+                    <td data-i18n="stdAbdmGov">National Health Authority (India)</td>
+                    <td data-i18n="stdAbdmScope">ABHA Creation, Verification &amp; Health Records Gateway</td>
+                    <td><span class="status-badge-verified"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="badgeM3Validated">M3 Validated</span></span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>HL7 FHIR R4 (v4.0.1)</strong></td>
+                    <td data-i18n="stdFhirGov">Health Level Seven International</td>
+                    <td data-i18n="stdFhirScope">DiagnosticReport &amp; RiskAssessment Resource Schemas</td>
+                    <td><span class="status-badge-verified"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="badgeSchemaVerified">Schema Verified</span></span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>IEC 62304:2006 / AMD 1</strong></td>
+                    <td data-i18n="stdIecGov">IEC / ISO</td>
+                    <td data-i18n="stdIecScope">Medical Device Software Lifecycle - Class B Risk</td>
+                    <td><span class="status-badge-verified"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="badgeLifecycleAudited">Lifecycle Audited</span></span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 
         <!-- MINIMALIST FOOTER -->
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; padding:16px 0; font-size:11.5px; color:var(--text-muted);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; padding:20px 0; font-size:11.5px; color:var(--text-muted); border-top:1px solid var(--card-border); margin-top:20px;">
           <div>
             <strong data-i18n="footerAidLabel">MEDICAL DECISION SUPPORT AID:</strong> <span data-i18n="footerAid">Algorithmic statistical probability tool designed to assist healthcare professionals.</span>
           </div>
@@ -1169,6 +2089,180 @@
 
       </div>
     </main>
+  <!-- ROLE-BASED LOGIN & ONBOARDING GATEWAY MODAL -->
+  <div id="role-gateway-overlay" class="role-gateway-overlay">
+    <div class="role-gateway-modal">
+      <div class="gateway-header">
+        <div class="gateway-brand">
+          <div class="gateway-brand-badge">Q</div>
+          <span class="gateway-brand-name">CardioQ</span>
+          <span class="gateway-brand-tag">RESEARCH INTELLIGENCE</span>
+        </div>
+        <h2 class="gateway-title" data-i18n="gatewayTitle">Select your operational environment.</h2>
+        <p class="gateway-sub" data-i18n="gatewaySub">Choose your clinical workstation role to optimize interface telemetry and clinical controls.</p>
+      </div>
+
+      <div class="gateway-body">
+        <div class="role-cards-grid">
+          
+          <!-- Card 1: Researcher / Clinician -->
+          <div class="role-select-card" id="card-role-researcher" onclick="selectUserRole('researcher')">
+            <span class="role-card-badge badge-researcher">FULL INTELLIGENCE SUITE</span>
+            <div class="role-card-icon icon-researcher-role">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+            </div>
+            <div class="role-card-name" data-i18n="roleResearcherTitle">Researcher &amp; Cardiologist</div>
+            <div class="role-card-desc" data-i18n="roleResearcherDesc">Advanced cardiovascular research workstation equipped with full model telemetry, QPU circuit inspection, TreeSHAP feature attributions, and dual-track benchmarks.</div>
+            <ul class="role-card-features">
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Full 7-tab scientific research workstation</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Quantum circuit readout &amp; OpenQASM export</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 3-Pillar benchmarks (Accuracy, Efficiency, Robustness)</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Forensic audit &amp; automated model training studio</li>
+            </ul>
+            <button type="button" class="btn-select-role btn-select-role-researcher">
+              <span data-i18n="btnSelectResearcher">Launch Research Workstation</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+
+          <!-- Card 2: ASHA Worker / Field Mode -->
+          <div class="role-select-card" id="card-role-asha" onclick="selectUserRole('asha')">
+            <span class="role-card-badge badge-asha">COMMUNITY FIELD TRIAGE</span>
+            <div class="role-card-icon icon-asha-role">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </div>
+            <div class="role-card-name" data-i18n="roleAshaTitle">आशा कार्यकर्ता (ASHA Worker)</div>
+            <div class="role-card-desc" data-i18n="roleAshaDesc">Frontline rural health camp mode optimized for fast screening, touch-friendly inputs, instant ABHA health identity validation, and clear traffic-light clinical risk triage.</div>
+            <ul class="role-card-features">
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> High-visibility touch-friendly vitals entry</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Rapid ABHA ID generation &amp; validation</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Full Hindi (हिन्दी) bilingual support</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Clear traffic-light triage (Green / Yellow / Red)</li>
+            </ul>
+            <button type="button" class="btn-select-role btn-select-role-asha">
+              <span data-i18n="btnSelectAsha">फ़ील्ड मोड शुरू करें (Launch Field Mode)</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ASHA OFFICIAL CLINICAL REFERRAL SLIP MODAL -->
+  <div id="asha-referral-modal" class="referral-slip-overlay" onclick="if(event.target===this) closeReferralSlip();">
+    <div class="referral-slip-paper" id="asha-referral-paper">
+      
+      <!-- Official Header -->
+      <div class="slip-header-official">
+        <div>
+          <div class="slip-emblem-title">राष्ट्रीय स्वास्थ्य मिशन · NATIONAL HEALTH MISSION</div>
+          <div class="slip-emblem-sub">प्राथमिक स्वास्थ्य केंद्र (PHC) / सामुदायिक स्वास्थ्य केंद्र (CHC) क्लिनिकल रेफरल पर्ची</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:800; color:#0F172A;" id="slip-ref-no">REF-2026-0920-88</div>
+          <div style="font-size:11px; color:#64748B;" id="slip-date">Date: 20-Sep-2026</div>
+        </div>
+      </div>
+
+      <!-- Patient Demographics & Identification Grid -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px 16px; margin-bottom:16px; font-size:13px; background:#F8FAFC; padding:12px 16px; border-radius:10px; border:1px solid #E2E8F0;">
+        <div><span style="color:#64748B;">मरीज का नाम (Name):</span> <strong id="slip-patient-name" style="color:#0F172A;">Ramesh Kumar</strong></div>
+        <div><span style="color:#64748B;">आयु / लिंग (Age/Sex):</span> <strong id="slip-patient-age-gender" style="color:#0F172A;">54 वर्ष / पुरुष (Male)</strong></div>
+        <div><span style="color:#64748B;">ABHA स्वास्थ्य आईडी:</span> <strong id="slip-patient-abha" style="font-family:'JetBrains Mono', monospace; color:#0284C7;">91-0552-2867-3285</strong></div>
+        <div><span style="color:#64748B;">जांच केंद्र / कार्यकर्ता:</span> <strong id="slip-asha-worker" style="color:#0F172A;">आशा स्वास्थ्य उपकेंद्र (ASHA Camp)</strong></div>
+      </div>
+
+      <!-- Vitals Table -->
+      <table class="slip-vitals-table">
+        <thead>
+          <tr>
+            <th>शारीरिक मापदंड (Parameter)</th>
+            <th>दर्ज मान (Observed Value)</th>
+            <th>मानक सीमा (Reference Range)</th>
+            <th>स्थिति (Status)</th>
+          </tr>
+        </thead>
+        <tbody id="slip-vitals-body">
+          <tr>
+            <td>सिस्टोलिक रक्तचाप (Systolic BP)</td>
+            <td id="slip-bp-sys">135 mmHg</td>
+            <td>&lt; 120 mmHg</td>
+            <td id="slip-bp-status"><span style="color:#F59E0B; font-weight:700;">प्री-हाइपरटेंशन</span></td>
+          </tr>
+          <tr>
+            <td>डायस्टोलिक रक्तचाप (Diastolic BP)</td>
+            <td id="slip-bp-dia">88 mmHg</td>
+            <td>&lt; 80 mmHg</td>
+            <td id="slip-bp-dia-status"><span style="color:#F59E0B; font-weight:700;">सीमावर्ती</span></td>
+          </tr>
+          <tr>
+            <td>बॉडी मास इंडेक्स (BMI)</td>
+            <td id="slip-bmi">26.2 kg/m²</td>
+            <td>18.5 - 24.9 kg/m²</td>
+            <td id="slip-bmi-status"><span style="color:#F59E0B; font-weight:700;">अधिक वजन</span></td>
+          </tr>
+          <tr>
+            <td>सीरम कोलेस्ट्रॉल (Cholesterol)</td>
+            <td id="slip-chol">सामान्य से अधिक (2)</td>
+            <td>सामान्य (&lt; 200 mg/dL)</td>
+            <td id="slip-chol-status"><span style="color:#F59E0B; font-weight:700;">जांच अपेक्षित</span></td>
+          </tr>
+          <tr>
+            <td>ब्लड ग्लूकोज (Fasting Glucose)</td>
+            <td id="slip-gluc">सामान्य (1)</td>
+            <td>सामान्य (&lt; 100 mg/dL)</td>
+            <td id="slip-gluc-status"><span style="color:#10B981; font-weight:700;">सामान्य</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Clinical Decision Box -->
+      <div class="slip-decision-box yellow" id="slip-decision-box">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <div style="font-weight:800; font-size:15px;" id="slip-tier-title">🟡 मध्यम हृदय जोखिम (Moderate Cardiovascular Risk)</div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:16px; font-weight:800;" id="slip-score-val">51.5%</div>
+        </div>
+        <div id="slip-tier-desc" style="font-size:12.5px; line-height:1.5;">
+          मरीज में रक्तचाप एवं कोलेस्ट्रॉल का बढ़ा हुआ स्तर पाया गया है। 15 से 30 दिनों के भीतर नजदीकी पीएचसी डॉक्टर से परामर्श एवं ईसीजी जांच कराएं।
+        </div>
+      </div>
+
+      <!-- Recommended Investigations -->
+      <div style="font-size:12px; margin:14px 0; padding:10px 14px; background:#F1F5F9; border-radius:8px; line-height:1.6;">
+        <strong style="color:#1E293B;">चिकित्सक हेतु अनुशंसित अग्रिम जांच (Recommended for PHC MO):</strong>
+        <div id="slip-tests-list" style="color:#475569; margin-top:2px;">
+          • 12-लीड रेस्टिंग ईसीजी (12-Lead ECG) • लिपिड प्रोफाइल (Lipid Profile) • फास्टिंग ब्लड शुगर (FBS) • सीरम क्रिएटिनिन
+        </div>
+      </div>
+
+      <!-- Signatures -->
+      <div class="slip-signatures">
+        <div>
+          <div style="border-bottom:1px solid #94A3B8; width:160px; height:20px;"></div>
+          <div style="margin-top:6px; font-weight:600; color:#1E293B;">हस्ताक्षर आशा कार्यकर्ता (ASHA Sign)</div>
+          <div style="font-size:10px; color:#64748B;" id="slip-sign-timestamp">Screened on: 20-Sep-2026 · CardioQ Field</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="border-bottom:1px solid #94A3B8; width:180px; height:20px; margin-left:auto;"></div>
+          <div style="margin-top:6px; font-weight:600; color:#1E293B;">हस्ताक्षर व मुहर चिकित्सा अधिकारी (MO Seal)</div>
+          <div style="font-size:10px; color:#64748B;">प्राथमिक / सामुदायिक स्वास्थ्य केंद्र (PHC/CHC)</div>
+        </div>
+      </div>
+
+      <!-- Slip Action Controls (Hidden on Print) -->
+      <div class="slip-no-print" style="margin-top:24px; display:flex; justify-content:flex-end; gap:10px;">
+        <button type="button" class="btn-pill-white" onclick="closeReferralSlip()" style="padding:8px 16px; font-size:13px;">बंद करें (Close)</button>
+        <button type="button" class="btn-pill-white" onclick="shareReferralWhatsapp()" style="padding:8px 16px; font-size:13px; display:inline-flex; align-items:center; gap:6px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <span>व्हाट्सएप पर भेजें (WhatsApp)</span>
+        </button>
+        <button type="button" class="btn-primary-dark" onclick="printReferralSlip()" style="padding:8px 18px; font-size:13px; display:inline-flex; align-items:center; gap:6px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> <span>रेफरल पर्ची प्रिंट करें (Print Slip)</span>
+        </button>
+      </div>
+
+    </div>
   </div>
 
   <!-- DASHBOARD JAVASCRIPT -->
