@@ -202,7 +202,7 @@
                 </span>
                 <div>
                   <strong style="color:#065F46; font-size:13px;" data-i18n="ashaBannerTitle">आशा कार्यकर्ता फ़ील्ड मोड सक्रिय (ASHA Field Triage Mode Active)</strong>
-                  <div style="font-size:11.5px; color:#047857;" data-i18n="ashaBannerDesc">सामुदायिक स्वास्थ्य जांच, त्वरित आभा आईडी सत्यापन एवं रंग-आधारित जोखिम वर्गीकरण।</div>
+                  <div style="font-size:11.5px; color:#047857;" data-i18n="ashaBannerDesc">सामुदायिक स्वास्थ्य जांच, त्वरित नैदानिक मूल्यांकन एवं रंग-आधारित जोखिम वर्गीकरण।</div>
                 </div>
               </div>
               <button type="button" class="btn-pill-white" style="font-size:11px; height:28px; padding:2px 10px;" onclick="openRoleGateway()" data-i18n="btnSwitchMode">भूमिका बदलें (Switch Mode)</button>
@@ -213,7 +213,6 @@
           <div style="display:none;" id="compat-dossier-wrap">
             <span id="dossier-patient-display"></span>
             <span id="chip-age"></span>
-            <span id="chip-abha"></span>
             <div id="presets-strip-researcher"></div>
             <div id="presets-strip-asha"></div>
           </div>
@@ -225,7 +224,7 @@
             <div>
               <div class="card" style="margin-bottom:0;">
                 <div style="margin-bottom:20px;">
-                  <h3 style="font-size:18px; font-weight:700; color:var(--text-display); margin-bottom:4px;" data-i18n="screenerTitle">Patient Details & Vitals</h3>
+                  <h3 style="font-size:18px; font-weight:700; color:var(--text-display); margin-bottom:4px;" data-i18n="screenerTitle">Patient Details &amp; Vitals</h3>
                   <div class="card-desc" data-i18n="vitalsSub">Enter patient vitals and health factors below to evaluate cardiovascular risk.</div>
                 </div>
 
@@ -235,11 +234,8 @@
                     <input type="text" id="patient-name" value="Ramesh Kumar" oninput="updateDossierName(this.value)">
                   </div>
                   <div class="form-group">
-                    <label data-i18n="labelAbha">ABHA ID (National Health)</label>
-                    <div style="display:flex; gap:6px;">
-                      <input type="text" id="patient-abha" value="91-0552-2867-3285" oninput="updateDossierAbha(this.value)">
-                      <button type="button" class="btn-pill-white" style="padding:4px 10px; font-size:11px; height:34px;" onclick="generateDemoAbhaId()" data-i18n="btnGenerateAbha">Auto</button>
-                    </div>
+                    <label data-i18n="labelPatientId">Patient ID / MRN</label>
+                    <input type="text" id="patient-id" value="MRN-84920" placeholder="e.g. MRN-84920">
                   </div>
                 </div>
 
@@ -632,19 +628,19 @@
           <!-- SUMMARY KPI BANNER -->
           <div class="history-kpi-grid">
             <div class="history-kpi-card">
-              <div class="history-kpi-num">1,420</div>
+              <div class="history-kpi-num" id="history-kpi-total">--</div>
               <div class="history-kpi-label" data-i18n="kpiTotalScreened">Total Screened</div>
             </div>
             <div class="history-kpi-card">
-              <div class="history-kpi-num" style="color:var(--danger);">348 <span style="font-size:13px; font-weight:600;">(24.5%)</span></div>
+              <div class="history-kpi-num" style="color:var(--danger);" id="history-kpi-high">--</div>
               <div class="history-kpi-label" data-i18n="kpiHighRisk">High-Risk Flagged</div>
             </div>
             <div class="history-kpi-card">
-              <div class="history-kpi-num" style="color:var(--accent-teal);">100%</div>
+              <div class="history-kpi-num" style="color:var(--accent-teal);" id="history-kpi-fhir">100%</div>
               <div class="history-kpi-label" data-i18n="kpiFhirSynced">FHIR R4 Synced</div>
             </div>
             <div class="history-kpi-card">
-              <div class="history-kpi-num" style="color:var(--success);">11.8 ms</div>
+              <div class="history-kpi-num" style="color:var(--success);" id="history-kpi-latency">&lt; 15 ms</div>
               <div class="history-kpi-label" data-i18n="kpiLatency">Mean Latency</div>
             </div>
           </div>
@@ -665,7 +661,7 @@
                 <thead>
                   <tr>
                     <th data-i18n="thId">ID</th>
-                    <th data-i18n="thPatient">Patient / ABHA</th>
+                    <th data-i18n="thPatient">Patient Name / ID</th>
                     <th data-i18n="thModel">Model</th>
                     <th data-i18n="thBp">Blood Pressure</th>
                     <th data-i18n="thProb">Probability</th>
@@ -676,24 +672,9 @@
                 </thead>
                 <tbody id="history-table-body">
                   <tr>
-                    <td class="tabular-nums"><code>scr_001</code></td>
-                    <td><strong>Ramesh Kumar</strong><br><small style="color:var(--text-muted);">91-0552-2867-3285</small></td>
-                    <td><code>catboost</code></td>
-                    <td class="tabular-nums">135/88 mmHg</td>
-                    <td class="tabular-nums"><strong>18.4%</strong></td>
-                    <td><span class="risk-tier-pill tier-mod" data-i18n="tierModInitial">Moderate (20-50%)</span></td>
-                    <td class="tabular-nums" style="font-size:11.5px; color:var(--text-muted);">Today, 09:15</td>
-                    <td><button class="btn-pill-white" style="font-size:11px; padding:3px 10px; height:28px;" onclick="downloadFhirBundle()">JSON</button></td>
-                  </tr>
-                  <tr>
-                    <td class="tabular-nums"><code>scr_002</code></td>
-                    <td><strong>Rajesh Verma</strong><br><small style="color:var(--text-muted);">91-4421-9876-1234</small></td>
-                    <td><code>catboost</code></td>
-                    <td class="tabular-nums">168/102 mmHg</td>
-                    <td class="tabular-nums"><strong>78.2%</strong></td>
-                    <td><span class="risk-tier-pill tier-high" data-i18n="tierHighInitial">High Risk (&gt;50%)</span></td>
-                    <td class="tabular-nums" style="font-size:11.5px; color:var(--text-muted);">Today, 09:42</td>
-                    <td><button class="btn-pill-white" style="font-size:11px; padding:3px 10px; height:28px;" onclick="downloadFhirBundle()">JSON</button></td>
+                    <td colspan="8" style="text-align:center; color:var(--text-muted); padding:32px 20px;">
+                      Loading screening records from database...
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -2051,9 +2032,9 @@
               </p>
             </div>
             <div class="card" style="margin-bottom:0;">
-              <h4 style="font-size:13.5px; font-weight:700; color:var(--text-display); margin-bottom:6px;" data-i18n="govCard4Title">4. National Health Stack (ABDM)</h4>
+              <h4 style="font-size:13.5px; font-weight:700; color:var(--text-display); margin-bottom:6px;" data-i18n="govCard4Title">4. Clinical Data Interoperability</h4>
               <p style="font-size:12px; color:var(--text-secondary); line-height:1.6;" data-i18n="govCard4Desc">
-                Provides 14-digit mathematical Luhn mod-10 verified ABHA identifiers, HL7 FHIR R4 clinical bundles, and ICMR NP-NCD clinical triage guidance.
+                Provides standardized clinical identifiers, HL7 FHIR R4 clinical bundles, and ICMR NP-NCD clinical triage guidance.
               </p>
             </div>
           </div>
@@ -2080,10 +2061,10 @@
                     <td><span class="status-badge-verified"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="badgeVerifiedActive">Verified Active</span></span></td>
                   </tr>
                   <tr>
-                    <td><strong>ABDM Sandbox M1/M2/M3</strong></td>
-                    <td data-i18n="stdAbdmGov">National Health Authority (India)</td>
-                    <td data-i18n="stdAbdmScope">ABHA Creation, Verification &amp; Health Records Gateway</td>
-                    <td><span class="status-badge-verified"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="badgeM3Validated">M3 Validated</span></span></td>
+                    <td><strong>Clinical Data Gateway</strong></td>
+                    <td data-i18n="stdAbdmGov">National Health Authority / MoHFW</td>
+                    <td data-i18n="stdAbdmScope">Clinical Records &amp; Health Data Gateway</td>
+                    <td><span class="status-badge-verified"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="badgeM3Validated">Validated Active</span></span></td>
                   </tr>
                   <tr>
                     <td><strong>HL7 FHIR R4 (v4.0.1)</strong></td>
@@ -2219,7 +2200,7 @@
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px 16px; margin-bottom:16px; font-size:13px; background:#F8FAFC; padding:12px 16px; border-radius:10px; border:1px solid #E2E8F0;">
         <div><span style="color:#64748B;">मरीज का नाम (Name):</span> <strong id="slip-patient-name" style="color:#0F172A;">Ramesh Kumar</strong></div>
         <div><span style="color:#64748B;">आयु / लिंग (Age/Sex):</span> <strong id="slip-patient-age-gender" style="color:#0F172A;">54 वर्ष / पुरुष (Male)</strong></div>
-        <div><span style="color:#64748B;">ABHA स्वास्थ्य आईडी:</span> <strong id="slip-patient-abha" style="font-family:'JetBrains Mono', monospace; color:#0284C7;">91-0552-2867-3285</strong></div>
+        <div><span style="color:#64748B;">रोगी पहचान (Patient ID):</span> <strong id="slip-patient-id" style="font-family:'JetBrains Mono', monospace; color:#0284C7;">MRN-84920</strong></div>
         <div><span style="color:#64748B;">जांच केंद्र / कार्यकर्ता:</span> <strong id="slip-asha-worker" style="color:#0F172A;">आशा स्वास्थ्य उपकेंद्र (ASHA Camp)</strong></div>
       </div>
 

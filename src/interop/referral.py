@@ -24,7 +24,7 @@ def generate_referral_slip_data(
     and ICMR triage actions into a formal hospital referral slip.
     """
     scr_id = screening_id or f"CQ-REF-{int(datetime.now().timestamp())}"
-    abha = abha_id or patient_data.get("abha_id", "Not Provided (Unlinked)")
+    pat_id = patient_data.get("patient_id") or patient_data.get("mrn") or "MRN-84920"
     prob = float(risk_result.get("probability", 0.0))
     tier = risk_result.get("risk_tier", "Moderate Estimated Risk")
     model_name = risk_result.get("model", "CatBoost Champion")
@@ -37,7 +37,8 @@ def generate_referral_slip_data(
     return {
         "referral_id": scr_id,
         "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S IST"),
-        "abha_id": abha,
+        "patient_id": pat_id,
+        "abha_id": None,
         "patient": {
             "name": patient_data.get("name", "CardioQ Patient"),
             "age_years": patient_data.get("age_years", 50),
@@ -311,8 +312,8 @@ def render_referral_slip_html(referral_data: Dict[str, Any]) -> str:
         <strong>{p['name']}</strong>
       </div>
       <div class="grid-item">
-        <span>ABHA ID / आभा संख्या</span>
-        <strong>{referral_data['abha_id']}</strong>
+        <span>Patient ID / MRN (मरीज आईडी)</span>
+        <strong>{referral_data.get('patient_id') or 'MRN-84920'}</strong>
       </div>
       <div class="grid-item">
         <span>Age & Gender / आयु व लिंग</span>
@@ -375,7 +376,7 @@ def render_referral_slip_html(referral_data: Dict[str, Any]) -> str:
       <div class="disclaimer">
         {referral_data['disclaimer']}
         <br>
-        Interoperable with Ayushman Bharat Health Account (ABHA) & HL7 FHIR R4.
+        Interoperable with National Clinical Health Systems & HL7 FHIR R4.
       </div>
       <div class="sign-box">
         Examining Medical Officer<br>

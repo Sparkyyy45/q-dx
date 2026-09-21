@@ -219,7 +219,6 @@ HTML_DASHBOARD = """<!DOCTYPE html>
                 Patient: Ramesh Kumar
               </span>
               <span class="dossier-pill" id="chip-age">Age: 54 M</span>
-              <span class="dossier-pill" id="chip-abha">ABHA: 91-0552-2867-3285</span>
               <span class="dossier-pill">CCU-04</span>
               <span class="dossier-pill" style="color:#0066ff; background:#eff6ff; border-color:#bfdbfe;">Telemetry Active</span>
             </div>
@@ -256,11 +255,8 @@ HTML_DASHBOARD = """<!DOCTYPE html>
                     <input type="text" id="patient-name" value="Ramesh Kumar" oninput="updateDossierName(this.value)">
                   </div>
                   <div class="form-group">
-                    <label data-i18n="labelAbha">ABHA ID (National Health)</label>
-                    <div style="display:flex; gap:6px;">
-                      <input type="text" id="patient-abha" value="91-0552-2867-3285" oninput="updateDossierAbha(this.value)">
-                      <button type="button" class="btn-pill-white" style="padding:4px 10px; font-size:11px; height:34px;" onclick="generateDemoAbhaId()" data-i18n="btnGenerateAbha">Auto</button>
-                    </div>
+                    <label data-i18n="labelPatientId">Patient ID / MRN</label>
+                    <input type="text" id="patient-id" value="MRN-84920" placeholder="e.g. MRN-84920">
                   </div>
                 </div>
 
@@ -537,7 +533,7 @@ HTML_DASHBOARD = """<!DOCTYPE html>
                 <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Patient / ABHA</th>
+                    <th data-i18n="thPatient">Patient Name / ID</th>
                     <th>Model</th>
                     <th>Blood Pressure</th>
                     <th>Probability</th>
@@ -548,44 +544,7 @@ HTML_DASHBOARD = """<!DOCTYPE html>
                 </thead>
                 <tbody id="history-table-body">
                   <tr>
-                    <td class="tabular-nums"><code>scr_001</code></td>
-                    <td><strong>Ramesh Kumar</strong><br><small style="color:var(--text-muted);">91-0552-2867-3285</small></td>
-                    <td><code>catboost</code></td>
-                    <td class="tabular-nums">135/88 mmHg</td>
-                    <td class="tabular-nums"><strong>18.4%</strong></td>
-                    <td><span class="risk-tier-pill tier-mod" style="padding:2px 8px; font-size:10px;">Moderate Risk</span></td>
-                    <td class="tabular-nums" style="font-size:11.5px; color:var(--text-muted);">Today, 09:15</td>
-                    <td><button class="btn-pill-white" style="font-size:11px; padding:3px 10px; height:28px;" onclick="downloadFhirBundle()">JSON</button></td>
-                  </tr>
-                  <tr>
-                    <td class="tabular-nums"><code>scr_002</code></td>
-                    <td><strong>Rajesh Verma</strong><br><small style="color:var(--text-muted);">91-4421-9876-1234</small></td>
-                    <td><code>catboost</code></td>
-                    <td class="tabular-nums">168/102 mmHg</td>
-                    <td class="tabular-nums"><strong>78.2%</strong></td>
-                    <td><span class="risk-tier-pill tier-high" style="padding:2px 8px; font-size:10px;">High Risk</span></td>
-                    <td class="tabular-nums" style="font-size:11.5px; color:var(--text-muted);">Today, 09:42</td>
-                    <td><button class="btn-pill-white" style="font-size:11px; padding:3px 10px; height:28px;" onclick="downloadFhirBundle()">JSON</button></td>
-                  </tr>
-                  <tr>
-                    <td class="tabular-nums"><code>scr_003</code></td>
-                    <td><strong>Priya Sharma</strong><br><small style="color:var(--text-muted);">91-1123-5813-2134</small></td>
-                    <td><code>catboost</code></td>
-                    <td class="tabular-nums">115/75 mmHg</td>
-                    <td class="tabular-nums"><strong>4.2%</strong></td>
-                    <td><span class="risk-tier-pill tier-low" style="padding:2px 8px; font-size:10px;">Low Risk</span></td>
-                    <td class="tabular-nums" style="font-size:11.5px; color:var(--text-muted);">Yesterday, 14:10</td>
-                    <td><button class="btn-pill-white" style="font-size:11px; padding:3px 10px; height:28px;" onclick="downloadFhirBundle()">JSON</button></td>
-                  </tr>
-                  <tr>
-                    <td class="tabular-nums"><code>scr_004</code></td>
-                    <td><strong>Sunita Devi</strong><br><small style="color:var(--text-muted);">91-8890-1234-5678</small></td>
-                    <td><code>hybrid_qnn</code></td>
-                    <td class="tabular-nums">150/95 mmHg</td>
-                    <td class="tabular-nums"><strong>64.8%</strong></td>
-                    <td><span class="risk-tier-pill tier-high" style="padding:2px 8px; font-size:10px;">High Risk</span></td>
-                    <td class="tabular-nums" style="font-size:11.5px; color:var(--text-muted);">Yesterday, 16:30</td>
-                    <td><button class="btn-pill-white" style="font-size:11px; padding:3px 10px; height:28px;" onclick="downloadFhirBundle()">JSON</button></td>
+                    <td colspan="8" style="text-align:center; color:var(--text-muted); padding:24px;">Loading screening records from SQLite repository...</td>
                   </tr>
                 </tbody>
               </table>
@@ -1170,9 +1129,9 @@ HTML_DASHBOARD = """<!DOCTYPE html>
               </p>
             </div>
             <div style="background:var(--bg-surface); border:1px solid var(--card-border); border-radius:var(--radius-lg); padding:16px;">
-              <h4 style="font-size:13px; font-weight:700; color:var(--text-display); margin-bottom:4px;">4. National Health Stack (ABDM)</h4>
-              <p style="font-size:12px; color:var(--text-secondary); line-height:1.55;">
-                Provides 14-digit mathematical Luhn mod-10 verified ABHA identifiers, HL7 FHIR R4 clinical bundles, and ICMR NP-NCD clinical triage guidance.
+              <h4 style="font-size:13px; font-weight:700; color:var(--text-display); margin-bottom:4px;" data-i18n="govCard4Title">4. Clinical Interoperability Stack</h4>
+              <p style="font-size:12px; color:var(--text-secondary); line-height:1.55;" data-i18n="govCard4Desc">
+                Provides standardized clinical identifiers, HL7 FHIR R4 clinical bundles, and ICMR NP-NCD clinical triage guidance.
               </p>
             </div>
           </div>
@@ -1198,10 +1157,10 @@ HTML_DASHBOARD = """<!DOCTYPE html>
                   <td><span class="status-badge-verified"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Verified Active</span></td>
                 </tr>
                 <tr>
-                  <td><strong>ABDM Sandbox M1/M2/M3</strong></td>
-                  <td>National Health Authority (India)</td>
-                  <td>ABHA Creation, Verification &amp; Health Records Gateway</td>
-                  <td><span class="status-badge-verified"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> M3 Validated</span></td>
+                  <td><strong>Clinical Interoperability Gateway</strong></td>
+                  <td>Health Data Standards Authority</td>
+                  <td>Clinical Identifier Verification &amp; Health Records Gateway</td>
+                  <td><span class="status-badge-verified"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Validated</span></td>
                 </tr>
                 <tr>
                   <td><strong>HL7 FHIR R4 (v4.0.1)</strong></td>
