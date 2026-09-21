@@ -206,3 +206,34 @@ class AuditLogRecord:
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
+
+
+@dataclass
+class UserRecord:
+    id: str
+    name: str
+    email: str
+    password_hash: str
+    role: str = "Clinician"
+    created_at: Optional[str] = None
+    last_login: Optional[str] = None
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+
+    def to_safe_dict(self) -> Dict[str, Any]:
+        d = asdict(self)
+        d.pop("password_hash", None)
+        return d
+
+
+@dataclass
+class UserSessionRecord:
+    token: str
+    user_id: str
+    expires_at: str
+    created_at: Optional[str] = None
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+

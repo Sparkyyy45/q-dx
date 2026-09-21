@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CardioQ &middot; Sign In</title>
+  <meta name="description" content="CardioQ Clinical Decision Support Platform Authentication.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #F8FAFC;
+      background-image: radial-gradient(#E2E8F0 1px, transparent 1px);
+      background-size: 24px 24px;
+      color: #0F172A;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 32px 16px;
+      line-height: 1.5;
+    }
+
+    /* Ambient soft glow at top */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 280px;
+      background: radial-gradient(50% 50% at 50% 0%, rgba(13, 148, 136, 0.07) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .auth-wrapper {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Brand Header */
+    .brand-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: #0F172A;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+    }
+
+    .brand-name {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #0F172A;
+    }
+
+    .brand-sub {
+      font-size: 12.5px;
+      color: #64748B;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    /* Card Container */
+    .auth-card {
+      width: 100%;
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 32px 28px 28px;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+    }
+
+    /* Card Heading */
+    .card-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0F172A;
+      margin-bottom: 4px;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: #64748B;
+      margin-bottom: 20px;
+    }
+
+    /* Segmented Tab Control */
+    .segmented-control {
+      display: flex;
+      background: #F1F5F9;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 3px;
+      margin-bottom: 22px;
+      gap: 2px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      background: transparent;
+      border: none;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      color: #64748B;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-align: center;
+    }
+
+    .tab-btn:hover {
+      color: #0F172A;
+    }
+
+    .tab-btn.active {
+      background: #FFFFFF;
+      color: #0F172A;
+      font-weight: 600;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+    }
+
+    /* Alert Banner */
+    .alert-box {
+      display: none;
+      padding: 10px 12px;
+      border-radius: 6px;
+      font-size: 12.5px;
+      margin-bottom: 18px;
+      line-height: 1.4;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .alert-box.error {
+      background: #FEF2F2;
+      border: 1px solid #FECACA;
+      color: #991B1B;
+    }
+
+    .alert-box.success {
+      background: #ECFDF5;
+      border: 1px solid #A7F3D0;
+      color: #065F46;
+    }
+
+    /* Form Elements */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+
+    .input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .form-input {
+      width: 100%;
+      height: 38px;
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: 6px;
+      padding: 0 12px;
+      font-size: 13.5px;
+      color: #0F172A;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .form-input:focus {
+      border-color: #0F172A;
+      box-shadow: 0 0 0 1px #0F172A;
+    }
+
+    .form-input::placeholder {
+      color: #94A3B8;
+    }
+
+    .btn-eye {
+      position: absolute;
+      right: 8px;
+      background: transparent;
+      border: none;
+      color: #94A3B8;
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      transition: color 0.15s;
+    }
+
+    .btn-eye:hover {
+      color: #475569;
+    }
+
+    /* Remember me */
+    .options-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 4px;
+      margin-bottom: 20px;
+    }
+
+    .checkbox-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12.5px;
+      color: #475569;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .checkbox-label input {
+      accent-color: #0F172A;
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+    }
+
+    .meta-tag {
+      font-size: 11.5px;
+      color: #94A3B8;
+    }
+
+    /* Primary Submit Button */
+    .btn-primary {
+      width: 100%;
+      height: 40px;
+      background: #0F172A;
+      border: none;
+      border-radius: 6px;
+      color: #FFFFFF;
+      font-family: inherit;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.15s ease, transform 0.05s ease;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.1);
+    }
+
+    .btn-primary:hover {
+      background: #1E293B;
+    }
+
+    .btn-primary:active {
+      transform: scale(0.99);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* Footer Trust */
+    .auth-footer {
+      margin-top: 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .security-note {
+      font-size: 11.5px;
+      color: #94A3B8;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .security-note svg {
+      color: #0D9488;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 12px;
+      font-size: 11px;
+      color: #94A3B8;
+    }
+
+    .footer-links a {
+      color: #94A3B8;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover {
+      color: #475569;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-wrapper">
+    
+    <!-- Brand -->
+    <div class="brand-header">
+      <div class="brand-logo" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <h1 class="brand-name">CardioQ</h1>
+      <p class="brand-sub">Clinical Decision Support Platform</p>
+    </div>
+
+    <!-- Main Auth Card -->
+    <div class="auth-card">
+      <h2 class="card-title" id="card-title">Clinician Sign In</h2>
+      <p class="card-desc" id="card-desc">Enter your credentials to access your clinical workspace.</p>
+
+      <!-- Segmented Tab Switch -->
+      <div class="segmented-control" role="tablist">
+        <button type="button" class="tab-btn active" id="tab-signin" onclick="setMode('signin')" role="tab" aria-selected="true">Sign In</button>
+        <button type="button" class="tab-btn" id="tab-signup" onclick="setMode('signup')" role="tab" aria-selected="false">Create Account</button>
+      </div>
+
+      <!-- Alert -->
+      <div id="auth-alert" class="alert-box" role="alert">
+        <span id="alert-msg"></span>
+      </div>
+
+      <!-- Form -->
+      <form id="auth-form" onsubmit="handleSubmit(event)">
+        
+        <!-- Full Name (Sign Up only) -->
+        <div class="form-group" id="group-name" style="display: none;">
+          <label class="form-label" for="input-name">Full name</label>
+          <div class="input-wrap">
+            <input type="text" id="input-name" class="form-input" placeholder="Dr. Aditi Sharma" autocomplete="name">
+          </div>
+        </div>
+
+        <!-- Work Email -->
+        <div class="form-group">
+          <label class="form-label" for="input-email">Work email</label>
+          <div class="input-wrap">
+            <input type="email" id="input-email" class="form-input" placeholder="clinician@hospital.org" required autocomplete="email">
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label class="form-label" for="input-password">Password</label>
+          <div class="input-wrap">
+            <input type="password" id="input-password" class="form-input" placeholder="••••••••" required minlength="6" autocomplete="current-password">
+            <button type="button" class="btn-eye" onclick="togglePassword()" title="Show/hide password" aria-label="Toggle password visibility">
+              <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Options -->
+        <div class="options-row" id="options-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="remember-me" checked>
+            <span>Remember this device</span>
+          </label>
+          <span class="meta-tag">Encrypted session</span>
+        </div>
+
+        <!-- Submit CTA -->
+        <button type="submit" class="btn-primary" id="btn-submit">
+          <span id="btn-submit-text">Continue</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Security & Links -->
+    <div class="auth-footer">
+      <div class="security-note">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>End-to-end encrypted &middot; ABDM &amp; HIPAA aligned</span>
+      </div>
+      <div class="footer-links">
+        <a href="#" onclick="return false;">Privacy Policy</a>
+        <span>&middot;</span>
+        <a href="#" onclick="return false;">Security Standards</a>
+        <span>&middot;</span>
+        <a href="#" onclick="return false;">Clinical Governance</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    let currentMode = 'signin';
+
+    // Auto-check if session is already active
+    (async function checkExistingAuth() {
+      try {
+        const token = localStorage.getItem('cardioq_token');
+        const headers = {};
+        if (token) headers['Authorization'] = 'Bearer ' + token;
+        const res = await fetch('/api/auth/me', { headers });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.authenticated) {
+            window.location.href = '/';
+          }
+        }
+      } catch (err) {}
+    })();
+
+    function setMode(mode) {
+      currentMode = mode;
+      const tabSignIn = document.getElementById('tab-signin');
+      const tabSignUp = document.getElementById('tab-signup');
+      const groupName = document.getElementById('group-name');
+      const inputName = document.getElementById('input-name');
+      const cardTitle = document.getElementById('card-title');
+      const cardDesc = document.getElementById('card-desc');
+      const btnText = document.getElementById('btn-submit-text');
+      const alertBox = document.getElementById('auth-alert');
+      const optionsRow = document.getElementById('options-row');
+
+      alertBox.style.display = 'none';
+
+      if (mode === 'signin') {
+        tabSignIn.classList.add('active');
+        tabSignIn.setAttribute('aria-selected', 'true');
+        tabSignUp.classList.remove('active');
+        tabSignUp.setAttribute('aria-selected', 'false');
+        groupName.style.display = 'none';
+        inputName.removeAttribute('required');
+        optionsRow.style.display = 'flex';
+        cardTitle.textContent = 'Sign in to your workspace';
+        cardDesc.textContent = 'Enter your credentials to access clinical screening tools.';
+        btnText.textContent = 'Sign In';
+      } else {
+        tabSignUp.classList.add('active');
+        tabSignUp.setAttribute('aria-selected', 'true');
+        tabSignIn.classList.remove('active');
+        tabSignIn.setAttribute('aria-selected', 'false');
+        groupName.style.display = 'block';
+        inputName.setAttribute('required', 'true');
+        optionsRow.style.display = 'none';
+        cardTitle.textContent = 'Create clinician account';
+        cardDesc.textContent = 'Register to conduct and record cardiovascular risk screenings.';
+        btnText.textContent = 'Create Account';
+      }
+    }
+
+    function togglePassword() {
+      const pwd = document.getElementById('input-password');
+      const eye = document.getElementById('eye-icon');
+      if (pwd.type === 'password') {
+        pwd.type = 'text';
+        eye.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
+      } else {
+        pwd.type = 'password';
+        eye.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+      }
+    }
+
+    function showAlert(type, message) {
+      const alertBox = document.getElementById('auth-alert');
+      const alertMsg = document.getElementById('alert-msg');
+      alertBox.className = 'alert-box ' + type;
+      alertMsg.textContent = message;
+      alertBox.style.display = 'flex';
+    }
+
+    async function handleSubmit(event) {
+      event.preventDefault();
+      const email = document.getElementById('input-email').value.trim();
+      const password = document.getElementById('input-password').value;
+      const name = document.getElementById('input-name').value.trim();
+      const btnSubmit = document.getElementById('btn-submit');
+      const btnText = document.getElementById('btn-submit-text');
+
+      document.getElementById('auth-alert').style.display = 'none';
+
+      if (!email || !password) {
+        showAlert('error', 'Please enter your email and password.');
+        return;
+      }
+
+      if (currentMode === 'signup' && (!name || name.length < 2)) {
+        showAlert('error', 'Please enter your full name (minimum 2 characters).');
+        return;
+      }
+
+      btnSubmit.disabled = true;
+      const originalText = btnText.textContent;
+      btnText.textContent = currentMode === 'signin' ? 'Authenticating...' : 'Creating account...';
+
+      try {
+        const endpoint = currentMode === 'signin' ? '/api/auth/login' : '/api/auth/register';
+        const payload = currentMode === 'signin'
+          ? { email, password }
+          : { name, email, password };
+
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          showAlert('error', data.message || data.error || 'Authentication failed. Please check your credentials.');
+          btnSubmit.disabled = false;
+          btnText.textContent = originalText;
+          return;
+        }
+
+        if (data.token) {
+          localStorage.setItem('cardioq_token', data.token);
+        }
+        if (data.user) {
+          localStorage.setItem('cardioq_user', JSON.stringify(data.user));
+        }
+
+        showAlert('success', currentMode === 'signin' ? 'Authenticated successfully. Redirecting...' : 'Account created. Redirecting to workspace...');
+        
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 400);
+
+      } catch (err) {
+        showAlert('error', 'Unable to reach the server. Please verify the CardioQ service is active.');
+        btnSubmit.disabled = false;
+        btnText.textContent = originalText;
+      }
+    }
+  </script>
+</body>
+</html>

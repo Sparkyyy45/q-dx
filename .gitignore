@@ -21,6 +21,9 @@ catboost_info/
 .coverage
 htmlcov/
 .pytest_cache/
+artifacts/uploads/
+artifacts/training_jobs/
+artifacts/quantum/
 
 # IDE files
 .vscode/

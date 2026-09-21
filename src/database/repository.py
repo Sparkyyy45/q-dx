@@ -5,14 +5,25 @@ Supports both instance-based access (with custom database paths) and class-level
 
 from __future__ import annotations
 
+import datetime
+import hashlib
+import hmac
 import json
+import secrets
 import uuid
+from datetime import timedelta, timezone
 from functools import wraps
 from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 
 from src.database.connection import get_db_connection, init_db
-from src.database.models import AuditLogRecord, PatientRecord, ScreeningRecord
+from src.database.models import (
+    AuditLogRecord,
+    PatientRecord,
+    ScreeningRecord,
+    UserRecord,
+    UserSessionRecord,
+)
 
 
 class _hybridmethod:
@@ -329,3 +340,203 @@ class ClinicalRepository:
         if resource_id:
             full_details["resource_id"] = resource_id
         return self.log_audit(action=action, user_role=actor_id, details=full_details)
+
+    # -------------------------------------------------------------------------
+    # Authentication & User Management
+    # -------------------------------------------------------------------------
+
+    @staticmethod
+    def hash_password(password: str) -> str:
+        """Hash a plain text password with a unique salt using PBKDF2-HMAC-SHA256."""
+        salt = secrets.token_hex(16)
+        pwd_hash = hashlib.pbkdf2_hmac(
+            "sha256",
+            password.encode("utf-8"),
+            bytes.fromhex(salt),
+            100_000,
+        ).hex()
+        return f"{salt}${pwd_hash}"
+
+    @staticmethod
+    def verify_password(password: str, stored_hash: str) -> bool:
+        """Constant-time verification of password against stored PBKDF2 hash."""
+        try:
+            salt_hex, hash_hex = stored_hash.split("$")
+            computed = hashlib.pbkdf2_hmac(
+                "sha256",
+                password.encode("utf-8"),
+                bytes.fromhex(salt_hex),
+                100_000,
+            ).hex()
+            return hmac.compare_digest(computed, hash_hex)
+        except Exception:
+            return False
+
+    @_hybridmethod
+    def create_user(
+        self,
+        name: str,
+        email: str,
+        password: str,
+        role: str = "Clinician",
+    ) -> Tuple[bool, Optional[UserRecord], str]:
+        """Register a new user account with unique email and hashed password."""
+        norm_email = email.strip().lower()
+        if not norm_email or "@" not in norm_email:
+            return False, None, "Invalid email address format."
+        if not name or len(name.strip()) < 2:
+            return False, None, "Full name must be at least 2 characters."
+        if not password or len(password) < 6:
+            return False, None, "Password must be at least 6 characters long."
+
+        user_id = f"usr_{uuid.uuid4().hex[:12]}"
+        pwd_hash = self.hash_password(password)
+
+        with self._get_conn() as conn:
+            # Check existing email
+            cur = conn.execute("SELECT id FROM users WHERE email = ?", (norm_email,))
+            if cur.fetchone():
+                return False, None, "An account with this email address already exists."
+
+            conn.execute(
+                """
+                INSERT INTO users (id, name, email, password_hash, role)
+                VALUES (?, ?, ?, ?, ?)
+                """,
+                (user_id, name.strip(), norm_email, pwd_hash, role),
+            )
+
+        user = self.get_user_by_id(user_id)
+        self.log_audit(
+            action="USER_REGISTERED",
+            user_role=role,
+            details={"user_id": user_id, "email": norm_email},
+        )
+        return True, user, "User registered successfully."
+
+    @_hybridmethod
+    def get_user_by_email(self, email: str) -> Optional[UserRecord]:
+        """Retrieve user record by email address."""
+        norm_email = email.strip().lower()
+        with self._get_conn() as conn:
+            conn.row_factory = lambda c, r: dict(zip([col[0] for col in c.description], r))
+            cur = conn.execute(
+                "SELECT id, name, email, password_hash, role, created_at, last_login FROM users WHERE email = ?",
+                (norm_email,),
+            )
+            row = cur.fetchone()
+            if row:
+                return UserRecord(**row)
+        return None
+
+    @_hybridmethod
+    def get_user_by_id(self, user_id: str) -> Optional[UserRecord]:
+        """Retrieve user record by user ID."""
+        with self._get_conn() as conn:
+            conn.row_factory = lambda c, r: dict(zip([col[0] for col in c.description], r))
+            cur = conn.execute(
+                "SELECT id, name, email, password_hash, role, created_at, last_login FROM users WHERE id = ?",
+                (user_id,),
+            )
+            row = cur.fetchone()
+            if row:
+                return UserRecord(**row)
+        return None
+
+    @_hybridmethod
+    def authenticate_user(
+        self,
+        email: str,
+        password: str,
+        client_ip: Optional[str] = None,
+    ) -> Tuple[bool, Optional[UserRecord], str]:
+        """Authenticate user credentials and update last_login timestamp."""
+        user = self.get_user_by_email(email)
+        if not user:
+            return False, None, "Invalid email address or password."
+
+        if not self.verify_password(password, user.password_hash):
+            self.log_audit(
+                action="USER_LOGIN_FAILED",
+                user_role=user.role,
+                details={"email": email.strip().lower()},
+                client_ip=client_ip,
+            )
+            return False, None, "Invalid email address or password."
+
+        # Update last_login
+        now_iso = datetime.datetime.now(timezone.utc).isoformat()
+        with self._get_conn() as conn:
+            conn.execute(
+                "UPDATE users SET last_login = ? WHERE id = ?",
+                (now_iso, user.id),
+            )
+        user.last_login = now_iso
+
+        self.log_audit(
+            action="USER_LOGGED_IN",
+            user_role=user.role,
+            details={"user_id": user.id, "email": user.email},
+            client_ip=client_ip,
+        )
+        return True, user, "Authentication successful."
+
+    @_hybridmethod
+    def create_session(self, user_id: str, duration_days: int = 7) -> str:
+        """Generate and persist a secure session token for authenticated user."""
+        token = secrets.token_urlsafe(32)
+        expires_at = (
+            datetime.datetime.now(timezone.utc) + timedelta(days=duration_days)
+        ).isoformat()
+
+        with self._get_conn() as conn:
+            conn.execute(
+                """
+                INSERT INTO user_sessions (token, user_id, expires_at)
+                VALUES (?, ?, ?)
+                """,
+                (token, user_id, expires_at),
+            )
+        return token
+
+    @_hybridmethod
+    def get_session_user(self, token: str) -> Optional[UserRecord]:
+        """Validate session token and retrieve corresponding user if not expired."""
+        if not token or not str(token).strip():
+            return None
+
+        clean_token = str(token).strip()
+        now_iso = datetime.datetime.now(timezone.utc).isoformat()
+
+        with self._get_conn() as conn:
+            cur = conn.execute(
+                """
+                SELECT user_id, expires_at FROM user_sessions
+                WHERE token = ?
+                """,
+                (clean_token,),
+            )
+            row = cur.fetchone()
+            if not row:
+                return None
+
+            user_id, expires_at = row[0], row[1]
+            if expires_at and expires_at < now_iso:
+                # Expired session; prune it
+                conn.execute("DELETE FROM user_sessions WHERE token = ?", (clean_token,))
+                return None
+
+        return self.get_user_by_id(user_id)
+
+    @_hybridmethod
+    def delete_session(self, token: str) -> bool:
+        """Invalidate and remove session token from persistence."""
+        if not token:
+            return False
+        with self._get_conn() as conn:
+            cur = conn.execute(
+                "DELETE FROM user_sessions WHERE token = ?",
+                (str(token).strip(),),
+            )
+            return cur.rowcount > 0
+

@@ -137,15 +137,121 @@ class PredictRequest(BaseModel):
 
 
 # Routes
+@app.get("/login", response_class=HTMLResponse)
+def get_login_page(request: Request):
+    """Render modern light-theme clinical SaaS sign in & registration page."""
+    login_file = templates_dir / "login.html"
+    if login_file.is_file():
+        return HTMLResponse(content=login_file.read_text(encoding="utf-8"))
+    return HTMLResponse(content="<h1>CardioQ Login Page Not Found</h1>", status_code=404)
+
+
 @app.get("/", response_class=HTMLResponse)
 def get_dashboard(request: Request):
-    """Render interactive clinician web dashboard."""
+    """Render interactive clinician web dashboard with session verification."""
+    token = request.cookies.get("cardioq_session")
+    auth_header = request.headers.get("Authorization", "")
+    if auth_header.startswith("Bearer "):
+        token = auth_header[7:].strip()
+    user = ClinicalRepository.get_session_user(token) if token else None
+    if not user:
+        from fastapi.responses import RedirectResponse
+        return RedirectResponse(url="/login", status_code=302)
+
     if templates and (templates_dir / "index.html").is_file():
         return templates.TemplateResponse("index.html", {"request": request})
     html_file = templates_dir / "index.html"
     if html_file.is_file():
         return HTMLResponse(content=html_file.read_text(encoding="utf-8"))
     return HTMLResponse(content="<h1>CardioQ Platform API active</h1>")
+
+
+class RegisterRequest(BaseModel):
+    name: str
+    email: str
+    password: str
+    role: Optional[str] = "Clinician"
+
+
+class LoginRequest(BaseModel):
+    email: str
+    password: str
+
+
+@app.post("/api/auth/register")
+def auth_register(req: RegisterRequest, response: Response):
+    ok, user, msg = ClinicalRepository.create_user(
+        name=req.name,
+        email=req.email,
+        password=req.password,
+        role=req.role or "Clinician",
+    )
+    if not ok or not user:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail={"error": "REGISTRATION_FAILED", "message": msg},
+        )
+    token = ClinicalRepository.create_session(user.id)
+    response.set_cookie(key="cardioq_session", value=token, max_age=604800, path="/", samesite="lax")
+    return {
+        "status": "success",
+        "authenticated": True,
+        "token": token,
+        "user": user.to_safe_dict(),
+        "message": msg,
+    }
+
+
+@app.post("/api/auth/login")
+def auth_login(req: LoginRequest, request: Request, response: Response):
+    client_ip = request.client.host if request.client else "127.0.0.1"
+    ok, user, msg = ClinicalRepository.authenticate_user(
+        email=req.email,
+        password=req.password,
+        client_ip=client_ip,
+    )
+    if not ok or not user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail={"error": "UNAUTHORIZED", "message": msg},
+        )
+    token = ClinicalRepository.create_session(user.id)
+    response.set_cookie(key="cardioq_session", value=token, max_age=604800, path="/", samesite="lax")
+    return {
+        "status": "success",
+        "authenticated": True,
+        "token": token,
+        "user": user.to_safe_dict(),
+        "message": msg,
+    }
+
+
+@app.post("/api/auth/logout")
+def auth_logout(request: Request, response: Response):
+    token = request.cookies.get("cardioq_session")
+    auth_header = request.headers.get("Authorization", "")
+    if auth_header.startswith("Bearer "):
+        token = auth_header[7:].strip()
+    if token:
+        ClinicalRepository.delete_session(token)
+    response.delete_cookie(key="cardioq_session", path="/")
+    return {"status": "success", "authenticated": False, "message": "Session terminated."}
+
+
+@app.get("/api/auth/me")
+def auth_me(request: Request):
+    token = request.cookies.get("cardioq_session")
+    auth_header = request.headers.get("Authorization", "")
+    if auth_header.startswith("Bearer "):
+        token = auth_header[7:].strip()
+    user = ClinicalRepository.get_session_user(token) if token else None
+    if user:
+        return {"authenticated": True, "user": user.to_safe_dict()}
+    raise HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail={"authenticated": False, "message": "No active session."},
+    )
+
 
 
 @app.get("/health")

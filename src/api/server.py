@@ -61,7 +61,10 @@ from src.database.repository import ClinicalRepository
 from src.interop.abha import validate_abha_id, generate_demo_abha
 from src.interop.fhir import generate_fhir_risk_assessment_bundle
 from src.interop.icmr_guidelines import get_icmr_clinical_recommendations
-from src.quantum.hardware_bridge import execute_qiskit_simulation
+from src.quantum.hardware_bridge import execute_qiskit_simulation, get_verified_hardware_telemetry
+from src.conformal import default_conformal_predictor
+from src.interop.referral import generate_referral_slip_data, render_referral_slip_html
+from src.fairness import get_cached_or_default_fairness_audit
 
 logger = logging.getLogger(__name__)
 
@@ -71,6 +74,7 @@ HTML_DASHBOARD = """<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CardioQ - Precision Cardiovascular Intelligence</title>
+  <meta name="description" content="CardioQ Platform - SIH Problem Statement 3: Hybrid Quantum-Classical Cardiovascular Disease Diagnostic Engine">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1400,13 +1404,48 @@ class ClinicalPlatformHandler(BaseHTTPRequestHandler):
 
     server_models: Dict[str, Any] = {}
 
-    def _set_headers(self, status: int = 200, content_type: str = "application/json"):
+    def _set_headers(
+        self,
+        status: int = 200,
+        content_type: str = "application/json",
+        cookies: Optional[List[str]] = None,
+    ):
         self.send_response(status)
         self.send_header("Content-Type", content_type)
         self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type, Authorization, Cookie")
+        if cookies:
+            for cookie in cookies:
+                self.send_header("Set-Cookie", cookie)
         self.end_headers()
+
+    def _send_redirect(self, location: str, status: int = 302, cookies: Optional[List[str]] = None):
+        self.send_response(status)
+        self.send_header("Location", location)
+        self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
+        if cookies:
+            for cookie in cookies:
+                self.send_header("Set-Cookie", cookie)
+        self.end_headers()
+
+    def _get_session_token(self) -> Optional[str]:
+        auth = self.headers.get("Authorization", "")
+        if auth.startswith("Bearer "):
+            return auth[7:].strip()
+        cookie_header = self.headers.get("Cookie", "")
+        if "cardioq_session=" in cookie_header:
+            for part in cookie_header.split(";"):
+                part = part.strip()
+                if part.startswith("cardioq_session="):
+                    return part.split("=", 1)[1].strip()
+        return None
+
+    def _get_current_user(self) -> Optional[Any]:
+        token = self._get_session_token()
+        if not token:
+            return None
+        return ClinicalRepository.get_session_user(token)
 
     def do_OPTIONS(self):
         self._set_headers(200)
@@ -1434,7 +1473,42 @@ class ClinicalPlatformHandler(BaseHTTPRequestHandler):
             self.wfile.write(b"Static file not found.")
             return
 
+        if self.path in ("/login", "/login.html"):
+            user = self._get_current_user()
+            if user:
+                self._send_redirect("/")
+                return
+            tmpl = Path(__file__).parent / "templates" / "login.html"
+            if tmpl.is_file():
+                self._set_headers(200, "text/html; charset=utf-8")
+                self.wfile.write(tmpl.read_bytes())
+                return
+            self._set_headers(404)
+            self.wfile.write(b"Login template not found.")
+            return
+
+        if self.path == "/api/auth/me":
+            user = self._get_current_user()
+            if user:
+                self._set_headers(200)
+                self.wfile.write(json.dumps({
+                    "authenticated": True,
+                    "user": user.to_safe_dict(),
+                }).encode("utf-8"))
+            else:
+                self._set_headers(401)
+                self.wfile.write(json.dumps({
+                    "authenticated": False,
+                    "error": "UNAUTHORIZED",
+                    "message": "No active clinician session.",
+                }).encode("utf-8"))
+            return
+
         if self.path == "/" or self.path == "/index.html":
+            user = self._get_current_user()
+            if not user:
+                self._send_redirect("/login")
+                return
             tmpl = Path(__file__).parent / "templates" / "index.html"
             content = tmpl.read_bytes() if tmpl.is_file() else HTML_DASHBOARD.encode("utf-8")
             self._set_headers(200, "text/html; charset=utf-8")
@@ -1524,6 +1598,24 @@ class ClinicalPlatformHandler(BaseHTTPRequestHandler):
             self._handle_barren_plateau({})
             return
 
+        if self.path == "/api/quantum/telemetry":
+            self._handle_quantum_telemetry()
+            return
+
+        if self.path == "/api/governance/fairness":
+            self._handle_governance_fairness()
+            return
+
+        if self.path.startswith("/api/records/") and self.path.endswith("/referral"):
+            scr_id = self.path[len("/api/records/"): -len("/referral")].strip("/")
+            self._handle_get_referral_json(scr_id)
+            return
+
+        if self.path.startswith("/api/records/") and self.path.endswith("/print"):
+            scr_id = self.path[len("/api/records/"): -len("/print")].strip("/")
+            self._handle_get_referral_print(scr_id)
+            return
+
         self._set_headers(404)
         self.wfile.write(json.dumps({"error": f"Path '{self.path}' not found."}).encode("utf-8"))
 
@@ -1574,8 +1666,20 @@ class ClinicalPlatformHandler(BaseHTTPRequestHandler):
             self._handle_validate_abha(query)
             return
 
+        if self.path == "/api/auth/register":
+            self._handle_auth_register(data)
+            return
+
         if self.path == "/api/auth/login":
             self._handle_auth_login(data)
+            return
+
+        if self.path == "/api/auth/logout":
+            self._handle_auth_logout(data)
+            return
+
+        if self.path == "/api/referral/generate":
+            self._handle_generate_referral(data)
             return
 
         self._set_headers(404)
@@ -1671,7 +1775,11 @@ class ClinicalPlatformHandler(BaseHTTPRequestHandler):
                 "disclaimer": MEDICAL_DISCLAIMER,
             }
 
-        # Generate ICMR clinical next-steps
+        # Compute Conformal Prediction & Uncertainty Bands
+        conformal_res = default_conformal_predictor.predict(result.get("probability", 0.0))
+        result["conformal_prediction"] = conformal_res.to_dict()
+
+        # Generate ICMR clinical next-steps (including South Asian BMI criteria)
         icmr_rec = get_icmr_clinical_recommendations(
             probability=result.get("probability", 0.0),
             ap_hi=patient_record["ap_hi"],
@@ -1679,6 +1787,7 @@ class ClinicalPlatformHandler(BaseHTTPRequestHandler):
             cholesterol=patient_record["cholesterol"],
             gluc=patient_record["gluc"],
             smoke=patient_record["smoke"],
+            bmi=patient_record.get("bmi"),
         )
         result["icmr_recommendations"] = icmr_rec
 
@@ -1719,6 +1828,15 @@ class ClinicalPlatformHandler(BaseHTTPRequestHandler):
             result["screening_id"] = scr_rec.id
         except Exception as exc:
             logger.warning(f"Database persistence warning: {exc}")
+
+        # Attach 1-Click Bilingual ICMR Referral Slip
+        referral_data = generate_referral_slip_data(
+            patient_data=patient_record,
+            risk_result=result,
+            screening_id=result.get("screening_id"),
+            abha_id=patient.get("abha_id") if isinstance(patient, dict) else None,
+        )
+        result["referral_slip"] = referral_data
 
         self._set_headers(200)
         self.wfile.write(json.dumps(result).encode("utf-8"))
@@ -2306,93 +2424,177 @@ print(f"Physical QPU Measurement Counts (16 Basis States): {counts}")
             self._set_headers(500)
             self.wfile.write(json.dumps({"error": f"Failed noise stress evaluation: {exc}"}).encode("utf-8"))
 
-    def _handle_auth_login(self, data: Dict[str, Any]):
-        """Authenticate clinical user and return token and profile."""
+    def _handle_auth_register(self, data: Dict[str, Any]):
+        """Register new clinician account in SQLite database."""
         try:
+            name = (data.get("name") or "").strip()
             email = (data.get("email") or "").strip().lower()
-            password = (data.get("password") or "").strip()
-            role_pref = (data.get("role") or "").strip().lower()
+            password = data.get("password") or ""
+            role = (data.get("role") or "Clinician").strip()
 
-            KNOWN_ACCOUNTS = {
-                "dr.arjun.sharma@cardioq.ai": {
-                    "name": "Dr. Arjun Sharma, MD, DM",
-                    "role": "researcher",
-                    "title": "Lead Cardiologist & Research Scientist",
-                    "institution": "AIIMS New Delhi · Cardiac Research Lab 04",
-                    "avatar": "AS",
-                    "pass": "CardioQ#2026",
-                },
-                "asha.radha.devi@nhm.gov.in": {
-                    "name": "Radha Devi (आशा कार्यकर्ता)",
-                    "role": "asha",
-                    "title": "Senior ASHA Field Worker (NHM-UP-8842)",
-                    "institution": "Primary Health Centre (PHC) Badlapur",
-                    "avatar": "RD",
-                    "pass": "AshaField#2026",
-                },
-                "auditor.kapoor@mohfw.gov.in": {
-                    "name": "Dr. Sunita Kapoor, Ph.D.",
-                    "role": "researcher",
-                    "title": "Chief Clinical Auditor & Regulatory Inspector",
-                    "institution": "CDSCO / National Health Authority Interop Cell",
-                    "avatar": "SK",
-                    "pass": "AuditSecure#2026",
-                },
-            }
-
-            if not email or not password:
+            success, user, message = ClinicalRepository.create_user(
+                name=name,
+                email=email,
+                password=password,
+                role=role,
+            )
+            if not success or not user:
                 self._set_headers(400)
-                self.wfile.write(json.dumps({
-                    "authenticated": False,
-                    "error": "MISSING_CREDENTIALS",
-                    "message": "Institutional email/work ID and security passkey are required.",
-                }).encode("utf-8"))
+                self.wfile.write(json.dumps({"error": "REGISTRATION_FAILED", "message": message}).encode("utf-8"))
                 return
 
-            user_info = KNOWN_ACCOUNTS.get(email)
-            if user_info:
-                if user_info["pass"] != password:
-                    self._set_headers(401)
-                    self.wfile.write(json.dumps({
-                        "authenticated": False,
-                        "error": "INVALID_PASSKEY",
-                        "message": "Invalid clinical security passkey. Please check authorized demo credentials.",
-                    }).encode("utf-8"))
-                    return
-            else:
-                # Support custom institutional logins
-                resolved_role = "asha" if (role_pref == "asha" or "asha" in email or "nhm" in email) else "researcher"
-                name_part = email.split("@")[0].replace(".", " ").title()
-                initials = "".join([p[0].upper() for p in name_part.split()[:2]]) or "MD"
-                user_info = {
-                    "name": name_part,
-                    "role": resolved_role,
-                    "title": "Clinical Practitioner" if resolved_role != "asha" else "Community Health Worker",
-                    "institution": "Authorized Healthcare Facility",
-                    "avatar": initials,
-                }
-
-            session_token = f"cq_{uuid.uuid4().hex[:16]}"
-            resp = {
+            token = ClinicalRepository.create_session(user.id)
+            cookie = f"cardioq_session={token}; Path=/; SameSite=Lax; Max-Age=604800"
+            self._set_headers(200, cookies=[cookie])
+            self.wfile.write(json.dumps({
+                "status": "success",
                 "authenticated": True,
-                "token": session_token,
-                "session_expiry": int(time.time() + 28800),
-                "workstation_id": data.get("workstation", "LOCAL-ENCLAVE-01"),
-                "user": {
-                    "email": email,
-                    "name": user_info["name"],
-                    "role": user_info["role"],
-                    "title": user_info["title"],
-                    "institution": user_info["institution"],
-                    "avatar": user_info["avatar"],
-                }
-            }
-            self._set_headers(200)
-            self.wfile.write(json.dumps(resp).encode("utf-8"))
+                "token": token,
+                "user": user.to_safe_dict(),
+                "message": message,
+            }).encode("utf-8"))
+        except Exception as exc:
+            logger.error(f"Registration error: {exc}", exc_info=True)
+            self._set_headers(500)
+            self.wfile.write(json.dumps({"error": "INTERNAL_ERROR", "message": str(exc)}).encode("utf-8"))
+
+    def _handle_auth_login(self, data: Dict[str, Any]):
+        """Authenticate clinician account via SQLite database."""
+        try:
+            email = (data.get("email") or "").strip().lower()
+            password = data.get("password") or ""
+            client_ip = self.client_address[0] if self.client_address else "127.0.0.1"
+
+            success, user, message = ClinicalRepository.authenticate_user(
+                email=email,
+                password=password,
+                client_ip=client_ip,
+            )
+            if not success or not user:
+                self._set_headers(401)
+                self.wfile.write(json.dumps({"error": "UNAUTHORIZED", "message": message}).encode("utf-8"))
+                return
+
+            token = ClinicalRepository.create_session(user.id)
+            cookie = f"cardioq_session={token}; Path=/; SameSite=Lax; Max-Age=604800"
+            self._set_headers(200, cookies=[cookie])
+            self.wfile.write(json.dumps({
+                "status": "success",
+                "authenticated": True,
+                "token": token,
+                "user": user.to_safe_dict(),
+                "message": message,
+            }).encode("utf-8"))
         except Exception as exc:
             logger.error(f"Authentication error: {exc}", exc_info=True)
             self._set_headers(500)
-            self.wfile.write(json.dumps({"authenticated": False, "error": str(exc)}).encode("utf-8"))
+            self.wfile.write(json.dumps({"error": "INTERNAL_ERROR", "message": str(exc)}).encode("utf-8"))
+
+    def _handle_auth_logout(self, data: Optional[Dict[str, Any]] = None):
+        """Invalidate session and clear authentication cookie."""
+        try:
+            token = self._get_session_token()
+            if token:
+                ClinicalRepository.delete_session(token)
+            cookie = "cardioq_session=; Path=/; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:00 GMT"
+            self._set_headers(200, cookies=[cookie])
+            self.wfile.write(json.dumps({
+                "status": "success",
+                "authenticated": False,
+                "message": "Session terminated successfully.",
+            }).encode("utf-8"))
+        except Exception as exc:
+            logger.error(f"Logout error: {exc}", exc_info=True)
+            self._set_headers(500)
+            self.wfile.write(json.dumps({"error": "LOGOUT_FAILED", "message": str(exc)}).encode("utf-8"))
+
+    def _handle_quantum_telemetry(self):
+        """Serve verified physical QPU execution certificate and telemetry."""
+        try:
+            telemetry = get_verified_hardware_telemetry()
+            self._set_headers(200)
+            self.wfile.write(json.dumps(telemetry).encode("utf-8"))
+        except Exception as exc:
+            logger.error(f"Failed fetching quantum telemetry: {exc}", exc_info=True)
+            self._set_headers(500)
+            self.wfile.write(json.dumps({"error": f"Failed fetching quantum telemetry: {exc}"}).encode("utf-8"))
+
+    def _handle_governance_fairness(self):
+        """Serve algorithmic demographic parity and fairness audit."""
+        try:
+            audit = get_cached_or_default_fairness_audit()
+            self._set_headers(200)
+            self.wfile.write(json.dumps(audit).encode("utf-8"))
+        except Exception as exc:
+            logger.error(f"Failed fetching fairness audit: {exc}", exc_info=True)
+            self._set_headers(500)
+            self.wfile.write(json.dumps({"error": f"Failed fetching fairness audit: {exc}"}).encode("utf-8"))
+
+    def _handle_get_referral_json(self, screening_id: str):
+        """Return structured referral slip JSON for given screening ID."""
+        try:
+            rec = ClinicalRepository.get_screening_by_id(screening_id)
+            if not rec:
+                self._set_headers(404)
+                self.wfile.write(json.dumps({"error": f"Screening '{screening_id}' not found."}).encode("utf-8"))
+                return
+            referral = generate_referral_slip_data(
+                patient_data=rec,
+                risk_result=rec,
+                screening_id=screening_id,
+                abha_id=rec.get("abha_id"),
+            )
+            self._set_headers(200)
+            self.wfile.write(json.dumps(referral).encode("utf-8"))
+        except Exception as exc:
+            logger.error(f"Failed generating referral: {exc}", exc_info=True)
+            self._set_headers(500)
+            self.wfile.write(json.dumps({"error": f"Failed generating referral: {exc}"}).encode("utf-8"))
+
+    def _handle_get_referral_print(self, screening_id: str):
+        """Serve clean print-ready HTML referral slip for given screening ID."""
+        try:
+            rec = ClinicalRepository.get_screening_by_id(screening_id)
+            if not rec:
+                self._set_headers(404)
+                self.wfile.write(json.dumps({"error": f"Screening '{screening_id}' not found."}).encode("utf-8"))
+                return
+            referral = generate_referral_slip_data(
+                patient_data=rec,
+                risk_result=rec,
+                screening_id=screening_id,
+                abha_id=rec.get("abha_id"),
+            )
+            html = render_referral_slip_html(referral)
+            self._set_headers(200, "text/html; charset=utf-8")
+            self.wfile.write(html.encode("utf-8"))
+        except Exception as exc:
+            logger.error(f"Failed rendering referral HTML: {exc}", exc_info=True)
+            self._set_headers(500)
+            self.wfile.write(json.dumps({"error": f"Failed rendering referral HTML: {exc}"}).encode("utf-8"))
+
+    def _handle_generate_referral(self, data: Dict[str, Any]):
+        """Generate referral slip on the fly from arbitrary patient and risk payload."""
+        try:
+            patient = data.get("patient", {})
+            risk_res = data.get("risk_result", data)
+            referral = generate_referral_slip_data(
+                patient_data=patient,
+                risk_result=risk_res,
+                screening_id=data.get("screening_id"),
+                abha_id=patient.get("abha_id"),
+            )
+            if data.get("format") == "html":
+                html = render_referral_slip_html(referral)
+                self._set_headers(200, "text/html; charset=utf-8")
+                self.wfile.write(html.encode("utf-8"))
+            else:
+                self._set_headers(200)
+                self.wfile.write(json.dumps(referral).encode("utf-8"))
+        except Exception as exc:
+            logger.error(f"Failed generating referral: {exc}", exc_info=True)
+            self._set_headers(500)
+            self.wfile.write(json.dumps({"error": f"Failed generating referral: {exc}"}).encode("utf-8"))
 
 
 class ClinicalPlatformServer:
